@@ -13,3 +13,23 @@ event = {
 		set_global_flag = civic_organic_zealots_installed
 	}
 }
+
+# triggered by empire_init_add_technologies
+country_event = {
+	id = civic_organic_zealots.2
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_valid_civic = civic_organic_zealots
+	}
+	immediate = {
+		give_technology = {
+			tech = tech_genome_mapping
+			message = no
+		}
+		give_technology = {
+			tech = tech_cloning
+			message = no
+		}
+	}
+}

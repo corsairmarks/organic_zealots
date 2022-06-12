@@ -1,0 +1,91 @@
+cloning_technician = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_illicit_research_labs
+	clothes_texture_index = 3
+	icon = healthcare
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_specialist_job
+
+	planet_modifier = {
+		planet_pop_assembly_organic_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_gene_banks }
+		}
+		modifier = {
+			planet_pop_assembly_organic_add = 0.5
+		}
+	}
+
+	resources = {
+		category = planet_doctors
+		upkeep = {
+			consumer_goods = 1
+		}
+		upkeep = {
+			trigger = {
+				exists = planet
+				planet = {
+					exists = assembling_species
+					assembling_species = {
+						is_organic_species = yes
+						is_lithoid = no
+					}
+				}
+			}
+			food = 10
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_gene_banks }
+				exists = planet
+				planet = {
+					exists = assembling_species
+					assembling_species = {
+						is_organic_species = yes
+						is_lithoid = no
+					}
+				}
+			}
+			food = 10
+		}
+		upkeep = {
+			trigger = {
+				exists = planet
+				planet = {
+					exists = assembling_species
+					assembling_species = { is_lithoid = yes }
+				}
+			}
+			minerals = 10
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_gene_banks }
+				exists = planet
+				planet = {
+					exists = assembling_species
+					assembling_species = { is_lithoid = yes }
+				}
+			}
+			minerals = 10
+		}
+	}
+
+	weight = {
+		weight = 500
+	}
+}

@@ -11,3 +11,11 @@ on_single_player_save_game_load = {
 		civic_organic_zealots.13 # flag mod as installed
 	}
 }
+
+# fired during empire initialization
+# this = country
+empire_init_add_technologies = {
+	events = {
+		civic_organic_zealots.2
+	}
+}

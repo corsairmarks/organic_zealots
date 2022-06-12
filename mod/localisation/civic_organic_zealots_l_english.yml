@@ -10,7 +10,6 @@
  casus_belli_cb_non_organic_purification: "Anti-Thinking Machine Jihad"
  casus_belli_cb_containment_organic_zealots: "$casus_belli_cb_containment$"
 
-
  opinion_organic_zealots_vs_machines: "Abominable Thinking Machines"
  opinion_machines_vs_organic_zealots: "Organic ???"
  opinion_organic_zealots_vs_cyborgs: "Self-Corrupting Organics"
@@ -19,7 +18,24 @@
  opinion_materialist_of_organic_zealots: "Iconoclastic Fools"
  opinion_both_organic_zealots: "Fellow Pure Organics"
 
- wg_end_threat_organic_zealots: "End Jihad"
- wg_cleansing_organic_zealots: "Cleanse Abominations"
- wg_cleansing_organic_zealots_vs_fe: "$wg_cleansing_organic_zealots$"
- wg_force_policy_organic_zealots: "Outlaw Robots and AI"
+ war_goal_wg_end_threat_organic_zealots: "End Jihad"
+ war_goal_wg_end_threat_organic_zealots_desc: "End Jihad"
+ war_goal_wg_cleansing_organic_zealots: "Cleanse Abominations"
+ war_goal_wg_cleansing_organic_zealots_desc: "Cleanse Abominations"
+ war_goal_wg_cleansing_organic_zealots_vs_fe: "$war_goal_wg_cleansing_organic_zealots$"
+ war_goal_wg_cleansing_organic_zealots_vs_fe_desc: "$war_goal_wg_cleansing_organic_zealots$"
+ war_goal_wg_force_policy_organic_zealots: "Outlaw Robots and AI"
+ war_goal_wg_force_policy_organic_zealots_desc: "Outlaw Robots and AI"
+
+ job_cloning_technician: "Cloning Technician"
+ job_cloning_technician_plural: "Cloning Technicians"
+ job_cloning_technician_desc: "$job_cloning_technician_plural$ oversee the accelerated maturation of clones and flash-imprint the necessary skills for each clone's predetermined job."
+ job_cloning_technician_effect_desc: "£job_healthcare£ $job_cloning_technician_plural$ turn £consumer_goods£ §Y$consumer_goods$§! and either £food£ §Y$food$§! or £minerals£ §Y$minerals$§! into £mod_pop_growth_speed£ §Y$MOD_PLANET_POP_ASSEMBLY_ORGANIC_ADD$§!."
+ mod_job_cloning_technician_add: "$job_cloning_technician$ Jobs"
+
+#  war_goal_wg_colossus_organic_zealots: "REPLACE_ME"
+#  war_goal_wg_colossus_organic_zealots_desc: "REPLACE_ME"
+#  war_goal_wg_end_threat_colossus_organic_zealots: "REPLACE_ME"
+#  war_goal_wg_end_threat_colossus_organic_zealots_desc: "REPLACE_ME"
+#  war_goal_wg_fe_stop_ai_organic_zealots: "REPLACE_ME"
+#  war_goal_wg_fe_stop_ai_organic_zealots_desc: "REPLACE_ME"
