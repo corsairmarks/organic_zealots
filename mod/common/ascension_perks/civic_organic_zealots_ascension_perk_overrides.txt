@@ -1,0 +1,205 @@
+# Modified: use triggers, disallowed for civic_organic_zealots
+ap_the_flesh_is_weak = {
+	on_enabled = {
+		custom_tooltip = "flesh_is_weak_tooltip"
+		hidden_effect = {
+			country_event = { id = utopia.2500 }
+		}
+	}
+	modifier = {
+		planet_pops_robotics_upkeep_mult = -0.10
+		planet_pop_assembly_mult = 0.10
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "synthetic_empire_synthetic_ascension"
+			is_mechanical_empire = no
+		}
+		custom_tooltip = {
+			fail_text = "hive_mind_biological_ascension_only2"
+			is_hive_empire = no
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_1"
+			num_ascension_perks > 0
+		}
+		custom_tooltip = {
+			fail_text = "requires_technology_droid_workers"
+			has_technology = tech_droid_workers
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_engineered_evolution"
+			NOT = { has_ascension_perk = ap_engineered_evolution }
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_mind_over_matter"
+			NOT = { has_ascension_perk = ap_mind_over_matter }
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_shroudwalker_apprentice"
+			NOT = { has_origin = origin_shroudwalker_apprentice }
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_civic_organic_zealots"
+			NOT = { has_valid_civic = civic_organic_zealots }
+		}
+	}
+
+	potential = {
+		has_utopia = yes
+		NOT = { has_ascension_perk = ap_the_flesh_is_weak }
+		is_machine_empire = no
+		is_mechanical_empire = no
+	}
+
+	ai_weight = {
+		factor = 20
+		modifier = {
+			factor = 0.1
+			is_materialist = no
+		}
+		modifier = {
+			factor = 0
+			num_owned_planets < 6
+		}
+		modifier = {
+			factor = 0
+			has_origin = origin_necrophage
+		}
+	}
+}
+
+# Modified: use triggers
+ap_shared_destiny = {
+	on_enabled = {
+		custom_tooltip = "ap_shared_destiny_effect"
+		hidden_effect = {
+			country_event = { id = action.446 }
+		}
+	}
+
+	modifier = {
+		envoys_add = 2
+	}
+
+	potential = {
+		is_homicidal = no
+		NOR = {
+			has_valid_civic = civic_inwards_perfection
+			has_ascension_perk = ap_shared_destiny
+		}
+	}
+
+	ai_weight = {
+		factor = 5
+		modifier = {
+			factor = 0
+			subjects < 2
+			count_envoy = {
+				count < 3
+			}
+		}
+	}
+}
+
+# Modified: use triggers
+ap_nihilistic_acquisition = {
+	potential = {
+		host_has_dlc = "Apocalypse"
+		NOR = {
+			has_ascension_perk = ap_nihilistic_acquisition
+			has_valid_civic = civic_barbaric_despoilers
+		}
+	}
+
+	on_enabled = {
+		custom_tooltip = "allow_raiding"
+	}
+
+	possible = {
+		OR = {
+			is_authoritarian = yes
+			is_xenophobe = yes
+			is_gestalt = yes
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 0
+			NOT = { has_ai_personality_behaviour = slaver }
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_valid_civic = civic_inwards_perfection
+				is_homicidal = yes
+			}
+		}
+	}
+}
+
+# Modified: use triggers, increased weight for civic_organic_zealots
+ap_colossus = {
+	potential = {
+		host_has_dlc = "Apocalypse"
+		NOT = { has_ascension_perk = ap_colossus }
+	}
+
+	on_enabled = {
+		custom_tooltip = enable_colossus_project
+		custom_tooltip = describe_colossus_project
+		hidden_effect = {
+			country_event = { id = apoc.100 }
+		}
+	}
+
+	possible = {
+		has_technology = tech_titans
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_3"
+			num_ascension_perks > 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 10
+			OR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_machine_terminator
+				has_valid_civic = civic_organic_zealots
+			}
+		}
+		modifier = {
+			factor = 0.1
+			is_xenophile = yes
+		}
+		modifier = {
+			factor = 0.25
+			is_pacifist = yes
+		}
+		modifier = {
+			factor = 2
+			is_xenophobe = yes
+		}
+		modifier = {
+			factor = 2
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 2
+			is_machine_empire = yes # just because
+		}
+		modifier = {
+			factor = 2
+			has_ascension_perk = ap_become_the_crisis
+		}
+		modifier = {
+			factor = 0
+			has_crisis_level = crisis_level_5
+		}
+	}
+}

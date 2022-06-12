@@ -1,0 +1,15 @@
+namespace = civic_organic_zealots
+
+# flag mod as active
+# triggered by on_game_start and on_single_player_save_game_load
+event = {
+	id = civic_organic_zealots.13
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		NOT = { has_global_flag = civic_organic_zealots_installed }
+	}
+	immediate = {
+		set_global_flag = civic_organic_zealots_installed
+	}
+}

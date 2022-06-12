@@ -1,0 +1,99 @@
+opinion_organic_zealots_vs_machines = {
+	opinion = {
+		modifier = {
+			add = -1000
+			has_valid_civic = civic_organic_zealots
+			from = { is_robot_empire = yes }
+		}
+	}
+}
+
+opinion_machines_vs_organic_zealots = {
+	opinion = {
+		base = 0
+		modifier = {
+			add = -1000
+			is_country_type = default
+			is_homicidal = no
+			is_robot_empire = yes
+			from = { has_valid_civic = civic_organic_zealots }
+		}
+	}
+}
+
+opinion_organic_zealots_vs_cyborgs = {
+	opinion = {
+		base = 0
+		modifier = {
+			add = -500
+			has_valid_civic = civic_organic_zealots
+			from = { is_cyborg_empire = yes }
+		}
+	}
+}
+
+opinion_cyborgs_vs_organic_zealots = {
+	opinion = {
+		base = 0
+		modifier = {
+			add = -500
+			is_country_type = default
+			is_homicidal = no
+			is_cyborg_empire = yes
+			from = { has_valid_civic = civic_organic_zealots }
+		}
+	}
+}
+
+# dislikes materialists, angry about AI and robot policies
+
+# Bad Opinion of Ethic: Materialist
+opinion_organic_zealots_of_materialist = {
+	opinion = {
+		base = 0
+		modifier = {
+			add = -25
+			has_valid_civic = civic_organic_zealots
+			from = {
+				is_mechanical_empire = no
+				has_ethic = ethic_materialist
+			}
+		}
+		modifier = {
+			add = -50
+			has_valid_civic = civic_organic_zealots
+			from = {
+				is_mechanical_empire = no
+				has_ethic = ethic_fanatic_materialist
+			}
+		}
+	}
+}
+
+opinion_materialist_of_organic_zealots = {
+	opinion = {
+		base = 0
+		modifier = {
+			add = -25
+			is_mechanical_empire = no
+			has_ethic = ethic_materialist
+			from = { has_valid_civic = civic_organic_zealots }
+		}
+		modifier = {
+			add = -50
+			is_mechanical_empire = no
+			has_ethic = ethic_fanatic_materialist
+			from = { has_valid_civic = civic_organic_zealots }
+		}
+	}
+}
+
+opinion_both_organic_zealots = {
+	opinion = {
+		modifier = {
+			add = 100
+			has_valid_civic = civic_organic_zealots
+			from = { has_valid_civic = civic_organic_zealots }
+		}
+	}
+}

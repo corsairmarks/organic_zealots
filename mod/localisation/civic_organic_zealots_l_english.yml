@@ -1,0 +1,25 @@
+﻿l_english:
+ civic_organic_zealots: "Organic Zealots"
+ civic_organic_zealots_desc: "TODO: desc"
+ requires_not_civic_organic_zealots: "$TRIGGER_FAIL$May not have the §Y$civic_organic_zealots$§! Civic."
+ is_organic_zealots: "Is §Y$civic_organic_zealots$§!"
+ is_organic_zealots_fail: "$TRIGGER_FAIL$$is_organic_zealots$"
+ lost_robot_policy_war: "Recently lost a force robot policy war."
+ lost_robot_policy_war_fail: "$TRIGGER_FAIL$$lost_robot_policy_war$"
+ casus_belli_cb_impose_policy: "Impose Policy"
+ casus_belli_cb_non_organic_purification: "Anti-Thinking Machine Jihad"
+ casus_belli_cb_containment_organic_zealots: "$casus_belli_cb_containment$"
+
+
+ opinion_organic_zealots_vs_machines: "Abominable Thinking Machines"
+ opinion_machines_vs_organic_zealots: "Organic ???"
+ opinion_organic_zealots_vs_cyborgs: "Self-Corrupting Organics"
+ opinion_cyborgs_vs_organic_zealots: "Regressive Zealots"
+ opinion_organic_zealots_of_materialist: "Dangerous Ideologues"
+ opinion_materialist_of_organic_zealots: "Iconoclastic Fools"
+ opinion_both_organic_zealots: "Fellow Pure Organics"
+
+ wg_end_threat_organic_zealots: "End Jihad"
+ wg_cleansing_organic_zealots: "Cleanse Abominations"
+ wg_cleansing_organic_zealots_vs_fe: "$wg_cleansing_organic_zealots$"
+ wg_force_policy_organic_zealots: "Outlaw Robots and AI"
