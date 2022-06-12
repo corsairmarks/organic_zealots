@@ -53,19 +53,16 @@ has_total_war_cb = {
 		#end threat checks
 		AND = {
 			is_country_type = default
+			NOR = {
+				is_country_type = awakened_fallen_empire
+				has_valid_civic = civic_machine_assimilator
+			}
 			is_homicidal = no
 			from = {
 				OR = {
-					has_valid_civic = civic_fanatic_purifiers
-					has_valid_civic = civic_machine_terminator
-					has_valid_civic = civic_hive_devouring_swarm
-					AND = {
-						from = { has_valid_civic = civic_organic_zealots }
-						OR = {
-							is_robot_empire = yes
-							is_fallen_empire_machine = yes
-						}
-					}
+					is_country_type = awakened_fallen_empire
+					has_valid_civic = civic_machine_assimilator
+					is_homicidal = yes
 				}
 			}
 		}
