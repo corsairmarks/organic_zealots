@@ -1,3 +1,4 @@
+# Modified: Organic Zealots use the Purification diplomatic stance
 diplomatic_stance = {
 	potential = {
 		OR = {
@@ -547,7 +548,7 @@ diplomatic_stance = {
 		icon = "GFX_diplomatic_stance_rest"
 
 		potential = {
-			has_authority = auth_hive_mind
+			is_hive_empire = yes
 		}
 
 		valid = {
@@ -571,7 +572,7 @@ diplomatic_stance = {
 		icon = "GFX_diplomatic_stance_recompiling"
 
 		potential = {
-			has_authority = auth_machine_intelligence
+			is_machine_empire = yes
 		}
 
 		valid = {
@@ -599,7 +600,10 @@ diplomatic_stance = {
 		}
 
 		valid = {
-			has_valid_civic = civic_fanatic_purifiers
+			OR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_organic_zealots
+			}
 		}
 
 		policy_flags = {
@@ -653,15 +657,14 @@ diplomatic_stance = {
 			weight = 1
 		}
 	}
-
 }
 
+# Modified: Organic Zealots can't have the Liberation Wars or No Wars policies
 war_philosophy = {
 	potential = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
+			is_fallen_empire = yes
 		}
 	}
 
@@ -683,11 +686,8 @@ war_philosophy = {
 		}
 
 		valid = {
-			NOR = {
-				has_ethic = "ethic_pacifist"
-				has_ethic = "ethic_fanatic_pacifist"
-				has_valid_civic = "civic_inwards_perfection"
-			}
+			is_pacifist = no
+			NOT = { has_valid_civic = "civic_inwards_perfection" }
 		}
 
 		AI_weight = {
@@ -697,10 +697,7 @@ war_philosophy = {
 					has_valid_ai_personality = no
 					is_ai = no
 				}
-				NOT = {
-					has_ethic = "ethic_pacifist"
-					has_ethic = "ethic_fanatic_pacifist"
-				}
+				is_pacifist = no
 			}
 			modifier = {
 				factor = 10
@@ -728,10 +725,7 @@ war_philosophy = {
 			}
 			modifier = {
 				factor = 0
-				OR = {
-					has_ethic = "ethic_pacifist"
-					has_ethic = "ethic_fanatic_pacifist"
-				}
+				is_pacifist = yes
 			}
 		}
 	}
@@ -744,14 +738,12 @@ war_philosophy = {
 		}
 
 		potential = {
-			NOT = { has_ethic = ethic_gestalt_consciousness }
+			is_gestalt = no
 		}
 
 		valid = {
-			NOR = {
-				has_ethic = "ethic_fanatic_pacifist"
-				has_valid_civic = "civic_fanatic_purifiers"
-			}
+			is_homicidal = no
+			NOT = { has_ethic = "ethic_fanatic_pacifist" }
 		}
 
 		on_enabled = {
@@ -800,12 +792,8 @@ war_philosophy = {
 		}
 
 		valid = {
-			NOR = {
-				has_ethic = "ethic_fanatic_militarist"
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
-			}
+			is_homicidal = no
+			NOT = { has_ethic = "ethic_fanatic_militarist" }
 		}
 
 		AI_weight = {
@@ -816,6 +804,103 @@ war_philosophy = {
 			modifier = {
 				factor = 0
 				NOT = { has_ethic = "ethic_fanatic_pacifist" }
+			}
+		}
+	}
+}
+
+# Modified: Organic Zealots can use Armageddon Bombardment
+orbital_bombardment = {
+	potential = {
+		OR = {
+			is_country_type = default
+			is_country_type = vol
+		}
+	}
+
+	option = {
+		name = "orbital_bombardment_selective"
+		policy_flags = {
+			orbital_bombardment_selective
+		}
+
+		AI_weight = {
+			modifier = {
+				factor = 0
+				is_pacifist = no
+				NOT = {
+					is_galactic_community_member = yes
+					OR = {
+						is_active_resolution = "resolution_rulesofwar_independent_tribunals"
+						is_active_resolution = "resolution_rulesofwar_last_resort_doctrine"
+						is_active_resolution = "resolution_rulesofwar_demobilization_initiative"
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "orbital_bombardment_indiscriminate"
+
+		in_breach_of = {
+			{
+				key = resolution_rulesofwar_independent_tribunals
+			}
+		}
+
+		policy_flags = {
+			orbital_bombardment_indiscriminate
+		}
+		modifier = {}
+
+		valid = {
+			is_pacifist = no
+		}
+		AI_weight = {
+			modifier = {
+				factor = 0.1
+				is_galactic_community_member = yes
+				OR = {
+					is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+					is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+				}
+			}
+		}
+	}
+	option = {
+		name = "orbital_bombardment_armageddon"
+
+		in_breach_of = {
+			{
+				key = resolution_rulesofwar_independent_tribunals
+			}
+		}
+
+		potential = {
+			OR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_organic_zealots
+				has_valid_civic = civic_machine_terminator
+			}
+		}
+
+		policy_flags = {
+			orbital_bombardment_armageddon
+		}
+		modifier = {}
+
+		AI_weight = {
+			modifier = {
+				factor = 10
+				OR = {
+					has_valid_civic = civic_fanatic_purifiers
+					has_valid_civic = civic_organic_zealots
+					has_valid_civic = civic_machine_terminator
+				}
+			}
+			modifier = {
+				factor = 10
+				has_ascension_perk = ap_become_the_crisis
 			}
 		}
 	}
@@ -1101,6 +1186,172 @@ robot_pop_policy = {
 					has_valid_civic = civic_organic_zealots
 					has_country_flag = lost_robot_policy_war
 				}
+			}
+		}
+	}
+}
+
+# Modified: Organic Zealots can't choose open borders
+border_policy = {
+	potential = {
+		always = yes
+	}
+
+	option = {
+		name = "border_policy_open"
+
+		policy_flags = {
+			border_policy_open
+		}
+
+		potential = {
+			is_country_type = default
+		}
+
+		valid = {
+			is_homicidal = no
+		}
+	}
+
+	option = {
+		name = "border_policy_closed"
+
+		policy_flags = {
+			border_policy_closed
+		}
+		modifier = {}
+
+		valid = {
+			always = yes
+		}
+
+		AI_weight = {
+			factor = 10
+			modifier = {
+				factor = 0
+				is_megacorp = yes
+			}
+			modifier = {
+				factor = 0
+				has_valid_ai_personality = yes
+				NOR = {
+					has_ai_personality_behaviour = isolationist
+					has_ai_personality_behaviour = attack_neutrals
+				}
+			}
+			modifier = {
+				factor = 0
+				has_valid_ai_personality = no
+				is_xenophobe = no
+			}
+			modifier = {
+				factor = 10
+				has_crisis_level = crisis_level_5
+			}
+		}
+	}
+}
+
+# Modified: Organic Zealots can't outlaw purging
+purge = {
+	option = {
+		name = "purge_not_allowed"
+
+		valid = {
+			is_gestalt = no
+			is_homicidal = no
+		}
+
+		policy_flags = {
+			purge_not_allowed
+		}
+	}
+
+	option = {
+		name = "purge_displacement_only"
+
+		policy_flags = {
+			purge_displacement_only
+		}
+
+		modifier = {}
+
+		valid = {
+			is_xenophile = no
+			is_homicidal = no
+		}
+
+		AI_weight = {
+			factor = 5
+			modifier = {
+				factor = 0
+				has_valid_ai_personality = yes
+				has_ai_personality_behaviour = multispecies
+			}
+		}
+	}
+
+	option = {
+		name = "purge_allowed"
+
+		in_breach_of = {
+			{
+				key = resolution_rulesofwar_reverence_for_life
+			}
+		}
+
+		policy_flags = {
+			purge_allowed
+		}
+		modifier = {}
+
+		valid = {
+			custom_tooltip = {
+				success_text = is_not_a_signatory_vassal_success
+				fail_text = is_not_a_signatory_vassal_fail
+				NOT = { any_agreement = { agreement_preset = preset_signatory } }
+			}
+			OR = {
+				is_gestalt = yes
+				is_xenophobe = yes
+				has_menace_perk = menp_undertaker	# Unlocked with Crisis Level 1
+			}
+		}
+
+		AI_weight = {
+			factor = 10
+			modifier = {
+				factor = 40
+				has_ethic = ethic_gestalt_consciousness
+				NOT = { has_valid_civic = civic_hive_empath }
+			}
+			modifier = {
+				factor = 0
+				is_pacifist = yes
+			}
+			modifier = {
+				factor = 0
+				has_valid_ai_personality = yes
+				NOR = {
+					has_ai_personality_behaviour = purger
+					has_ethic = ethic_gestalt_consciousness
+				}
+			}
+			modifier = {
+				factor = 0.1
+				has_valid_ai_personality = yes
+				is_ai = yes
+				is_galactic_community_member = yes
+				OR = {
+					is_active_resolution = "resolution_rulesofwar_reverence_for_life"
+					is_active_resolution = "resolution_rulesofwar_independent_tribunals"
+					is_active_resolution = "resolution_rulesofwar_last_resort_doctrine"
+					is_active_resolution = "resolution_rulesofwar_demobilization_initiative"
+				}
+			}
+			modifier = {
+				factor = 10
+				has_ascension_perk = ap_become_the_crisis
 			}
 		}
 	}
