@@ -11,6 +11,8 @@ civic_organic_zealots = {
 			NOR = {
 				value = ethic_materialist
 				value = ethic_fanatic_materialist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
 			}
 		}
 		civics = {
@@ -29,7 +31,7 @@ civic_organic_zealots = {
 		base = 5
 	}
 
-	description = "civic_tooltip_fanatic_purifiers_effects"
+	description = civic_tooltip_organic_zealots_effects
 	modifier = {
 		# TODO decide what bonuses this civic grants
 

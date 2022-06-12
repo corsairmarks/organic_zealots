@@ -1,6 +1,7 @@
 ﻿l_english:
  civic_organic_zealots: "Organic Zealots"
  civic_organic_zealots_desc: "TODO: desc"
+ civic_tooltip_organic_zealots_effects: "Cannot engage in §Y$DIPLOMACY$§! with robotic species!\nCannot access the §YGalactic Market§!\nHas the §Y'$casus_belli_cb_purification$'§! casus belli on robotic species\n§Y$ROBOT$ $POPS$§! will always be purged\nGains £unity£ §Y$unity$§! from purging robotic £pop£ $POPS$\nMay use §Y$bombardment_armageddon$§! bombardment stance\n"
  requires_not_civic_organic_zealots: "$TRIGGER_FAIL$May not have the §Y$civic_organic_zealots$§! Civic."
  is_organic_zealots: "Is §Y$civic_organic_zealots$§!"
  is_organic_zealots_fail: "$TRIGGER_FAIL$$is_organic_zealots$"
