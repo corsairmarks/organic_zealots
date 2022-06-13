@@ -61,12 +61,45 @@ planet_event = {
 	}
 }
 
-# TODO: see on_actions file for notes
+# triggered by on_becoming_subject
+# this = country, subject
+# from = country, overlord
+country_event = {
+	id = civic_organic_zealots.4
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			AND = {
+				has_ascension_perk = ap_the_flesh_is_weak
+				NOT = { has_country_flag = flesh_weakened }
+			}
+			AND = {
+				has_ascension_perk = ap_synthetic_evolution
+				is_synthetic_empire = no
+			}
+		}
+		exists = from
+		from = { has_valid_civic = civic_organic_zealots }
+	}
+	immediate = {
+		force_disable_tech_ascension_special_projects = yes
+	}
+}
 
-# has_special_project - Checks if the country has a specific special project available
-# has_special_project = EMERGENCY_BUOY_PROJECT
-# Supported Scopes: country
-
-# is_researching_special_project - Checks if the country is currently researching a specific special project
-# is_researching_special_project = special_project_name
-# Supported Scopes: country leader
+# triggered by on_becoming_subject
+# this = country, subject
+# from = country, overlord
+country_event = {
+	id = civic_organic_zealots.5
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_valid_target_to_outlaw_robot_pops_and_ai = yes
+		exists = from
+		from = { has_valid_civic = civic_organic_zealots }
+	}
+	immediate = {
+		set_policies_robot_pops_and_ai_to_outlawed = yes
+	}
+}

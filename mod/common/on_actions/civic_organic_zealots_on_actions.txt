@@ -29,3 +29,12 @@ on_pop_purged = {
 		civic_organic_zealots.3
 	}
 }
+
+# this = country, subject
+# from = country, overlord
+on_becoming_subject = {
+	events = {
+		civic_organic_zealots.4
+		civic_organic_zealots.5
+	}
+}

@@ -1,0 +1,97 @@
+set_policies_robot_pops_and_ai_to_outlawed = {
+	if = {
+		limit = { NOT = { has_policy_flag = ai_outlawed } }
+		set_policy = {
+			policy = artificial_intelligence_policy
+			option = ai_outlawed
+			cooldown = yes
+		}
+		# if = {
+		# 	limit = { has_policy_flag = ai_servitude }
+		# 	set_country_flag =  ai_servitude_removed_by_organic_zealots
+		# }
+		# else_if = {
+		# 	limit = { has_policy_flag = ai_full_rights }
+		# 	set_country_flag =  ai_full_rights_removed_by_organic_zealots
+		# }
+	}
+	if = {
+		limit = { NOT = { has_policy_flag = robots_outlawed } }
+		set_policy = {
+			policy = robot_pop_policy
+			option = robot_pops_outlawed
+			cooldown = yes
+		}
+		# if = {
+		# 	limit = { has_policy_flag = robots_allowed }
+		# 	set_country_flag = robot_allowed_removed_by_organic_zealots
+		# }
+	}
+}
+
+# this = country
+force_disable_tech_ascension_special_projects = {
+	if = {
+		limit = {
+			has_ascension_perk = ap_the_flesh_is_weak
+			NOT = { has_country_flag = flesh_weakened }
+			OR = {
+				has_special_project = FLESH_IS_WEAK_PROJECT
+				is_researching_special_project = FLESH_IS_WEAK_PROJECT
+			}
+		}
+		abort_special_project = { type = FLESH_IS_WEAK_PROJECT }
+		set_country_flag = flesh_is_weak_project_aborted_by_organic_zealots
+	}
+	else_if = {
+		limit = {
+			has_ascension_perk = ap_synthetic_evolution
+			NOT = { has_country_flag = synthetic_empire }
+			OR = {
+				has_special_project = SYNTHETIC_EVOLUTION_PROJECT
+				is_researching_special_project = SYNTHETIC_EVOLUTION_PROJECT
+			}
+		}
+		abort_special_project = { type = SYNTHETIC_EVOLUTION_PROJECT }
+		set_country_flag = synthetic_evolution_project_aborted_by_organic_zealots
+	}
+}
+
+# this = country
+re_enable_tech_ascension_special_projects_if_force_disabled = {
+	if = {
+		limit = { overlord = { has_valid_civic = civic_organic_zealots } }
+		if ={
+			limit = {
+				has_ascension_perk = ap_the_flesh_is_weak
+				has_country_flag = flesh_is_weak_project_aborted_by_organic_zealots
+				NOR = {
+					has_country_flag = flesh_weakened
+					has_special_project = FLESH_IS_WEAK_PROJECT
+					is_researching_special_project = FLESH_IS_WEAK_PROJECT
+				}
+			}
+			enable_special_project = {
+				name = FLESH_IS_WEAK_PROJECT
+				owner = this
+				location = capital_scope
+			}
+		}
+		else_if ={
+			limit = {
+				has_ascension_perk = ap_synthetic_age
+				has_country_flag = synthetic_evolution_project_aborted_by_organic_zealots
+				is_synthetic_empire = no
+				NOR = {
+					has_special_project = SYNTHETIC_EVOLUTION_PROJECT
+					is_researching_special_project = SYNTHETIC_EVOLUTION_PROJECT
+				}
+			}
+			enable_special_project = {
+				name = SYNTHETIC_EVOLUTION_PROJECT
+				owner = this
+				location = capital_scope
+			}
+		}
+	}
+}

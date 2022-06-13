@@ -1,33 +1,63 @@
+# this = country
+is_valid_target_to_outlaw_robot_pops_and_ai = {
+	optimize_memory
+	is_country_type = default
+	is_gestalt = no
+	can_set_ai_policy = yes
+}
+
+# this = country
+allows_robot_pops_or_ai = {
+	optimize_memory
+	OR = {
+		has_policy_flag = robots_allowed
+		has_policy_flag = ai_servitude
+		has_policy_flag = ai_full_rights
+	}
+}
+
+# this = country, actor
+# from = country, recipient
 diplomacy_is_not_homicidal = {
 	optimize_memory
 	diplomacy_actor_is_not_homicidal = yes
 	diplomacy_recipient_is_not_homicidal = yes
 }
 
+# this = country, actor
+# from = country, recipient
 diplomacy_is_not_homicidal_non_gestalt = {
 	optimize_memory
 	diplomacy_actor_is_not_homicidal_non_gestalt = yes
 	diplomacy_recipient_is_not_homicidal_non_gestalt = yes
 }
 
+# this = country, actor
+# from = country, recipient
 diplomacy_is_not_homicidal_gestalt = {
 	optimize_memory
 	diplomacy_actor_is_not_homicidal_gestalt = yes
 	diplomacy_recipient_is_not_homicidal_gestalt = yes
 }
 
+# this = country, actor
+# from = country, recipient
 diplomacy_actor_is_not_homicidal = {
 	optimize_memory
 	diplomacy_actor_is_not_homicidal_non_gestalt = yes
 	diplomacy_actor_is_not_homicidal_gestalt = yes
 }
 
+# this = country, actor
+# from = country, recipient
 diplomacy_recipient_is_not_homicidal = {
 	optimize_memory
 	diplomacy_recipient_is_not_homicidal_non_gestalt = yes
 	diplomacy_recipient_is_not_homicidal_gestalt = yes
 }
 
+# this = country, actor
+# from = country, recipient
 diplomacy_actor_is_not_homicidal_non_gestalt = {
 	optimize_memory
 	custom_tooltip = {
@@ -50,6 +80,8 @@ diplomacy_actor_is_not_homicidal_non_gestalt = {
 	}
 }
 
+# this = country, actor
+# from = country, recipient
 diplomacy_actor_is_not_homicidal_gestalt = {
 	optimize_memory
 	custom_tooltip = {
@@ -69,6 +101,8 @@ diplomacy_actor_is_not_homicidal_gestalt = {
 	}
 }
 
+# this = country, actor
+# from = country, recipient
 diplomacy_recipient_is_not_homicidal_non_gestalt = {
 	optimize_memory
 	custom_tooltip = {
@@ -91,6 +125,8 @@ diplomacy_recipient_is_not_homicidal_non_gestalt = {
 	}
 }
 
+# this = country, actor
+# from = country, recipient
 diplomacy_recipient_is_not_homicidal_gestalt = {
 	optimize_memory
 	custom_tooltip = {

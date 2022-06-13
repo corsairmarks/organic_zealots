@@ -126,14 +126,8 @@ wg_force_policy_outlaw_robots_and_ai = {
 		exists = from
 		has_total_war_cb = no
 		from = {
-			is_country_type = default
-			is_gestalt = no
-			can_set_ai_policy = yes
-			OR = {
-				has_policy_flag = robots_allowed
-				has_policy_flag = ai_servitude
-				has_policy_flag = ai_full_rights
-			}
+			allows_robot_pops_or_ai = yes
+			is_valid_target_to_outlaw_robot_pops_and_ai = yes
 		}
 		NOT = { is_in_federation_with = from }
 		NAND = {
