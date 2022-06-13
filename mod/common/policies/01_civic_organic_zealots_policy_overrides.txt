@@ -3,8 +3,7 @@ diplomatic_stance = {
 	potential = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
+			is_fallen_empire = yes
 			is_country_type = primitive
 			is_country_type = awakened_marauders
 		}
@@ -659,7 +658,7 @@ diplomatic_stance = {
 	}
 }
 
-# Modified: Organic Zealots can't have the Liberation Wars or No Wars policies
+# Modified: Organic Zealots can't have the Liberation Wars or No Wars policies (via trigger)
 war_philosophy = {
 	potential = {
 		OR = {
@@ -906,13 +905,13 @@ orbital_bombardment = {
 	}
 }
 
-# Modified: materialists can be forced to outlaw AI if they lost a force policy war, organic zealots cannot allow AI
+# Modified: materialists can be forced to outlaw AI if they lost a force policy war, Organic Zealots cannot allow AI
 artificial_intelligence_policy = {
 	potential = {
 		is_gestalt = no
 		OR = {
 			can_set_ai_policy = yes
-			has_country_flag = synthetic_empire
+			is_synthetic_empire = yes
 		}
 	}
 
@@ -920,21 +919,34 @@ artificial_intelligence_policy = {
 		name = "ai_outlawed"
 
 		valid = {
-			OR = {
-				custom_tooltip = {
-					fail_text = empire_is_materialist
-					is_materialist = no
-				}
-				custom_tooltip = {
-					success_text = lost_robot_policy_war
-					has_country_flag = lost_robot_policy_war
-					NOT = { has_country_flag = synthetic_empire }
+			if = {
+				limit = { is_synthetic_empire = no }
+				OR = {
+					custom_tooltip = {
+						fail_text = empire_is_materialist
+						is_materialist = no
+					}
+					custom_tooltip = {
+						success_text = lost_robot_policy_war
+						has_country_flag = lost_robot_policy_war
+					}
+					custom_tooltip = {
+						success_text = is_overlord_organic_zealots
+						AND = {
+							exists = overlord
+							overlord = { has_valid_civic = civic_organic_zealots }
+						}
+					}
 				}
 			}
-			NOT = {
+			OR = {
 				custom_tooltip = {
-					success_text = is_a_synthetic_empire
-					has_country_flag = synthetic_empire
+					fail_text = is_organic_zealots
+					has_valid_civic = civic_organic_zealots
+				}
+				custom_tooltip = {
+					fail_text = is_a_synthetic_empire_fail
+					is_synthetic_empire = no
 				}
 			}
 		}
@@ -952,16 +964,21 @@ artificial_intelligence_policy = {
 		AI_weight = {
 			modifier = {
 				factor = 0
-				is_materialist = yes
-				NOT = { has_country_flag = lost_robot_policy_war }
+				OR = {
+					AND = {
+						is_materialist = yes
+						NOT = { has_country_flag = lost_robot_policy_war }
+					}
+					is_synthetic_empire = yes
+				}
 			}
 			modifier = {
 				factor = 10
-				NOT = { has_country_flag = synthetic_empire }
 				OR = {
 					has_valid_civic = civic_organic_zealots
 					has_country_flag = lost_robot_policy_war
 				}
+				is_synthetic_empire = no
 			}
 			modifier = {
 				factor = 5
@@ -985,20 +1002,27 @@ artificial_intelligence_policy = {
 		name = "ai_servitude"
 
 		valid = {
-			OR = {
+			if = {
+				limit = { is_synthetic_empire = no }
 				custom_tooltip = {
-					success_text = lost_robot_policy_war
-					has_country_flag = lost_robot_policy_war
-					NOT = { has_country_flag = synthetic_empire }
+					fail_text = lost_robot_policy_war_fail
+					NOT = { has_country_flag = lost_robot_policy_war }
 				}
 				custom_tooltip = {
-					fail_text = is_organic_zealots_fail
-					NOT = { has_valid_civic = civic_organic_zealots }
+					fail_text = is_overlord_organic_zealots_fail
+					NAND = {
+						exists = overlord
+						overlord = { has_valid_civic = civic_organic_zealots }
+					}
 				}
 			}
 			custom_tooltip = {
+				fail_text = is_organic_zealots_fail
+				NOT = { has_valid_civic = civic_organic_zealots }
+			}
+			custom_tooltip = {
 				fail_text = is_a_synthetic_empire_fail
-				NOT = { has_country_flag = synthetic_empire }
+				is_synthetic_empire = no
 			}
 		}
 
@@ -1034,6 +1058,7 @@ artificial_intelligence_policy = {
 			modifier = {
 				factor = 0
 				OR = {
+					is_synthetic_empire = yes
 					has_valid_civic = civic_organic_zealots
 					has_country_flag = lost_robot_policy_war
 				}
@@ -1045,18 +1070,28 @@ artificial_intelligence_policy = {
 		name = "ai_full_rights"
 
 		valid = {
+			if = {
+				limit = { is_syntheric_empire = no }
+				custom_tooltip = {
+					fail_text = lost_robot_policy_war_fail
+					NOT = { has_country_flag = lost_robot_policy_war }
+				}
+				custom_tooltip = {
+					fail_text = is_overlord_organic_zealots_fail
+					NAND = {
+						exists = overlord
+						overlord = { has_valid_civic = civic_organic_zealots }
+					}
+				}
+			}
 			custom_tooltip = {
 				fail_text = is_organic_zealots_fail
 				NOT = { has_valid_civic = civic_organic_zealots }
 			}
-			custom_tooltip = {
-				fail_text = lost_robot_policy_war_fail
-				NOT = { has_country_flag = lost_robot_policy_war }
-			}
 			OR = {
 				custom_tooltip = {
 					fail_text = is_a_synthetic_empire
-					has_country_flag = synthetic_empire
+					is_synthetic_empire = yes
 				}
 				custom_tooltip = {
 					fail_text = empire_is_spiritualist
@@ -1094,14 +1129,17 @@ artificial_intelligence_policy = {
 				factor = 0
 				OR = {
 					has_valid_civic = civic_organic_zealots
-					has_country_flag = lost_robot_policy_war
+					AND = {
+						has_country_flag = lost_robot_policy_war
+						is_synthetic_empire = no
+					}
 				}
 			}
 		}
 	}
 }
 
-# Modified: materialists can be forced to outlaw robots if they lost a force policy war, organic zealots cannot allow robots (and cannot see the policy)
+# Modified: materialists can be forced to outlaw robots if they lost a force policy war, Organic Zealots cannot allow robots (and cannot see the policy)
 robot_pop_policy = {
 	potential = {
 		is_gestalt = no
@@ -1112,9 +1150,35 @@ robot_pop_policy = {
 		name = "robot_pops_outlawed"
 
 		valid = {
+			if = {
+				limit = { is_synthetic_empire = no }
+				OR = {
+					custom_tooltip = {
+						fail_text = empire_is_materialist
+						is_materialist = no
+					}
+					custom_tooltip = {
+						success_text = lost_robot_policy_war
+						has_country_flag = lost_robot_policy_war
+					}
+					custom_tooltip = {
+						success_text = is_overlord_organic_zealots
+						AND = {
+							exists = overlord
+							overlord = { has_valid_civic = civic_organic_zealots }
+						}
+					}
+				}
+			}
 			OR = {
-				is_materialist = no
-				has_country_flag = lost_robot_policy_war
+				custom_tooltip = {
+					fail_text = is_organic_zealots
+					has_valid_civic = civic_organic_zealots
+				}
+				custom_tooltip = {
+					fail_text = is_a_synthetic_empire_fail
+					is_synthetic_empire = no
+				}
 			}
 			NOT = { has_policy_flag = ai_full_rights }
 		}
@@ -1139,11 +1203,17 @@ robot_pop_policy = {
 			factor = 1
 			modifier = {
 				factor = 0
-				is_materialist = yes
-				NOT = { has_country_flag = lost_robot_policy_war }
+				OR = {
+					is_synthetic_empire = yes
+					AND = {
+						is_materialist = yes
+						NOT = { has_country_flag = lost_robot_policy_war }
+					}
+				}
 			}
 			modifier = {
 				factor = 10
+				is_synthetic_empire = no
 				OR = {
 					has_valid_civic = civic_organic_zealots
 					has_country_flag = lost_robot_policy_war
@@ -1151,6 +1221,7 @@ robot_pop_policy = {
 			}
 			modifier = {
 				factor = 10
+				is_synthetic_empire = no
 				has_valid_ai_personality = yes
 				NOR = {
 					has_ai_personality_behaviour = robot_exploiter
@@ -1164,13 +1235,19 @@ robot_pop_policy = {
 		name = "robot_pops_allowed"
 
 		valid = {
-			custom_tooltip = {
-				fail_text = lost_robot_policy_war_fail
-				NOT = { has_country_flag = lost_robot_policy_war }
-			}
-			custom_tooltip = {
-				fail_text = is_organic_zealots_fail
-				NOT = { has_valid_civic = civic_organic_zealots }
+			OR = {
+				custom_tooltip = {
+					success_text = is_a_synthetic_empire
+					is_synthetic_empire = yes
+				}
+				custom_tooltip = {
+					fail_text = is_organic_zealots_fail
+					NOT = { has_valid_civic = civic_organic_zealots }
+				}
+				custom_tooltip = {
+					fail_text = lost_robot_policy_war_fail
+					NOT = { has_country_flag = lost_robot_policy_war }
+				}
 			}
 		}
 
@@ -1184,7 +1261,10 @@ robot_pop_policy = {
 				factor = 0
 				OR = {
 					has_valid_civic = civic_organic_zealots
-					has_country_flag = lost_robot_policy_war
+					AND = {
+						has_country_flag = lost_robot_policy_war
+						is_synthetic_empire = no
+					}
 				}
 			}
 		}
