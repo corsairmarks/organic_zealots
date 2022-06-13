@@ -18,6 +18,14 @@
  opinion_organic_zealots_of_materialist: "Dangerous Ideologues"
  opinion_materialist_of_organic_zealots: "Iconoclastic Fools"
  opinion_both_organic_zealots: "Fellow Pure Organics"
+ CANNOT_ADD_CLAIM_ORGANIC_ZEALOT: "§RWe have no need to claim the systems of robotic abominations§!"
+
+ requires_recipient_not_organic_zealots: "$TRIGGER_FAIL$§R§Y$civic_organic_zealots$§! will only engage in Diplomacy with other §YOrganic Empires§!.§!"
+ requires_actor_not_organic_zealots: "$TRIGGER_FAIL$§RWe are §Y$civic_organic_zealots$§!. We do not negotiate with \"thinking\" machines.§!"
+ requires_overlord_not_civic_organic_zealots: "$TRIGGER_FAIL$§ROur overlords are §Y$civic_organic_zealots$§!. We cannot use robots or artificial intelligence.§!"
+ requires_actor_not_organic_zealots_federation: "$TRIGGER_FAIL$§RWe are §Y$civic_organic_zealots$§!. We cannot let others interfere with our cause.§!"
+ requires_recipient_not_organic_zealots_federation: "$TRIGGER_FAIL$§RThey are §Y$civic_organic_zealots$§! and are concerned only with the destruction of all artificial intelligence.§!"
+ # might not need the federation ones - depends on how fancy I want to get with verifying potential; federations don't contain any robotic empires
 
  war_goal_wg_end_threat_organic_zealots: "End Jihad"
  war_goal_wg_end_threat_organic_zealots_desc: "End Jihad"
