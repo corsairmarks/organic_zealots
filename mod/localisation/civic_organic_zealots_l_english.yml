@@ -5,10 +5,10 @@
  requires_not_civic_organic_zealots: "$TRIGGER_FAIL$May not have the §Y$civic_organic_zealots$§! Civic."
  is_organic_zealots: "Is §Y$civic_organic_zealots$§!"
  is_organic_zealots_fail: "$TRIGGER_FAIL$$is_organic_zealots$"
- lost_robot_policy_war: "Recently lost a force robot policy war."
+ lost_robot_policy_war: "Recently lost a force robot/AI policy war."
  lost_robot_policy_war_fail: "$TRIGGER_FAIL$$lost_robot_policy_war$"
  casus_belli_cb_impose_policy: "Impose Policy"
- casus_belli_cb_non_organic_purification: "Anti-Thinking Machine Jihad"
+ casus_belli_cb_robotic_purification: "Anti-Thinking Machine Jihad"
  casus_belli_cb_containment_organic_zealots: "$casus_belli_cb_containment$"
 
  opinion_organic_zealots_vs_machines: "Abominable Thinking Machines"
@@ -25,8 +25,8 @@
  war_goal_wg_cleansing_organic_zealots_desc: "Cleanse Abominations"
  war_goal_wg_cleansing_organic_zealots_vs_fe: "$war_goal_wg_cleansing_organic_zealots$"
  war_goal_wg_cleansing_organic_zealots_vs_fe_desc: "$war_goal_wg_cleansing_organic_zealots$"
- war_goal_wg_force_policy_organic_zealots: "Outlaw Robots and AI"
- war_goal_wg_force_policy_organic_zealots_desc: "Outlaw Robots and AI"
+ war_goal_wg_force_policy_outlaw_robots_and_ai: "Outlaw Robots and AI"
+ war_goal_wg_force_policy_outlaw_robots_and_ai_desc: "Outlaw Robots and AI"
 
  job_cloning_technician: "Cloning Technician"
  job_cloning_technician_plural: "Cloning Technicians"
