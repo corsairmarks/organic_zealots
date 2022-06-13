@@ -1,3 +1,4 @@
+# this = country
 set_policies_robot_pops_and_ai_to_outlawed = {
 	if = {
 		limit = { NOT = { has_policy_flag = ai_outlawed } }
