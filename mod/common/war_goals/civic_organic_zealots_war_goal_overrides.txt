@@ -1,0 +1,142 @@
+# Modified: Attempt to re-enable tech ascension special projects for empires who previously
+# had a project forcibly disabled and just gained independence from Organic Zealots
+wg_independence = {
+	casus_belli = cb_subject
+
+	hide_if_no_cb = yes
+	set_defender_wargoal = wg_assert_overlordship
+
+	potential = {
+		always = yes
+	}
+	possible = {
+		hidden_trigger = { exists = from }
+		custom_tooltip = {
+			fail_text = cannot_use_against_emperor
+			OR = {
+				from = { is_galactic_emperor = no }
+				is_galactic_community_member = no
+			}
+		}
+		custom_tooltip = {
+			fail_text = pax_galactica_active
+			NAND = {
+				is_active_resolution = resolution_emperor_pax_galactica
+				is_galactic_community_member = yes
+				from = { is_galactic_community_member = yes }
+			}
+		}
+	}
+
+	allowed_peace_offers = {
+		status_quo
+		surrender
+		demand_surrender
+	}
+
+	on_status_quo = {
+		custom_tooltip = wg_independence_status_quo
+		hidden_effect = {
+			re_enable_tech_ascension_special_projects_if_force_disabled = yes
+			set_subject_of = { who = none }
+		}
+	}
+
+	on_accept = {
+		custom_tooltip = wg_independence_accept
+		hidden_effect = {
+			re_enable_tech_ascension_special_projects_if_force_disabled = yes
+			set_subject_of = { who = none }
+			every_system_within_border = {
+				limit = { from = { has_claim = prev } }
+				remove_claims = { who = from }
+			}
+		}
+	}
+
+	on_wargoal_set = {
+		every_system_within_border = {
+			limit = { NOT = { from = { has_claim = prev } } }
+			add_claims = { who = from }
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+wg_allegiance = {
+	casus_belli = cb_allegiance
+
+	hide_if_no_cb = yes
+	secret_fealties_join_attacker = yes
+	set_defender_wargoal = wg_defend_allegiance
+
+	allowed_peace_offers = {
+		status_quo
+		surrender
+		demand_surrender
+	}
+
+	cede_claims = occupied_only
+
+	potential = {
+		always = yes
+	}
+	possible = {
+		always = yes
+	}
+
+	on_status_quo = {
+		from = {
+			every_subject = {
+				limit = { has_secret_fealty_with = root }
+				add_modifier = {
+					modifier = failed_betrayal_status_quo
+					years = 5
+				}
+			}
+		}
+	}
+
+	on_accept = {
+		from = {
+			every_subject = {
+				limit = { has_secret_fealty_with = root }
+				# remove the effects for being a subject of Organic Zealots, if the previous overlord was (and the new overlord is not)
+				if = {
+					limit = {
+						exists = overlord
+						overlord = { has_valid_civic = civic_organic_zealots }
+						root = { NOT = { has_valid_civic = civic_organic_zealots } }
+					}
+					re_enable_tech_ascension_special_projects_if_force_disabled = yes
+				}
+				# apply the effects for being a subject of Organic Zealots (and the previous overlord was not)
+				if = {
+					limit = {
+						exists = overlord
+						overlord = { NOT = { has_valid_civic = civic_organic_zealots } }
+						root = { has_valid_civic = civic_organic_zealots }
+					}
+					force_disable_tech_ascension_special_projects = yes
+					if = {
+						limit = { is_valid_target_to_outlaw_robot_pops_and_ai = yes }
+						set_policies_robot_pops_and_ai_to_outlawed = yes
+					}
+				}
+				set_subject_of = { who = root }
+				add_modifier = {
+					modifier = pledged_allegiance
+					years = 10
+				}
+				set_country_flag = meet_the_new_boss_achievement
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 15
+	}
+}
