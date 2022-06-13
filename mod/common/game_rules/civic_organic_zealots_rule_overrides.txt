@@ -79,7 +79,7 @@ can_add_claim = {
 		}
 	}
 	custom_tooltip = {
-		fail_text = CANNOT_ADD_CLAIM_ORGANIC_ZEALOT
+		fail_text = CANNOT_ADD_CLAIM_ORGANIC_ZEALOTS
 		NAND = {
 			root = { has_valid_civic = civic_organic_zealots }
 			exists = owner
@@ -148,7 +148,7 @@ can_get_claim_from_lost_system = {
 		}
 	}
 	custom_tooltip = {
-		fail_text = CANNOT_ADD_CLAIM_ORGANIC_ZEALOT
+		fail_text = CANNOT_ADD_CLAIM_ORGANIC_ZEALOTS
 		NAND = {
 			has_valid_civic = civic_organic_zealots
 			NOT = { is_same_species = root }

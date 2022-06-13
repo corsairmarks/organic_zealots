@@ -18,7 +18,8 @@
  opinion_organic_zealots_of_materialist: "Dangerous Ideologues"
  opinion_materialist_of_organic_zealots: "Iconoclastic Fools"
  opinion_both_organic_zealots: "Fellow Pure Organics"
- CANNOT_ADD_CLAIM_ORGANIC_ZEALOT: "§RWe have no need to claim the systems of robotic abominations§!"
+ CANNOT_ADD_CLAIM_ORGANIC_ZEALOTS: "§RWe have no need to claim the systems of robotic abominations§!"
+ ORGANIC_ZEALOTS_MUST_PURIFY: "$TRIGGER_FAIL$§Y$civic_organic_zealots$§! cannot tolerate the existence of robotic abominations."
 
  requires_recipient_not_organic_zealots: "$TRIGGER_FAIL$§R§Y$civic_organic_zealots$§! will only engage in Diplomacy with other §YOrganic Empires§!.§!"
  requires_actor_not_organic_zealots: "$TRIGGER_FAIL$§RWe are §Y$civic_organic_zealots$§!. We do not negotiate with \"thinking\" machines.§!"
