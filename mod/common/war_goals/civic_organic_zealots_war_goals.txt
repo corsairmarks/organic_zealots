@@ -1,6 +1,3 @@
-@liberation_war_modifier_duration_years = 20
-@lost_robot_policy_war_duration_years = 20
-
 wg_end_threat_organic_zealots = {
 	casus_belli = cb_containment_organic_zealots
 
@@ -191,7 +188,7 @@ wg_force_policy_outlaw_robots_and_ai = {
 				}
 				set_timed_country_flag = {
 					flag = lost_robot_policy_war
-					years = @lost_robot_policy_war_duration_years
+					years = @lost_robot_policy_war_flag_duration_years
 				}
 			}
 
@@ -269,7 +266,7 @@ wg_force_policy_outlaw_robots_and_ai = {
 				}
 				set_timed_country_flag = {
 					flag = lost_robot_policy_war
-					years = @lost_robot_policy_war_duration_years
+					years = @lost_robot_policy_war_flag_duration_years
 				}
 				add_threat = {
 					who = root

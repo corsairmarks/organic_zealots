@@ -1,0 +1,2 @@
+@liberation_war_modifier_duration_years = 20
+@lost_robot_policy_war_flag_duration_years = 20
