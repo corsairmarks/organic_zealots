@@ -1,0 +1,285 @@
+@liberation_war_modifier_duration_years = 20
+@lost_robot_policy_war_duration_years = 20
+
+wg_end_threat_organic_zealots = {
+	casus_belli = cb_containment_organic_zealots
+
+	hide_if_no_cb = yes
+	total_war = yes
+	set_defender_wargoal = wg_cleansing_organic_zealots
+
+	allowed_peace_offers = {
+		status_quo
+	}
+
+	surrender_acceptance = -1000
+
+	potential = {
+		is_robot_empire = yes
+		from = { has_valid_civic = civic_organic_zealots }
+	}
+	possible = {
+		always = yes
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+wg_cleansing_organic_zealots = {
+	casus_belli = cb_robotic_purification
+	hide_if_no_cb = yes
+	total_war = yes
+	set_defender_wargoal = wg_end_threat_organic_zealots
+
+	galactic_empire_joins_defender = {
+		from = { is_galactic_emperor = yes }
+		imperial_authority >= 100
+	}
+
+	allowed_peace_offers = {
+		status_quo
+	}
+
+	surrender_acceptance = -1000
+
+	potential = {
+		from = { NOT = { is_country_type = fallen_empire } }
+		NAND = {
+			is_galactic_emperor = yes
+			from = { is_galactic_community_member = yes }
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = cannot_use_against_emperor
+			OR = {
+				from = { is_galactic_emperor = no }
+				is_galactic_community_member = no
+			}
+		}
+		custom_tooltip = {
+			fail_text = pax_galactica_active
+			NAND = {
+				is_active_resolution = resolution_emperor_pax_galactica
+				is_galactic_community_member = yes
+				from = { is_galactic_community_member = yes }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+wg_cleansing_organic_zealots_vs_fe = {
+	casus_belli = cb_robotic_purification
+
+	hide_if_no_cb = yes
+	total_war = yes
+
+	allowed_peace_offers = {
+		status_quo
+	}
+
+	surrender_acceptance = -1000
+
+	potential = {
+		from = { is_country_type = fallen_empire }
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = pax_galactica_active
+			NAND = {
+				is_active_resolution = resolution_emperor_pax_galactica
+				is_galactic_community_member = yes
+				from = { is_galactic_community_member = yes }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+wg_force_policy_outlaw_robots_and_ai = {
+	casus_belli = cb_impose_policy
+
+	hide_if_no_cb = no
+	release_occupied_systems_on_status_quo = yes
+
+	allowed_peace_offers = {
+		status_quo
+		surrender
+		demand_surrender
+	}
+
+	surrender_acceptance = -100
+
+	war_exhaustion = 0.75
+
+	potential = {
+		OR = {
+			has_policy_flag = unrestricted_wars
+			has_policy_flag = liberation_wars
+		}
+		exists = from
+		has_total_war_cb = no
+		from = {
+			is_country_type = default
+			is_gestalt = no
+			can_set_ai_policy = yes
+			OR = {
+				has_policy_flag = robots_allowed
+				has_policy_flag = ai_servitude
+				has_policy_flag = ai_full_rights
+			}
+		}
+		NOT = { is_in_federation_with = from }
+		NAND = {
+			is_galactic_emperor = yes
+			from = { is_galactic_community_member = yes }
+		}
+	}
+	possible = {
+		hidden_trigger = { exists = from }
+		custom_tooltip = {
+			fail_text = has_claimed_all_systems
+			from = {
+				is_country_type = default
+				any_owned_planet = {
+					is_colony = yes
+					root = {
+						NOT = { has_claim = prev.solar_system }
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = cannot_use_against_emperor
+			from = { is_galactic_emperor = no }
+		}
+		custom_tooltip = {
+			fail_text = pax_galactica_active
+			NAND = {
+				is_active_resolution = resolution_emperor_pax_galactica
+				is_galactic_community_member = yes
+				from = { is_galactic_community_member = yes }
+			}
+		}
+	}
+	on_status_quo = {
+		if = {
+			limit = {
+				exists = last_created_country
+				last_created_country = {
+					has_country_flag = released_empire
+				}
+			}
+
+			last_created_country = {
+				add_modifier = {
+					modifier = recently_liberated
+					years = @liberation_war_modifier_duration_years
+				}
+				add_opinion_modifier = {
+					modifier = opinion_liberated_us
+					who = root
+				}
+				set_timed_country_flag = {
+					flag = lost_robot_policy_war
+					years = @lost_robot_policy_war_duration_years
+				}
+			}
+
+			root = {
+				add_opinion_modifier = {
+					modifier = opinion_we_liberated
+					who = last_created_country
+				}
+			}
+
+			every_country = {
+				limit = {
+					OR = {
+						is_in_federation_with = root
+						AND = {
+							is_subject = yes
+							exists = overlord
+							overlord = { is_same_value = root }
+						}
+					}
+				}
+
+				add_opinion_modifier = {
+					modifier = opinion_we_liberated
+					who = last_created_country
+				}
+				last_created_country = {
+					add_opinion_modifier = {
+						modifier = opinion_liberated_us
+						who = prev
+					}
+				}
+			}
+			from = {
+				add_threat = {
+					who = root
+					amount = 0.10
+				}
+			}
+		}
+	}
+	on_accept = {
+		custom_tooltip = wg_force_policy_outlaw_robots_and_ai_accept
+		if = {
+			limit = { from = { exists = ruler } }
+			custom_tooltip = wg_force_policy_outlaw_robots_and_ai_accept_2
+		}
+		hidden_effect = {
+			from = {
+				if = {
+					limit = { NOT = { has_policy_flag = ai_outlawed } }
+					set_policy = {
+						policy = artificial_intelligence_policy
+						option = ai_outlawed
+						cooldown = yes
+					}
+				}
+				if = {
+					limit = { NOT = { has_policy_flag = robots_outlawed } }
+					set_policy = {
+						policy = robot_pop_policy
+						option = robot_pops_outlawed
+						cooldown = yes
+					}
+				}
+				if = {
+					limit = { exists = ruler }
+					ruler = {
+						kill_leader = {
+							type = ruler
+							show_notification = yes
+							fire = yes
+						}
+					}
+				}
+				set_timed_country_flag = {
+					flag = lost_robot_policy_war
+					years = @lost_robot_policy_war_duration_years
+				}
+				add_threat = {
+					who = root
+					amount = 0.10
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 5
+	}
+}

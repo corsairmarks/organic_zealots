@@ -19,16 +19,7 @@ cb_impose_policy = {
 	}
 	is_valid = {
 		hidden_trigger = { exists = from }
-		from = {
-			is_country_type = default
-			is_gestalt = no
-			can_set_ai_policy = yes
-			OR = {
-				has_policy_flag = robots_allowed
-				has_policy_flag = ai_servitude
-				has_policy_flag = ai_full_rights
-			}
-		}
+		from = { is_country_type = default }
 		has_total_war_cb = no
 		NOT = { is_overlord_to = from }
 		OR = {
