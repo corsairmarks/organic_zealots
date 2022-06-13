@@ -33,3 +33,40 @@ country_event = {
 		}
 	}
 }
+
+# triggered by on_pop_purged
+# this = planet
+# from = country
+# fromfrom = pop
+planet_event = {
+	id = civic_organic_zealots.3
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = from
+		from = { has_valid_civic = civic_organic_zealots }
+		is_controlled_by = from
+		exists = fromfrom
+		fromfrom = { is_robot_pop = yes }
+	}
+	immediate = {
+		from = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = 2
+				min = 5
+				max = 100
+			}
+		}
+	}
+}
+
+# TODO: see on_actions file for notes
+
+# has_special_project - Checks if the country has a specific special project available
+# has_special_project = EMERGENCY_BUOY_PROJECT
+# Supported Scopes: country
+
+# is_researching_special_project - Checks if the country is currently researching a specific special project
+# is_researching_special_project = special_project_name
+# Supported Scopes: country leader
