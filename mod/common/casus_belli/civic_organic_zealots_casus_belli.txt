@@ -58,7 +58,7 @@ cb_containment_organic_zealots = {
 	}
 }
 
-casus_belli_cb_robotic_purification = {
+cb_robotic_purification = {
 	show_in_diplomacy = no
 	show_notification = no
 	potential = {
