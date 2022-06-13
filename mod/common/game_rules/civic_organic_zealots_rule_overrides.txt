@@ -1,0 +1,368 @@
+# Modified: use triggers for is_homicidal, is_fallen_empire; add section for Organic Zealots
+# root = claimer
+# this = system
+can_add_claim = {
+	hidden_trigger = {
+		if = {
+			limit = { root = { NOT = { is_country_type = default } } }
+			always = yes
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_POLICY
+		OR = {
+			root = { has_policy_flag = unrestricted_wars }
+			AND = {
+				exists = owner
+				owner = { is_gestalt = yes }
+			}
+			AND = {
+				exists = owner
+				owner = {
+					any_war = {
+						any_attacker = { is_same_value = prevprev }
+						any_defender = { is_same_value = root }
+					}
+				}
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_NOT_VALID_EMPIRE
+		NAND = {
+			exists = owner
+			owner = {
+				NOT = { is_country_type = default }
+				is_fallen_empire = no
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_DEVOURING_SWARM
+		root = {
+			NAND = {
+				has_valid_civic = civic_hive_devouring_swarm
+				is_lithoid_empire = no
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_DEVOURING_SWARM_LITHOID
+		root = {
+			NAND = {
+				has_valid_civic = civic_hive_devouring_swarm
+				is_lithoid_empire = yes
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_ASSIMILATOR
+		NOT = { root = { has_valid_civic = civic_machine_assimilator } }
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_PURIFIERS
+		NAND = {
+			root = { has_valid_civic = civic_fanatic_purifiers }
+			exists = owner
+			NOT = {	owner = { is_same_species = root } }
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_EXTERMINATOR
+		NAND = {
+			root = { has_valid_civic = civic_machine_terminator }
+			exists = owner
+			owner = {
+				NOT = { is_same_species = root }
+				is_robot_empire = yes
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_ORGANIC_ZEALOT
+		NAND = {
+			root = { has_valid_civic = civic_organic_zealots }
+			exists = owner
+			owner = {
+				NOT = { is_same_species = root }
+				is_robot_empire = no
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_THEY_THREAT
+		NAND = {
+			exists = owner
+			owner = {
+				OR = {
+					is_homicidal = yes
+					has_valid_civic = civic_machine_assimilator
+				}
+			}
+			root = {
+				is_homicidal = no
+				NOT = { has_valid_civic = civic_machine_assimilator }
+			}
+		}
+	}
+}
+
+# Modified: use triggers for is_homicidal, is_fallen_empire; add section for Organic Zealots
+# root = taker country
+# this = giver country
+can_get_claim_from_lost_system = {
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_NOT_VALID_EMPIRE
+		OR = {
+			is_country_type = default
+			is_fallen_empire = yes
+		}
+		root = {
+			OR = {
+				is_country_type = default
+				is_fallen_empire = yes
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_DEVOURING_SWARM
+		NOT = { has_valid_civic = civic_hive_devouring_swarm }
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_ASSIMILATOR
+		NOT = { has_valid_civic = civic_machine_assimilator }
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_PURIFIERS
+		NAND = {
+			has_valid_civic = civic_fanatic_purifiers
+			NOT = {	is_same_species = root }
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_EXTERMINATOR
+		NAND = {
+			has_valid_civic = civic_machine_terminator
+			NOT = { is_same_species = root }
+			is_robot_empire = yes
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_ORGANIC_ZEALOT
+		NAND = {
+			has_valid_civic = civic_organic_zealots
+			NOT = { is_same_species = root }
+			is_robot_empire = no
+		}
+	}
+}
+
+# Modified: use a trigger (which includes Organic Zealots)
+# root = planet
+# this = country
+can_release_vassal = {
+	custom_tooltip = {
+		fail_text = default
+		is_homicidal = no
+		NOT = { has_valid_civic = civic_machine_assimilator }
+	}
+}
+
+# TODO: disallow synth megacorps?  Or will that be handled by disallowing diplomacy in the first place?
+# probably need an event to cancel diplo agreements if a country synthetically ascends (not just branch offices)
+# this = planet
+# root = country
+can_build_branch_office_on_planet = {
+	custom_tooltip = {
+		fail_text = requires_recipient_not_fanatic_purifiers
+		exists = owner
+		owner = {
+			OR = {
+				is_same_species = root
+				NOT = { has_civic = civic_fanatic_purifiers }
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_NOT_COMMERCIAL_PACT
+		exists = owner
+		OR = {
+			root = { is_criminal_syndicate = yes }
+			owner = { has_commercial_pact = root }
+			owner = { is_in_federation_with = root }
+
+			# allow branch offices in subsidiaries and vice versa (and fellow subjects)
+			root = {
+				is_subject = yes
+				OR = {
+					has_authority = auth_corporate
+					has_civic = civic_galactic_sovereign_megacorp
+				}
+				overlord = {
+					OR = {
+						is_same_value = prevprev.owner
+						is_same_value = prevprev.owner.overlord
+					}
+				}
+			}
+			owner = {
+				is_subject = yes
+				overlord = {
+					OR = {
+						is_same_value = root
+						is_same_value = root.overlord
+					}
+					OR = {
+						has_authority = auth_corporate
+						has_civic = civic_galactic_sovereign_megacorp
+					}
+				}
+			}
+			AND = {
+				root = { has_civic = civic_galactic_sovereign_megacorp }
+				owner = { is_galactic_community_member = yes }
+			}
+			AND = {
+				root = { has_modifier = imperial_charter }
+				owner = { is_galactic_community_member = yes }
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_MEGACORP_OVERLORD
+		exists = owner
+		# failure message for having a corporate overlord
+
+		if = {
+			limit = {
+				OR = {
+					# Not valid if you aren't a subject.
+					root = {
+						is_subject = no
+					}
+					# Or if your overlord isn't a megacorp.
+					root = {
+						is_subject = yes
+						overlord = {
+							NOR = {
+								has_authority = auth_corporate
+								has_civic = civic_galactic_sovereign_megacorp
+							}
+						}
+					}
+				}
+			}
+			always = yes
+		}
+		else = {
+			AND = {
+				root = {
+					is_subject = yes
+					overlord = {
+						OR = {
+							has_authority = auth_corporate
+							has_civic = civic_galactic_sovereign_megacorp
+						}
+					}
+				}
+				owner = {
+					OR = {
+						is_subject = no
+						AND = {
+							is_subject = yes
+							overlord = { NOT = { is_same_value = root.overlord } }
+						}
+					}
+				}
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_CRIMINAL_HERITAGE_HAS_TRUCE
+		exists = owner
+		OR = {
+			root = { is_criminal_syndicate = no }
+			owner = {
+				NOR = {
+					has_truce = root
+					is_at_war_with = root
+				}
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_CRIMINAL_COOLDOWN
+		exists = owner
+		OR = {
+			root = { is_criminal_syndicate = no }
+			AND = {
+				root = { is_criminal_syndicate = yes }
+				NOT = { has_planet_flag = criminal_branch_closed_cooldown_planet@root }
+			}
+		}
+	}
+}
+
+# Modified: use a trigger (which includes Organic Zealots)
+# this = country
+can_use_galactic_market = {
+	is_country_type = default
+	is_homicidal = no
+}
+
+# Modified: use a trigger (which includes Organic Zealots)
+# this = country
+can_be_part_of_galactic_community = {
+	custom_tooltip = {
+		fail_text = "community_default_failtext"
+		is_country_type = default
+	}
+	custom_tooltip = {
+		fail_text = "community_homicidal_failtext"
+		is_homicidal = no
+	}
+	custom_tooltip = {
+		fail_text = "community_declared_crisis_failtext"
+		has_been_declared_crisis = no
+	}
+	custom_tooltip = {
+		fail_text = "community_declared_crisis_failtext"
+		#fail_text = "community_overlord_declared_crisis_failtext"
+		OR = {
+			NOT = { exists = overlord }
+			overlord = { has_been_declared_crisis = no }
+		}
+	}
+}
+
+# Modified: use a trigger (which includes Organic Zealots)
+# this = country
+can_be_part_of_galactic_empire = {
+	custom_tooltip = {
+		fail_text = "community_default_failtext"
+		is_country_type = default
+	}
+	custom_tooltip = {
+		fail_text = "community_homicidal_failtext"
+		is_homicidal = no
+	}
+	custom_tooltip = {
+		fail_text = "community_declared_crisis_failtext"
+		has_been_declared_crisis = no
+	}
+	custom_tooltip = {
+		fail_text = "community_declared_crisis_failtext"
+		#fail_text = "community_overlord_declared_crisis_failtext"
+		OR = {
+			NOT = { exists = overlord }
+			overlord = { has_been_declared_crisis = no }
+		}
+	}
+}
+
+# Modified: use a trigger (which includes Organic Zealots)
+# this = country
+can_be_part_of_galactic_council = {
+	is_country_type = default
+	is_homicidal = no
+}
