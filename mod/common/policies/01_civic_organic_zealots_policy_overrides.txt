@@ -1071,7 +1071,7 @@ artificial_intelligence_policy = {
 
 		valid = {
 			if = {
-				limit = { is_syntheric_empire = no }
+				limit = { is_synthetic_empire = no }
 				custom_tooltip = {
 					fail_text = lost_robot_policy_war_fail
 					NOT = { has_country_flag = lost_robot_policy_war }
