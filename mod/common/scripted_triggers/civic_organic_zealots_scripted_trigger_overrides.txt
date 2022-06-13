@@ -68,3 +68,14 @@ has_total_war_cb = {
 		}
 	}
 }
+
+# Modified: use gestalt trigger, added civic_organic_zealots
+allows_purge = {
+	OR = {
+		is_gestalt = yes
+		has_valid_civic = civic_fanatic_purifiers
+		has_valid_civic = civic_organic_zealots
+		has_policy_flag = purge_allowed
+		has_policy_flag = purge_displacement_only
+	}
+}
