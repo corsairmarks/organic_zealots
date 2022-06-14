@@ -184,6 +184,9 @@ wg_force_policy_outlaw_robots_and_ai = {
 					flag = lost_robot_policy_war
 					years = @lost_robot_policy_war_flag_duration_years
 				}
+				set_policies_robot_pops_and_ai_to_outlawed = yes
+				force_disable_tech_ascension_special_projects = yes
+				deactivate_ongoing_tech_assimilation = yes
 			}
 
 			root = {
@@ -232,22 +235,13 @@ wg_force_policy_outlaw_robots_and_ai = {
 		}
 		hidden_effect = {
 			from = {
-				if = {
-					limit = { NOT = { has_policy_flag = ai_outlawed } }
-					set_policy = {
-						policy = artificial_intelligence_policy
-						option = ai_outlawed
-						cooldown = yes
-					}
+				set_timed_country_flag = {
+					flag = lost_robot_policy_war
+					years = @lost_robot_policy_war_flag_duration_years
 				}
-				if = {
-					limit = { NOT = { has_policy_flag = robots_outlawed } }
-					set_policy = {
-						policy = robot_pop_policy
-						option = robot_pops_outlawed
-						cooldown = yes
-					}
-				}
+				set_policies_robot_pops_and_ai_to_outlawed = yes
+				force_disable_tech_ascension_special_projects = yes
+				deactivate_ongoing_tech_assimilation = yes
 				if = {
 					limit = { exists = ruler }
 					ruler = {
@@ -257,10 +251,6 @@ wg_force_policy_outlaw_robots_and_ai = {
 							fire = yes
 						}
 					}
-				}
-				set_timed_country_flag = {
-					flag = lost_robot_policy_war
-					years = @lost_robot_policy_war_flag_duration_years
 				}
 				add_threat = {
 					who = root
