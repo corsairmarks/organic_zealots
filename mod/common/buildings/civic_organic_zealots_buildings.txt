@@ -1,4 +1,4 @@
-building_posthumous_employment_center = {
+building_clone_birth_labs = {
 	icon = building_illicit_research_labs
 	base_buildtime = @b1_time
 	base_cap_amount = 1

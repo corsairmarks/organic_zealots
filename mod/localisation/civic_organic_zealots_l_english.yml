@@ -43,6 +43,12 @@
 
  job_cloning_technician: "Cloning Technician"
  job_cloning_technician_plural: "Cloning Technicians"
- job_cloning_technician_desc: "$job_cloning_technician_plural$ oversee the accelerated maturation of clones and flash-imprint the necessary skills for each clone's predetermined job."
+ job_cloning_technician_desc: "These technicians meticulously nurture the growth of clones in order to supplement the empire's manpower."
  job_cloning_technician_effect_desc: "£job_healthcare£ $job_cloning_technician_plural$ turn £consumer_goods£ §Y$consumer_goods$§! and either £food£ §Y$food$§! or £minerals£ §Y$minerals$§! into £mod_pop_growth_speed£ §Y$MOD_PLANET_POP_ASSEMBLY_ORGANIC_ADD$§!."
  mod_job_cloning_technician_add: "$job_cloning_technician$ Jobs"
+ building_clone_birth_labs: "Clone Birth-Labs"
+ building_clone_birth_labs_desc: "State-of-the-art bio-engineering laboratories where $job_cloning_technician_plural$ oversee the accelerated maturation of clones and ensure that each clone is flash-imprinted with necessary skills for its predetermined job."
+
+ # localisation to make the game happy with flag-gated code - matches the content from  Deassimilate Machines so that it won't matter which mod loads first
+ AI_IS_OUTLAWED_POP: "$TRIGGER_FAIL$Artificial Intelligence is §Routlawed§!. §Y$trait_machine_unit$§! Pops are too sophisticated to convert into mindless robots."
+ disconnected_machine_pops_collapse_without_ai_citizenship: "$TRIGGER_FAIL$Once their uplink to the central §Y$auth_machine_intelligence$§! is severed, $trait_machine_unit$ Pops are eventually rendered inoperable - unless they could be retrofitted with individual §Y$tech_sapient_ai$§!."
