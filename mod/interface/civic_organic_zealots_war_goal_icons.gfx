@@ -1,0 +1,28 @@
+spriteTypes = {
+	# same icon as wg_end_threat
+	spriteType = {
+		name = "GFX_wg_end_threat_organic_zealots"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_war.dds"
+		noOfFrames = 2
+	}
+
+	# same icon as GFX_wg_cleansing
+	spriteType = {
+		name = "GFX_wg_cleansing_organic_zealots"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_war.dds"
+		noOfFrames = 2
+	}
+
+	# same icon as GFX_wg_cleansing
+	spriteType = {
+		name = "GFX_wg_cleansing_organic_zealots_vs_fe"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_war.dds"
+		noOfFrames = 2
+	}
+
+	# same icon as GFX_wg_force_ideology
+	spriteType = {
+		name = "GFX_wg_force_policy_outlaw_robots_and_ai"
+		texturefile = "gfx/interface/icons/diplomacy/diplomacy_force_ideology.dds"
+	}
+}
