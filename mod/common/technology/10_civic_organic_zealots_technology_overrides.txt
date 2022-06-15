@@ -13,6 +13,10 @@ tech_administrative_ai = {
 	prerequisites = { tech_basic_science_lab_1 }
 	weight = @tier1weight1
 
+	potential = {
+		NOT = { has_technology = tech_flash_learning } # tech mutual exclusion
+	}
+
 	modifier = {
 		all_technology_research_speed = 0.05
 	}
@@ -20,11 +24,7 @@ tech_administrative_ai = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			OR = {
-				has_technology = tech_flash_learning # tech mutual exclusion
-				has_policy_flag = ai_outlawed # actual requirement
-			}
-
+			has_policy_flag = ai_outlawed # requirement
 		}
 		modifier = {
 			factor = value:tech_weight_likelihood
@@ -263,15 +263,13 @@ tech_sapient_ai = {
 
 	potential = {
 		is_gestalt = no
+		NOT = { has_technology = tech_mentat_computation } # tech mutual exclusion
 	}
 
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			OR = {
-				has_technology = tech_mentat_computation # tech mutual exclusion
-				has_policy_flag = ai_outlawed # actual requirement
-			}
+			has_policy_flag = ai_outlawed # requirement
 		}
 		modifier = {
 			factor = value:tech_weight_likelihood
