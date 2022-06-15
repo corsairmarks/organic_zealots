@@ -2,13 +2,12 @@
  civic_organic_zealots: "Organic Zealots"
  civic_organic_zealots_desc: "TODO: desc"
  civic_tooltip_organic_zealots_effects: "Cannot engage in §Y$DIPLOMACY$§! with robotic species!\nCannot access the §YGalactic Market§!\nHas the §Y'$casus_belli_cb_robotic_purification$'§! casus belli on robotic species\n§Y$ROBOT$ $POPS$§! will always be purged\nGains £unity£ §Y$unity$§! from purging robotic £pop£ $POPS$\nMay use §Y$bombardment_armageddon$§! bombardment stance\n"
- requires_not_civic_organic_zealots: "$TRIGGER_FAIL$May not have the §Y$civic_organic_zealots$§! Civic."
  is_organic_zealots: "Is §Y$civic_organic_zealots$§!"
- is_organic_zealots_fail: "$TRIGGER_FAIL$§R$is_organic_zealots$§!"
- is_overlord_organic_zealots: "Our overlords are §Y$civic_organic_zealots$§!. We cannot use robots or artificial intelligence."
- is_overlord_organic_zealots_fail: "$TRIGGER_FAIL$§R$is_overlord_organic_zealots$§!"
- lost_robot_policy_war: "Recently lost a force robot/AI policy war."
- lost_robot_policy_war_fail: "$TRIGGER_FAIL$§R$lost_robot_policy_war$§!"
+ is_organic_zealots_fail: "$TRIGGER_FAIL$$is_organic_zealots$"
+ is_overlord_organic_zealots: "Overlord is §Y$civic_organic_zealots$§!"
+ is_overlord_organic_zealots_fail: "$TRIGGER_FAIL$$is_overlord_organic_zealots$"
+ lost_robot_policy_war: "Recently lost an impose policy war that outlawed robots and AI"
+ lost_robot_policy_war_fail: "$TRIGGER_FAIL$$lost_robot_policy_war$"
  casus_belli_cb_impose_policy: "Impose Policy"
  casus_belli_cb_robotic_purification: "Anti-Thinking Machine Jihad"
  casus_belli_cb_containment_organic_zealots: "$casus_belli_cb_containment$"
@@ -23,12 +22,13 @@
  CANNOT_ADD_CLAIM_ORGANIC_ZEALOTS: "§RWe have no need to claim the systems of robotic abominations§!"
  ORGANIC_ZEALOTS_MUST_PURIFY: "$TRIGGER_FAIL$§Y$civic_organic_zealots$§! cannot tolerate the existence of robotic abominations."
 
+ requires_not_civic_organic_zealots: "$TRIGGER_FAIL$May not have the §Y$civic_organic_zealots$§! Civic."
+ requires_overlord_not_civic_organic_zealots: "$TRIGGER_FAIL$Overlord may not have the §Y$civic_organic_zealots$§! Civic."
  requires_recipient_not_organic_zealots: "$TRIGGER_FAIL$§R§Y$civic_organic_zealots$§! will only engage in Diplomacy with other §YOrganic Empires§!.§!"
  requires_actor_not_organic_zealots: "$TRIGGER_FAIL$§RWe are §Y$civic_organic_zealots$§!. We do not negotiate with \"thinking\" machines.§!"
- requires_overlord_not_civic_organic_zealots: "$is_overlord_organic_zealots_fail$"
  requires_actor_not_organic_zealots_federation: "$TRIGGER_FAIL$§RWe are §Y$civic_organic_zealots$§!. We cannot let others interfere with our cause.§!"
  requires_recipient_not_organic_zealots_federation: "$TRIGGER_FAIL$§RThey are §Y$civic_organic_zealots$§! and are concerned only with the destruction of all artificial intelligence.§!"
- # might not need the federation ones - depends on how fancy I want to get with verifying potential; federations don't contain any robotic empires
+ # might not need the federation ones - depends on how fancy I want to get with verifying potential federations don't contain any robotic empires
 
  war_goal_wg_end_threat_organic_zealots: "End Jihad"
  war_goal_wg_end_threat_organic_zealots_desc: "$war_goal_wg_end_threat_desc$"
@@ -58,5 +58,5 @@
 # TODO: more mentat-related stuff - traits similar in power to synthetic traits
 
  # localisation to make the game happy with flag-gated code - matches the content from  Deassimilate Machines so that it won't matter which mod loads first
- AI_IS_OUTLAWED_POP: "$TRIGGER_FAIL$Artificial Intelligence is §Routlawed§!. §Y$trait_machine_unit$§! Pops are too sophisticated to convert into mindless robots."
- disconnected_machine_pops_collapse_without_ai_citizenship: "$TRIGGER_FAIL$Once their uplink to the central §Y$auth_machine_intelligence$§! is severed, $trait_machine_unit$ Pops are eventually rendered inoperable - unless they could be retrofitted with individual §Y$tech_sapient_ai$§!."
+ AI_IS_OUTLAWED_POP: "$TRIGGER_FAIL$Artificial Intelligence is §Routlawed§!; §Y$trait_machine_unit$§! Pops are too sophisticated to convert into mindless robots"
+ disconnected_machine_pops_collapse_without_ai_citizenship: "$TRIGGER_FAIL$Once their uplink to the central §Y$auth_machine_intelligence$§! is severed, $trait_machine_unit$ Pops are eventually rendered inoperable - unless they could be retrofitted with individual §Y$tech_sapient_ai$§!"
