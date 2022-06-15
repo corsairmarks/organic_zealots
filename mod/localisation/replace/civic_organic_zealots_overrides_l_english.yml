@@ -1,0 +1,11 @@
+﻿l_english:
+ # reword these descriptions to discuss cryostasis/suspended animation rather than AI
+ tech_cryostasis_1: "Cryostasis"
+ tech_cryostasis_1_desc: "Colonists enter suspended animation for the majority of the voyage to a new colony, allowing the crew to focus their efforts on preparing for landfall."
+ tech_cryostasis_2: "Rapid-Thaw Cryonics"
+ tech_cryostasis_2_desc: "Gone are the days of lengthy recovery periods following suspended animation. Predictive algorithms and extensive medical databases enable technicians to tailor the reanimation phase to treat colonists as they awaken, allowing for a return to work almost immediately."
+ # remove references to AI in these descriptions
+ tech_consumer_good_refinement_1_desc: "Administrative algorithms can be used to streamline supply and demand lines, reducing waste."
+ tech_consumer_good_refinement_2_desc: "Using advanced analysis algorithms, we can reliably predict consumer demand before it exists."
+ tech_automated_exploration_desc: "We shall empower science officers with independent initiative in their task to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no Blorg has gone before. Science Ships will be able to explore the galaxy without the need for direct orders."
+ tech_missiles_5_desc: "These highly advanced missiles are equipped with sophisticated onboard that substantially improve their performance and ability to track targets."

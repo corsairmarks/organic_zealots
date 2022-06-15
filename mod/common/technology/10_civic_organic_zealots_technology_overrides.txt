@@ -1,0 +1,343 @@
+# AI-related technologies (and some of their downstream technologies) updated so that empires who outlaw AI cannot research them,
+# the techs are mutually-exclusive with the no AI equivalent, and that the no AI equivalents count as fulfulling (most) of
+# the same prerequisites
+
+### Physics ###
+
+# Modified: disallowed for empires that outlaw AI, mutually-exclusive with: tech_flash_learning
+tech_administrative_ai = {
+	area = physics
+	tier = 1
+	cost = @tier1cost1
+	category = { computing }
+	prerequisites = { tech_basic_science_lab_1 }
+	weight = @tier1weight1
+
+	modifier = {
+		all_technology_research_speed = 0.05
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			OR = {
+				has_technology = tech_flash_learning # tech mutual exclusion
+				has_policy_flag = ai_outlawed # actual requirement
+			}
+
+		}
+		modifier = {
+			factor = value:tech_weight_likelihood
+			research_leader = {
+				area = physics
+				has_trait = leader_trait_expertise_computing
+			}
+		}
+		modifier = {
+			factor = 1.5
+			is_specialist_subject_type = { TYPE = scholarium }
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = leader_trait_expertise_computing
+			}
+		}
+	}
+}
+
+# Modified: has two prerequisite options
+# AI-Controlled Colony Ships
+tech_cryostasis_1 = {
+	cost = @tier1cost3
+	area = physics
+	tier = 1
+	category = { computing }
+	prerequisites = { tech_colonization_1 }
+	weight = @tier1weight3
+
+	modifier = {
+		planet_colony_development_speed_mult = 0.50
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOR = {
+				# prerequisite options
+				has_technology = tech_administrative_ai
+				has_technology = tech_flash_learning
+			}
+		}
+		modifier = {
+			factor = value:tech_weight_likelihood
+			research_leader = {
+				area = physics
+				has_trait = leader_trait_expertise_computing
+			}
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = leader_trait_expertise_computing
+			}
+		}
+	}
+}
+
+# Modified: has two prerequisite options
+tech_self_aware_logic = {
+	area = physics
+	tier = 2
+	cost = @tier2cost2
+	category = { computing }
+	weight = @tier2weight2
+
+	modifier = {
+		num_tech_alternatives_add = 1
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOR = {
+				# prerequisite options
+				has_technology = tech_administrative_ai
+				has_technology = tech_flash_learning
+			}
+		}
+		modifier = {
+			factor = value:tech_weight_likelihood
+			research_leader = {
+				area = physics
+				has_trait = leader_trait_expertise_computing
+			}
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = leader_trait_expertise_computing
+			}
+		}
+	}
+}
+
+# Modified: has two prerequisite options
+tech_combat_computers_1 = {
+	area = physics
+	tier = 1
+	cost = @tier1cost3
+	category = { computing }
+	ai_update_type = military
+	weight = @tier1weight3
+
+	# unlocks aggressive / defensive combat computers
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOR = {
+				# prerequisite options
+				has_technology = tech_administrative_ai
+				has_technology = tech_flash_learning
+			}
+		}
+		modifier = {
+			factor = 2
+			has_technology = tech_destroyers
+		}
+		modifier = {
+			factor = 2
+			has_technology = tech_cruisers
+		}
+		modifier = {
+			factor = 2
+			has_technology = tech_battleships
+		}
+		modifier = {
+			factor = value:tech_weight_likelihood
+			research_leader = {
+				area = physics
+				has_trait = leader_trait_expertise_computing
+			}
+		}
+	}
+
+	prereqfor_desc = {
+		hide_prereq_for_desc = component
+		custom = {
+			title = TECH_UNLOCK_COMBAT_COMPUTERS_1_TITLE
+			desc = TECH_UNLOCK_COMBAT_COMPUTERS_1_DESC
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = leader_trait_expertise_computing
+			}
+		}
+	}
+}
+
+# Modified: has two prerequisite options
+tech_consumer_good_refinement_1 = {
+	cost = @tier2cost1
+	area = physics
+	tier = 2
+	category = { computing }
+	prerequisites = { tech_luxuries_1 }
+	weight = @tier2weight1
+
+	modifier = {
+		planet_artisans_produces_mult = 0.10
+	}
+
+	potential = {
+		OR = {
+			is_gestalt = no
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 0
+			NOR = {
+				# prerequisite options
+				has_technology = tech_administrative_ai
+				has_technology = tech_flash_learning
+			}
+		}
+		modifier = {
+			factor = value:tech_weight_likelihood
+			research_leader = {
+				area = physics
+				has_trait = leader_trait_expertise_computing
+			}
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = leader_trait_expertise_computing
+			}
+		}
+	}
+}
+
+# Modified: disallowed for empires that outlaw AI, mutually-exclusive with: tech_mentat_computation
+tech_sapient_ai = {
+	area = physics
+	tier = 4
+	cost = @tier4cost1
+	category = { computing }
+	prerequisites = { tech_self_aware_logic }
+	weight = @tier4weight1
+
+	feature_flags = {
+		unlocks_auto_research
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.05
+	}
+
+	potential = {
+		is_gestalt = no
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			OR = {
+				has_technology = tech_mentat_computation # tech mutual exclusion
+				has_policy_flag = ai_outlawed # actual requirement
+			}
+		}
+		modifier = {
+			factor = value:tech_weight_likelihood
+			research_leader = {
+				area = physics
+				has_trait = leader_trait_expertise_computing
+			}
+		}
+		modifier = {
+			factor = 1.5
+			is_specialist_subject_type = { TYPE = scholarium }
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = leader_trait_expertise_computing
+			}
+		}
+	}
+}
+
+### Society ###
+
+# Modified: has two prerequisite options
+tech_autocurating_vault = {
+	cost = @tier3cost1
+	area = society
+	category = { statecraft }
+	tier = 3
+	prerequisites = { tech_colonial_centralization}
+	weight = @tier3weight1
+
+	potential = {
+		is_spiritualist = no
+		NOT = { has_valid_civic = civic_machine_servitor }
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOR = {
+				# prerequisite options
+				has_technology = tech_administrative_ai
+				has_technology = tech_flash_learning
+			}
+		}
+		modifier = {
+			factor = value:tech_weight_likelihood
+			research_leader = {
+				area = society
+				has_trait = leader_trait_expertise_statecraft
+			}
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = leader_trait_expertise_statecraft
+			}
+		}
+	}
+}

@@ -1,0 +1,160 @@
+# Alternate technologies for empires that outlaw AI
+
+# Mutually-exclusive with: tech_administrative_ai
+tech_flash_learning = {
+	icon = tech_administrative_ai
+	area = physics
+	tier = 1
+	cost = @tier1cost1
+	category = { computing }
+	prerequisites = { tech_basic_science_lab_1 }
+	weight = @tier1weight1
+
+	modifier = {
+		all_technology_research_speed = 0.05
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			OR = {
+				has_technology = tech_administrative_ai # tech mutual exclusion
+				NOT = { has_policy_flag = ai_outlawed } # actual requirement
+			}
+		}
+		modifier = {
+			factor = value:tech_weight_likelihood
+			research_leader = {
+				area = physics
+				has_trait = leader_trait_expertise_computing
+			}
+		}
+		modifier = {
+			factor = 1.5
+			is_specialist_subject_type = { TYPE = scholarium }
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = leader_trait_expertise_computing
+			}
+		}
+	}
+}
+
+# Mutually-exclusive with: tech_sapient_ai
+tech_mentat_computation = {
+	icon = tech_neuroregeneration
+	area = society
+	tier = 4
+	cost = @tier4cost1
+	category = { biology }
+	prerequisites = {
+		tech_self_aware_logic
+		tech_selected_lineages # CM: sorry fanatic egalitarians
+	}
+	weight = @tier4weight1
+
+	feature_flags = {
+		unlocks_auto_research
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.05
+	}
+
+	potential = {
+		is_gestalt = no
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			OR = {
+				has_technology = tech_sapient_ai # tech mutual exclusion
+				NOT = { has_policy_flag = ai_outlawed } # actual requirement
+			}
+		}
+		modifier = {
+			factor = value:tech_weight_likelihood
+			research_leader = {
+				area = society
+				has_trait = leader_trait_expertise_biology
+			}
+		}
+		modifier = {
+			factor = 1.5
+			is_specialist_subject_type = { TYPE = scholarium }
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = leader_trait_expertise_biology
+			}
+		}
+	}
+}
+
+# tech_mentat_computation_2 = {
+# 	icon = tech_neuroregeneration
+# 	area = society
+# 	tier = 4
+# 	cost = @tier4cost1
+# 	category = { biology }
+# 	prerequisites = {
+# 		tech_self_aware_logic
+# 		tech_selected_lineages # CM: sorry fanatic egalitarians
+# 	}
+# 	weight = @tier4weight1
+
+# 	feature_flags = {
+# 		unlocks_auto_research
+# 	}
+
+# 	modifier = {
+# 		all_technology_research_speed = 0.05
+# 	}
+
+# 	potential = {
+# 		is_gestalt = no
+# 	}
+
+# 	weight_modifier = {
+# 		modifier = {
+# 			factor = 0
+# 			OR = {
+# 				has_technology = tech_sapient_ai # tech mutual exclusion
+# 				NOT = { has_policy_flag = ai_outlawed } # actual requirement
+# 			}
+# 		}
+# 		modifier = {
+# 			factor = value:tech_weight_likelihood
+# 			research_leader = {
+# 				area = society
+# 				has_trait = leader_trait_expertise_biology
+# 			}
+# 		}
+# 		modifier = {
+# 			factor = 1.5
+# 			is_specialist_subject_type = { TYPE = scholarium }
+# 		}
+# 	}
+
+# 	ai_weight = {
+# 		modifier = {
+# 			factor = 1.25
+# 			research_leader = {
+# 				area = society
+# 				has_trait = leader_trait_expertise_biology
+# 			}
+# 		}
+# 	}
+# }

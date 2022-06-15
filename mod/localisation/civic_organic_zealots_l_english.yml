@@ -49,6 +49,14 @@
  building_clone_birth_labs: "Clone Birth-Labs"
  building_clone_birth_labs_desc: "State-of-the-art bio-engineering laboratories where $job_cloning_technician_plural$ oversee the accelerated maturation of clones and ensure that each clone is flash-imprinted with necessary skills for its predetermined job."
 
+ # alternate "no AI" technologies
+ tech_flash_learning: "Flash-Learning Inducers"
+ tech_flash_learning_desc: "The capability to acquire both skills and knowledge through computer-guided fugue states will revolutionize academics."
+ tech_mentat_computation: "Mentat Computation"
+ tech_mentat_computation_desc: "Building upon our extensive lineage and personal ability tracking, our selective breeding has produced individuals with extraordinary mental facilities. Eidetic memory, multiple thought streams, instinctive mathematical acuity, and cognitive processing speed that exceeds any known computation devices. Although they are few, their effects are already advancing science across the empire."
+
+# TODO: more mentat-related stuff - traits similar in power to synthetic traits
+
  # localisation to make the game happy with flag-gated code - matches the content from  Deassimilate Machines so that it won't matter which mod loads first
  AI_IS_OUTLAWED_POP: "$TRIGGER_FAIL$Artificial Intelligence is §Routlawed§!. §Y$trait_machine_unit$§! Pops are too sophisticated to convert into mindless robots."
  disconnected_machine_pops_collapse_without_ai_citizenship: "$TRIGGER_FAIL$Once their uplink to the central §Y$auth_machine_intelligence$§! is severed, $trait_machine_unit$ Pops are eventually rendered inoperable - unless they could be retrofitted with individual §Y$tech_sapient_ai$§!."
