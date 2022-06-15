@@ -98,3 +98,22 @@ country_event = {
 		set_policies_robot_pops_and_ai_to_outlawed = yes
 	}
 }
+
+# triggered by empire_init_capital_planet
+# this = planet, capital
+# from = species, founder
+planet_event = {
+	id = civic_organic_zealots.6
+	hide_window = yes
+	is_triggered_only = yes
+	pre_triggers = {
+		has_owner = yes
+	}
+	trigger = {
+		owner = { has_valid_civic = civic_organic_zealots }
+		free_building_slots > 0
+	}
+	immediate = {
+		add_building = building_clone_birth_labs
+	}
+}
