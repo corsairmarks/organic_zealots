@@ -145,6 +145,10 @@ ap_synthetic_evolution = {
 			NOT = { has_special_project = FLESH_IS_WEAK_PROJECT }
 		}
 		custom_tooltip = {
+			fail_text = "requires_not_civic_organic_zealots"
+			NOT = { has_valid_civic = civic_organic_zealots }
+		}
+		custom_tooltip = {
 			fail_text = "requires_overlord_not_civic_organic_zealots"
 			NAND = {
 				exists = overlord
