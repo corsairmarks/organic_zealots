@@ -1,0 +1,47 @@
+# Modified: simply duplicate logic blocks, add validation for civic_organic_zealots
+subject_can_do_diplomacy_but_not_vote = {
+	term = subject_diplomacy
+	loyalty_change = 0
+	activate_effect = {
+		set_rule_can_subject_vote = no
+		set_rule_can_subject_do_diplomacy = yes
+	}
+	possible = {
+		if = {
+			limit = {
+				NOR = {
+					AND = {
+						owner = { is_galactic_community_member = yes }
+						target = { is_galactic_community_member = yes }
+						is_active_resolution = resolution_bureaucraticsurveillance_personal_oversight
+					}
+					AND = {
+						owner = { is_galactic_community_member = yes }
+						target = { is_galactic_community_member = yes }
+						is_active_resolution = resolution_intergalacticdirective_a_voice_for_all
+					}
+				}
+			}
+			custom_tooltip = {
+				fail_text = not_allowed_for_tributary
+				NOT = { agreement_preset = preset_tributary }
+			}
+			custom_tooltip = {
+				fail_text = not_allowed_for_fanatic_purifiers
+				NOT = { target = { has_civic = civic_fanatic_purifiers } }
+			}
+			custom_tooltip = {
+				fail_text = not_allowed_for_organic_zealots
+				NOT = { target = { has_civic = civic_organic_zealots } }
+			}
+			custom_tooltip = {
+				fail_text = not_allowed_for_devouring_swarm
+				NOT = { target = { has_civic = civic_hive_devouring_swarm } }
+			}
+			custom_tooltip = {
+				fail_text = not_allowed_for_machine_terminator
+				NOT = { target = { has_civic = civic_machine_terminator } }
+			}
+		}
+	}
+}

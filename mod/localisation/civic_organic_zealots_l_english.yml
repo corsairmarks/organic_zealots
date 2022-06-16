@@ -32,6 +32,7 @@
  requires_actor_not_organic_zealots_federation: "$TRIGGER_FAIL$§RWe are §Y$civic_organic_zealots$§!. We cannot let others interfere with our cause.§!"
  requires_recipient_not_organic_zealots_federation: "$TRIGGER_FAIL$§RThey are §Y$civic_organic_zealots$§! and are concerned only with the destruction of all artificial intelligence.§!"
  # might not need the federation ones - depends on how fancy I want to get with verifying potential federations don't contain any robotic empires
+ not_allowed_for_organic_zealots: "$TRIGGER_FAIL$Not allowed for Subjects with the §Y$civic_organic_zealots$§! Civic."
 
  war_goal_wg_end_threat_organic_zealots: "End Jihad"
  war_goal_wg_end_threat_organic_zealots_desc: "$war_goal_wg_end_threat_desc$"
