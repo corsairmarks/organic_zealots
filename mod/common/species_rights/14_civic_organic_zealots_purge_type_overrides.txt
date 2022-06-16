@@ -10,7 +10,7 @@ purge_neutering = {
 
 	potential = {
 		has_utopia = yes
-		is_robot = no
+		is_robotic = no
 		from = { is_gestalt = no }
 	}
 
