@@ -1,0 +1,56 @@
+organic_zealots = {
+	aggressiveness = 2.0
+	trade_willingness = 1.0 # but only with fellow organics
+	bravery = 1.0
+	combat_bravery = 1.5
+
+	military_spending = 1.2
+	colony_spending = 1.2
+
+	federation_acceptance = -100
+	nap_acceptance = 20
+	commercial_pact_acceptance = 0
+	research_agreement_acceptance = 0
+	defensive_pact_acceptance = -100
+	migration_pact_acceptance = -100
+
+	advanced_start_chance = 100
+
+	weapon_preferences = weapon_type_strike_craft
+	armor_ratio = 0.4
+	shields_ratio = 0.5
+	hull_ratio = 0.1
+
+	threat_modifier = 0
+	threat_others_modifier = 0
+	friction_modifier = 0
+	claims_modifier = 0
+
+	behaviour = {
+		conqueror = yes
+		subjugator = yes
+		liberator = yes
+		opportunist = yes
+		uplifter = yes
+		infiltrator = yes
+		dominator = no
+		slaver = no
+		purger = no # they _must_ purge robots/machines already, no need to purge organics
+		displacer = no
+		robot_exploiter = no
+		robot_liberator = no
+		propagator = no
+		multispecies = yes
+		crisis_fighter = yes
+		attack_neutrals = no
+	}
+
+	allow = {
+		is_country_type = default
+		has_valid_civic = civic_organic_zealots
+	}
+
+	weight_modifier = {
+		weight = 1000
+	}
+}
