@@ -1,3 +1,39 @@
+# Modified: use triggers for homicidals
+ap_lord_of_war = {
+	potential = {
+		host_has_dlc = "Overlord"
+		NOT = { has_ascension_perk = ap_lord_of_war }
+		is_gestalt = no
+		is_homicidal = no
+	}
+
+	on_enabled ={
+		custom_tooltip = ap_lord_of_war_tooltip
+	}
+
+	modifier = {
+		country_enclave_capacity_add = 1
+		diplo_weight_naval_mult = 0.25
+		# Bonus to dividends frequency handled in the dividends situation.
+	}
+
+	ai_weight = {
+		factor = 5
+		modifier = {
+			factor = 2
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_militarist
+		}
+		modifier = {
+			factor = 2
+			is_megacorp = yes
+		}
+	}
+}
+
 # Modified: use triggers, disallowed for civic_organic_zealots or empires whose overlords are civic_organic_zealots
 ap_the_flesh_is_weak = {
 	on_enabled = {
@@ -75,7 +111,7 @@ ap_the_flesh_is_weak = {
 	}
 }
 
-# Modified: use triggers, disallowed for empires whose overlords are civic_organic_zealots
+# Modified: use triggers, disallowed for civic_organic_zealots or empires whose overlords are civic_organic_zealots
 ap_synthetic_evolution = {
 	on_enabled = {
 		custom_tooltip = "synthetic_evolution_tooltip"
@@ -168,7 +204,7 @@ ap_synthetic_evolution = {
 	}
 }
 
-# Modified: use triggers
+# Modified: use triggers for homicidals
 ap_shared_destiny = {
 	on_enabled = {
 		custom_tooltip = "ap_shared_destiny_effect"
@@ -201,7 +237,7 @@ ap_shared_destiny = {
 	}
 }
 
-# Modified: use triggers
+# Modified: use triggers for homicidals
 ap_nihilistic_acquisition = {
 	potential = {
 		host_has_dlc = "Apocalypse"
@@ -268,8 +304,8 @@ ap_colossus = {
 			factor = 10
 			OR = {
 				has_valid_civic = civic_fanatic_purifiers
-				has_valid_civic = civic_machine_terminator
 				has_valid_civic = civic_organic_zealots
+				has_valid_civic = civic_machine_terminator
 			}
 		}
 		modifier = {
