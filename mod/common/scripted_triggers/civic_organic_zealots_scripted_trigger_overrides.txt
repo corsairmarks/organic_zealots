@@ -119,7 +119,7 @@ is_merc_enclave_founding_allowed = {
 						is_hostile = root.owner
 					}
 				}
-			}	
+			}
 		}
 	}
 	custom_tooltip = {
