@@ -35,7 +35,7 @@ force_disable_tech_ascension_special_projects = {
 	if = {
 		limit = {
 			has_ascension_perk = ap_the_flesh_is_weak
-			NOT = { has_country_flag = flesh_weakened }
+			NOT = { has_country_flag = cyborg_empire }
 			OR = {
 				has_special_project = FLESH_IS_WEAK_PROJECT
 				is_researching_special_project = FLESH_IS_WEAK_PROJECT
@@ -67,7 +67,7 @@ re_enable_tech_ascension_special_projects_if_force_disabled = {
 				has_ascension_perk = ap_the_flesh_is_weak
 				has_country_flag = flesh_is_weak_project_aborted_by_organic_zealots
 				NOR = {
-					has_country_flag = flesh_weakened
+					has_country_flag = cyborg_empire
 					has_special_project = FLESH_IS_WEAK_PROJECT
 					is_researching_special_project = FLESH_IS_WEAK_PROJECT
 				}

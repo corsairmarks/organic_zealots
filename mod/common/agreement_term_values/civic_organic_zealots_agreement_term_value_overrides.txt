@@ -1,7 +1,7 @@
-# Modified: simply duplicate logic blocks, add validation for civic_organic_zealots
+# Modified: simply de-duplicate logic blocks, add validation for civic_organic_zealots
 subject_can_do_diplomacy_but_not_vote = {
 	term = subject_diplomacy
-	loyalty_change = 0
+	loyalty_change = -5
 	activate_effect = {
 		set_rule_can_subject_vote = no
 		set_rule_can_subject_do_diplomacy = yes

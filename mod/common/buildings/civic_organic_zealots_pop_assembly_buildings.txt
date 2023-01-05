@@ -10,27 +10,16 @@ building_clone_birth_labs = {
 		owner = { is_regular_empire = yes }
 		OR = {
 			owner = { is_ai = no }
-			NOT = { exists = assembling_species }
-			assembling_species = { is_organic_species = yes }
-		}
-		OR = {
-			owner = { is_ai = no }
-			NAND = {
-				free_district_slots = 0
-				free_building_slots <= 1
-				free_housing <= 0
-				free_jobs <= 0
+			AND = {
+				exists = assembling_species
+				assembling_species = { is_organic_species = yes }
 			}
 		}
 	}
 
 	destroy_trigger = {
 		exists = owner
-		owner = { is_ai = yes }
-		free_district_slots = 0
-		free_building_slots = 0
-		free_housing <= 0
-		free_jobs <= 0
+		owner = { is_regular_empire = no }
 	}
 
 	convert_to = {
@@ -62,7 +51,7 @@ building_clone_birth_labs = {
 				has_building = building_robot_assembly_plant
 				AND = {
 					exists = assembling_species
-					assembling_species = { is_robotic_species = yes }
+					assembling_species = { is_robotic = yes }
 				}
 			}
 		}

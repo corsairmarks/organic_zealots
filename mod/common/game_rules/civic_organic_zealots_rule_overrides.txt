@@ -194,10 +194,7 @@ can_build_branch_office_on_planet = {
 			# allow branch offices in subsidiaries and vice versa (and fellow subjects)
 			root = {
 				is_subject = yes
-				OR = {
-					has_authority = auth_corporate
-					has_civic = civic_galactic_sovereign_megacorp
-				}
+				has_corporate_government = yes
 				overlord = {
 					OR = {
 						is_same_value = prevprev.owner
@@ -212,10 +209,7 @@ can_build_branch_office_on_planet = {
 						is_same_value = root
 						is_same_value = root.overlord
 					}
-					OR = {
-						has_authority = auth_corporate
-						has_civic = civic_galactic_sovereign_megacorp
-					}
+					has_corporate_government = yes
 				}
 			}
 			AND = {
@@ -243,12 +237,7 @@ can_build_branch_office_on_planet = {
 					# Or if your overlord isn't a megacorp.
 					root = {
 						is_subject = yes
-						overlord = {
-							NOR = {
-								has_authority = auth_corporate
-								has_civic = civic_galactic_sovereign_megacorp
-							}
-						}
+						overlord = { has_corporate_government = no }
 					}
 				}
 			}
@@ -258,12 +247,7 @@ can_build_branch_office_on_planet = {
 			AND = {
 				root = {
 					is_subject = yes
-					overlord = {
-						OR = {
-							has_authority = auth_corporate
-							has_civic = civic_galactic_sovereign_megacorp
-						}
-					}
+					overlord = { has_corporate_government = yes }
 				}
 				owner = {
 					OR = {

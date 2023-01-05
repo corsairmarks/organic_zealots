@@ -7,6 +7,7 @@ purge = {
 	ignores_sapience = yes
 
 	possible = {
+		exists = owner
 		OR = {
 			has_citizenship_type = { type = citizenship_purge_machine }
 			has_citizenship_type = { type = citizenship_purge }

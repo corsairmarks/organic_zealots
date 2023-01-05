@@ -119,10 +119,7 @@ wg_force_policy_outlaw_robots_and_ai = {
 	war_exhaustion = 0.75
 
 	potential = {
-		OR = {
-			has_policy_flag = unrestricted_wars
-			has_policy_flag = liberation_wars
-		}
+		NOT = { has_policy_flag = no_wars }
 		exists = from
 		has_total_war_cb = no
 		from = {
@@ -166,34 +163,32 @@ wg_force_policy_outlaw_robots_and_ai = {
 		if = {
 			limit = {
 				exists = last_created_country
-				last_created_country = {
-					has_country_flag = released_empire
-				}
+				last_created_country = { has_country_flag = released_empire }
 			}
 
 			last_created_country = {
 				add_modifier = {
 					modifier = recently_liberated
-					years = @liberation_war_modifier_duration_years
+					days = @liberation_war_modifier_duration_years
 				}
 				add_opinion_modifier = {
 					modifier = opinion_liberated_us
-					who = root
+					who = prev
 				}
-				set_timed_country_flag = {
-					flag = lost_robot_policy_war
-					years = @lost_robot_policy_war_flag_duration_years
+				set_origin_effect = yes
+				if = {
+					limit = {
+						prev = { is_megacorp = yes }
+						is_megacorp = yes
+					}
+					set_merchant_government_effect = yes
 				}
-				set_policies_robot_pops_and_ai_to_outlawed = yes
-				force_disable_tech_ascension_special_projects = yes
-				deactivate_ongoing_tech_assimilation = yes
+				force_policy_outlaw_robots_and_ai_effect = yes
 			}
 
-			root = {
-				add_opinion_modifier = {
-					modifier = opinion_we_liberated
-					who = last_created_country
-				}
+			add_opinion_modifier = {
+				modifier = opinion_we_liberated
+				who = last_created_country
 			}
 
 			every_country = {
@@ -228,29 +223,50 @@ wg_force_policy_outlaw_robots_and_ai = {
 		}
 	}
 	on_accept = {
-		custom_tooltip = wg_force_policy_outlaw_robots_and_ai_accept
-		if = {
-			limit = { from = { exists = ruler } }
-			custom_tooltip = wg_force_policy_outlaw_robots_and_ai_accept_2
-		}
-		hidden_effect = {
-			from = {
-				set_timed_country_flag = {
-					flag = lost_robot_policy_war
-					years = @lost_robot_policy_war_flag_duration_years
-				}
-				set_policies_robot_pops_and_ai_to_outlawed = yes
-				force_disable_tech_ascension_special_projects = yes
-				deactivate_ongoing_tech_assimilation = yes
+		# TODO: evaluate how this should work with cybernetic gestalts
+		from = {
+			if = {
+				limit = { is_gestalt = no }
+				custom_tooltip = wg_force_policy_outlaw_robots_and_ai_accept
 				if = {
-					limit = { exists = ruler }
-					ruler = {
-						kill_leader = {
-							type = ruler
-							show_notification = yes
-							fire = yes
+					limit = { from = { exists = ruler } }
+					custom_tooltip = wg_force_policy_outlaw_robots_and_ai_accept_2
+				}
+			}
+
+			every_subject = {
+				limit = {
+					is_gestalt = no
+					any_war = {
+						is_war_participant = {
+							who = prev
+							side = prevprev
 						}
 					}
+				}
+				custom_tooltip = wg_force_policy_outlaw_robots_and_ai_accept_subject
+			}
+		}
+
+		hidden_effect = {
+			from = {
+				if = {
+					limit = { is_gestalt = no }
+					force_policy_outlaw_robots_and_ai_effect = yes
+					force_policy_outlaw_robots_and_ai_ruler_abdicates_effect = yes
+				}
+				every_subject = {
+					limit = {
+						is_gestalt = no
+						any_war = {
+							is_war_participant = {
+								who = prev
+								side = prevprev
+							}
+						}
+					}
+					force_policy_outlaw_robots_and_ai_effect = yes
+					force_policy_outlaw_robots_and_ai_ruler_abdicates_effect = yes
 				}
 				add_threat = {
 					who = root

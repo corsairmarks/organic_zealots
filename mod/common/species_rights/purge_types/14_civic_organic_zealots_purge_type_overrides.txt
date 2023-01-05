@@ -1,6 +1,6 @@
-# MOdified: no one can neuter robots - how would that even work?
+# Modified: no one can neuter robots - how would that even work?
 purge_neutering = {
-	token = purge_neutering
+	# token = purge_neutering
 	pop_escape_chance = 0.0
 	pop_decline_rate = 10 # 1 pop per 10 months, overrides BASE_POP_DECLINE, will only work on purge types
 
@@ -54,7 +54,7 @@ purge_neutering = {
 
 # Modified: Organic Zealots must purify robotic species
 purge_displacement = {
-	token = purge_displacement
+	# token = purge_displacement
 	pop_escape_chance = 1.0
 	pop_decline_rate = 25 # 1 pop per 4 months, overrides BASE_POP_DECLINE, will only work on purge types
 
@@ -111,7 +111,7 @@ purge_displacement = {
 		custom_tooltip = {
 			fail_text = CANNOT_DISPLACE_NON_SENTIENT_ROBOTS
 			OR = {
-				is_robotic_species = no
+				is_robotic = no
 				species_has_happiness_with_owner = from
 			}
 		}
@@ -134,7 +134,7 @@ purge_displacement = {
 
 # Modified: always allowed for Organic Zealots versus robotic species
 purge_processing = {
-	token = purge_processing
+	# token = purge_processing
 	pop_escape_chance = 0.20
 	pop_decline_rate = 50 # 1 pop per 2 months, overrides BASE_POP_DECLINE, will only work on purge types
 

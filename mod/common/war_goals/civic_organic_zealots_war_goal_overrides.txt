@@ -85,7 +85,12 @@ wg_allegiance = {
 		always = yes
 	}
 	possible = {
-		always = yes
+		NOT = {
+			from = {
+				is_at_war_with = root
+				any_subject = { has_secret_fealty_with = root }
+			}
+		}
 	}
 
 	on_status_quo = {

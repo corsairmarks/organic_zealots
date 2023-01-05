@@ -51,6 +51,7 @@
  war_goal_wg_force_policy_outlaw_robots_and_ai_desc: "War is waged to force the enemy to adopt the Outlawed policy positions for both the $policy_robot_pop_policy$ and $policy_artificial_intelligence_policy$ policies.\n\nIn the event of a Status Quo peace, systems we occupy will be released as an independent empire that outlaws $policy_robot_pop_policy$ and $policy_artificial_intelligence_policy$, if they include at least one planet."
  wg_force_policy_outlaw_robots_and_ai_accept: "§Y[From.GetName]§! is forced to adopt the §Y$robots_outlawed_name$§! and §Y$ai_outlawed_name$§! policies for 20 years."
  wg_force_policy_outlaw_robots_and_ai_accept_2: "$wg_force_ideology_accept_2$"
+ wg_force_policy_outlaw_robots_and_ai_accept_subject: "\n$wg_force_policy_outlaw_robots_and_ai_accept$\n$wg_force_policy_outlaw_robots_and_ai_accept_2$\n"
 
  job_cloning_technician: "Cloning Technician"
  job_cloning_technician_plural: "Cloning Technicians"
@@ -68,6 +69,6 @@
 
 # TODO: more mentat-related stuff - traits similar in power to synthetic traits
 
- # localisation to make the game happy with flag-gated code - matches the content from  Deassimilate Machines so that it won't matter which mod loads first
- AI_IS_OUTLAWED_POP: "$TRIGGER_FAIL$Artificial Intelligence is §Routlawed§!; §Y$trait_machine_unit$§! Pops are too sophisticated to convert into mindless robots"
- disconnected_machine_pops_collapse_without_ai_citizenship: "$TRIGGER_FAIL$Once their uplink to the central §Y$auth_machine_intelligence$§! is severed, $trait_machine_unit$ Pops are eventually rendered inoperable - unless they could be retrofitted with individual §Y$tech_sapient_ai$§!"
+ # mirrors content from  Deassimilate Machines
+ CYBORG_SPECIES_CANT_BE_CYBORG_FAIL: "$TRIGGER_FAIL$This species already has cybernetic implants."
+ HIVE_SPECIES_CANT_BE_HIVE_FAIL: "$TRIGGER_FAIL$Only organic non-§Y$trait_hive_mind$§! species can be connected to our Hive Mind."

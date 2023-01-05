@@ -20,19 +20,6 @@ give_next_ai_tech_option_effect = {
 			progress = 0.25
 		}
 	}
-	# no AI option
-	else_if = {
-		limit = {
-			NOT = { has_technology = tech_mentat_computation }
-			can_research_technology = tech_mentat_computation
-			is_gestalt = no
-		}
-		add_research_option = tech_mentat_computation
-		add_tech_progress = {
-			tech = tech_mentat_computation
-			progress = 0.25
-		}
-	}
 	else_if = {
 		limit = {
 			NOT = { has_technology = tech_positronic_implants }
@@ -52,6 +39,19 @@ give_next_ai_tech_option_effect = {
 		add_research_option = tech_combat_computers_3
 		add_tech_progress = {
 			tech = tech_combat_computers_3
+			progress = 0.25
+		}
+	}
+	# no AI option
+	else_if = {
+		limit = {
+			NOT = { has_technology = tech_mentat_computation }
+			can_research_technology = tech_mentat_computation
+			is_gestalt = no
+		}
+		add_research_option = tech_mentat_computation
+		add_tech_progress = {
+			tech = tech_mentat_computation
 			progress = 0.25
 		}
 	}

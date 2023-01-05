@@ -1191,7 +1191,7 @@ robot_pop_policy = {
 		on_enabled = {
 			hidden_effect = {
 				every_owned_species = {
-					limit = { is_robotic_species = yes }
+					limit = { is_robotic = yes }
 					set_citizenship_type = {
 						type = citizenship_purge
 						country = root
@@ -1421,7 +1421,14 @@ purge = {
 				factor = 0
 				is_gestalt = no
 				has_valid_ai_personality = yes
-				NOT = { has_ai_personality_behaviour = purger }
+				NOR = {
+					has_ai_personality_behaviour = purger
+					AND = {
+						has_origin = origin_necrophage
+						has_trait = trait_necrophage
+						is_xenophobe = yes
+					}
+				}
 			}
 			modifier = {
 				factor = 0.1
@@ -1438,6 +1445,12 @@ purge = {
 			modifier = {
 				factor = 10
 				has_ascension_perk = ap_become_the_crisis
+			}
+			modifier = {
+				factor = 1000
+				has_origin = origin_necrophage
+				has_trait = trait_necrophage
+				is_xenophobe = yes
 			}
 		}
 	}
