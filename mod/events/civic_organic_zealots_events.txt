@@ -56,14 +56,19 @@ country_event = {
 	is_triggered_only = yes
 	trigger = {
 		OR = {
-			has_ascension_perk = ap_the_flesh_is_weak
-			has_ascension_perk = ap_synthetic_evolution
+			AND = {
+				has_tradition = tr_cybernetics_adopt
+				NOT = { has_country_flag = cyborg_empire }
+			}
+			AND = {
+				has_active_tradition = tr_synthetics_synthetic_age
+				is_synthetic_empire = no
+			}
 		}
 		exists = from
 		from = { has_valid_civic = civic_organic_zealots }
 	}
 	immediate = {
-		deactivate_ongoing_tech_assimilation = yes
 		force_disable_tech_ascension_special_projects = yes
 	}
 }
@@ -76,7 +81,27 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		is_valid_target_to_outlaw_robot_pops_and_ai = yes
+		OR = {
+			has_active_tradition = tr_cybernetics_transubstantiation_synthesis
+			is_synthetic_empire = yes
+		}
+		exists = from
+		from = { has_valid_civic = civic_organic_zealots }
+	}
+	immediate = {
+		deactivate_ongoing_tech_assimilation = yes
+	}
+}
+
+# triggered by on_becoming_subject
+# this = country, subject
+# from = country, overlord
+country_event = {
+	id = civic_organic_zealots.6
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_valid_target_to_outlaw_cybernetics_or_robot_pops_or_ai = yes
 		exists = from
 		from = { has_valid_civic = civic_organic_zealots }
 	}
@@ -85,11 +110,32 @@ country_event = {
 	}
 }
 
+# triggered by force_policy_outlaw_robots_and_ai_effect after the force-policy duration expires
+# this = country, who was forcefully disabled
+country_event = {
+	id = civic_organic_zealots.7
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_country_flag = flesh_is_weak_project_aborted_by_organic_zealots
+			has_country_flag = synthetic_evolution_project_aborted_by_organic_zealots
+		}
+		NAND = {
+			exists = overlord
+			overlord = { has_valid_civic = civic_organic_zealots }
+		}
+	}
+	immediate = {
+		re_enable_tech_ascension_special_projects_if_force_disabled = yes
+	}
+}
+
 # triggered by empire_init_capital_planet
 # this = planet, capital
 # from = species, founder
 planet_event = {
-	id = civic_organic_zealots.6
+	id = civic_organic_zealots.8
 	hide_window = yes
 	is_triggered_only = yes
 	pre_triggers = {

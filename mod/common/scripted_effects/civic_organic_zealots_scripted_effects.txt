@@ -1,11 +1,13 @@
 # this = country
 set_policies_robot_pops_and_ai_to_outlawed = {
+	optimize_memory
 	if = {
-		limit = { NOT = { has_policy_flag = ai_outlawed } }
-		set_policy = {
-			policy = artificial_intelligence_policy
-			option = ai_outlawed
-			cooldown = yes
+		limit = {
+			NOT = { has_policy_flag = ai_outlawed }
+			can_set_policy = {
+				policy = artificial_intelligence_policy
+				option = ai_outlawed
+			}
 		}
 		# if = {
 		# 	limit = { has_policy_flag = ai_servitude }
@@ -15,26 +17,38 @@ set_policies_robot_pops_and_ai_to_outlawed = {
 		# 	limit = { has_policy_flag = ai_full_rights }
 		# 	set_country_flag =  ai_full_rights_removed_by_organic_zealots
 		# }
+		set_policy = {
+			policy = artificial_intelligence_policy
+			option = ai_outlawed
+			cooldown = yes
+		}
 	}
 	if = {
-		limit = { NOT = { has_policy_flag = robots_outlawed } }
-		set_policy = {
-			policy = robot_pop_policy
-			option = robot_pops_outlawed
-			cooldown = yes
+		limit = {
+			NOT = { has_policy_flag = robots_outlawed }
+			can_set_policy = {
+				policy = robot_pop_policy
+				option = robot_pops_outlawed
+			}
 		}
 		# if = {
 		# 	limit = { has_policy_flag = robots_allowed }
 		# 	set_country_flag = robot_allowed_removed_by_organic_zealots
 		# }
+		set_policy = {
+			policy = robot_pop_policy
+			option = robot_pops_outlawed
+			cooldown = yes
+		}
 	}
 }
 
 # this = country
 force_disable_tech_ascension_special_projects = {
+	optimize_memory
 	if = {
 		limit = {
-			has_ascension_perk = ap_the_flesh_is_weak
+			has_tradition = tr_cybernetics_adopt
 			NOT = { has_country_flag = cyborg_empire }
 			OR = {
 				has_special_project = FLESH_IS_WEAK_PROJECT
@@ -44,10 +58,10 @@ force_disable_tech_ascension_special_projects = {
 		abort_special_project = { type = FLESH_IS_WEAK_PROJECT }
 		set_country_flag = flesh_is_weak_project_aborted_by_organic_zealots
 	}
-	else_if = {
+	if = {
 		limit = {
-			has_ascension_perk = ap_synthetic_evolution
-			NOT = { has_country_flag = synthetic_empire }
+			has_active_tradition = tr_synthetics_synthetic_age
+			is_synthetic_empire = no
 			OR = {
 				has_special_project = SYNTHETIC_EVOLUTION_PROJECT
 				is_researching_special_project = SYNTHETIC_EVOLUTION_PROJECT
@@ -60,11 +74,12 @@ force_disable_tech_ascension_special_projects = {
 
 # this = country
 re_enable_tech_ascension_special_projects_if_force_disabled = {
+	optimize_memory
 	if = {
 		limit = { overlord = { has_valid_civic = civic_organic_zealots } }
 		if ={
 			limit = {
-				has_ascension_perk = ap_the_flesh_is_weak
+				has_tradition = tr_cybernetics_adopt
 				has_country_flag = flesh_is_weak_project_aborted_by_organic_zealots
 				NOR = {
 					has_country_flag = cyborg_empire
@@ -77,10 +92,11 @@ re_enable_tech_ascension_special_projects_if_force_disabled = {
 				owner = this
 				location = capital_scope
 			}
+			remove_country_flag = flesh_is_weak_project_aborted_by_organic_zealots
 		}
-		else_if ={
+		if ={
 			limit = {
-				has_ascension_perk = ap_synthetic_age
+				has_active_tradition = tr_synthetics_synthetic_age
 				has_country_flag = synthetic_evolution_project_aborted_by_organic_zealots
 				is_synthetic_empire = no
 				NOR = {
@@ -93,21 +109,41 @@ re_enable_tech_ascension_special_projects_if_force_disabled = {
 				owner = this
 				location = capital_scope
 			}
+			remove_country_flag = synthetic_evolution_project_aborted_by_organic_zealots
 		}
 	}
 }
 
 # this = country
 deactivate_ongoing_tech_assimilation = {
+	optimize_memory
 	every_owned_pop_species = {
 		limit = {
 			has_citizenship_type = {
 				type = citizenship_assimilation
 				country = prev
 			}
-			has_living_standard = {
-				type = living_standard_tech_assimilation
-				country = prev
+			OR = {
+				has_living_standard = {
+					type = living_standard_cyborg_ego_assimilation
+					country = prev
+				}
+				has_living_standard = {
+					type = living_standard_cyborg_ego_assimilation_psionic
+					country = prev
+				}
+				has_living_standard = {
+					type = living_standard_cyborg_assimilation
+					country = prev
+				}
+				has_living_standard = {
+					type = living_standard_cyborg_assimilation_psionic
+					country = prev
+				}
+				has_living_standard = {
+					type = living_standard_tech_assimilation
+					country = prev
+				}
 			}
 		}
 		every_species_pop = {
@@ -164,15 +200,23 @@ deactivate_ongoing_tech_assimilation = {
 	}
 }
 
-# this country
+# this = country (loser)
+# root = country (winner)
 force_policy_outlaw_robots_and_ai_effect = {
+	optimize_memory
 	add_modifier = {
 		modifier = recently_liberated
-		years = @liberation_war_modifier_duration_years
+		years = @lost_robot_policy_war_flag_duration_years
 	}
 	add_opinion_modifier = {
 		modifier = opinion_liberated_us
-		who = prev
+		who = root
+	}
+	root = {
+		add_opinion_modifier = {
+			modifier = opinion_we_liberated
+			who = prev
+		}
 	}
 	set_timed_country_flag = {
 		flag = lost_robot_policy_war
@@ -180,18 +224,56 @@ force_policy_outlaw_robots_and_ai_effect = {
 	}
 	set_policies_robot_pops_and_ai_to_outlawed = yes
 	force_disable_tech_ascension_special_projects = yes
+	country_event = {
+		id = civic_organic_zealots.7
+		days = @lost_robot_policy_war_flag_duration_days
+	}
 	deactivate_ongoing_tech_assimilation = yes
 }
 
-# this = country
+# this = country (loser)
 force_policy_outlaw_robots_and_ai_ruler_abdicates_effect = {
+	optimize_memory
 	if = {
 		limit = { exists = ruler }
 		ruler = {
 			kill_leader = {
-				type = ruler
 				show_notification = yes
 				fire = yes
+			}
+		}
+	}
+}
+
+# this = country (loser)
+# root = counter (winner)
+force_policy_liberation_effect = {
+	optimize_memory
+	every_country = {
+		limit = {
+			OR = {
+				is_in_federation_with = root
+				AND = {
+					is_subject = yes
+					exists = overlord
+					overlord = { is_same_value = root }
+					any_war = {
+						is_war_participant = {
+							who = prev
+							side = root
+						}
+					}
+				}
+			}
+		}
+		add_opinion_modifier = {
+			modifier = opinion_we_liberated
+			who = prev
+		}
+		prev = {
+			add_opinion_modifier = {
+				modifier = opinion_liberated_us
+				who = prevprev
 			}
 		}
 	}

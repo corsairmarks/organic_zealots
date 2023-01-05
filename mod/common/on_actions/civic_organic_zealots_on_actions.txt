@@ -11,7 +11,7 @@ empire_init_add_technologies = {
 # from = species, founder
 empire_init_capital_planet = {
 	events = {
-		civic_organic_zealots.6
+		civic_organic_zealots.8
 	}
 }
 
@@ -31,5 +31,6 @@ on_becoming_subject = {
 	events = {
 		civic_organic_zealots.4
 		civic_organic_zealots.5
+		civic_organic_zealots.6
 	}
 }

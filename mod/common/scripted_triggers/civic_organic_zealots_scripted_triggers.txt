@@ -1,18 +1,22 @@
 # this = country
-is_valid_target_to_outlaw_robot_pops_and_ai = {
+is_valid_target_to_outlaw_cybernetics_or_robot_pops_or_ai = {
 	optimize_memory
 	is_country_type = default
-	is_gestalt = no
-	can_set_ai_policy = yes
-}
-
-# this = country
-allows_robot_pops_or_ai = {
-	optimize_memory
 	OR = {
-		has_policy_flag = robots_allowed
-		has_policy_flag = ai_servitude
-		has_policy_flag = ai_full_rights
+		has_ascension_perk = ap_the_flesh_is_weak
+		has_ascension_perk = ap_organo_machine_interfacing
+		AND = {
+			has_ascension_perk = ap_synthetic_evolution
+			is_synthetic_empire = no
+		}
+		AND = {
+			can_set_ai_policy = yes
+			OR = {
+				has_policy_flag = robots_allowed
+				has_policy_flag = ai_servitude
+				has_policy_flag = ai_full_rights
+			}
+		}
 	}
 }
 

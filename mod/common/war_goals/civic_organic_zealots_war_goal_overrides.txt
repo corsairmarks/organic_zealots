@@ -127,7 +127,7 @@ wg_allegiance = {
 					}
 					force_disable_tech_ascension_special_projects = yes
 					if = {
-						limit = { is_valid_target_to_outlaw_robot_pops_and_ai = yes }
+						limit = { is_valid_target_to_outlaw_cybernetics_or_robot_pops_or_ai = yes }
 						set_policies_robot_pops_and_ai_to_outlawed = yes
 					}
 				}

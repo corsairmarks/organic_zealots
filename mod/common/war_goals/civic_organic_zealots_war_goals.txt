@@ -122,10 +122,7 @@ wg_force_policy_outlaw_robots_and_ai = {
 		NOT = { has_policy_flag = no_wars }
 		exists = from
 		has_total_war_cb = no
-		from = {
-			allows_robot_pops_or_ai = yes
-			is_valid_target_to_outlaw_robot_pops_and_ai = yes
-		}
+		from = { is_valid_target_to_outlaw_cybernetics_or_robot_pops_or_ai = yes }
 		NOT = { is_in_federation_with = from }
 		NAND = {
 			is_galactic_emperor = yes
@@ -167,14 +164,6 @@ wg_force_policy_outlaw_robots_and_ai = {
 			}
 
 			last_created_country = {
-				add_modifier = {
-					modifier = recently_liberated
-					days = @liberation_war_modifier_duration_years
-				}
-				add_opinion_modifier = {
-					modifier = opinion_liberated_us
-					who = prev
-				}
 				set_origin_effect = yes
 				if = {
 					limit = {
@@ -184,36 +173,9 @@ wg_force_policy_outlaw_robots_and_ai = {
 					set_merchant_government_effect = yes
 				}
 				force_policy_outlaw_robots_and_ai_effect = yes
+				force_policy_liberation_effect = yes
 			}
 
-			add_opinion_modifier = {
-				modifier = opinion_we_liberated
-				who = last_created_country
-			}
-
-			every_country = {
-				limit = {
-					OR = {
-						is_in_federation_with = root
-						AND = {
-							is_subject = yes
-							exists = overlord
-							overlord = { is_same_value = root }
-						}
-					}
-				}
-
-				add_opinion_modifier = {
-					modifier = opinion_we_liberated
-					who = last_created_country
-				}
-				last_created_country = {
-					add_opinion_modifier = {
-						modifier = opinion_liberated_us
-						who = prev
-					}
-				}
-			}
 			from = {
 				add_threat = {
 					who = root
@@ -223,20 +185,16 @@ wg_force_policy_outlaw_robots_and_ai = {
 		}
 	}
 	on_accept = {
-		# TODO: evaluate how this should work with cybernetic gestalts
 		from = {
+			custom_tooltip = wg_force_policy_outlaw_robots_and_ai_accept
 			if = {
-				limit = { is_gestalt = no }
-				custom_tooltip = wg_force_policy_outlaw_robots_and_ai_accept
-				if = {
-					limit = { from = { exists = ruler } }
-					custom_tooltip = wg_force_policy_outlaw_robots_and_ai_accept_2
-				}
+				limit = { from = { exists = ruler } }
+				custom_tooltip = wg_force_policy_outlaw_robots_and_ai_accept_2
 			}
 
 			every_subject = {
 				limit = {
-					is_gestalt = no
+					is_synthetic_empire = no
 					any_war = {
 						is_war_participant = {
 							who = prev
@@ -250,14 +208,12 @@ wg_force_policy_outlaw_robots_and_ai = {
 
 		hidden_effect = {
 			from = {
-				if = {
-					limit = { is_gestalt = no }
-					force_policy_outlaw_robots_and_ai_effect = yes
-					force_policy_outlaw_robots_and_ai_ruler_abdicates_effect = yes
-				}
+				force_policy_outlaw_robots_and_ai_effect = yes
+				force_policy_outlaw_robots_and_ai_ruler_abdicates_effect = yes
+				force_policy_liberation_effect = yes
 				every_subject = {
 					limit = {
-						is_gestalt = no
+						is_synthetic_empire = no
 						any_war = {
 							is_war_participant = {
 								who = prev
@@ -267,6 +223,7 @@ wg_force_policy_outlaw_robots_and_ai = {
 					}
 					force_policy_outlaw_robots_and_ai_effect = yes
 					force_policy_outlaw_robots_and_ai_ruler_abdicates_effect = yes
+					force_policy_liberation_effect = yes
 				}
 				add_threat = {
 					who = root
