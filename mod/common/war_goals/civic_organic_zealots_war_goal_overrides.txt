@@ -127,11 +127,9 @@ wg_allegiance = {
 						overlord = { NOT = { has_valid_civic = civic_organic_zealots } }
 						root = { has_valid_civic = civic_organic_zealots }
 					}
+					set_policies_robot_pops_and_ai_to_outlawed = yes
 					force_disable_tech_ascension_special_projects = yes
-					if = {
-						limit = { is_valid_target_to_outlaw_cybernetics_or_robot_pops_or_ai = yes }
-						set_policies_robot_pops_and_ai_to_outlawed = yes
-					}
+					deactivate_ongoing_tech_assimilation = yes
 				}
 				set_subject_of = { who = root }
 				add_modifier = {
