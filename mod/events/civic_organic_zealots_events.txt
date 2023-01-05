@@ -151,12 +151,53 @@ planet_event = {
 	}
 }
 
-# fired in response to utopia.2555 if any branch offices were closed
+# automatically set the policy for capacity boosters when discovered, if possible
+# CM: this isn't directly to Civic: Organic Zealots, but I'm tired of forgetting to switch the policy when I research the better leader technology
+# triggered by on_tech_increased
+# root = country
+country_event = {
+	id = civic_organic_zealots.9
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		last_increased_tech = tech_capacity_boosters
+		has_policy_flag = leader_enhancement_selected_lineages
+		can_set_policy = {
+			policy = leader_enhancement
+			option = leader_enhancement_capacity_boosters
+		}
+	}
+	immediate = {
+		set_policy = {
+			policy = leader_enhancement
+			option = leader_enhancement_capacity_boosters
+			cooldown = yes
+		}
+	}
+}
+
+# add the mentat 
+# triggered by on_tech_increased
+# root = country
+country_event = {
+	id = civic_organic_zealots.10
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		last_increased_tech = tech_mentat_computation
+	}
+	immediate = {
+		every_owned_leader = { add_leader_trait_mentat = yes }
+		every_pool_leader = { add_leader_trait_mentat = yes }
+	}
+}
+
+# triggered in response to utopia.2555 if any branch offices were closed
 # root = country (notified)
 # from = country (synthetic)
 country_event = {
 	id = civic_organic_zealots.2555
-	title = civic_organic_zealots.2550.name
+	title = civic_organic_zealots.2555.name
 	desc = civic_organic_zealots.2555.desc
 	picture = GFX_evt_deficit
 	show_sound = event_bad_omen
@@ -165,3 +206,40 @@ country_event = {
 		name = civic_organic_zealots.2555.a
 	}
 }
+
+# new leaders get the mentat leader trait
+# triggered by on_leader_spawned
+# root = country
+# from = leader (spawned)
+country_event = {
+	id = civic_organic_zealots.11
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_technology = tech_mentat_computation
+		exists = from
+	}
+	immediate = {
+		from = { add_leader_trait_mentat = yes }
+	}
+}
+
+# demoted rulers that have the mentat ruler trait gain the corresponding class trait
+# triggered by on_ruler_back_to_pre_ruler_class
+# root = country
+# from = leader (demoted, with new class)
+country_event = {
+	id = civic_organic_zealots.13
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_technology = tech_mentat_computation
+		exists = from
+		from = { has_ruler_trait = leader_trait_ruler_mentat }
+	}
+	immediate = {
+		from = { add_leader_trait_mentat = yes }
+	}
+}
+
+# TODO: event to increase chance of death in empires w/o the right tech, event explaining the "malfunction" (which should scale with age really)

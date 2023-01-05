@@ -15,6 +15,33 @@ empire_init_capital_planet = {
 	}
 }
 
+# fired when a new leader is generated for an empire, to be available for recruitment
+# this = country
+# from = leader
+on_leader_spawned = {
+	events = {
+		civic_organic_zealots.11
+	}
+}
+
+# fired when the ruler is ousted and goes back to their pre-ruler class
+# this = country
+# from = leader, demoted and already has the new class
+on_ruler_back_to_pre_ruler_class = {
+	events = {
+		civic_organic_zealots.13
+	}
+}
+
+# fired when a country has increased the level of a tech, use last_increased_tech trigger to check tech and level
+# this = country
+on_tech_increased = {
+	events = {
+		civic_organic_zealots.9
+		civic_organic_zealots.10
+	}
+}
+
 # fired when a pop has finished purging
 # this = planet
 # from = country

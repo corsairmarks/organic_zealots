@@ -65,13 +65,19 @@
  tech_flash_learning: "Flash-Learning Inducers"
  tech_flash_learning_desc: "The capability to acquire both skills and knowledge through computer-guided fugue states will revolutionize academics."
  tech_mentat_computation: "Mentat Computation"
- tech_mentat_computation_desc: "Building upon our extensive lineage and personal ability tracking, our selective breeding has produced individuals with extraordinary mental facilities. Eidetic memory, multiple thought streams, instinctive mathematical acuity, and cognitive processing speed that exceeds any known computation devices. Although they are few, their effects are already advancing science across the empire."
+ tech_mentat_computation_desc: "Building upon our extensive lineage and personal ability tracking, our selective breeding has produced individuals with extraordinary mental faculties. Eidetic memory, multiple thought streams, instinctive mathematical acuity, and cognitive processing speed that exceeds any known computation devices. Although they are few, their effects are already advancing science across the empire."
 
- # TODO: more mentat-related stuff - traits similar in power to synthetic traits
+ leader_trait_scientist_mentat: "Mentat mental acuity is the result of highly selective breeding coupled with training from childhood."
+ leader_trait_scientist_mentat: "Mentat-Analyst"
+ leader_trait_scientist_mentat_desc: "When assigned as a science officers, this leader's exceptional analysis abilities allow them to accomplish complex tasks in much less time than others."
+ leader_trait_governor_mentat: "Mentat-Administrator"
+ leader_trait_governor_mentat_desc: "$leader_trait_scientist_mentat$ When assigned as sector governors, their prodigious organizational and administrative skills boost economic output, societal cohesion, and logistics efficiency."
+ leader_trait_ruler_mentat: "Mentat-Sovereign"
+ leader_trait_ruler_mentat_desc: "$leader_trait_scientist_mentat$ When ruling an empire, the unparalleled access to data for computations enables a mentat to find even the most subtle inefficiencies. Their authority then enables restructuring society, the government, and the military to function at peak coherence."
 
- civic_organic_zealots.2550.name: "Assets Seized!"
- civic_organic_zealots.2550.desc: "The [From.GetAdjective] response to rumors of our ascension as the [Root.GetSpeciesNamePlural] were swift, brutal, and (most notably) financially damaging. Across the [From.GetName], our corporate assets and holdings were seized and the on-site staff indiscriminately slaughtered.\n\nDatalinks from ongoing bilateral treaties abruptly ended. Routine diplomatic communications ceased. There has been no formal announcement from [From.GetAdjective] diplomats, but their complete silence speaks volumes. All that remains are preparations to defend against the inevitable jihad."
- civic_organic_zealots.2550.a: "It is only a matter of time."
+ civic_organic_zealots.2555.name: "Assets Seized!"
+ civic_organic_zealots.2555.desc: "The [From.GetAdjective] response to rumors of our ascension as the [Root.GetSpeciesNamePlural] were swift, brutal, and (most notably) financially damaging. Across the [From.GetName], our corporate assets and holdings were seized and the on-site staff indiscriminately slaughtered.\n\nDatalinks from ongoing bilateral treaties abruptly ended. Routine diplomatic communications ceased. There has been no formal announcement from [From.GetAdjective] diplomats, but their complete silence speaks volumes. All that remains are preparations to defend against the inevitable jihad."
+ civic_organic_zealots.2555.a: "It is only a matter of time."
 
  # mirrors content from  Deassimilate Machines
  CYBORG_SPECIES_CANT_BE_CYBORG_FAIL: "$TRIGGER_FAIL$This species already has cybernetic implants."

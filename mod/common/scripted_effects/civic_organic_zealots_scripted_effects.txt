@@ -278,3 +278,50 @@ force_policy_liberation_effect = {
 		}
 	}
 }
+
+# this = leader
+add_leader_trait_mentat = {
+	optimize_memory
+	if = {
+		limit = {
+			NOR = {
+				has_trait = leader_trait_admiral_cyborg
+				has_trait = leader_trait_general_cyborg
+				has_trait = leader_trait_governor_cyborg
+				has_trait = leader_trait_scientist_cyborg
+				has_trait = leader_trait_ruler_cyborg
+				has_ruler_trait = leader_trait_ruler_cyborg
+			}
+			species = {
+				is_robotic = no
+				NOT = { has_trait = trait_cybernetic }
+			}
+			owner = { has_technology = tech_mentat_computation }
+		}
+		switch = {
+			trigger = leader_class
+			governor = {
+				if = {
+					limit = { NOT = { has_trait = leader_trait_governor_mentat } }
+					add_trait = leader_trait_governor_mentat
+				}
+			}
+			scientist = {
+				if = {
+					limit = { NOT = { has_trait = leader_trait_scientist_mentat } }
+					add_trait = leader_trait_scientist_mentat
+				}
+			}
+			ruler = {
+				if = {
+					limit = { NOT = { has_trait = leader_trait_ruler_mentat } }
+					add_trait = leader_trait_ruler_mentat
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { has_ruler_trait = leader_trait_ruler_mentat } }
+			add_ruler_trait = leader_trait_ruler_mentat
+		}
+	}
+}

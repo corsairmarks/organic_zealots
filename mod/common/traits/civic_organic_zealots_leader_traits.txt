@@ -1,0 +1,78 @@
+leader_trait_scientist_mentat = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/trait_erudite.dds"
+	modifier = {
+		all_technology_research_speed = 0.1
+		ship_anomaly_research_speed_mult = 0.2
+		ship_archaeological_site_excavation_speed_mult = 0.2
+		ships_upkeep_mult = -0.5
+	}
+	leader_potential_add = {
+		exists = species
+		species = { NOT = { has_trait = trait_cybernetic } }
+	}
+	leader_trait = { scientist }
+	leader_class = { scientist }
+	opposites = { leader_trait_scientist_cyborg }
+	initial = no
+	randomized = no
+	prerequisites = { tech_mentat_computation }
+	ai_categories = {
+		survey
+		physics
+		society
+		engineering
+	}
+	ai_weight = {
+		weight = 100
+	}
+}
+
+leader_trait_governor_mentat = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/trait_erudite.dds"
+	modifier = {
+		planet_jobs_physics_research_produces_mult = 0.05
+		planet_jobs_society_research_produces_mult = 0.05
+		planet_jobs_engineering_research_produces_mult = 0.05
+		planet_jobs_unity_produces_mult = 0.1
+		trade_value_mult = 0.1
+		planet_structures_upkeep_mult = -0.1
+	}
+	leader_potential_add = {
+		exists = species
+		species = { NOT = { has_trait = trait_cybernetic } }
+	}
+	leader_trait = { governor }
+	leader_class = { governor }
+	opposites = { leader_trait_governor_cyborg }
+	initial = no
+	randomized = no
+	prerequisites = { tech_mentat_computation }
+}
+
+
+leader_trait_ruler_mentat = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/trait_erudite.dds"
+	modifier = {
+		country_physics_research_produces_mult = 0.05
+		country_society_research_produces_mult = 0.05
+		country_engineering_research_produces_mult = 0.05
+		country_unity_produces_mult = 0.1
+		edicts_upkeep_mult = -0.1
+		trade_value_mult = 0.05
+		ships_upkeep_mult = -0.05
+		armies_upkeep_mult = -0.1
+	}
+	leader_potential_add = {
+		exists = species
+		species = { NOT = { has_trait = trait_cybernetic } }
+	}
+	leader_trait = { ruler }
+	leader_class = { ruler }
+	opposites = { leader_trait_ruler_cyborg }
+	initial = no
+	randomized = no
+	prerequisites = { tech_mentat_computation }
+}
