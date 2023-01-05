@@ -73,7 +73,7 @@ citizenship_assimilation = {
 			# cybernetic assimilation (assimilator)
 			if = {
 				limit = { is_robotic = no }
-				has_valid_civic = civic_machine_assimilator
+				from = { has_valid_civic = civic_machine_assimilator }
 				custom_tooltip = {
 					fail_text = CYBORG_SPECIES_CANT_BE_CYBORG_FAIL
 					OR = {

@@ -42,7 +42,7 @@ living_standard_tech_assimilation = {
 		}
 		custom_tooltip = {
 			fail_text = requires_not_civic_organic_zealots
-			NOT = { has_valid_civic = civic_organic_zealots }
+			from = { NOT = { has_valid_civic = civic_organic_zealots } }
 		}
 		custom_tooltip = {
 			fail_text = is_overlord_organic_zealots_fail
@@ -58,6 +58,3 @@ living_standard_tech_assimilation = {
 		factor = 100
 	}
 }
-
-# TODO: also do the cybernetic ones
-# assimilate all the pops will need to account for these too
