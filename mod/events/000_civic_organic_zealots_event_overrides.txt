@@ -1,4 +1,5 @@
 namespace = anomaly
+namespace = utopia
 
 # Modified: add "no AI" tech option tech_flash_learning
 ship_event = {
@@ -82,6 +83,130 @@ ship_event = {
 			name = DESTROY_SWARM
 			location = event_target:nanite_swarm_planet
 			owner = root
+		}
+	}
+}
+
+# Modified:
+# * use triggers
+# * organic zealots get the same message as spiritualists
+# * any branch offices in the recipient owned by the synthetic country are closed
+# root = country (notified)
+# from = country (synthetic)
+country_event = {
+	id = utopia.2555
+	title = utopia.2550.name
+	desc = {
+		text = utopia.2555.1.desc
+		trigger = {
+			is_spiritualist = no
+			NOT = { has_valid_civic = civic_organic_zealots }
+		}
+	}
+	desc = {
+		text = utopia.2555.2.desc
+		trigger = {
+			OR = {
+				is_spiritualist = yes
+				has_valid_civic = civic_organic_zealots
+			}
+		}
+	}
+	picture = GFX_evt_cybernetics
+	show_sound = event_synthetic_evolution
+	is_triggered_only = yes
+	option = {
+		name = utopia.2555.a
+		trigger = {
+			is_spiritualist = no
+			NOT = { has_valid_civic = civic_organic_zealots }
+		}
+	}
+	option = {
+		name = utopia.2555.b
+		trigger = {
+			OR = {
+				is_spiritualist = yes
+				has_valid_civic = civic_organic_zealots
+			}
+		}
+	}
+	after = {
+		if = {
+			limit = {
+				from = { has_corporate_government = yes }
+				any_owned_planet = { has_branch_office = from }
+				has_valid_civic = civic_organic_zealots
+			}
+			every_owned_planet = {
+				limit = { has_branch_office = from }
+				close_branch_office = yes
+				owner = { add_resource = { energy = 1000 } }
+			}
+			from = {
+				country_event = {
+					id = civic_organic_zealots.2555
+				}
+			}
+		}
+		if = {
+			limit = { has_secret_fealty_with = from }
+			remove_secret_fealty = from
+		}
+		end_all_treaties_with = from
+	}
+}
+
+# Modified:
+# * use triggers
+# * organic zealots get the same message as countries already at war with the synthetic empire
+# root = country (notified)
+# from = country (synthetic)
+country_event = {
+	id = utopia.2556
+	title = TRANSMISSION
+	desc = "utopia.2556.desc"
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = from
+		room = from.ruler
+	}
+	option = {
+		name = utopia.2556.a
+		trigger = {
+			is_materialist = yes
+			NOT = { is_at_war_with = from }
+		}
+	}
+	option = {
+		name = utopia.2556.b
+		trigger = {
+			is_spiritualist = yes
+			NOR = {
+				is_at_war_with = from
+				has_valid_civic = civic_organic_zealots
+			}
+		}
+	}
+	option = {
+		name = utopia.2556.c
+		trigger = {
+			OR = {
+				is_at_war_with = from
+				has_valid_civic = civic_organic_zealots
+			}
+		}
+	}
+	option = {
+		name = utopia.2556.d
+		trigger = {
+			is_materialist = no
+			is_spiritualist = no
+			NOR = {
+				is_at_war_with = from
+				has_valid_civic = civic_organic_zealots
+			}
 		}
 	}
 }

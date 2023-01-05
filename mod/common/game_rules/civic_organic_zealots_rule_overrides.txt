@@ -168,8 +168,6 @@ can_release_vassal = {
 	}
 }
 
-# TODO: disallow synth megacorps?  Or will that be handled by disallowing diplomacy in the first place?
-# probably need an event to cancel diplo agreements if a country synthetically ascends (not just branch offices)
 # this = planet
 # root = country
 can_build_branch_office_on_planet = {
