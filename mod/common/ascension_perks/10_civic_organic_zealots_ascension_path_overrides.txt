@@ -44,6 +44,7 @@ ap_the_flesh_is_weak = {
 		custom_tooltip = {
 			fail_text = "requires_overlord_not_civic_organic_zealots"
 			NAND = {
+				is_subject = yes
 				exists = overlord
 				overlord = { has_valid_civic = civic_organic_zealots }
 			}
@@ -104,6 +105,7 @@ ap_organo_machine_interfacing = {
 		custom_tooltip = {
 			fail_text = "requires_overlord_not_civic_organic_zealots"
 			NAND = {
+				is_subject = yes
 				exists = overlord
 				overlord = { has_valid_civic = civic_organic_zealots }
 			}
@@ -203,6 +205,7 @@ ap_synthetic_evolution = {
 		custom_tooltip = {
 			fail_text = "requires_overlord_not_civic_organic_zealots"
 			NAND = {
+				is_subject = yes
 				exists = overlord
 				overlord = { has_valid_civic = civic_organic_zealots }
 			}

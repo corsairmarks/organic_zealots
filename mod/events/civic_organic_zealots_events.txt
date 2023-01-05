@@ -122,6 +122,7 @@ country_event = {
 			has_country_flag = synthetic_evolution_project_aborted_by_organic_zealots
 		}
 		NAND = {
+			is_subject = yes
 			exists = overlord
 			overlord = { has_valid_civic = civic_organic_zealots }
 		}

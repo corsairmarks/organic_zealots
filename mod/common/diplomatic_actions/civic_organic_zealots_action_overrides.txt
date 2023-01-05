@@ -702,10 +702,9 @@ action_support_independence = {
 			exists = from
 			NOT = {
 				from = {
+					is_subject = yes
 					exists = overlord
-					overlord = {
-						is_same_value = root
-					}
+					overlord = { is_same_value = root }
 				}
 			}
 		}
