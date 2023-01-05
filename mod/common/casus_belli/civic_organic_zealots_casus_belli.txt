@@ -13,7 +13,7 @@ cb_impose_policy = {
 	show_notification = no
 	potential = {
 		is_country_type = default
-		is_gestalt = no
+		is_synthetic_empire = no
 		exists = from
 		NOT = { is_in_federation_with = from }
 	}
