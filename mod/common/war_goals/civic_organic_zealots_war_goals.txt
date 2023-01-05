@@ -194,7 +194,7 @@ wg_force_policy_outlaw_robots_and_ai = {
 
 			every_subject = {
 				limit = {
-					is_synthetic_empire = no
+					is_robot_empire = no
 					any_war = {
 						is_war_participant = {
 							who = prev
@@ -213,7 +213,7 @@ wg_force_policy_outlaw_robots_and_ai = {
 				force_policy_liberation_effect = yes
 				every_subject = {
 					limit = {
-						is_synthetic_empire = no
+						is_robot_empire = no
 						any_war = {
 							is_war_participant = {
 								who = prev
