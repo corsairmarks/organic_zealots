@@ -224,6 +224,40 @@ country_event = {
 	}
 }
 
+# new leaders for organic zealots have AI assistants replaced with another trait
+# triggered by on_leader_spawned
+# root = country
+# from = leader (spawned)
+country_event = {
+	id = civic_organic_zealots.12
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_valid_civic = civic_organic_zealots
+		exists = from
+		from = {
+			leader_class = scientist
+			OR = {
+				has_trait = leader_trait_custom_AI_assistant
+				has_trait = leader_trait_sapient_AI_assistant
+			}
+		}
+	}
+	immediate = {
+		from = {
+			add_random_leader_trait = yes # added first to avoid re-adding the same undesirable trait
+			if = {
+				limit = { has_trait = leader_trait_custom_AI_assistant }
+				remove_trait = leader_trait_custom_AI_assistant
+			}
+			else_if = {
+				limit = { has_trait = leader_trait_sapient_AI_assistant }
+				remove_trait = leader_trait_sapient_AI_assistant
+			}
+		}
+	}
+}
+
 # demoted rulers that have the mentat ruler trait gain the corresponding class trait
 # triggered by on_ruler_back_to_pre_ruler_class
 # root = country

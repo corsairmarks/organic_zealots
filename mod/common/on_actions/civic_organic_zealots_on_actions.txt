@@ -21,6 +21,7 @@ empire_init_capital_planet = {
 on_leader_spawned = {
 	events = {
 		civic_organic_zealots.11
+		civic_organic_zealots.12
 	}
 }
 
