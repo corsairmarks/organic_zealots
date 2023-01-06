@@ -148,51 +148,53 @@ deactivate_ongoing_tech_assimilation = {
 		}
 		every_species_pop = {
 			limit = { is_owned_by = prevprev }
-			switch = {
-				trigger = former_citizenship_type
-				citizenship_full = {
+			# former_citizenship_type is not eligible to use with a switch
+			if = {
+				limit = { former_citizenship_type = citizenship_full }
+				set_citizenship_type = {
+					type = citizenship_full
+					country = prevprev
+					cooldown = yes
+				}
+			}
+			else_if = {
+				limit = { former_citizenship_type = citizenship_limited }
+				set_citizenship_type = {
+					type = citizenship_limited
+					country = prevprev
+					cooldown = yes
+				}
+			}
+			else_if = {
+				limit = { former_citizenship_type = citizenship_slavery }
+				set_citizenship_type = {
+					type = citizenship_slavery
+					country = prevprev
+					cooldown = yes
+				}
+			}
+			else_if = {
+				limit = { former_citizenship_type = citizenship_purge }
+				set_citizenship_type = {
+					type = citizenship_purge
+					country = prevprev
+					cooldown = yes
+				}
+			}
+			else = {
+				if = {
+					limit = { prevprev = { is_xenophobe = no } }
 					set_citizenship_type = {
 						type = citizenship_full
 						country = prevprev
 						cooldown = yes
 					}
 				}
-				citizenship_limited = {
+				else = {
 					set_citizenship_type = {
 						type = citizenship_limited
 						country = prevprev
 						cooldown = yes
-					}
-				}
-				citizenship_slavery = {
-					set_citizenship_type = {
-						type = citizenship_slavery
-						country = prevprev
-						cooldown = yes
-					}
-				}
-				citizenship_purge = {
-					set_citizenship_type = {
-						type = citizenship_purge
-						country = prevprev
-						cooldown = yes
-					}
-				}
-				default = {
-					if = {
-						limit = { is_xenophobe = no }
-						set_citizenship_type = {
-							type = citizenship_full
-							country = prevprev
-							cooldown = yes
-						}
-					}
-					else = {
-						set_citizenship_type = {
-							type = citizenship_limited
-							country = prevprev
-							cooldown = yes
-						}
 					}
 				}
 			}
