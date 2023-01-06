@@ -40,7 +40,7 @@ living_standard_tech_assimilation = {
 			from = { NOT = { has_country_flag = lost_robot_policy_war } }
 		}
 		custom_tooltip = {
-			fail_text = requires_not_civic_organic_zealots
+			fail_text = is_organic_zealots_fail
 			from = { NOT = { has_valid_civic = civic_organic_zealots } }
 		}
 		custom_tooltip = {
