@@ -20,6 +20,16 @@ is_valid_target_to_outlaw_cybernetics_or_robot_pops_or_ai = {
 	}
 }
 
+# this = leader
+has_mentat_trait = {
+	OR = {
+		has_trait = leader_trait_governor_mentat
+		has_trait = leader_trait_scientist_mentat
+		has_trait = leader_trait_ruler_mentat
+		has_ruler_trait = leader_trait_ruler_mentat
+	}
+}
+
 # this = country, actor
 # from = country, recipient
 diplomacy_is_not_homicidal = {

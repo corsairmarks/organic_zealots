@@ -75,6 +75,8 @@
  leader_trait_ruler_mentat: "Mentat-Sovereign"
  leader_trait_ruler_mentat_desc: "$leader_trait_scientist_mentat$ When ruling an empire, the unparalleled access to data for computations enables a mentat to find even the most subtle inefficiencies. Their authority then enables restructuring society, the government, and the military to function at peak coherence."
 
+ civic_organic_zealots.22.name: "Mentat-[This.GetTitle] Died"
+ civic_organic_zealots.22.desc: "[This.GetTitle] [This.GetName] has unexpectedly died while in a mentat calculation trance. Investigation into the causes of [This.GetPossPronoun] death were inconclusive. Although [This.GetSubjectPronoun] had elevated levels of stress hormones, those levels were consistent with high-but-normal stress from a leadership role.\n\nPerhaps there is something our empire lacks due to our unfamiliarity with how mentats are able to perform such rapid, detailed mental calculation."
  civic_organic_zealots.2555.name: "Assets Seized!"
  civic_organic_zealots.2555.desc: "The [From.GetAdjective] response to rumors of our ascension as the [Root.GetSpeciesNamePlural] were swift, brutal, and (most notably) financially damaging. Across the [From.GetName], our corporate assets and holdings were seized and the on-site staff indiscriminately slaughtered.\n\nDatalinks from ongoing bilateral treaties abruptly ended. Routine diplomatic communications ceased. There has been no formal announcement from [From.GetAdjective] diplomats, but their complete silence speaks volumes. All that remains are preparations to defend against the inevitable jihad."
  civic_organic_zealots.2555.a: "It is only a matter of time."

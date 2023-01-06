@@ -61,3 +61,10 @@ on_becoming_subject = {
 		civic_organic_zealots.6
 	}
 }
+
+# triggered every 10 years
+on_decade_pulse = {
+	events = {
+		civic_organic_zealots.20
+	}
+}

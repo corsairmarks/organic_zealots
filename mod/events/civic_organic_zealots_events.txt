@@ -242,4 +242,306 @@ country_event = {
 	}
 }
 
-# TODO: event to increase chance of death in empires w/o the right tech, event explaining the "malfunction" (which should scale with age really)
+# triggered by on_decade_pulse
+event = {
+	id = civic_organic_zealots.20
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		every_country = {
+			country_event = {
+				id = civic_organic_zealots.21
+				random = 360
+			}
+		}
+	}
+}
+
+# triggered by civic_organic_zealots.20
+country_event = {
+	id = civic_organic_zealots.21
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		# triggers checked here instead of civic_organic_zealots.20;
+		# countries might research tech_mentat_computation or no longer have mentats by the time this scheduled event fires
+		NOT = { has_technology = tech_mentat_computation }
+		OR = {
+			any_owned_leader = { has_mentat_trait = yes }
+			any_envoy = { has_mentat_trait = yes }
+		}
+	}
+	immediate = {
+		random_list = {
+			80 = {
+				modifier = {
+					add = 5
+					has_active_tradition = tr_harmony_mind_and_body
+				}
+				modifier = {
+					add = 5
+					has_policy_flag = leader_enhancement_selected_lineages
+				}
+				modifier = {
+					add = 10
+					has_policy_flag = leader_enhancement_capacity_boosters
+				}
+			}
+			20 = {
+				modifier = {
+					subtract = 5
+					has_active_tradition = tr_harmony_mind_and_body
+				}
+				modifier = {
+					subtract = 5
+					has_policy_flag = leader_enhancement_selected_lineages
+				}
+				modifier = {
+					subtract = 10
+					has_policy_flag = leader_enhancement_capacity_boosters
+				}
+				reroll_random = yes
+				random_list = {
+					1 = {
+						modifier = {
+							multiply = 0
+							NOT = { any_owned_leader = { has_mentat_trait = yes } }
+						}
+						random_owned_leader = {
+							limit = { has_mentat_trait = yes }
+							weights = {
+								base = 1
+								modifier = {
+									factor = trigger:leader_age
+								}
+								modifier = {
+									factor = 1.25
+									is_idle = no
+								}
+							}
+							save_event_target_as = dead_leader
+						}
+					}
+					1 = {
+						modifier = {
+							multiply = 0
+							NOT = { any_envoy = { has_mentat_trait = yes } }
+						}
+						random_envoy = {
+							limit = { has_mentat_trait = yes }
+							weights = {
+								base = 1
+								modifier = {
+									factor = trigger:leader_age
+								}
+								modifier = {
+									factor = 1.25
+									is_idle = no
+								}
+							}
+							save_event_target_as = dead_leader
+						}
+					}
+				}
+				event_target:dead_leader = {
+					if = {
+						limit = { exists = fleet }
+						fleet = { save_event_target_as = dead_leader_location }
+						set_leader_flag = leader_location_fleet
+					}
+					else_if = {
+						limit = { exists = sector }
+						sector.sector_capital = { save_event_target_as = dead_leader_location }
+						set_leader_flag = leader_location_government
+					}
+					else_if = {
+						limit = { leader_class = envoy }
+						if = {
+							limit = { has_envoy_task = { task = spy_network } }
+							set_leader_flag = leader_location_spy
+							envoy_location_country.capital_scope = { save_event_target_as = dead_leader_location }
+						}
+						else_if = {
+							limit = {
+								OR = {
+									has_envoy_task = { task = improve_relations }
+									has_envoy_task = { task = harm_relations }
+								}
+							}
+							set_leader_flag = leader_location_diplomacy
+							envoy_location_country.capital_scope = { save_event_target_as = dead_leader_location }
+						}
+						else_if = {
+							limit = { has_envoy_task = { task = galactic_community } }
+							set_leader_flag = leader_location_galcom
+							owner.capital_scope = { save_event_target_as = dead_leader_location }
+						}
+						else_if = {
+							limit = { has_envoy_task = { task = federation } }
+							set_leader_flag = leader_location_federation
+							owner.federation.federation_leader.capital_scope = { save_event_target_as = dead_leader_location }
+						}
+						else_if = {
+							limit = { has_envoy_task = { task = first_contact } }
+							set_leader_flag = leader_location_first_contact
+							owner = {
+								random_active_first_contact = {
+									limit = { leader = { is_same_value = prevprevprev } }
+									save_event_target_as = dead_leader_location
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								has_galactic_emperor = yes
+								OR = {
+									has_envoy_task = { task = strengthen_imperial_authority }
+									has_envoy_task = { task = undermine_imperial_authority }
+								}
+							}
+							galactic_emperor.capital_scope = { save_event_target_as = dead_leader_location }
+							set_leader_flag = leader_location_imperium
+						}
+						else = {
+							owner.capital_scope = { save_event_target_as = dead_leader_location }
+						}
+					}
+					else = {
+						if = {
+							limit = { leader_class = ruler }
+							if = {
+								limit = {
+									has_galactic_emperor = yes
+									owner = { is_galactic_emperor = yes }
+								}
+								set_leader_flag = leader_location_imperium
+							}
+							else = {
+								set_leader_flag = leader_location_government
+							}
+						}
+						else_if = {
+							limit = { leader_class = scientist }
+							if = {
+								limit = { is_researching_area = physics }
+								set_leader_flag = leader_location_research_physics
+							}
+							else_if = {
+								limit = { is_researching_area = society }
+								set_leader_flag = leader_location_research_society
+							}
+							else_if = {
+								limit = { is_researching_area = engineering }
+								set_leader_flag = leader_location_research_engineering
+							}
+						}
+						owner.capital_scope = { save_event_target_as = dead_leader_location }
+					}
+					leader_event = {
+						id = civic_organic_zealots.22
+					}
+				}
+			}
+		}
+	}
+}
+
+# triggered by civic_organic_zealots.21
+leader_event = {
+	id = civic_organic_zealots.22
+	is_triggered_only = yes
+	title = civic_organic_zealots.22.name
+	desc = civic_organic_zealots.22.desc
+	picture = {
+		picture = GFX_evt_ship_in_orbit
+		trigger = {
+			has_leader_flag = leader_location_fleet
+		}
+	}
+	picture = {
+		picture = GFX_evt_throne_room
+		trigger = {
+			has_leader_flag = leader_location_government
+		}
+	}
+	picture = {
+		picture = GFX_evt_galactic_community
+		trigger = {
+			has_leader_flag = leader_location_imperium
+		}
+	}
+	picture = {
+		picture = GFX_evt_galactic_empire
+		trigger = {
+			has_leader_flag = leader_location_galcom
+		}
+	}
+	picture = {
+		picture = GFX_evt_voting
+		trigger = {
+			has_leader_flag = leader_location_federation
+		}
+	}
+	picture = {
+		picture = GFX_evt_diplomatic_visit
+		trigger = {
+			has_leader_flag = leader_location_diplomacy
+		}
+	}
+	picture = {
+		picture = GFX_evt_spymaster
+		trigger = {
+			has_leader_flag = leader_location_spy
+		}
+	}
+	picture = {
+		picture = GFX_evt_mysterious_signal
+		trigger = {
+			has_leader_flag = leader_location_first_contact
+		}
+	}
+	picture = {
+		picture = GFX_evt_physics_research
+		trigger = {
+			has_leader_flag = leader_location_research_physics
+		}
+	}
+	picture = {
+		picture = GFX_evt_society_research
+		trigger = {
+			has_leader_flag = leader_location_research_society
+		}
+	}
+	picture = {
+		picture = GFX_evt_engineering_research
+		trigger = {
+			has_leader_flag = leader_location_research_engineering
+		}
+	}
+	picture = {
+		picture = GFX_evt_space_funeral
+		trigger = {
+			NOR = {
+				has_leader_flag = leader_location_fleet
+				has_leader_flag = leader_location_government
+				has_leader_flag = leader_location_imperium
+				has_leader_flag = leader_location_galcom
+				has_leader_flag = leader_location_federation
+				has_leader_flag = leader_location_diplomacy
+				has_leader_flag = leader_location_spy
+				has_leader_flag = leader_location_first_contact
+				has_leader_flag = leader_location_research_physics
+				has_leader_flag = leader_location_research_society
+				has_leader_flag = leader_location_research_engineering
+			}
+		}
+	}
+	show_sound = event_ship_bridge
+	location = event_target:dead_leader_location
+	immediate = {
+		kill_leader = { show_notification = no }
+	}
+	option = {
+		name = UNFORTUNATE
+	}
+}
