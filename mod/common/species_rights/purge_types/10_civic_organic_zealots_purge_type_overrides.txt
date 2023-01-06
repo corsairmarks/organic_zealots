@@ -135,7 +135,9 @@ purge_displacement = {
 	}
 }
 
-# Modified: always allowed for Organic Zealots versus robotic species
+# Modified:
+# * use triggers
+# * always allowed for Organic Zealots versus robotic species
 purge_processing = {
 	# token = purge_processing
 	pop_escape_chance = 0.20
@@ -190,6 +192,7 @@ purge_processing = {
 			factor = 0
 			NOR = {
 				has_trait = trait_delicious
+				has_trait = trait_felsic
 				from = {
 					OR = {
 						AND = {
