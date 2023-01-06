@@ -10,7 +10,7 @@
 
 cb_impose_policy = {
 	show_in_diplomacy = yes
-	show_notification = yes
+	show_notification = no
 	potential = {
 		is_country_type = default
 		exists = from
