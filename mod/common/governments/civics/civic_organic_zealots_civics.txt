@@ -32,31 +32,12 @@ civic_organic_zealots = {
 	random_weight = {
 		base = 5
 	}
-
 	description = civic_tooltip_organic_zealots_effects
 	modifier = {
-		# TODO decide what bonuses this civic grants
-
-		# FP
-		ship_fire_rate_mult = 0.33
-		army_damage_mult = 0.33
-		starbase_shipyard_build_cost_mult = -0.15
-		country_naval_cap_mult = 0.33
-
-		# DS
-		country_starbase_influence_cost_mult = -0.5
-		ship_hull_mult = 0.25
-		ship_hull_regen_add_perc = 0.05
-		ship_armor_regen_add_perc = 0.05
-		army_damage_mult = 0.40
-		category_biology_research_speed_mult = 0.20
-		starbase_shipyard_build_cost_mult = -0.25
-		country_naval_cap_mult = 0.33
-
-		# DE
-		country_starbase_influence_cost_mult = -0.3
-		ship_weapon_damage = 0.25
-		starbase_shipyard_build_cost_mult = -0.15
+		country_starbase_influence_cost_mult = -0.1
+		ship_fire_rate_mult = 0.2
+		ship_weapon_damage = 0.2
+		starbase_shipyard_build_cost_mult = -0.2
 		country_naval_cap_mult = 0.33
 	}
 }
