@@ -234,12 +234,9 @@ can_species_be_assembled = {
 			}
 			else_if = {
 				limit = {
-					root = {
-						any_owned_pop = { has_job = roboticist }
-						owner = {
-							has_tradition = tr_cybernetics_assembly_standards
-							has_policy_flag = roboticist_output_build_cyborgs
-						}
+					root.owner = {
+						has_tradition = tr_cybernetics_assembly_standards
+						has_policy_flag = roboticist_output_build_cyborgs
 					}
 				}
 				has_trait = trait_cybernetic
@@ -270,9 +267,15 @@ can_species_be_assembled = {
 				root = {
 					OR = {
 						has_building = building_clone_vats
-						has_building = building_clone_birth_labs
+						num_assigned_jobs = {
+							job = cloning_technician
+							value > 0
+						}
 						has_modifier = tiyanki_trophy
-						owner = { has_modifier = syamelles_curse }
+						owner = {
+							has_modifier = syamelles_curse
+							has_modifier = syamelles_curse_habitat
+						}
 						has_planet_flag = can_organic_assemble_flag #for mod compatibility
 					}
 				}
