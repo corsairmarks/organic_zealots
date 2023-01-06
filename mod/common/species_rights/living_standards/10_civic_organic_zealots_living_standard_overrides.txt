@@ -16,8 +16,7 @@ living_standard_tech_assimilation = {
 					has_active_tradition = tr_synthetics_adopt_machine
 					prev = {
 						OR = {
-							has_trait = trait_mechanical
-							has_trait = trait_machine_unit
+							is_robotic = yes
 							has_trait = trait_cybernetic
 						}
 					}

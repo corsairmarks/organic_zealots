@@ -1,6 +1,7 @@
-# Modified: no one can neuter robots - how would that even work?
+# Modified:
+# * use triggers
+# * no one can neuter robots - how would that even work?
 purge_neutering = {
-	# token = purge_neutering
 	pop_escape_chance = 0.0
 	pop_decline_rate = 10 # 1 pop per 10 months, overrides BASE_POP_DECLINE, will only work on purge types
 
@@ -28,7 +29,7 @@ purge_neutering = {
 			fail_text = PURGES_ALLOWED
 			from = {
 				OR = {
-					has_ethic = ethic_gestalt_consciousness
+					is_gestalt = yes
 					has_valid_civic = civic_fanatic_purifiers
 					has_policy_flag = purge_allowed
 				}
@@ -52,9 +53,10 @@ purge_neutering = {
 	}
 }
 
-# Modified: Organic Zealots must purify robotic species
+# Modified:
+# * use triggers
+# * Organic Zealots must purify robotic species
 purge_displacement = {
-	# token = purge_displacement
 	pop_escape_chance = 1.0
 	pop_decline_rate = 25 # 1 pop per 4 months, overrides BASE_POP_DECLINE, will only work on purge types
 
@@ -62,6 +64,8 @@ purge_displacement = {
 		pop_happiness = -0.3
 		pop_housing_usage_mult = -0.50
 	}
+
+	pop_tooltip = DISPLACING
 
 	potential = {
 		exists = from
@@ -73,9 +77,8 @@ purge_displacement = {
 					has_valid_civic = civic_machine_terminator
 				}
 			}
+			is_robotic = no
 			NOR = {
-				has_trait = trait_machine_unit
-				has_trait = trait_mechanical
 				AND = {
 					from = { has_civic = civic_machine_assimilator }
 					has_trait = trait_cybernetic

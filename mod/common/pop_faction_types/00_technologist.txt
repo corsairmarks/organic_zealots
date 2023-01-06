@@ -238,7 +238,7 @@ technologist = {
 					is_gestalt = no
 					any_owned_species = {
 						OR = {
-							has_trait = trait_mechanical
+							is_robotic = yes
 							has_trait = trait_cybernetic
 						}
 					}
@@ -250,7 +250,7 @@ technologist = {
 			owner = {
 				any_owned_species = {
 					OR = {
-						has_trait = trait_mechanical
+						is_robotic = yes
 						has_trait = trait_cybernetic
 					}
 				}
