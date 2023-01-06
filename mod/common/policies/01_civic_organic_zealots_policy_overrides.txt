@@ -932,11 +932,11 @@ artificial_intelligence_policy = {
 						has_country_flag = lost_robot_policy_war
 					}
 					custom_tooltip = {
-						fail_text = is_organic_zealots
+						fail_text = civic_tooltip_not_organic_zealots_fail
 						has_valid_civic = civic_organic_zealots
 					}
 					custom_tooltip = {
-						fail_text = is_overlord_organic_zealots
+						fail_text = civic_tooltip_overlord_not_organic_zealots_fail
 						AND = {
 							is_subject = yes
 							exists = overlord
@@ -1015,11 +1015,11 @@ artificial_intelligence_policy = {
 					NOT = { has_country_flag = lost_robot_policy_war }
 				}
 				custom_tooltip = {
-					fail_text = is_organic_zealots_fail
+					fail_text = civic_tooltip_not_organic_zealots_fail
 					NOT = { has_valid_civic = civic_organic_zealots }
 				}
 				custom_tooltip = {
-					fail_text = is_overlord_organic_zealots_fail
+					fail_text = civic_tooltip_overlord_not_organic_zealots_fail
 					NAND = {
 						is_subject = yes
 						exists = overlord
@@ -1093,11 +1093,11 @@ artificial_intelligence_policy = {
 					NOT = { has_country_flag = lost_robot_policy_war }
 				}
 				custom_tooltip = {
-					fail_text = is_organic_zealots_fail
+					fail_text = civic_tooltip_not_organic_zealots_fail
 					NOT = { has_valid_civic = civic_organic_zealots }
 				}
 				custom_tooltip = {
-					fail_text = is_overlord_organic_zealots_fail
+					fail_text = civic_tooltip_overlord_not_organic_zealots_fail
 					NAND = {
 						is_subject = yes
 						exists = overlord
@@ -1171,11 +1171,11 @@ robot_pop_policy = {
 						has_country_flag = lost_robot_policy_war
 					}
 					custom_tooltip = {
-						text = is_organic_zealots
+						text = civic_tooltip_not_organic_zealots_fail
 						has_valid_civic = civic_organic_zealots
 					}
 					custom_tooltip = {
-						text = is_overlord_organic_zealots
+						text = civic_tooltip_overlord_not_organic_zealots
 						AND = {
 							is_subject = yes
 							exists = overlord
@@ -1241,23 +1241,20 @@ robot_pop_policy = {
 
 	option = {
 		name = "robot_pops_allowed"
-
+		# TODO: test
 		valid = {
 			if = {
 				limit = { is_robot_empire = no }
 				custom_tooltip = {
-					success_text = lost_robot_policy_war_pass
 					fail_text = lost_robot_policy_war_fail
 					NOT = { has_country_flag = lost_robot_policy_war }
 				}
 				custom_tooltip = {
-					success_text = is_organic_zealots_pass
-					fail_text = is_organic_zealots_fail
+					fail_text = civic_tooltip_not_organic_zealots_fail
 					NOT = { has_valid_civic = civic_organic_zealots }
 				}
 				custom_tooltip = {
-					success_text = is_overlord_organic_zealots_pass
-					fail_text = is_overlord_organic_zealots_fail
+					fail_text = civic_tooltip_overlord_not_organic_zealots_fail
 					NAND = {
 						is_subject = yes
 						exists = overlord
