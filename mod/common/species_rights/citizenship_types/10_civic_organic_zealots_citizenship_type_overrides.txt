@@ -148,14 +148,6 @@ citizenship_assimilation = {
 			# synthetic assimilation (regular)
 			if = {
 				limit = { from = { has_active_tradition = tr_synthetics_adopt } }
-				custom_tooltip = {
-					text = REQUIRES_SYNTH_PROJECT_COMPLETE
-					from = { has_country_flag = synth_assimilation }
-				}
-				custom_tooltip = {
-					fail_text = SYNTH_SPECIES_MUST_BE_NON_HIVE
-					NOT = { has_trait = trait_hive_mind }
-				}
 				if = {
 					limit = { has_civic_organic_zealots_active = yes }
 					custom_tooltip = {
