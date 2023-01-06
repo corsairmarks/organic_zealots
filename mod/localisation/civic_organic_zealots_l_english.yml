@@ -1,7 +1,7 @@
 ﻿l_english:
  civic_organic_zealots: "Organic Zealots"
  civic_organic_zealots_desc: "'Thou shalt not make a machine in the likeness of an organic mind.' This society created, was enslaved by, overthrew, and finally purged Thinking Machines. They seek to prevent the redevelopment of artificial intelligence, or, failing that, oversee its eradication."
- civic_tooltip_organic_zealots_effects: "Cannot engage in §Y$DIPLOMACY$§! with robotic species!\nCannot access the §YGalactic Market§!\nHas the §Y'$casus_belli_cb_robotic_purification$'§! casus belli on robotic empires\n§Y$ROBOT$ $POPS$§! will always be purged\nGains £unity£ §Y$unity$§! from purging robotic £pop£ $POPS$\nHas the §Y'$war_goal_wg_force_policy_outlaw_robots_and_ai$'§! wargoal against non-robotic empires\nMay use §Y$bombardment_armageddon$§! bombardment stance\n"
+ civic_tooltip_organic_zealots_effects: "Cannot engage in §Y$DIPLOMACY$§! with robotic species!\nCannot access the §YGalactic Market§!\nHas the §Y'$casus_belli_cb_robotic_purification$'§! casus belli on robotic empires\n§Y$ROBOT$ $POPS$§! will always be purged\nGains £unity£ §Y$unity$§! from purging robotic £pop£ $POPS$\nMay use §Y$bombardment_armageddon$§! bombardment stance\nHas the §Y'$war_goal_wg_force_policy_outlaw_robots_and_ai$'§! wargoal against non-robotic empires\n"
  personality_organic_zealots: "$civic_organic_zealots$"
  personality_organic_zealots_desc: "Organic Zealots consider the mere potential of artificial intelligence as the foremost threat to the galaxy. They may cooperate with other organics, but distrust materialists and view robot users with suspicion. They only approach robots, machines, and synthetics with weapons online."
  is_organic_zealots: "Is §Y$civic_organic_zealots$§!"
