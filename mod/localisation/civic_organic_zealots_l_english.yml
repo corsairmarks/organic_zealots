@@ -14,7 +14,7 @@
  lost_robot_policy_war_fail: "$TRIGGER_FAIL$$lost_robot_policy_war$"
  lost_robot_policy_war_pass: "$TRIGGER_PASS$$lost_robot_policy_war$"
  casus_belli_cb_impose_policy: "Impose Policy"
- casus_belli_cb_robotic_purification: "Anti-Thinking Machine Jihad"
+ casus_belli_cb_robotic_purification: "$casus_belli_cb_purification$"
  casus_belli_cb_containment_organic_zealots: "$casus_belli_cb_containment$"
 
  opinion_organic_zealots_vs_machines: "Thinking Machine Abominations"
@@ -43,7 +43,7 @@
 
  war_goal_wg_end_threat_organic_zealots: "End Jihad"
  war_goal_wg_end_threat_organic_zealots_desc: "$war_goal_wg_end_threat_desc$"
- war_goal_wg_cleansing_organic_zealots: "Cleanse Abominations"
+ war_goal_wg_cleansing_organic_zealots: "Anti-Thinking Machine Jihad"
  war_goal_wg_cleansing_organic_zealots_desc: "$war_goal_wg_cleansing_desc$"
  war_goal_wg_cleansing_organic_zealots_vs_fe: "$war_goal_wg_cleansing_organic_zealots$"
  war_goal_wg_cleansing_organic_zealots_vs_fe_desc: "$war_goal_wg_cleansing_organic_zealots_desc$"
