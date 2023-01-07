@@ -326,7 +326,7 @@ action_form_non_aggression_pact = {
 	}
 }
 
-# Modified: use a unified trigger checking for "is diplomancy allowed because the actor and recipient are not gestalt and not homicidal? (or has a special exception?)"
+# Modified: use a unified trigger checking for "is diplomancy allowed because the actor and recipient are not homicidal? (or has a special exception?)"
 # Form a commercial pact with another empire, increases value of both trade networks
 # Usable by regular empires only. Raises trust over time.
 action_form_commercial_pact = {
@@ -732,7 +732,7 @@ action_support_independence = {
 	}
 }
 
-# Modified: use a unified trigger checking for "is diplomancy allowed because the actor and recipient are not gestalt and not homicidal? (or has a special exception?)"
+# Modified: use a unified trigger checking for "is diplomancy allowed because the actor and recipient are not homicidal? (or has a special exception?)"
 # Creates a migration treaty that allows pops to move freely between two empires. Only possible if both empires have suitable worlds for each others' pops.
 # Usable by regular empires only. Raises trust over time.
 action_form_migration_pact = {
@@ -1366,6 +1366,46 @@ action_ask_to_become_subjugated = {
 		custom_tooltip = {
 			fail_text = "requires_actor_not_pompous"
 			NOT = { has_valid_civic = civic_pompous_purists	}
+		}
+	}
+}
+
+# Modified: released subjects from organic zealots have their cybernetics/synthetics projects re-enabled
+# Release a subject of any type. Hurts relations and sets a 10 year truce.
+action_release_subject = {
+	icon = "GFX_diplomacy_status_has_vassal"
+	requires_recipient_independence = no
+	auto_accepted = yes
+	should_notify_all_communications = yes
+	should_show_auto_accept_message_recipient = yes
+	action_type = positive
+	on_accept = {
+		hidden_effect = {
+			if = {
+				# intentionally does NOT check civic validity
+				limit = { has_civic = civic_organic_zealots }
+				from = { re_enable_tech_ascension_special_projects_if_force_disabled = yes }
+			}
+		}
+	}
+}
+
+# Modified: released subjects from organic zealots have their cybernetics/synthetics projects re-enabled
+# Ask to be released as subject of any type (overlord must accept). Hurts relations and sets a 10 year truce.
+action_ask_to_be_released_subject = {
+	icon = "GFX_diplomacy_status_has_vassal"
+	requires_actor_independence = no
+	diplo_view_acceptance_icon = yes
+	should_notify_all_communications = yes
+	AI_acceptance_base_value = -50
+	action_type = neutral
+	on_accept = {
+		hidden_effect = {
+			if = {
+				# intentionally does NOT check civic validity
+				limit = { from = { has_civic = civic_organic_zealots } }
+				re_enable_tech_ascension_special_projects_if_force_disabled = yes
+			}
 		}
 	}
 }
