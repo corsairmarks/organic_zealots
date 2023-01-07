@@ -148,24 +148,21 @@ citizenship_assimilation = {
 			# synthetic assimilation (regular)
 			if = {
 				limit = { from = { has_active_tradition = tr_synthetics_adopt } }
-				if = {
-					limit = { has_civic_organic_zealots_active = yes }
-					custom_tooltip = {
-						fail_text = lost_robot_policy_war_fail
-						from = { NOT = { has_country_flag = lost_robot_policy_war } }
-					}
-					custom_tooltip = {
-						fail_text = civic_tooltip_not_organic_zealots_fail
-						from = { NOT = { has_valid_civic = civic_organic_zealots } }
-					}
-					custom_tooltip = {
-						fail_text = civic_tooltip_overlord_not_organic_zealots_fail
-						from = {
-							NAND = {
-								is_subject = yes
-								exists = overlord
-								overlord = { has_valid_civic = civic_organic_zealots }
-							}
+				custom_tooltip = {
+					fail_text = lost_robot_policy_war_fail
+					from = { NOT = { has_country_flag = lost_robot_policy_war } }
+				}
+				custom_tooltip = {
+					fail_text = civic_tooltip_not_organic_zealots_fail
+					from = { NOT = { has_valid_civic = civic_organic_zealots } }
+				}
+				custom_tooltip = {
+					fail_text = civic_tooltip_overlord_not_organic_zealots_fail
+					from = {
+						NAND = {
+							is_subject = yes
+							exists = overlord
+							overlord = { has_valid_civic = civic_organic_zealots }
 						}
 					}
 				}
@@ -181,24 +178,21 @@ citizenship_assimilation = {
 						has_trait = trait_hive_mind
 					}
 				}
-				if = {
-					limit = { has_civic_organic_zealots_active = yes }
-					custom_tooltip = {
-						fail_text = lost_robot_policy_war_fail
-						from = { NOT = { has_country_flag = lost_robot_policy_war } }
-					}
-					custom_tooltip = {
-						fail_text = civic_tooltip_not_organic_zealots_fail
-						from = { NOT = { has_valid_civic = civic_organic_zealots } }
-					}
-					custom_tooltip = {
-						fail_text = civic_tooltip_overlord_not_organic_zealots_fail
-						from = {
-							NAND = {
-								is_subject = yes
-								exists = overlord
-								overlord = { has_valid_civic = civic_organic_zealots }
-							}
+				custom_tooltip = {
+					fail_text = lost_robot_policy_war_fail
+					from = { NOT = { has_country_flag = lost_robot_policy_war } }
+				}
+				custom_tooltip = {
+					fail_text = civic_tooltip_not_organic_zealots_fail
+					from = { NOT = { has_valid_civic = civic_organic_zealots } }
+				}
+				custom_tooltip = {
+					fail_text = civic_tooltip_overlord_not_organic_zealots_fail
+					from = {
+						NAND = {
+							is_subject = yes
+							exists = overlord
+							overlord = { has_valid_civic = civic_organic_zealots }
 						}
 					}
 				}
