@@ -1,16 +1,12 @@
 wg_end_threat_organic_zealots = {
 	casus_belli = cb_containment_organic_zealots
-
 	hide_if_no_cb = yes
 	total_war = yes
 	set_defender_wargoal = wg_cleansing_organic_zealots
-
 	allowed_peace_offers = {
 		status_quo
 	}
-
 	surrender_acceptance = -1000
-
 	potential = {
 		is_robot_empire = yes
 		from = { has_valid_civic = civic_organic_zealots }
@@ -18,7 +14,6 @@ wg_end_threat_organic_zealots = {
 	possible = {
 		always = yes
 	}
-
 	ai_weight = {
 		weight = 100
 	}
@@ -29,18 +24,14 @@ wg_cleansing_organic_zealots = {
 	hide_if_no_cb = yes
 	total_war = yes
 	set_defender_wargoal = wg_end_threat_organic_zealots
-
 	galactic_empire_joins_defender = {
 		from = { is_galactic_emperor = yes }
 		imperial_authority >= 100
 	}
-
 	allowed_peace_offers = {
 		status_quo
 	}
-
 	surrender_acceptance = -1000
-
 	potential = {
 		from = { NOT = { is_country_type = fallen_empire } }
 		NAND = {
@@ -65,7 +56,6 @@ wg_cleansing_organic_zealots = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 100
 	}
@@ -73,16 +63,12 @@ wg_cleansing_organic_zealots = {
 
 wg_cleansing_organic_zealots_vs_fe = {
 	casus_belli = cb_robotic_purification
-
 	hide_if_no_cb = yes
 	total_war = yes
-
 	allowed_peace_offers = {
 		status_quo
 	}
-
 	surrender_acceptance = -1000
-
 	potential = {
 		from = { is_country_type = fallen_empire }
 	}
@@ -96,7 +82,6 @@ wg_cleansing_organic_zealots_vs_fe = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 100
 	}
@@ -104,20 +89,15 @@ wg_cleansing_organic_zealots_vs_fe = {
 
 wg_force_policy_outlaw_robots_and_ai = {
 	casus_belli = cb_impose_policy
-
 	hide_if_no_cb = no
 	release_occupied_systems_on_status_quo = yes
-
 	allowed_peace_offers = {
 		status_quo
 		surrender
 		demand_surrender
 	}
-
 	surrender_acceptance = -100
-
 	war_exhaustion = 0.75
-
 	potential = {
 		NOT = { has_policy_flag = no_wars }
 		exists = from
@@ -162,7 +142,6 @@ wg_force_policy_outlaw_robots_and_ai = {
 				exists = last_created_country
 				last_created_country = { has_country_flag = released_empire }
 			}
-
 			last_created_country = {
 				set_origin_effect = yes
 				if = {
@@ -175,7 +154,6 @@ wg_force_policy_outlaw_robots_and_ai = {
 				force_policy_outlaw_robots_and_ai_effect = yes
 				force_policy_liberation_effect = yes
 			}
-
 			from = {
 				add_threat = {
 					who = root
@@ -191,7 +169,6 @@ wg_force_policy_outlaw_robots_and_ai = {
 				limit = { from = { exists = ruler } }
 				custom_tooltip = wg_force_policy_outlaw_robots_and_ai_accept_2
 			}
-
 			every_subject = {
 				limit = {
 					is_robot_empire = no
@@ -205,7 +182,6 @@ wg_force_policy_outlaw_robots_and_ai = {
 				custom_tooltip = wg_force_policy_outlaw_robots_and_ai_accept_subject
 			}
 		}
-
 		hidden_effect = {
 			from = {
 				force_policy_outlaw_robots_and_ai_effect = yes
@@ -232,8 +208,11 @@ wg_force_policy_outlaw_robots_and_ai = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 5
+		modifier = {
+			factor = 100
+			has_valid_civic = civic_organic_zealots
+		}
 	}
 }
