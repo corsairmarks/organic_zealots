@@ -9,7 +9,7 @@
 #}
 
 cb_impose_policy = {
-	show_in_diplomacy = yes
+	show_in_diplomacy = no
 	show_notification = no
 	potential = {
 		is_country_type = default
