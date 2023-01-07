@@ -647,6 +647,9 @@ country_event = {
 	picture = GFX_evt_deficit
 	show_sound = event_bad_omen
 	is_triggered_only = yes
+	immediate = {
+		end_all_treaties_with = from
+	}
 	option = {
 		name = civic_organic_zealots.2555.a
 	}
