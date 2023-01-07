@@ -326,7 +326,7 @@ action_form_non_aggression_pact = {
 	}
 }
 
-# Modified: use a unified trigger checking for "is diplomancy allowed because the actor are not gestalt and not homicidal? (or has a special exception?)"
+# Modified: use a unified trigger checking for "is diplomancy allowed because the actor and recipient are not gestalt and not homicidal? (or has a special exception?)"
 # Form a commercial pact with another empire, increases value of both trade networks
 # Usable by regular empires only. Raises trust over time.
 action_form_commercial_pact = {
@@ -338,7 +338,7 @@ action_form_commercial_pact = {
 	AI_acceptance_base_value = -50
 	action_type = positive
 	possible = {
-		diplomacy_actor_is_not_homicidal_non_gestalt = yes
+		diplomacy_is_not_homicidal_non_gestalt = yes
 		if = {
 			limit = { from = { has_valid_civic = civic_inwards_perfection } }
 			if = {
