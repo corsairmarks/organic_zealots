@@ -121,8 +121,10 @@ machine_fe_opinion_of_machine_empires = {
 	}
 }
 
-# Bad Opinion of Ethic: Materialist
 opinion_organic_zealots_of_materialist = {
+	trigger = {
+		from = { is_materialist = yes }
+	}
 	opinion = {
 		base = 0
 		modifier = {
@@ -147,6 +149,9 @@ opinion_organic_zealots_of_materialist = {
 }
 
 opinion_materialist_of_organic_zealots = {
+	trigger = {
+		from = { is_materialist = yes }
+	}
 	opinion = {
 		base = 0
 		modifier = {
