@@ -193,21 +193,6 @@ country_event = {
 	}
 }
 
-# triggered in response to utopia.2555 if any branch offices were closed
-# root = country (notified)
-# from = country (synthetic)
-country_event = {
-	id = civic_organic_zealots.2555
-	title = civic_organic_zealots.2555.name
-	desc = civic_organic_zealots.2555.desc
-	picture = GFX_evt_deficit
-	show_sound = event_bad_omen
-	is_triggered_only = yes
-	option = {
-		name = civic_organic_zealots.2555.a
-	}
-}
-
 # new leaders get the mentat leader trait
 # triggered by on_leader_spawned
 # root = country
@@ -613,5 +598,56 @@ country_event = {
 				set_hostile = no
 			}
 		}
+	}
+}
+
+# triggered by utopia.2555
+# root = country (notified)
+# from = country (synthetic)
+country_event = {
+	id = civic_organic_zealots.2554
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_valid_civic = civic_organic_zealots
+		exists = from
+	}
+	immediate = {
+		if = {
+			limit = {
+				from = { has_corporate_government = yes }
+				any_owned_planet = { has_branch_office = from }
+			}
+			every_owned_planet = {
+				limit = { has_branch_office = from }
+				close_branch_office = yes
+				owner = { add_resource = { energy = 1000 } }
+			}
+			from = {
+				country_event = {
+					id = civic_organic_zealots.2555
+				}
+			}
+		}
+		if = {
+			limit = { has_secret_fealty_with = from }
+			remove_secret_fealty = from
+		}
+		end_all_treaties_with = from
+	}
+}
+
+# triggered by civic_organic_zealots.2554 if any branch offices were closed
+# root = country (notified)
+# from = country (organic zealots)
+country_event = {
+	id = civic_organic_zealots.2555
+	title = civic_organic_zealots.2555.name
+	desc = civic_organic_zealots.2555.desc
+	picture = GFX_evt_deficit
+	show_sound = event_bad_omen
+	is_triggered_only = yes
+	option = {
+		name = civic_organic_zealots.2555.a
 	}
 }
