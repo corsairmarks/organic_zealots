@@ -43,7 +43,10 @@ opinion_organic_zealots_vs_robots_outlawed = {
 opinion_organic_zealots_vs_robots_allowed = {
 	trigger = {
 		has_valid_civic = civic_organic_zealots
-		from = { has_policy_flag = robots_allowed }
+		from = {
+			has_policy_flag = robots_allowed
+			is_robot_empire = no
+		}
 	}
 	opinion = {
 		base = -50
