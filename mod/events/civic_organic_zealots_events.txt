@@ -580,3 +580,38 @@ leader_event = {
 		name = UNFORTUNATE
 	}
 }
+
+# triggered by on_country_created, attempt to make the Organic Zealots uninterested in fighting the biological crises
+# root = country, created
+# from = root of context where create_country/create_rebels happens 
+country_event = {
+	id = civic_organic_zealots.30
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			is_country_type = awakened_marauders
+			is_country_type = swarm
+			is_country_type = extradimensional
+			is_country_type = extradimensional_2
+			is_country_type = extradimensional_3
+		}
+	}
+	immediate = {
+		every_country = {
+			limit = {
+				is_ai = yes
+				has_valid_ai_personality = yes
+				has_ai_personality = organic_zealots
+			}
+			# set_faction_hostility requires comms
+			establish_communications_no_message = prev
+			set_faction_hostility = {
+				target = prev
+				set_friendly = no
+				set_neutral = yes
+				set_hostile = no
+			}
+		}
+	}
+}

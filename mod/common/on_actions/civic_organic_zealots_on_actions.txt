@@ -53,6 +53,7 @@ on_pop_purged = {
 	}
 }
 
+# fired when a country becomes a subject
 # this = country, subject
 # from = country, overlord
 on_becoming_subject = {
@@ -63,9 +64,18 @@ on_becoming_subject = {
 	}
 }
 
-# triggered every 10 years
+# fired every 10 years
 on_decade_pulse = {
 	events = {
 		civic_organic_zealots.20
+	}
+}
+
+# fired when a country is created via create_country or create_rebels
+# this = country, created
+# from = root of context where create_country/create_rebels happens 
+on_country_created = {
+	events = {
+		civic_organic_zealots.30
 	}
 }
