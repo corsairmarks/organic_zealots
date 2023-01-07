@@ -61,7 +61,7 @@ ap_the_flesh_is_weak = {
 	ai_weight = {
 		factor = 20
 		modifier = {
-			factor = 0.1
+			factor = 0.5
 			is_materialist = no
 		}
 		modifier = {
@@ -129,6 +129,10 @@ ap_organo_machine_interfacing = {
 ap_synthetic_evolution = {
 	on_enabled = {
 		custom_tooltip = "synthetic_evolution_tooltip"
+		add_research_option = tech_synthetic_leaders
+		hidden_effect = {
+			country_event = { id = utopia.2545 }
+		}
 		if = {
 			limit = {
 				has_origin = origin_necrophage
@@ -148,6 +152,10 @@ ap_synthetic_evolution = {
 			custom_tooltip = disables_clone_army_origin_features
 		}
 		if = {
+			limit = { has_origin = origin_overtuned }
+			custom_tooltip = disables_overtuned_features
+		}
+		if = {
 			limit = {
 				OR = {
 					has_valid_civic = civic_idyllic_bloom
@@ -156,14 +164,6 @@ ap_synthetic_evolution = {
 			}
 			custom_tooltip = disables_idyllic_bloom
 		}
-		hidden_effect = {
-			country_event = { id = utopia.2550 }
-		}
-	}
-	modifier = {
-		planet_jobs_robotic_produces_mult = 0.10
-		ROBOT_species_trait_points_add = 1
-		modify_species_cost_mult = -0.50
 	}
 	possible = {
 		custom_tooltip = {
@@ -214,11 +214,27 @@ ap_synthetic_evolution = {
 
 	potential = {
 		has_utopia = yes
-		NOT = { has_ascension_perk = ap_synthetic_evolution }
-		is_robot_empire = no
+		NOR = {
+			has_ascension_perk = ap_synthetic_evolution
+			has_origin = origin_shroudwalker_apprentice
+		}
+		is_gestalt = no
+		is_mechanical_empire = no
 	}
 
 	ai_weight = {
-		factor = 10000
+		factor = 20
+		modifier = {
+			factor = 0.1
+			is_materialist = no
+		}
+		modifier = {
+			factor = 0
+			num_owned_planets < 6
+		}
+		modifier = {
+			factor = 0
+			has_origin = origin_necrophage
+		}
 	}
 }
