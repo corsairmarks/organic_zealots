@@ -85,6 +85,7 @@ re_enable_tech_ascension_special_projects_if_force_disabled = {
 				is_researching_special_project = FLESH_IS_WEAK_PROJECT
 			}
 		}
+		save_event_target_as = flesh_weak_owner # required so the project has its expected event_target
 		enable_special_project = {
 			name = FLESH_IS_WEAK_PROJECT
 			owner = this
@@ -102,6 +103,7 @@ re_enable_tech_ascension_special_projects_if_force_disabled = {
 				is_researching_special_project = SYNTHETIC_EVOLUTION_PROJECT
 			}
 		}
+		save_event_target_as = synth_evo_owner # required so the project has its expected event_target
 		enable_special_project = {
 			name = SYNTHETIC_EVOLUTION_PROJECT
 			owner = this
