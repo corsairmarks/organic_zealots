@@ -175,13 +175,10 @@ citizenship_assimilation = {
 				limit = { from = { has_active_tradition = tr_cybernetics_transubstantiation_synthesis } }
 				custom_tooltip = {
 					fail_text = CYBORG_SPECIES_MUST_BE_ORGANIC
-					prev = {
-						is_robotic = no
-						OR = {
-							has_trait = trait_hive_mind
-							NOT = { has_trait = trait_cybernetic }
-							is_robotic = no
-						}
+					is_robotic = no
+					OR = {
+						NOT = { has_trait = trait_cybernetic }
+						has_trait = trait_hive_mind
 					}
 				}
 				if = {
