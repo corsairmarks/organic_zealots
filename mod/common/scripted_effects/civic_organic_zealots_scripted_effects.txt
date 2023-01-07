@@ -75,42 +75,39 @@ force_disable_tech_ascension_special_projects = {
 # this = country
 re_enable_tech_ascension_special_projects_if_force_disabled = {
 	optimize_memory
-	if = {
-		limit = { overlord = { has_valid_civic = civic_organic_zealots } }
-		if ={
-			limit = {
-				has_tradition = tr_cybernetics_adopt
-				has_country_flag = flesh_is_weak_project_aborted_by_organic_zealots
-				NOR = {
-					has_country_flag = cyborg_empire
-					has_special_project = FLESH_IS_WEAK_PROJECT
-					is_researching_special_project = FLESH_IS_WEAK_PROJECT
-				}
+	if ={
+		limit = {
+			has_tradition = tr_cybernetics_adopt
+			has_country_flag = flesh_is_weak_project_aborted_by_organic_zealots
+			NOR = {
+				has_country_flag = cyborg_empire
+				has_special_project = FLESH_IS_WEAK_PROJECT
+				is_researching_special_project = FLESH_IS_WEAK_PROJECT
 			}
-			enable_special_project = {
-				name = FLESH_IS_WEAK_PROJECT
-				owner = this
-				location = capital_scope
-			}
-			remove_country_flag = flesh_is_weak_project_aborted_by_organic_zealots
 		}
-		if ={
-			limit = {
-				has_active_tradition = tr_synthetics_synthetic_age
-				has_country_flag = synthetic_evolution_project_aborted_by_organic_zealots
-				is_robot_empire = no
-				NOR = {
-					has_special_project = SYNTHETIC_EVOLUTION_PROJECT
-					is_researching_special_project = SYNTHETIC_EVOLUTION_PROJECT
-				}
-			}
-			enable_special_project = {
-				name = SYNTHETIC_EVOLUTION_PROJECT
-				owner = this
-				location = capital_scope
-			}
-			remove_country_flag = synthetic_evolution_project_aborted_by_organic_zealots
+		enable_special_project = {
+			name = FLESH_IS_WEAK_PROJECT
+			owner = this
+			location = capital_scope
 		}
+		remove_country_flag = flesh_is_weak_project_aborted_by_organic_zealots
+	}
+	if ={
+		limit = {
+			has_active_tradition = tr_synthetics_synthetic_age
+			has_country_flag = synthetic_evolution_project_aborted_by_organic_zealots
+			is_robot_empire = no
+			NOR = {
+				has_special_project = SYNTHETIC_EVOLUTION_PROJECT
+				is_researching_special_project = SYNTHETIC_EVOLUTION_PROJECT
+			}
+		}
+		enable_special_project = {
+			name = SYNTHETIC_EVOLUTION_PROJECT
+			owner = this
+			location = capital_scope
+		}
+		remove_country_flag = synthetic_evolution_project_aborted_by_organic_zealots
 	}
 }
 

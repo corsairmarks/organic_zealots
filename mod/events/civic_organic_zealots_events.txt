@@ -124,7 +124,8 @@ country_event = {
 		NAND = {
 			is_subject = yes
 			exists = overlord
-			overlord = { has_valid_civic = civic_organic_zealots }
+			# intentionally does NOT check civic validity
+			overlord = { has_civic = civic_organic_zealots }
 		}
 	}
 	immediate = {

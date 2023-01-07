@@ -37,7 +37,11 @@ wg_independence = {
 	on_status_quo = {
 		custom_tooltip = wg_independence_status_quo
 		hidden_effect = {
-			re_enable_tech_ascension_special_projects_if_force_disabled = yes
+			if = {
+				# intentionally does NOT check civic validity
+				limit = { from = { has_civic = civic_organic_zealots } }
+				re_enable_tech_ascension_special_projects_if_force_disabled = yes
+			}
 			set_subject_of = { who = none }
 		}
 	}
@@ -45,7 +49,11 @@ wg_independence = {
 	on_accept = {
 		custom_tooltip = wg_independence_accept
 		hidden_effect = {
-			re_enable_tech_ascension_special_projects_if_force_disabled = yes
+			if = {
+				# intentionally does NOT check civic validity
+				limit = { from = { has_civic = civic_organic_zealots } }
+				re_enable_tech_ascension_special_projects_if_force_disabled = yes
+			}
 			set_subject_of = { who = none }
 			every_system_within_border = {
 				limit = { from = { has_claim = prev } }
@@ -114,8 +122,9 @@ wg_allegiance = {
 					limit = {
 						is_subject = yes
 						exists = overlord
-						overlord = { has_valid_civic = civic_organic_zealots }
-						root = { NOT = { has_valid_civic = civic_organic_zealots } }
+						# intentionally does NOT check civic validity
+						overlord = { has_civic = civic_organic_zealots }
+						root = { NOT = { has_civic = civic_organic_zealots } }
 					}
 					re_enable_tech_ascension_special_projects_if_force_disabled = yes
 				}
@@ -124,8 +133,9 @@ wg_allegiance = {
 					limit = {
 						is_subject = yes
 						exists = overlord
-						overlord = { NOT = { has_valid_civic = civic_organic_zealots } }
-						root = { has_valid_civic = civic_organic_zealots }
+						# intentionally does NOT check civic validity
+						overlord = { NOT = { has_civic = civic_organic_zealots } }
+						root = { has_civic = civic_organic_zealots }
 					}
 					set_policies_robot_pops_and_ai_to_outlawed = yes
 					force_disable_tech_ascension_special_projects = yes
