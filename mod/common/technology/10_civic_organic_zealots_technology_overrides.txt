@@ -13,19 +13,18 @@ tech_administrative_ai = {
 	prerequisites = { tech_basic_science_lab_1 }
 	weight = @tier1weight1
 
-	potential = {
-		NOT = { has_technology = tech_flash_learning } # tech mutual exclusion
-	}
-
 	modifier = {
 		all_technology_research_speed = 0.05
 	}
 
-	weight_modifier = {
-		modifier = {
-			factor = 0
+	potential = {
+		NOR = {
+			has_technology = tech_flash_learning # tech mutual exclusion
 			has_policy_flag = ai_outlawed # requirement
 		}
+	}
+
+	weight_modifier = {
 		modifier = {
 			factor = value:tech_weight_likelihood
 			research_leader = {
@@ -64,15 +63,15 @@ tech_cryostasis_1 = {
 		planet_colony_development_speed_mult = 0.50
 	}
 
-	weight_modifier = {
-		modifier = {
-			factor = 0
-			NOR = {
-				# prerequisite options
-				has_technology = tech_administrative_ai
-				has_technology = tech_flash_learning
-			}
+	potential = {
+		OR = {
+			# prerequisite options
+			has_technology = tech_administrative_ai
+			has_technology = tech_flash_learning
 		}
+	}
+
+	weight_modifier = {
 		modifier = {
 			factor = value:tech_weight_likelihood
 			research_leader = {
@@ -105,15 +104,15 @@ tech_self_aware_logic = {
 		num_tech_alternatives_add = 1
 	}
 
-	weight_modifier = {
-		modifier = {
-			factor = 0
-			NOR = {
-				# prerequisite options
-				has_technology = tech_administrative_ai
-				has_technology = tech_flash_learning
-			}
+	potential = {
+		OR = {
+			# prerequisite options
+			has_technology = tech_administrative_ai
+			has_technology = tech_flash_learning
 		}
+	}
+
+	weight_modifier = {
 		modifier = {
 			factor = value:tech_weight_likelihood
 			research_leader = {
@@ -143,17 +142,17 @@ tech_combat_computers_1 = {
 	ai_update_type = military
 	weight = @tier1weight3
 
+	potential = {
+		OR = {
+			# prerequisite options
+			has_technology = tech_administrative_ai
+			has_technology = tech_flash_learning
+		}
+	}
+
 	# unlocks aggressive / defensive combat computers
 
 	weight_modifier = {
-		modifier = {
-			factor = 0
-			NOR = {
-				# prerequisite options
-				has_technology = tech_administrative_ai
-				has_technology = tech_flash_learning
-			}
-		}
 		modifier = {
 			factor = 2
 			has_technology = tech_destroyers
@@ -212,18 +211,15 @@ tech_consumer_good_refinement_1 = {
 			is_gestalt = no
 			has_valid_civic = civic_machine_servitor
 		}
+		OR = {
+			# prerequisite options
+			has_technology = tech_administrative_ai
+			has_technology = tech_flash_learning
+		}
 	}
 
 	weight_modifier = {
 		factor = 2
-		modifier = {
-			factor = 0
-			NOR = {
-				# prerequisite options
-				has_technology = tech_administrative_ai
-				has_technology = tech_flash_learning
-			}
-		}
 		modifier = {
 			factor = value:tech_weight_likelihood
 			research_leader = {
@@ -263,14 +259,13 @@ tech_sapient_ai = {
 
 	potential = {
 		is_gestalt = no
-		NOT = { has_technology = tech_mentat_computation } # tech mutual exclusion
+		NOR = {
+			has_technology = tech_mentat_computation # tech mutual exclusion
+			has_policy_flag = ai_outlawed # requirement
+		}
 	}
 
 	weight_modifier = {
-		modifier = {
-			factor = 0
-			has_policy_flag = ai_outlawed # requirement
-		}
 		modifier = {
 			factor = value:tech_weight_likelihood
 			research_leader = {
@@ -309,17 +304,14 @@ tech_autocurating_vault = {
 	potential = {
 		is_spiritualist = no
 		NOT = { has_valid_civic = civic_machine_servitor }
+		OR = {
+			# prerequisite options
+			has_technology = tech_administrative_ai
+			has_technology = tech_flash_learning
+		}
 	}
 
 	weight_modifier = {
-		modifier = {
-			factor = 0
-			NOR = {
-				# prerequisite options
-				has_technology = tech_administrative_ai
-				has_technology = tech_flash_learning
-			}
-		}
 		modifier = {
 			factor = value:tech_weight_likelihood
 			research_leader = {
