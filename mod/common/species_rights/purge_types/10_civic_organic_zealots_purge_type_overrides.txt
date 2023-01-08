@@ -139,7 +139,6 @@ purge_displacement = {
 # * use triggers
 # * always allowed for Organic Zealots versus robotic species
 purge_processing = {
-	# token = purge_processing
 	pop_escape_chance = 0.20
 	pop_decline_rate = 50 # 1 pop per 2 months, overrides BASE_POP_DECLINE, will only work on purge types
 

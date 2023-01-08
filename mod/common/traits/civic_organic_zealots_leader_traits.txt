@@ -51,7 +51,6 @@ leader_trait_governor_mentat = {
 	prerequisites = { tech_mentat_computation }
 }
 
-
 leader_trait_ruler_mentat = {
 	cost = 1
 	icon = "gfx/interface/icons/traits/trait_erudite.dds"
