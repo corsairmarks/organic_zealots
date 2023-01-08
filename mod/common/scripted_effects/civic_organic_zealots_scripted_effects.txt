@@ -4,19 +4,12 @@ set_policies_robot_pops_and_ai_to_outlawed = {
 	if = {
 		limit = {
 			NOT = { has_policy_flag = ai_outlawed }
+			can_set_ai_policy = yes
 			can_set_policy = {
 				policy = artificial_intelligence_policy
 				option = ai_outlawed
 			}
 		}
-		# if = {
-		# 	limit = { has_policy_flag = ai_servitude }
-		# 	set_country_flag =  ai_servitude_removed_by_organic_zealots
-		# }
-		# else_if = {
-		# 	limit = { has_policy_flag = ai_full_rights }
-		# 	set_country_flag =  ai_full_rights_removed_by_organic_zealots
-		# }
 		set_policy = {
 			policy = artificial_intelligence_policy
 			option = ai_outlawed
@@ -26,15 +19,12 @@ set_policies_robot_pops_and_ai_to_outlawed = {
 	if = {
 		limit = {
 			NOT = { has_policy_flag = robots_outlawed }
+			is_gestalt = no # matches the potential block for robot_pop_policy
 			can_set_policy = {
 				policy = robot_pop_policy
 				option = robot_pops_outlawed
 			}
 		}
-		# if = {
-		# 	limit = { has_policy_flag = robots_allowed }
-		# 	set_country_flag = robot_allowed_removed_by_organic_zealots
-		# }
 		set_policy = {
 			policy = robot_pop_policy
 			option = robot_pops_outlawed
