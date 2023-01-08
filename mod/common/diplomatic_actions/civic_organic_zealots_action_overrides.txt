@@ -131,11 +131,11 @@ action_make_rival = {
 		hidden_trigger = {
 			NAND = {
 				is_subject = yes
-				FROM = {
+				from = {
 					OR = {
 						is_fallen_empire = yes
-						is_overlord_to = ROOT
-						has_overlord = ROOT.overlord
+						is_overlord_to = root
+						has_overlord = root.overlord
 					}
 				}
 			}
@@ -143,9 +143,9 @@ action_make_rival = {
 		# Can't be rivals with your subjects.
 		hidden_trigger = {
 			NOT = {
-				FROM = {
+				from = {
 					is_subject = yes
-					has_overlord = ROOT
+					has_overlord = root
 				}
 			}
 		}
@@ -204,18 +204,18 @@ action_form_defensive_pact = {
 
 	potential = {
 		hidden_trigger = {
-			NOT = { ROOT = { is_overlord_to = FROM } }
+			NOT = { root = { is_overlord_to = from } }
 		}
 
 		hidden_trigger = {
-			NOT = { FROM = { is_overlord_to = ROOT } }
+			NOT = { from = { is_overlord_to = root } }
 		}
 		hidden_trigger = {
 			is_subject = no
 		}
 
 		hidden_trigger = {
-			FROM = { is_subject = no }
+			from = { is_subject = no }
 		}
 	}
 
@@ -569,7 +569,7 @@ action_form_research_agreement = {
 			fail_text = not_allowed_for_protectorate
 			NOT = {
 				OR = {
-					FROM = {
+					from = {
 						is_subject = yes
 						any_agreement = { agreement_preset = preset_protectorate }
 					}
@@ -632,7 +632,7 @@ action_guarantee_independence = {
 
 		# Cannot guarantee if target is already a subject.
 		hidden_trigger = {
-			FROM = { is_subject = no }
+			from = { is_subject = no }
 		}
 
 		hidden_trigger = {
@@ -641,7 +641,7 @@ action_guarantee_independence = {
 
 		# Target is not overlord.
 		hidden_trigger = {
-			NOT = { has_overlord = FROM }
+			NOT = { has_overlord = from }
 		}
 
 	}
@@ -993,12 +993,12 @@ action_invite_to_federation = {
 		hidden_trigger = {
 			if = {
 				limit = {
-					FROM = {
+					from = {
 						is_subject = yes
 					}
 				}
 				has_federation = yes
-				is_overlord_to = FROM
+				is_overlord_to = from
 			}
 		}
 	}
@@ -1220,9 +1220,9 @@ action_demand_subjugation = {
 
 	potential = {
 		hidden_trigger = {
-			FROM = {
+			from = {
 				NOT = {
-					has_overlord = ROOT
+					has_overlord = root
 				}
 			}
 		}
@@ -1675,7 +1675,7 @@ action_propose_secret_fealty = {
 		custom_tooltip = {
 			fail_text = recent_failed_betrayal_overlord
 			NOT = {
-				FROM = {
+				from = {
 					OR = {
 						has_modifier = failed_betrayal
 						has_modifier = failed_betrayal_status_quo
