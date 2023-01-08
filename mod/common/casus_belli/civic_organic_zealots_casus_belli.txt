@@ -30,7 +30,7 @@ cb_impose_policy = {
 
 cb_containment_organic_zealots = {
 	show_in_diplomacy = no
-	show_notification = yes
+	show_notification = no
 	potential = {
 		is_country_type = default
 		is_homicidal = no
@@ -50,7 +50,7 @@ cb_containment_organic_zealots = {
 
 cb_robotic_purification = {
 	show_in_diplomacy = no
-	show_notification = yes
+	show_notification = no
 	potential = {
 		has_valid_civic = civic_organic_zealots
 		exists = from
