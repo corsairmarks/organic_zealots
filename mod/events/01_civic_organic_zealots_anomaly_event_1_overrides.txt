@@ -8,7 +8,7 @@ ship_event = {
 	id = anomaly.186
 	title = "anomaly.186.name"
 	desc = {
-		text = anomaly.186.desc.v1
+		text = "anomaly.186.desc.v1"
 		trigger = {
 			owner = {
 				NOT = { has_civic = civic_organic_zealots }
@@ -21,13 +21,13 @@ ship_event = {
 		}
 	}
 	desc = {
-		text = anomaly.186.desc.organic_zealots # TODO: option and description for Organic Zealots
+		text = "anomaly.186.desc.organic_zealots"
 		trigger = {
 			owner = { has_civic = civic_organic_zealots }
 		}
 	}
 	desc = {
-		text = anomaly.186.desc.v3
+		text = "anomaly.186.desc.v3"
 		trigger = {
 			owner = {
 				NOR = {
@@ -92,11 +92,9 @@ ship_event = {
 				is_spiritualist = no
 			}
 		}
-
 		allow = {
 			owner = { NOT = { has_policy_flag = ai_outlawed } }
 		}
-
 		owner = {
 			capital_scope = {
 				enable_special_project = {
@@ -107,7 +105,6 @@ ship_event = {
 			}
 		}
 	}
-
 	option = {
 		name = "anomaly.186.d"
 		trigger = {

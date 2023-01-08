@@ -1,0 +1,3 @@
+﻿l_english:
+ # original tooltip lists the incorrect amount of research provided by the deposit
+ anomaly.4030.b.tooltip: "Destroys the AI.\n\nAdds the §Y$ai_fleet$§! modifier to [From.GetName]:\n£engineering£ §G+3§!"

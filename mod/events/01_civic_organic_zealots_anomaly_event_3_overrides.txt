@@ -10,7 +10,7 @@ ship_event = {
 		}
 	}
 	desc = {
-		text = "anomaly.4030.organic_zealots" # TODO: option and description for Organic Zealots
+		text = "anomaly.4030.organic_zealots"
 		trigger = {
 			owner = { has_civic = civic_organic_zealots }
 		}
@@ -46,7 +46,7 @@ ship_event = {
 		trigger = {
 			hidden:owner = { NOT = { has_civic = civic_organic_zealots } }
 		}
-		custom_tooltip = "anomaly.4030.b.tooltip" # TODO: replace this tooltip with an accurate one?
+		custom_tooltip = "anomaly.4030.b.tooltip"
 		hidden_effect = {
 			from = {
 				add_modifier = {
@@ -58,7 +58,7 @@ ship_event = {
 		}
 	}
 	option = {
-		name = "anomaly.4030.organic_zealots"
+		name = "anomaly.4030.c.organic_zealots"
 		trigger = {
 			owner = { has_civic = civic_organic_zealots }
 		}
