@@ -1,0 +1,136 @@
+namespace = anomaly
+
+# Modified:
+# * use triggers
+# * organic zealots nuke from orbit
+# Limbo project 1 followup - anomaly_events_2
+ship_event = {
+	id = anomaly.186
+	title = "anomaly.186.name"
+	desc = {
+		text = anomaly.186.desc.v1
+		trigger = {
+			owner = {
+				NOT = { has_civic = civic_organic_zealots }
+				OR = {
+					has_policy_flag = ai_outlawed
+					NOT = { has_technology = tech_synthetic_workers }
+					is_spiritualist = yes
+				}
+			}
+		}
+	}
+	desc = {
+		text = anomaly.186.desc.organic_zealots # TODO: option and description for Organic Zealots
+		trigger = {
+			owner = { has_civic = civic_organic_zealots }
+		}
+	}
+	desc = {
+		text = anomaly.186.desc.v3
+		trigger = {
+			owner = {
+				NOR = {
+					has_civic = civic_organic_zealots
+					has_policy_flag = ai_outlawed
+				}
+				has_technology = tech_synthetic_workers
+				is_spiritualist = no
+			}
+		}
+	}
+	picture = GFX_evt_sapient_AI
+	show_sound = event_radio_chatter
+	location = fromfrom
+	is_triggered_only = yes
+	trackable = yes
+	option = {
+		name = "anomaly.186.a"
+		trigger = {
+			hidden:owner = { NOT = { has_civic = civic_organic_zealots } }
+		}
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = story.5
+					days = 30
+				}
+			}
+		}
+		owner = {
+			add_monthly_resource_mult = {
+				resource = engineering_research
+				value = @tier4researchreward
+				min = @tier4researchmin
+				max = @tier4researchmax
+			}
+		}
+	}
+	option = {
+		name = "anomaly.186.organic_zealots"
+		trigger = {
+			owner = { has_civic = civic_organic_zealots }
+		}
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier4unityreward
+				min = @tier4unitymin
+				max = @tier4unitymax
+			}
+		}
+	}
+	option = {
+		name = "anomaly.186.c"
+		trigger = {
+			hidden:owner = {
+				NOR = {
+					has_civic = civic_organic_zealots
+					has_policy_flag = ai_outlawed
+				}
+				has_technology = tech_synthetic_workers
+				is_spiritualist = no
+			}
+		}
+
+		allow = {
+			owner = { NOT = { has_policy_flag = ai_outlawed } }
+		}
+
+		owner = {
+			capital_scope = {
+				enable_special_project = {
+					name = "LIMBO_2_PROJECT"
+					location = this
+					owner = root.owner
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "anomaly.186.d"
+		trigger = {
+			hidden:owner = {
+				NOT = { has_civic = civic_organic_zealots }
+				OR = {
+					has_policy_flag = ai_outlawed
+					NOT = { has_technology = tech_synthetic_workers }
+					is_spiritualist = yes
+				}
+			}
+		}
+		owner = {
+			add_monthly_resource_mult = {
+				resource = engineering_research
+				value = @tier3researchreward
+				min = @tier3researchmin
+				max = @tier3researchmax
+			}
+		}
+		hidden_effect = {
+			fromfrom = { set_planet_flag = limbo_planet }
+			owner = { set_country_flag = limbo_downloaded }
+		}
+	}
+}

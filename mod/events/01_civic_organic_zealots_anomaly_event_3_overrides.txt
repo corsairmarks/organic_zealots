@@ -1,0 +1,84 @@
+namespace = anomaly
+
+ship_event = {
+	id = anomaly.4030
+	title = "anomaly.4030.name"
+	desc = {
+		text = "anomaly.4030.desc"
+		trigger = {
+			owner = { NOT = { has_civic = civic_organic_zealots } }
+		}
+	}
+	desc = {
+		text = "anomaly.4030.organic_zealots" # TODO: option and description for Organic Zealots
+		trigger = {
+			owner = { has_civic = civic_organic_zealots }
+		}
+	}
+	picture = GFX_evt_archaeological_dig
+	show_sound = event_sensor_ping
+	location = from
+	trackable = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			owner = {
+				set_country_flag = ai_admiral_found
+				country_event = { id = story.5 days = 30 }
+			}
+		}
+	}
+	option = {
+		name = "anomaly.4030.a"
+		trigger = {
+			hidden:owner = { NOT = { has_civic = civic_organic_zealots } }
+		}
+		from = {
+			enable_special_project = {
+				name = "AI_ADMIRAL_PROJECT"
+				owner = root
+				location = this
+			}
+		}
+	}
+	option = {
+		name = "anomaly.4030.b"
+		trigger = {
+			hidden:owner = { NOT = { has_civic = civic_organic_zealots } }
+		}
+		custom_tooltip = "anomaly.4030.b.tooltip" # TODO: replace this tooltip with an accurate one?
+		hidden_effect = {
+			from = {
+				add_modifier = {
+					modifier = "ai_fleet"
+					days = -1
+				}
+				add_deposit = d_engineering_3
+			}
+		}
+	}
+	option = {
+		name = "anomaly.4030.organic_zealots"
+		trigger = {
+			owner = { has_civic = civic_organic_zealots }
+		}
+		custom_tooltip = "anomaly.4030.b.tooltip"
+		hidden_effect = {
+			from = {
+				add_modifier = {
+					modifier = "ai_fleet"
+					days = -1
+				}
+				add_deposit = d_engineering_3
+			}
+		}
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier1unityreward
+				min = @tier1unitymin
+				max = @tier1unitymax
+			}
+		}
+	}
+}
