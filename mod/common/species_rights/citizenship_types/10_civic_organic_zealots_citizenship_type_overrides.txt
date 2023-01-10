@@ -100,6 +100,7 @@ citizenship_assimilation = {
 				limit = { from = { has_active_tradition = tr_genetics_creation } }
 				custom_tooltip = {
 					fail_text = HIVE_SPECIES_CANT_BE_HIVE_FAIL
+					is_robotic = no
 					NOT = { has_trait = trait_hive_mind }
 				}
 			}
@@ -118,6 +119,7 @@ citizenship_assimilation = {
 				}
 				custom_tooltip = {
 					fail_text = HIVE_SPECIES_CANT_BE_HIVE_FAIL
+					is_robotic = no
 					OR = {
 						NOT = { has_trait = trait_hive_mind }
 						AND = {
