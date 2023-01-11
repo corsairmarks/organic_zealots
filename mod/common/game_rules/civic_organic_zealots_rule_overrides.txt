@@ -169,8 +169,8 @@ can_release_vassal = {
 }
 
 # Modified:
-# * prohibit assembly of robotic Pops if the owner is organic zealots/overlord is ordanic zealots/lost an ai policy war
-# * prohibit assembly of cybernetic Pops if the owner is organic zealots/overlord is ordanic zealots/lost an ai policy war
+# * prohibit assembly of robotic Pops if the owner is organic zealots/overlord is organic zealots/lost an ai policy war
+# * prohibit assembly of cybernetic Pops if the owner is organic zealots/overlord is organic zealots/lost an ai policy war
 # * allow assembly when building_clone_birth_labs is present
 # Checks if a pop can be assembled
 # this = species
