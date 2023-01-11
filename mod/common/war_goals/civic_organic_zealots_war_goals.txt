@@ -100,6 +100,8 @@ wg_force_policy_outlaw_robots_and_ai = {
 	war_exhaustion = 0.75
 	potential = {
 		NOT = { has_policy_flag = no_wars }
+		has_valid_civic = civic_organic_zealots
+		is_robot_empire = no
 		exists = from
 		has_total_war_cb = no
 		from = { is_valid_target_to_outlaw_cybernetics_or_robot_pops_or_ai = yes }
