@@ -80,7 +80,6 @@ allows_purge = {
 	}
 }
 
-
 # Modified: use gestalt trigger and homicidal trigger
 is_valid_target_fe_stop_atrocities = {
 	OR = {
