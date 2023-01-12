@@ -104,12 +104,11 @@ ship_event = {
 }
 
 # Trop/Cont/Oce world with roboticized factory - project followup
-# Modified:
-# * custom description for organic zealots
+# Modified: custom description for organic zealots
 ship_event = {
 	id = anomaly.3027
-	title = anomaly.3025.name
-	desc = anomaly.3027.desc
+	title = "anomaly.3025.name"
+	desc = "anomaly.3027.desc"
 	desc = {
 		text = "anomaly.3027.desc"
 		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
@@ -130,6 +129,45 @@ ship_event = {
 		}
 		hidden_effect = {
 			fromfrom = { add_deposit = d_ancient_mining_site }
+		}
+	}
+}
+
+### Toy Factory
+# Modified:
+# * custom description for organic zealots
+# * custom option for organic zealots
+ship_event = {
+	id = anomaly.3080
+	title = "anomaly.3080.name"
+	desc = "anomaly.3080.desc"
+	picture = GFX_evt_relic_world_building
+	show_sound = event_activating_unknown_technology
+	location = from
+	is_triggered_only = yes
+	immediate = {
+		owner = {
+			country_event = {
+				id = story.5
+				days = 30
+			}
+		}
+	}
+	option = {
+		name = "anomaly.3080.a"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		from = { add_deposit = d_toy_factory_complex }
+	}
+	option = {
+		name = "anomaly.3080.b.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier3unityreward
+				min = @tier3unitymin
+				max = @tier3unitymax
+			}
 		}
 	}
 }
@@ -280,7 +318,7 @@ ship_event = {
 				has_civic = civic_organic_zealots
 			}
 		}
-		name = "CLEANSE_FROM_ORBIT"
+		name = CLEANSE_FROM_ORBIT
 		custom_tooltip = "anomaly.4105.a.organic_zealots.tooltip"
 		owner = {
 			add_monthly_resource_mult = {
@@ -298,7 +336,7 @@ ship_event = {
 				has_civic = civic_organic_zealots
 			}
 		}
-		name = "CLEANSE_FROM_ORBIT"
+		name = CLEANSE_FROM_ORBIT
 		custom_tooltip = "anomaly.4105.b.organic_zealots.tooltip"
 		hidden_effect = { owner = { set_country_flag = edict_renewable_energy } }
 		owner = {
@@ -326,7 +364,7 @@ ship_event = {
 					species = { is_robotic = yes }
 					owner = {
 						OR = {
-							has_origin = origin_mechanist
+							has_origin = origin_mechanists
 							is_robot_empire = yes
 						}
 					}

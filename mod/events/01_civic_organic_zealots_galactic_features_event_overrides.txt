@@ -1,0 +1,48 @@
+namespace = galactic_features
+
+# Sanctuary Transmission
+# Modified: uses different phrases
+country_event = {
+	id = galactic_features.351
+	title = "TRANSMISSION"
+	desc = "galactic_features.351.desc"
+	diplomatic = yes
+	picture_event_data = {
+		room = no_video_feed_room
+	}
+	is_triggered_only = yes
+	option = {
+		name = "galactic_features.351.a"
+		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		response_text = "galactic_features.351.a.response"
+		is_dialog_only = yes
+	}
+	option = {
+		name = "galactic_features.351.b"
+		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		response_text = "galactic_features.351.b.response"
+		is_dialog_only = yes
+	}
+	option = {
+		name = "galactic_features.351.c"
+		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		response_text = "galactic_features.351.c.response"
+	}
+	option = {
+		name = "galactic_features.351.a.organic_zealots"
+		trigger = { has_civic = civic_organic_zealots }
+		response_text = "galactic_features.351.a.response"
+		is_dialog_only = yes
+	}
+	option = {
+		name = "galactic_features.351.b.organic_zealots"
+		trigger = { has_civic = civic_organic_zealots }
+		response_text = "galactic_features.351.b.response"
+		is_dialog_only = yes
+	}
+	option = {
+		name = "galactic_features.351.c.organic_zealots"
+		trigger = { has_civic = civic_organic_zealots }
+		response_text = "galactic_features.351.c.response"
+	}
+}
