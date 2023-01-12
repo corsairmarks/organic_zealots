@@ -91,6 +91,3 @@
  # mirrors content from Deassimilate Machines
  CYBORG_SPECIES_CANT_BE_CYBORG_FAIL: "$TRIGGER_FAIL$This species already has cybernetic implants."
  HIVE_SPECIES_CANT_BE_HIVE_FAIL: "$TRIGGER_FAIL$Only organic non-§Y$trait_hive_mind$§! species can be connected to our Hive Mind."
-
-
-
