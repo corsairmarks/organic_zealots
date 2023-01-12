@@ -1,30 +1,37 @@
 namespace = anomaly
 
-# Modified: add "no AI" tech option tech_flash_learning
+# Modified:
+# * add "no AI" tech option tech_flash_learning
+# * organic zealots may not select options a or b
 ship_event = {
 	id = anomaly.6705
-	title = anomaly.6705.name
+	title = "anomaly.6705.name"
 	desc = {
 		trigger = {
-			text = anomaly.6705.desc.start
+			text = "anomaly.6705.desc.start"
 			text = newline
 			success_text = {
-				text = anomaly.6705.desc.L
+				text = "anomaly.6705.desc.L"
 				owner = { has_country_flag = encountered_first_lgate }
 			}
 			success_text = {
-				text = anomaly.6705.desc.noL
+				text = "anomaly.6705.desc.noL"
 				owner = { NOT = { has_country_flag = encountered_first_lgate } }
 			}
-			text = anomaly.6705.desc.end
+			text = "anomaly.6705.desc.end"
 		}
 	}
 	picture = GFX_evt_gray_goo
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
 	option =  {
-		allow = { owner = { has_technology = tech_self_aware_logic } }
-		name = anomaly.6705.a
+		allow = {
+			owner = {
+				has_technology = tech_self_aware_logic
+				NOT = { has_civic = civic_organic_zealots }
+			}
+		}
+		name = "anomaly.6705.a"
 		owner = { generate_lcluster_clue = yes }
 		enable_special_project = {
 			name = TAME_THE_SWARM
@@ -33,9 +40,10 @@ ship_event = {
 		}
 	}
 	option =  {
-		name = anomaly.6705.b
+		name = "anomaly.6705.b"
+		allow = { owner = { NOT = { has_civic = civic_organic_zealots } } }
 		owner = { generate_lcluster_clue = yes }
-		custom_tooltip = anomaly.6705.b.tooltip
+		custom_tooltip = "anomaly.6705.b.tooltip"
 		owner = {
 			switch = {
 				trigger = has_technology
@@ -76,12 +84,133 @@ ship_event = {
 		}
 	}
 	option =  {
-		name = anomaly.6705.c
+		name = "anomaly.6705.c"
 		owner = { generate_lcluster_clue = yes }
 		enable_special_project = {
 			name = DESTROY_SWARM
 			location = event_target:nanite_swarm_planet
 			owner = root
+		}
+	}
+}
+
+# Lost Soul (robot)
+# Modified: custom option for organic zealots
+ship_event = {
+	id = anomaly.6786
+	title = "anomaly.6786.name"
+	desc = "anomaly.6786.desc"
+	picture = GFX_evt_star_neutron
+	show_sound = event_ship_bridge
+	location = from
+	trackable = yes
+	is_triggered_only = yes
+	immediate = {
+		from = { clear_deposits = yes }
+	}
+	option = {
+		name = "anomaly.6786.a"
+		custom_tooltip = "anomaly.6786.a.tooltip"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		from = { set_deposit = d_minerals_3 }
+		hidden_effect = {
+			ship_event = {
+				id = anomaly.6787
+				days = 5
+			}
+		}
+	}
+	option = {
+		name = "anomaly.6786.b"
+		custom_tooltip = "anomaly.6786.b.tooltip"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	option = {
+		name = "anomaly.6786.b.organic_zealots"
+		custom_tooltip = "anomaly.6786.b.organic_zealots.tooltip"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier1unityreward
+				min = @tier1unitymin
+				max = @tier1unitymax
+			}
+		}
+	}
+}
+
+# Toxic Biological Industry
+# Modified:
+# * organic zealots may not select options a, b, c, or d
+# * custom option for organic zealots
+ship_event = {
+	id = anomaly.6895
+	title = "anomaly.6895.name"
+	desc = {
+		trigger = { owner = { is_catalytic_empire = no } }
+		text = "anomaly.6895.desc.catano"
+	}
+	desc = {
+		trigger = { owner = { is_catalytic_empire = yes } }
+		text = "anomaly.6895.desc.catayes"
+	}
+	picture = GFX_evt_toxic
+	show_sound = event_ancient_drone
+	is_triggered_only = yes
+	location = from
+	immediate = {
+		from = { clear_deposits = yes }
+	}
+	option = {
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		name = CURIOUS
+		from = { set_deposit = d_engineering_4 }
+	}
+	option = {
+		trigger = {
+			owner = {
+				NOT = { has_civic = civic_organic_zealots }
+				is_catalytic_empire = no
+			}
+		}
+		name = "anomaly.6895.b"
+		from = { set_deposit = d_alloys_3 }
+	}
+	option = {
+		trigger = {
+			owner = {
+				NOT = { has_civic = civic_organic_zealots }
+				is_catalytic_empire = yes
+			}
+		}
+		name = "anomaly.6895.c"
+		from = { set_deposit = d_alloys_5 }
+	}
+	option = {
+		trigger = {
+			owner = {
+				NOT = { has_civic = civic_organic_zealots }
+				OR = {
+					has_valid_civic = civic_agrarian_idyll
+					is_spiritualist = yes
+					is_xenophobe = yes
+				}
+			}
+		}
+		name = "anomaly.6895.d"
+		from = { set_deposit = d_society_4 }
+	}
+	option = {
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		name = CLEANSE_FROM_ORBIT
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier2unityreward
+				min = @tier2unitymin
+				max = @tier2unitymax
+			}
 		}
 	}
 }

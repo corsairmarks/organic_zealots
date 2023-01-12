@@ -9,6 +9,8 @@
  anomaly.4105.desc.organic_zealots: "The planet [From.GetName] is a toxic wasteland, but our scans unveil that it has not always been so. A now extinct civilization seems to have destroyed its home planet, via a heavy reliance on climate altering fuels and toxins.\n\nOn a remote hill, close to a major city, we have found a lone active facility. An assembly plant for loathsome robots, desolated and surrounded by military vehicles, curiously facing away from the facility and so deteriorated they break upon touch.\n\nClearly the world was preoccupied dealing with the thinking machine menace to focus on long-term environmental concerns. It falls to us to extinguish the final holdout of their robotic nemeses."
  anomaly.4105.a.organic_zealots.tooltip: "The assembly plant is annihilated as a brilliant pyre for the fallen organic civilization."
  anomaly.4105.b.organic_zealots.tooltip: "Gives access to the §Y$edict_renewable_energy$§! Empire Edict.\n\n$anomaly.4105.a.organic_zealots.tooltip$"
+ anomaly.6786.b.organic_zealots: "Obliterate it."
+ anomaly.6786.b.organic_zealots.tooltip: "§LNo information tainted by a thinking machine is worth having.§!"
  crisis.2402.a.organic_zealots: "More execrable thinking machines!? Viewscreen off!"
  crisis.2403.a.organic_zealots: "What fresh set of profanities and perfidies are you?"
  crisis.2403.b.organic_zealots: "Why have you cowered in fear so long?"

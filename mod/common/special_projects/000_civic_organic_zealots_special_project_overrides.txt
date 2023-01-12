@@ -1,0 +1,26 @@
+special_project = {
+	key = "STUDY_NANITE_SWARM"
+	desc = {
+		text = "STUDY_NANITE_SWARM_DESC"
+		trigger = {	owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "STUDY_NANITE_SWARM_ORGANIC_ZEALOTS_DESC"
+		trigger = {	owner = { has_civic = civic_organic_zealots } }
+	}
+	days_to_research = 300
+	tech_department = physics_technology
+	timelimit = -1
+	picture = "GFX_evt_gray_goo"
+	icon ="gfx/interface/icons/situation_log/situation_log_ai.dds"
+	event_scope = ship_event
+	requirements = {
+		shipclass_science_ship = 1
+		leader = scientist
+	}
+	on_success = {
+		ship_event = {
+			id = anomaly.6705
+		}
+	}
+}

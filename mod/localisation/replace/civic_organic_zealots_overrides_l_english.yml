@@ -11,3 +11,4 @@
  tech_missiles_5_desc: "These highly advanced missiles are equipped with sophisticated onboard that substantially improve their performance and ability to track targets."
  TECH_UNLOCK_COMBAT_COMPUTERS_1_DESC: "§HBasic Combat Roles§!\nRecent progress in algorithmic behavioral theory allows us to designate specific combat roles to our shipboard computers."
  TECH_UNLOCK_COMBAT_COMPUTERS_2_DESC: "§HAdvanced Combat Roles§!\nFurther advances in adaptive combat algorithms enables our shipboard computer to handle their assigned roles far more effectively."
+ STUDY_NANITE_SWARM_ORGANIC_ZEALOTS_DESC: "The nanite swarm on [nanite_swarm_planet.GetName] is both a technological marvel and a danger. Charting the origin of the nanites as well as their relation to the planet's appalling \"ecology\"" provides a challenge for our [Root.Owner.GetScientistPlural] while also informing on how to best counteract this form of abhorrent thinking machines."
