@@ -349,7 +349,7 @@ country_event = {
 		text = utopia.2555.1.desc
 		trigger = {
 			is_spiritualist = no
-			NOT = { has_valid_civic = civic_organic_zealots }
+			NOT = { has_civic = civic_organic_zealots }
 		}
 	}
 	desc = {
@@ -357,7 +357,7 @@ country_event = {
 		trigger = {
 			OR = {
 				is_spiritualist = yes
-				has_valid_civic = civic_organic_zealots
+				has_civic = civic_organic_zealots
 			}
 		}
 	}
@@ -368,7 +368,7 @@ country_event = {
 		name = utopia.2555.a
 		trigger = {
 			is_spiritualist = no
-			NOT = { has_valid_civic = civic_organic_zealots }
+			NOT = { has_civic = civic_organic_zealots }
 		}
 	}
 	option = {
@@ -376,7 +376,7 @@ country_event = {
 		trigger = {
 			OR = {
 				is_spiritualist = yes
-				has_valid_civic = civic_organic_zealots
+				has_civic = civic_organic_zealots
 			}
 		}
 	}
@@ -385,7 +385,7 @@ country_event = {
 			limit = {
 				from = { has_corporate_government = yes }
 				any_owned_planet = { has_branch_office = from }
-				has_valid_civic = civic_organic_zealots
+				has_civic = civic_organic_zealots
 			}
 			every_owned_planet = {
 				limit = { has_branch_office = from }
@@ -434,7 +434,7 @@ country_event = {
 			is_spiritualist = yes
 			NOR = {
 				is_at_war_with = from
-				has_valid_civic = civic_organic_zealots
+				has_civic = civic_organic_zealots
 			}
 		}
 	}
@@ -443,7 +443,7 @@ country_event = {
 		trigger = {
 			OR = {
 				is_at_war_with = from
-				has_valid_civic = civic_organic_zealots
+				has_civic = civic_organic_zealots
 			}
 		}
 	}
@@ -454,7 +454,7 @@ country_event = {
 			is_spiritualist = no
 			NOR = {
 				is_at_war_with = from
-				has_valid_civic = civic_organic_zealots
+				has_civic = civic_organic_zealots
 			}
 		}
 	}
