@@ -9,3 +9,5 @@
  tech_consumer_good_refinement_2_desc: "Using advanced analysis algorithms, we can reliably predict consumer demand before it exists."
  tech_automated_exploration_desc: "We shall empower science officers with independent initiative in their task to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no Blorg has gone before. Science Ships will be able to explore the galaxy without the need for direct orders."
  tech_missiles_5_desc: "These highly advanced missiles are equipped with sophisticated onboard that substantially improve their performance and ability to track targets."
+ TECH_UNLOCK_COMBAT_COMPUTERS_1_DESC: "§HBasic Combat Roles§!\nRecent progress in algorithmic behavioral theory allows us to designate specific combat roles to our shipboard computers."
+ TECH_UNLOCK_COMBAT_COMPUTERS_2_DESC: "§HAdvanced Combat Roles§!\nFurther advances in adaptive combat algorithms enables our shipboard computer to handle their assigned roles far more effectively."
