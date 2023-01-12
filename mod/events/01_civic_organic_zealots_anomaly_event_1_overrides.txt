@@ -79,6 +79,7 @@ ship_event = {
 				max = @tier4unitymax
 			}
 		}
+		from = { add_deposit = d_bomb_crater }
 	}
 	option = {
 		name = "anomaly.186.c"

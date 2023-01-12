@@ -212,5 +212,6 @@ ship_event = {
 				max = @tier2unitymax
 			}
 		}
+		from = { add_deposit = d_bomb_crater }
 	}
 }
