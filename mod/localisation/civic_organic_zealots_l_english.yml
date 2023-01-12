@@ -4,6 +4,12 @@
  civic_tooltip_organic_zealots_effects: "Cannot engage in §Y$DIPLOMACY$§! with robotic species!\nCannot access the §YGalactic Market§!\nHas the §Y'$casus_belli_cb_robotic_purification$'§! casus belli on robotic empires\n§Y$ROBOT$ $POPS$§! will always be purged\nGains £unity£ §Y$unity$§! from purging robotic £pop£ $POPS$\nMay use §Y$bombardment_armageddon$§! bombardment stance\nHas the §Y'$war_goal_wg_force_policy_outlaw_robots_and_ai$'§! wargoal against non-robotic empires\n"
  personality_organic_zealots: "$civic_organic_zealots$"
  personality_organic_zealots_desc: "Organic Zealots consider the mere potential of artificial intelligence as the foremost threat to the galaxy. They may cooperate with other organics, but distrust materialists and view robot users with suspicion. They only approach robots, machines, and synthetics with weapons online."
+ civic_tooltip_organic_zealots: "Has §Y$civic_organic_zealots$§! Civic"
+ civic_tooltip_organic_zealots_fail: "$TRIGGER_FAIL$$civic_tooltip_organic_zealots$"
+ civic_tooltip_organic_zealots_pass: "$TRIGGER_PASS$$civic_tooltip_organic_zealots$"
+ civic_tooltip_overlord_organic_zealots: "Overlord has §Y$civic_organic_zealots$§! Civic"
+ civic_tooltip_overlord_organic_zealots_fail: "$TRIGGER_FAIL$$civic_tooltip_overlord_organic_zealots$"
+ civic_tooltip_overlord_organic_zealots_pass: "$TRIGGER_PASS$$civic_tooltip_overlord_organic_zealots$"
  civic_tooltip_not_organic_zealots: "Does NOT have §Y$civic_organic_zealots$§! Civic"
  civic_tooltip_not_organic_zealots_fail: "$TRIGGER_FAIL$$civic_tooltip_not_organic_zealots$"
  civic_tooltip_not_organic_zealots_pass: "$TRIGGER_PASS$$civic_tooltip_not_organic_zealots$"
@@ -80,6 +86,7 @@
  civic_organic_zealots.2555.name: "Assets Seized!"
  civic_organic_zealots.2555.desc: "The [From.GetAdjective] response to rumors of our ascension as the [Root.GetSpeciesNamePlural] were swift, brutal, and (most notably) financially damaging. Across the [From.GetName], our corporate assets and holdings were seized and the on-site staff indiscriminately slaughtered.\n\nDatalinks from ongoing bilateral treaties abruptly ended. Routine diplomatic communications ceased. There has been no formal announcement from [From.GetAdjective] diplomats, but their complete silence speaks volumes. All that remains are preparations to defend against the inevitable jihad."
  civic_organic_zealots.2555.a: "It is only a matter of time."
+ CLEANSE_FROM_ORBIT: "Cleanse the entire site from orbit."
 
  # mirrors content from Deassimilate Machines
  CYBORG_SPECIES_CANT_BE_CYBORG_FAIL: "$TRIGGER_FAIL$This species already has cybernetic implants."
@@ -87,10 +94,3 @@
 
 
 
-
- civic_tooltip_organic_zealots: "Has §Y$civic_organic_zealots$§! Civic"
- civic_tooltip_organic_zealots_fail: "$TRIGGER_FAIL$$civic_tooltip_organic_zealots$"
- civic_tooltip_organic_zealots_pass: "$TRIGGER_PASS$$civic_tooltip_organic_zealots$"
- civic_tooltip_overlord_organic_zealots: "Overlord has §Y$civic_organic_zealots$§! Civic"
- civic_tooltip_overlord_organic_zealots_fail: "$TRIGGER_FAIL$$civic_tooltip_overlord_organic_zealots$"
- civic_tooltip_overlord_organic_zealots_pass: "$TRIGGER_PASS$$civic_tooltip_overlord_organic_zealots$"

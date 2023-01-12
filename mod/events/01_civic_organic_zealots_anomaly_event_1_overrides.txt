@@ -67,7 +67,7 @@ ship_event = {
 		}
 	}
 	option = {
-		name = "anomaly.186.organic_zealots"
+		name = "CLEANSE_FROM_ORBIT"
 		trigger = {
 			owner = { has_civic = civic_organic_zealots }
 		}

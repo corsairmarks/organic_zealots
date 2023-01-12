@@ -1,3 +1,9 @@
 ﻿l_english:
  # original tooltip lists the incorrect amount of research provided by the deposit
  anomaly.4030.b.tooltip: "Destroys the AI.\n\nAdds the §Y$ai_fleet$§! modifier to [From.GetName]:\n£engineering£ §G+3§!"
+ # Fallen Robot Society/Giant Roombas
+ # fixes modifier name references, research amounts, and reuses duplicate text between options
+ anomaly.4105.a.tooltip: "Adds the §Y$fallen_robots$§! modifier to [From.GetName]:\n£engineering£ §G+6§!"
+ anomaly.4105.b.tooltip: "Gives access to the §Y$edict_renewable_energy$§! Empire Edict.\n\n$anomaly.4105.a.tooltip$"
+ anomaly.4106.a.tooltip: "The §YPlanet Class§! of [FromFromFrom.GetName] changes to §GContinental§!.\n\nAdds the §Y$fallen_robots$§! modifier to [FromFromFrom.GetName]:\n£engineering£ §G+4§!\n\n$d_bomb_crater$ §R+1§!\n$d_city_ruins$ §R+1§!"
+ anomaly.4106.b.tooltip: "Gives access to the §Y$edict_renewable_energy$§! Empire Edict.\n\n$anomaly.4106.a.tooltip$"

@@ -1,1 +1,351 @@
 namespace = anomaly
+
+### Automated Shipyard
+# Modified:
+# * custom description for organic zealots
+# * custom option for organic zealots
+ship_event = {
+	id = anomaly.2550
+	title = "anomaly.2550.name"
+	desc = {
+		text = "anomaly.2550.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "anomaly.2550.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_ruined_system
+	location = FROM
+	trackable = yes
+	is_triggered_only = yes
+	immediate = {
+		owner = {
+			country_event = {
+				id = story.5
+				days = 30
+			}
+		}
+	}
+	option = {
+		name = INTERESTING
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		from = {
+			enable_special_project = {
+				name = "AUTOMATED_SHIPYARD_PROJECT"
+				location = this
+				owner = root.owner
+			}
+		}
+	}
+	option = {
+		name = MAKE_IT_SO
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier1unityreward
+				min = @tier1unitymin
+				max = @tier1unitymax
+			}
+		}
+	}
+}
+
+### The Lonely Bot
+# Modified:
+# * custom description for organic zealots
+# * custom option for organic zealots
+ship_event = {
+	id = anomaly.2580
+	title = "anomaly.2080.name"
+	desc = {
+		text = "anomaly.2580.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "anomaly.2580.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_alien_ruins
+	location = from
+	is_triggered_only = yes
+	option = {
+		name = EXCELLENT
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		from = { add_deposit = d_hab_lonely_bot_deposit }
+		owner = {
+			add_monthly_resource_mult = {
+				resource = alloys
+				value = @tier1materialreward
+				min = @tier1materialmin
+				max = @tier1materialmax
+			}
+		}
+	}
+	option = {
+		name = EXCELLENT
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier1unityreward
+				min = @tier1unitymin
+				max = @tier1unitymax
+			}
+			add_monthly_resource_mult = {
+				resource = alloys
+				value = @tier1materialreward
+				min = @tier1materialmin
+				max = @tier1materialmax
+			}
+		}
+	}
+}
+
+# Trop/Cont/Oce world with roboticized factory - project followup
+# Modified:
+# * custom description for organic zealots
+ship_event = {
+	id = anomaly.3027
+	title = anomaly.3025.name
+	desc = anomaly.3027.desc
+	desc = {
+		text = "anomaly.3027.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "anomaly.3027.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_excavation_team
+	show_sound = event_activating_unknown_technology
+	location = fromfrom
+	is_triggered_only = yes
+	option = {
+		name = UNDERSTOOD
+		leader = {
+			add_experience = 100
+			add_trait = leader_trait_expertise_industry
+		}
+		hidden_effect = {
+			fromfrom = { add_deposit = d_ancient_mining_site }
+		}
+	}
+}
+
+### Fallen Robotic Society/Giant Roombas
+# Modified:
+# * use triggers
+# * custom description for organic zealots
+# * custom option for organic zealots
+# * grants the industry specialization, which deals with robotics, instead of propulsion
+# * reactivate roomba project option, with slightly expanded criteria (and corrected localisation, see other file)
+ship_event = {
+	id = anomaly.4105
+	title = "anomaly.4105.name"
+	desc = {
+		trigger = {
+			owner = {
+				is_machine_empire = no
+				NOT = { has_civic = civic_organic_zealots }
+			}
+		}
+		text = "anomaly.4105.desc"
+	}
+	desc = {
+		trigger = {
+			owner = {
+				is_machine_empire = no
+				has_civic = civic_organic_zealots
+			}
+		}
+		text = "anomaly.4105.desc.organic_zealots"
+	}
+	desc = {
+		trigger = { owner = { is_machine_empire = yes } }
+		text = "anomaly.4105.desc.mach"
+	}
+	picture = GFX_evt_relic_world_street
+	show_sound = event_ghost_town
+	location = from
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = { exists = leader }
+			leader = { add_trait = leader_trait_expertise_industry }
+		}
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = story.5
+					days = 30
+				}
+			}
+		}
+		from = { clear_deposits = yes }
+	}
+	option = {
+		trigger = {
+			exists = owner
+			owner = {
+				hidden_trigger = {
+					has_country_flag = edict_renewable_energy
+					NOT = { has_civic = civic_organic_zealots }
+				}
+				is_machine_empire = no
+			}
+		}
+		name = "anomaly.4105.a"
+		custom_tooltip = "anomaly.4105.a.tooltip"
+		hidden_effect = {
+			from = {
+				add_deposit = d_engineering_6
+				add_modifier = {
+					modifier = fallen_robots
+					days = -1
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			exists = owner
+			owner = {
+				hidden_trigger = { has_country_flag = edict_renewable_energy }
+				is_machine_empire = yes
+			}
+		}
+		name = "anomaly.4105.a.mach"
+		custom_tooltip = "anomaly.4105.a.tooltip"
+		hidden_effect = {
+			from = {
+				add_deposit = d_engineering_6
+				add_modifier = {
+					modifier = fallen_robots
+					days = -1
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			owner = {
+				hidden_trigger = {
+					NOR = {
+						has_country_flag = edict_renewable_energy
+						has_civic = civic_organic_zealots
+					}
+				}
+				is_machine_empire = no
+			}
+		}
+		name = "anomaly.4105.a"
+		custom_tooltip = "anomaly.4105.b.tooltip"
+		hidden_effect = {
+			owner = { set_country_flag = edict_renewable_energy }
+			from = {
+				add_deposit = d_engineering_6
+				add_modifier = {
+					modifier = fallen_robots
+					days = -1
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			owner = {
+				hidden_trigger = { NOT = { has_country_flag = edict_renewable_energy } }
+				is_machine_empire = yes
+			}
+		}
+		name = "anomaly.4105.a.mach"
+		custom_tooltip = "anomaly.4105.b.tooltip"
+		hidden_effect = {
+			owner = { set_country_flag = edict_renewable_energy }
+			from = {
+				add_deposit = d_engineering_6
+				add_modifier = {
+					modifier = fallen_robots
+					days = -1
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			owner = {
+				hidden_trigger = { has_country_flag = edict_renewable_energy }
+				has_civic = civic_organic_zealots
+			}
+		}
+		name = "CLEANSE_FROM_ORBIT"
+		custom_tooltip = "anomaly.4105.a.organic_zealots.tooltip"
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier2unityreward
+				min = @tier2unitymin
+				max = @tier2unitymax
+			}
+		}
+	}
+	option = {
+		trigger = {
+			owner = {
+				hidden_trigger = { NOT = { has_country_flag = edict_renewable_energy } }
+				has_civic = civic_organic_zealots
+			}
+		}
+		name = "CLEANSE_FROM_ORBIT"
+		custom_tooltip = "anomaly.4105.b.organic_zealots.tooltip"
+		hidden_effect = { owner = { set_country_flag = edict_renewable_energy } }
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier2unityreward
+				min = @tier2unitymin
+				max = @tier2unitymax
+			}
+		}
+	}
+	option = {
+		trigger = {
+			hidden_trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+			leader = {
+				OR = {
+					has_trait = leader_trait_inspired_surveyor
+					has_trait = leader_trait_percussive_maintainer
+					has_trait = leader_trait_scholarium_explorer
+					has_trait = leader_trait_scholarium_observer
+					has_trait = leader_trait_roamer
+					has_trait = leader_trait_cataloger
+					has_trait = leader_trait_carefree
+					has_trait = leader_trait_expertise_industry
+					species = { is_robotic = yes }
+					owner = {
+						OR = {
+							has_origin = origin_mechanist
+							is_robot_empire = yes
+						}
+					}
+				}
+			}
+		}
+		name = "anomaly.4105.robot"
+		enable_special_project = {
+			name = "ROBOT_CLEANERS_PROJECT"
+			owner = root
+			location = from
+		}
+	}
+	after = {
+		tooltip = {
+			if = {
+				limit = { exists = leader }
+				leader = { add_trait = leader_trait_expertise_industry }
+			}
+		}
+	}
+}
