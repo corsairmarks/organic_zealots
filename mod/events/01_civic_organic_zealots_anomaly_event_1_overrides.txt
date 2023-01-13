@@ -67,10 +67,8 @@ ship_event = {
 		}
 	}
 	option = {
-		name = "CLEANSE_FROM_ORBIT"
-		trigger = {
-			owner = { has_civic = civic_organic_zealots }
-		}
+		name = CLEANSE_FROM_ORBIT
+		trigger = { owner = { has_civic = civic_organic_zealots } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -93,9 +91,7 @@ ship_event = {
 				is_spiritualist = no
 			}
 		}
-		allow = {
-			owner = { NOT = { has_policy_flag = ai_outlawed } }
-		}
+		allow = { owner = { NOT = { has_policy_flag = ai_outlawed } }}
 		owner = {
 			capital_scope = {
 				enable_special_project = {
