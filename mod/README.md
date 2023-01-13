@@ -14,7 +14,7 @@ To offset the penalty Organic Zealots suffer by not being able to assemble robot
 
 Organic Zealots and empires that outlaw AI can no longer research Positronic AI, but can instead now research Mentat Computation to unlock special leader traits for organic rulers, governors, and scientists.
 
-Finally, this mod overrides many built-in events where artificial intelligence or robotics come into play in order to offer Organic Zealot-themed options.
+Finally, this mod overrides many built-in events where artificial intelligence or robotics come into play in order to offer Organic Zealot-themed options.  As a side-effect of needing to override related events anyway... the Enigmatic Cache scans planets 10x faster (1 years vs the original 10) so that it has a hope of completing its task at some point before the end of the game and getting to the event where it offers to "uplift" an empire.
 
 ## Compatibility
 

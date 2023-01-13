@@ -18,6 +18,10 @@
  crisis.2403.g: "You and all other 'thinking machines' must be eradicated."
  crisis.2408.a.organic_zealots: "Flight will only delay your destruction."
  crisis.2473.b.organic_zealots: "You dare to suggest our fleets are insufficient?"
+ distar.40.a.organic_zealots: "Behold the inevitable peril of thinking machines."
+ distar.1040.desc.organic_zealots: "We have traced the unusual electromagnetic radiation emanating from [From.GetName] to a secret subterranean bunker hiding a mega-computer the size of a battleship.\n\nOur researchers suspect that it may have lain in waiting for several thousand years, hard at work solving a single very complex problem, the nature of which is surely a threat to organic life everywhere.\n\nAlthough the facility initially seemed abandoned, our crew was ambushed by a detestable thinking machine intent frying its visitors alive. As the crew defeated the murderous subsystem, it broadcasted a message to an unknown recipient."
+ # based on the commented-out distar.5057.desc.phobe
+ distar.5057.desc.phobe: "A tubular alien entity has entered orbit of [Root.GetName], with no warning or explanation. It appears to be moving without engines or thrusters, gliding in complete silence through the void of space, cylinders rotating ominously.\n\nIt is revolting, its existence a perversion of the laws of science. It should not be. It cannot be. Yet it is.\n\nOur military advisors confirm that it poses a considerable threat to planetary security and implore us to engage neutralization protocols. Likewise, the inhabitants of [Root.GetName] clamor for protection from the malevolent entity."
  galactic_features.351.a.organic_zealots: "Liberate the organic civilizations you have enslaved!"
  galactic_features.351.b.organic_zealots: "Which misguided organics created you, abomination?"
  galactic_features.351.c.organic_zealots: "Execrable thinking machines."
