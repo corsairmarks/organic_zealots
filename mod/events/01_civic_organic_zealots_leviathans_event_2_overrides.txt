@@ -1,0 +1,177 @@
+namespace = leviathans
+
+# Dreadnought Disabled
+# Modified: custom option for organic zealots/anti-AI countries
+country_event = {
+	id = leviathans.3102
+	title = "leviathans.3102"
+	desc = "leviathans.3102.desc"
+	picture = GFX_evt_automated_dreadnought
+	show_sound = event_ship_bridge
+	location = event_target:guardians_dreadnought_system
+	trackable = yes
+	is_triggered_only = yes
+	option = {
+		trigger = {
+			NOR = {
+				has_civic = civic_organic_zealots
+				has_policy_flag = ai_outlawed
+			}
+		}
+		name = "leviathans.3102.a"
+		event_target:disabled_dreadnought_object = {
+			enable_special_project = {
+				name = "DISABLED_DREADNOUGHT_PROJECT"
+				location = THIS
+				owner = root
+			}
+		}
+	}
+	option = {
+		trigger = {
+			OR = {
+				has_civic = civic_organic_zealots
+				has_policy_flag = ai_outlawed
+			}
+		}
+		name = "leviathans.3102.a.anti_ai"
+		event_target:disabled_dreadnought_object = {
+			enable_special_project = {
+				name = "DISABLED_DREADNOUGHT_PROJECT"
+				location = THIS
+				owner = root
+			}
+		}
+	}
+	option = {
+		name = "leviathans.3102.b"
+		add_resource = {
+			alloys = 1000
+			energy = 5000
+		}
+		add_monthly_resource_mult = {
+			resource = engineering_research
+			value = 30
+			min = 1000
+			max = 5000
+		}
+	}
+	after = {
+		if = {
+			limit = { num_owned_planets > 0 }
+			generate_parade_city = yes
+			start_situation = {
+				type = leviathan_celebration_opportunity
+				target = event_target:parade_city
+				effect = {
+					set_situation_flag = celebration_automated_dreadnought
+					set_situation_flag = standard_unity_reward
+				}
+			}
+		}
+	}
+}
+
+# Dreadnought Rebuilt
+# Modified:
+# * use triggers
+# * gestalt countries get a drednought with a gestalt autonomous computer
+# * organic zealots/anti-AI countries get a dreadnought w/o a sapient computer
+ship_event = {
+	id = leviathans.3103
+	title = "leviathans.3103"
+	desc = {
+		trigger = { owner = { is_machine_empire = no } }
+		text = "leviathans.3103.desc"
+	}
+	desc = {
+		trigger = { owner = { is_machine_empire = yes } }
+		text = "leviathans.3103.desc.mach"
+	}
+	picture = GFX_evt_automated_dreadnought
+	show_sound = event_construction
+	location = event_target:guardians_dreadnought_system
+	is_triggered_only = yes
+	immediate = {
+		owner = {
+			save_event_target_as = project_owner
+			set_country_flag = restored_dreadnought
+		}
+	}
+	option = {
+		name = "leviathans.3103.a"
+		create_fleet = {
+			name = "NAME_Dreadnought"
+			effect = {
+				set_owner = event_target:project_owner
+				if = {
+					limit = { event_target:project_owner = { is_gestalt = yes } }
+					create_ship = {
+						name = random
+						design = "NAME_Type_92" # Jump + Autonomous Dreadnought
+						graphical_culture = "npf_01"
+						upgradable = no
+					}
+				}
+				else_if = {
+					limit = {
+						event_target:project_owner = {
+							OR = {
+								has_civic = civic_organic_zealots
+								has_policy_flag = ai_outlawed
+							}
+						}
+					}
+					if = {
+						limit = { event_target:project_owner = { has_technology = tech_psi_jump_drive_1 } }
+						create_ship = {
+							name = random
+							design = "NAME_Type_69" # Psi Jump + Advanced Dreadnought
+							graphical_culture = "npf_01"
+							upgradable = no
+						}
+					}
+					else = {	
+						create_ship = {
+							name = random
+							design = "NAME_Type_14" # Jump + Advanced Dreadnought
+							graphical_culture = "npf_01"
+							upgradable = no
+						}
+					}
+				}
+				else_if = {
+					limit = { event_target:project_owner = { has_technology = tech_psi_jump_drive_1 } }
+					create_ship = {
+						name = random
+						design = "NAME_Type_37" # Psi Jump + Sapient Dreadnought
+						graphical_culture = "npf_01"
+						upgradable = no
+					}
+				}
+				else = {	
+					create_ship = {
+						name = random
+						design = "NAME_Type_46" # Jump + Sapient Dreadnought
+						graphical_culture = "npf_01"
+						upgradable = no
+					}
+				}
+				set_location = {
+					target = event_target:disabled_dreadnought_object
+					distance = 0
+					angle = random
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:disabled_dreadnought_object = { destroy_ambient_object = this }
+			solar_system = {
+				random_system_ambient_object = {
+					limit = { has_ambient_object_flag = dreadnought_debris }
+					destroy_ambient_object = this
+				}
+			}
+		}
+	}
+}
