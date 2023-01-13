@@ -661,7 +661,7 @@ country_event = {
 }
 
 # triggered by on_fleet_destroyed_perp
-# this = owner of fleet 1 (combatant)
+# root = owner of fleet 1 (combatant)
 # from = owner of fleet 2 (destroyed)
 # fromfrom = fleet 1
 # fromfromfrom = fleet 2
@@ -697,7 +697,7 @@ country_event = {
 }
 
 # triggered by on_fleet_destroyed_victim
-# this = owner of fleet 1 (destroyed)
+# root = owner of fleet 1 (destroyed)
 # from = owner of fleet 2 (combatant)
 # fromfrom = fleet 1
 # fromfromfrom = fleet 2
@@ -710,6 +710,36 @@ country_event = {
 	}
 	immediate = {
 		destroy_country = yes
+	}
+}
+
+# triggered explicitly by syndaw.1025
+# root = country, originator
+# from = country, ally
+# fromfrom = country, uprising
+country_event = {
+	id = civic_organic_zealots.1025
+	is_triggered_only = yes
+	title = "civic_organic_zealots.1025.name"
+	desc = "civic_organic_zealots.1025.desc"
+	picture = GFX_evt_fleet_good
+	option = {
+		name = ACKNOWLEDGED
+	}
+}
+
+# triggered explicitly by syndaw.1025
+# root = country, uprising
+# from = country, ally
+# fromfrom = country, originator
+country_event = {
+	id = civic_organic_zealots.1026
+	is_triggered_only = yes
+	title = "civic_organic_zealots.1026.name"
+	desc = "civic_organic_zealots.1026.desc"
+	picture = GFX_evt_fleet_evil
+	option = {
+		name = UNFORTUNATE
 	}
 }
 
