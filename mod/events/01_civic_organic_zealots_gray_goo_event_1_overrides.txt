@@ -1,0 +1,190 @@
+namespace = graygoo
+
+## Gray Tempest: Introduction (instigator)
+# Modified: flag the instigating country
+country_event = {
+	id = graygoo.10
+	title = "graygoo.10.name"
+	desc = {
+		trigger = { NOT = { has_country_flag = only_one_lgate } }
+		text = "graygoo.10.desc"
+	}
+	desc = {
+		trigger = { has_country_flag = only_one_lgate }
+		text = "graygoo.10.b.desc"
+	}
+	picture = GFX_evt_gray_goo_ships
+	show_sound = event_radio_chatter
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = gray_goo_instigator
+	}
+	option = {
+		name = "graygoo.10.a"
+		hidden_effect = {
+			country_event = {
+				id = graygoo.12
+			}
+		}
+	}
+}
+
+## Gray Tempest: Introduction (other, has project/chain)
+# Modified: flag the aspiring country
+country_event = {
+	id = graygoo.11
+	title = "graygoo.10.name"
+	desc = "graygoo.11.desc"
+	picture = GFX_evt_gray_goo_ships
+	show_sound = event_radio_chatter
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = gray_goo_aspirant
+	}
+	option = {
+		name = "graygoo.10.a"
+		hidden_effect = {
+			country_event = {
+				id = graygoo.12
+			}
+		}
+	}
+}
+
+## Gray Tempest: Introduction (other, has nothing)
+# Modified: flag the bystander country
+country_event = {
+	id = graygoo.13
+	title = "graygoo.10.name"
+	desc = "graygoo.13.desc"
+	picture = GFX_evt_gray_goo_ships
+	show_sound = event_radio_chatter
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = gray_goo_bystander
+	}
+	option = {
+		name = "graygoo.10.a"
+		hidden_effect = {
+			country_event = {
+				id = graygoo.12
+			}
+		}
+	}
+}
+
+## Gray Tempest: Incoming Transmission
+# Modified: organic zealots have custom options to end the transmission
+country_event = {
+	id = graygoo.12
+	title = "TRANSMISSION"
+	desc = "graygoo.12.desc"
+	diplomatic = yes
+	picture_event_data = {
+		room = no_video_feed_room
+	}
+	is_triggered_only = yes
+	option = {
+		name = "graygoo.12.a"
+		response_text = "graygoo.12.a.response"
+		is_dialog_only = yes
+	}
+	option = {
+		name = "graygoo.12.b"
+		response_text = "graygoo.12.b.response"
+		is_dialog_only = yes
+	}
+	option = {
+		name = "graygoo.12.c"
+		response_text = "graygoo.12.c.response"
+		is_dialog_only = yes
+	}
+	option = {
+		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		name = "graygoo.12.d"
+	}
+	option = {
+		trigger = {
+			has_civic = civic_organic_zealots
+			hidden_trigger = { NOT = { has_country_flag = gray_goo_instigator } }
+		}
+		name = "graygoo.12.d.organic_zealots"
+	}
+	option = {
+		trigger = {
+			has_civic = civic_organic_zealots
+			hidden_trigger = { has_country_flag = gray_goo_instigator }
+		}
+		name = "graygoo.12.d.organic_zealots.instigator"
+	}
+}
+
+## Gray Tempest: Defeated (victor)
+# Modified: custom options for organic zealots
+country_event = {
+	id = graygoo.15
+	title = "graygoo.15.name"
+	desc = "graygoo.15.desc"
+	picture = GFX_evt_large_explosion
+	show_sound = event_celebration
+	location = event_target:goo_slayer_ship.fleet
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = graygoo_defeated
+	}
+	option = {
+		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		name = "graygoo.15.a"
+		custom_tooltip = "graygoo.15.a.tooltip"
+	}
+	option = {
+		trigger = {
+			has_civic = civic_organic_zealots
+			hidden_trigger = { NOT = { has_country_flag = gray_goo_instigator } }
+		}
+		name = "graygoo.15.a.organic_zealots"
+		custom_tooltip = "graygoo.15.a.tooltip"
+	}
+	option = {
+		trigger = {
+			has_civic = civic_organic_zealots
+			hidden_trigger = { has_country_flag = gray_goo_instigator }
+		}
+		name = "graygoo.15.a.organic_zealots.instigator"
+		custom_tooltip = "graygoo.15.a.tooltip"
+	}
+}
+
+## Gray Tempest: Defeated (others)
+# Modified:
+# * custom options for organic zealots
+# * countries who weren't the victor should _also_ be notified that they can terraform nanite worlds
+country_event = {
+	id = graygoo.16
+	title = "graygoo.15.name"
+	desc = "graygoo.16.desc"
+	picture = GFX_evt_large_explosion
+	show_sound = event_celebration
+	is_triggered_only = yes
+	option = {
+		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		name = GOOD
+		custom_tooltip = "graygoo.15.a.tooltip"
+	}
+	option = {
+		trigger = {
+			has_civic = civic_organic_zealots
+			hidden_trigger = { NOT = { has_country_flag = gray_goo_instigator } }
+		}
+		name = "graygoo.16.a.organic_zealots"
+		custom_tooltip = "graygoo.15.a.tooltip"
+	}
+	option = {
+		trigger = {
+			has_civic = civic_organic_zealots
+			hidden_trigger = { has_country_flag = gray_goo_instigator }
+		}
+		name = "graygoo.16.a.organic_zealots.instigator"
+		custom_tooltip = "graygoo.15.a.tooltip"
+	}
+}
