@@ -1,0 +1,23 @@
+# custom country type that is hostile and won't trigger Gray's usual custom diplomacy
+gray_angry = {
+	share_communications = no
+	default_ships = no
+	government = no
+	observable = no
+	uses_origins = no
+	attack_unarmed_orbital_stations = yes
+	ai = {
+		enabled = no
+	}
+	faction = {
+		hostile = yes
+		needs_border_access = no
+		generate_borders = no
+		needs_colony = no
+		auto_delete = no
+	}
+	modules = {
+		basic_technology_module = { }
+		exclusive_diplomacy_module = { }
+	}
+}

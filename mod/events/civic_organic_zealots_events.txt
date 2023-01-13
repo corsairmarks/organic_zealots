@@ -601,6 +601,118 @@ country_event = {
 	}
 }
 
+# triggered by graygoo.403
+# root = country
+country_event = {
+	id = civic_organic_zealots.404
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		event_target:gray_homeworld = { set_planet_flag = gray_homeworld }
+		create_country = {
+			name = "NAME_Gray"
+			type = gray_angry
+			flag = {
+				icon= {
+					category = "special"
+					file = "gray_goo.dds"
+				}
+				background = {
+					category = "backgrounds"
+					file = "sinus.dds"
+				}
+				colors = {
+					"grey"
+					"dark_grey"
+					"null"
+					"null"
+				}
+			}
+		}
+		create_fleet = {
+			name = "NAME_Gray"
+			settings = {
+				can_upgrade = no
+				can_change_composition = no
+				can_change_leader = no
+				uses_naval_capacity = no
+				spawn_debris = no
+			}
+			effect = {
+				set_owner = last_created_country
+				create_ship = {
+					name = "NAME_Gray"
+					design = "NAME_Gray_Warship"
+					prefix = no
+					upgradable = no
+				}
+				set_location = {
+					target = event_target:gray_homeworld
+					distance = 20
+					angle = random
+				}
+				add_modifier = {
+					modifier = "gray_warship"
+					days = -1
+				}
+			}
+		}
+	}
+}
+
+# triggered by on_fleet_destroyed_perp
+# this = owner of fleet 1 (combatant)
+# from = owner of fleet 2 (destroyed)
+# fromfrom = fleet 1
+# fromfromfrom = fleet 2
+country_event = {
+	id = civic_organic_zealots.405
+	is_triggered_only = yes
+	title = "civic_organic_zealots.405.name"
+	desc = "civic_organic_zealots.405.desc"
+	picture = GFX_evt_exploding_ship
+	show_sound = event_celebration
+	trigger = {
+		has_civic = civic_organic_zealots
+		from = { is_country_type = gray_angry }
+	}
+	immediate = {
+		random_galaxy_planet = {
+			limit = { has_planet_flag = gray_homeworld }
+			save_event_target_as = gray_homeworld
+		}
+	}
+	option = {
+		name = "civic_organic_zealots.405.a"
+		add_monthly_resource_mult = {
+			resource = unity
+			value = @tier4unityreward
+			min = @tier4unitymin
+			max = @tier4unitymax
+		}
+	}
+	after = {
+		hidden_effect = { from = { destroy_country = yes } }
+	}
+}
+
+# triggered by on_fleet_destroyed_victim
+# this = owner of fleet 1 (destroyed)
+# from = owner of fleet 2 (combatant)
+# fromfrom = fleet 1
+# fromfromfrom = fleet 2
+country_event = {
+	id = civic_organic_zealots.406
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = {
+		is_country_type = gray_angry
+	}
+	immediate = {
+		destroy_country = yes
+	}
+}
+
 # triggered by utopia.2555
 # root = country (notified)
 # from = country (synthetic)

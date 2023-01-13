@@ -188,3 +188,35 @@ country_event = {
 		custom_tooltip = "graygoo.15.a.tooltip"
 	}
 }
+
+## Gray: dialog 3
+# Modified: organic zealots see through the charade and attack
+country_event = {
+	id = graygoo.403
+	title = "TRANSMISSION"
+	desc = "graygoo.403.desc"
+	diplomatic = yes
+	picture_event_data = {
+		portrait = root.species
+		room = "ethic_spaceship_room"
+	}
+	is_triggered_only = yes
+	option = {
+		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		name = "graygoo.403.a"
+		hidden_effect = {
+			country_event = {
+				id = graygoo.404
+			}
+		}
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "graygoo.403.a.organic_zealots"
+		hidden_effect = {
+			country_event = {
+				id = civic_organic_zealots.404
+			}
+		}
+	}
+}

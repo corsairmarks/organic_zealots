@@ -80,6 +80,26 @@ on_country_created = {
 	}
 }
 
+# this = owner of fleet 1 (combatant)
+# from = owner of fleet 2 (destroyed)
+# fromfrom = fleet 1
+# fromfromfrom = fleet 2
+on_fleet_destroyed_perp = {
+	events = {
+		civic_organic_zealots.405
+	}
+}
+
+# this = owner of fleet 1 (destroyed)
+# from = owner of fleet 2 (combatant)
+# fromfrom = fleet 1
+# fromfromfrom = fleet 2
+on_fleet_destroyed_victim = {
+	events = {
+		civic_organic_zealots.406
+	}
+}
+
 # fired when my custom code changes a leader's species.  You might attach an event
 # here to handle custom traits in another mod that should be added or removed (or
 # converted) based on information about the leader (possibly taking in to account
