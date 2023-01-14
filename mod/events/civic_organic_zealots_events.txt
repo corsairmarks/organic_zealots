@@ -715,7 +715,7 @@ country_event = {
 
 # triggered explicitly by syndaw.1025
 # root = country, originator
-# from = country, ally
+# from = country, ally of originator
 # fromfrom = country, uprising
 country_event = {
 	id = civic_organic_zealots.1025
@@ -725,12 +725,13 @@ country_event = {
 	picture = GFX_evt_fleet_good
 	option = {
 		name = ACKNOWLEDGED
+		custom_tooltip = "civic_organic_zealots.1025.a.tooltip"
 	}
 }
 
 # triggered explicitly by syndaw.1025
 # root = country, uprising
-# from = country, ally
+# from = country, ally of originator
 # fromfrom = country, originator
 country_event = {
 	id = civic_organic_zealots.1026
@@ -740,6 +741,39 @@ country_event = {
 	picture = GFX_evt_fleet_evil
 	option = {
 		name = UNFORTUNATE
+		custom_tooltip = "civic_organic_zealots.1026.a.tooltip"
+	}
+}
+
+# triggered explicitly by syndaw.1025
+# root = country, originator
+# from = country, ally of uprising
+# fromfrom = country, uprising
+country_event = {
+	id = civic_organic_zealots.1027
+	is_triggered_only = yes
+	title = "civic_organic_zealots.1027.name"
+	desc = "civic_organic_zealots.1027.desc"
+	picture = GFX_evt_fleet_evil
+	option = {
+		name = UNFORTUNATE
+		custom_tooltip = "civic_organic_zealots.1027.a.tooltip"
+	}
+}
+
+# triggered explicitly by syndaw.1025
+# root = country, uprising
+# from = country, ally of uprising
+# fromfrom = country, originator
+country_event = {
+	id = civic_organic_zealots.1028
+	is_triggered_only = yes
+	title = "civic_organic_zealots.1028.name"
+	desc = "civic_organic_zealots.1028.desc"
+	picture = GFX_evt_fleet_good
+	option = {
+		name = ACKNOWLEDGED
+		custom_tooltip = "civic_organic_zealots.1028.a.tooltip"
 	}
 }
 

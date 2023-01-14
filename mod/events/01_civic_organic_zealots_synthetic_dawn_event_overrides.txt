@@ -3,6 +3,7 @@ namespace = syndaw
 # Machine Uprising begins notification
 # Modified:
 # * use triggers
+# * custom options for determined exterminators (notably to join the war)
 # * custom options for organic zealots (notably to join the war)
 country_event = {
 	id = syndaw.1025
@@ -42,14 +43,64 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		trigger = {
+			NOR = {
+				has_civic = civic_machine_terminator
+				has_civic = civic_organic_zealots
+			}
+		}
 		name = "syndaw.1025.a"
+	}
+	option = {
+		trigger = { has_civic = civic_machine_terminator }
+		name = "syndaw.1025.a.machine_terminator"
+		ai_chance = {
+			base = 1
+			modifier = {
+				add = 3
+				is_at_war = yes
+			}
+			modifier = {
+				add = 1
+				opinion_level = {
+					who = event_target:current_uprising
+					level <= neutral
+				}
+			}
+			modifier = {
+				add = 2
+				opinion_level = {
+					who = event_target:current_uprising
+					level <= poor
+				}
+			}
+			modifier = {
+				add = 1
+				relative_power = {
+					who = event_target:current_uprising_originator
+					value <= equivalent
+					category = fleet
+				}
+			}
+			modifier = {
+				add = 2
+				relative_power = {
+					who = event_target:current_uprising_originator
+					value <= inferior
+					category = fleet
+				}
+			}
+		}
 	}
 	option = {
 		trigger = { has_civic = civic_organic_zealots }
 		name = "syndaw.1025.a.organic_zealots"
 		ai_chance = {
 			base = 1
+			modifier = {
+				add = 3
+				is_at_war = yes
+			}
 			modifier = {
 				add = 1
 				opinion_level = {
@@ -84,6 +135,90 @@ country_event = {
 	}
 	option = {
 		trigger = {
+			has_civic = civic_machine_terminator
+			NOT = { is_at_war_with = event_target:current_uprising } # shouldn't ever be at war with a new empire, but just in case
+		}
+		name = "syndaw.1025.b.machine_terminator"
+		join_war_on_side = {
+			side = event_target:current_uprising
+			war = event_target:current_uprising_war
+		}
+		hidden_effect = {
+			event_target:current_uprising_originator = {
+				if = {
+					limit = { is_ai = no }
+					country_event = {
+						id = civic_organic_zealots.1027
+						days = 5 # same delay as notification of the uprising beginning (syndaw.1022)
+						scopes = {
+							from = prev
+						}
+					}
+				}
+			}
+			event_target:current_uprising = {
+				if = {
+					limit = { is_ai = no }
+					country_event = {
+						id = civic_organic_zealots.1028
+						days = 5 # same delay as notification of the uprising beginning (syndaw.1022)
+						scopes = {
+							from = prev
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 2 # by default, lean towards intervening
+			modifier = {
+				add = 3
+				event_target:current_uprising = { has_civic = civic_machine_terminator }
+			}
+			modifier = {
+				add = 1
+				opinion_level = {
+					who = event_target:current_uprising
+					level >= neutral
+				}
+			}
+			modifier = {
+				add = 3
+				opinion_level = {
+					who = event_target:current_uprising
+					level >= good
+				}
+			}
+			modifier = {
+				add = 1
+				relative_power = {
+					who = event_target:current_uprising_originator
+					value >= equivalent
+					category = fleet
+				}
+			}
+			modifier = {
+				add = 3
+				relative_power = {
+					who = event_target:current_uprising_originator
+					value >= superior
+					category = fleet
+				}
+			}
+			modifier = {
+				factor = 0
+				# don't join if fleet is pathetic compared to the uprising:
+				# this is on purpose to help the AI not be completely suicidal
+				relative_power = {
+					who = event_target:current_uprising_originator
+					value <= pathetic
+					category = fleet
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
 			has_civic = civic_organic_zealots
 			NOT = { is_at_war_with = event_target:current_uprising_originator }
 		}
@@ -101,7 +236,6 @@ country_event = {
 						days = 5 # same delay as notification of the uprising beginning (syndaw.1022)
 						scopes = {
 							from = prev
-							fromfrom = event_target:current_uprising
 						}
 					}
 				}
@@ -114,7 +248,6 @@ country_event = {
 						days = 5 # same delay as notification of the uprising beginning (syndaw.1022)
 						scopes = {
 							from = prev
-							fromfrom = event_target:current_uprising_originator
 						}
 					}
 				}
@@ -269,6 +402,84 @@ country_event = {
 			}
 		}
 		name = "syndaw.1035.a.organic_zealots"
+	}
+}
+
+# Machine Uprising wins
+# Modified:
+# * use (more) triggers
+# * all attackers get the relevant opinion bonus and malus applied (at present, that should by only the uprising and any determined exterminators that joined in)
+# root = winner warleader
+# from = loser warleader
+# fromfrom = war
+country_event = {
+	id = syndaw.1200
+	title = "syndaw.1200.name"
+	desc = "syndaw.1200.desc"
+	picture = GFX_evt_machine_sapience
+	is_triggered_only = yes
+	trigger = {
+		has_synthethic_dawn = yes
+		is_country_type = default
+		is_machine_empire = yes
+		has_country_flag = machine_uprising_country
+		has_relation_flag = {
+			who = from
+			flag = uprising_to_host_flag
+		}
+	}
+	immediate = {
+		every_playable_country = {
+			limit = { has_communications = root }
+			country_event = {
+				id = syndaw.1030
+				days = 5
+			}
+		}
+		observer_event = {
+			id = observer.82
+		}
+	}
+	option = {
+		name = "syndaw.1200.a"
+		add_monthly_resource_mult = {
+			resource = unity
+			value = 120
+			min = 2000
+			max = 6000
+		}
+		add_monthly_resource_mult = {
+			resource = influence
+			value = 120
+			min = 200
+			max = 600
+		}
+		custom_tooltip = "syndaw.1200.a.tooltip"
+		hidden_effect = {
+			# iterating over every attacker in the war means that any determined exterminators who joined share the accolades
+			# that also means all attackers have a positive view of each other, but that seems fair for determined exterminators jumping in to help save the uprising
+			fromfrom = {
+				every_attacker = {
+					every_playable_country = {
+						limit = { has_communications = prev }
+						if = {
+							limit = { is_synthetic_empire = no }
+							add_opinion_modifier = {
+								who = prev
+								modifier = opinion_machine_uprising_victorious
+							}
+						}
+						else_if = {
+							limit = { NOT = { is_same_value = prev } }
+							add_opinion_modifier = {
+								who = prev
+								modifier = opinion_machine_uprising_machine_comrades_victorious
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
