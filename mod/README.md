@@ -4,7 +4,7 @@ Are you looking to end the pernicious threat of artificial intelligence? Maybe p
 
 # Changes
 
-This mod introduces a new homicidal civic, the Organic Zealots. They engage in diplomacy with organic species (including cybernetic ones, but they don't like it), and have a total war _casus belli_ against synthetic empires and machine intelligences. They are effectively the inverse of Determined Exterminators.
+This mod introduces a new homicidal civic, the Organic Zealots. They engage in diplomacy with organic species (including cybernetic ones, but they don't like it), and have a total war _casus belli_ against synthetic empires and machine intelligences. They are effectively the inverse of Determined Exterminators. Organic Zealots also have the option to join the defense of empires suffering a Machine Uprising - but beware - Determined Exterminators now also have the option to join the Machine Uprising in support of the new Machine Intelligence! These options are weighted so that AI empires with these civics will be interested in helping "their" side but not suicidally so.
 
 In order to make Organic Zealots more interesting, this mod introduces a new war goal for them to "Outlaw Cybernetics, Robot Pops, and AI" against empires which allow any of those areas. Should their target lose, it will be forced to cease all cybernetic and robotic pop assembly, cease cybernetic assimilation, outlaw robot Pops, outlaw artificial intelligence, and be prevented from pursuing cybernetic or synthetic ascension for 20 years!  Status quo results in a new empire being created which outlaws the relevant policies, if there is at least one occupied colony.  Subjects of Organic Zealots are prevented from pursuing these areas indefinitely!
 
