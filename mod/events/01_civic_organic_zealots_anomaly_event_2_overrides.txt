@@ -108,7 +108,6 @@ ship_event = {
 ship_event = {
 	id = anomaly.3027
 	title = "anomaly.3025.name"
-	desc = "anomaly.3027.desc"
 	desc = {
 		text = "anomaly.3027.desc"
 		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
