@@ -333,32 +333,34 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { NOT = { has_civic = civic_organic_zealots } }
-		name = UNDERSTOOD
-	}
-	option = {
-		trigger = {
-			has_civic = civic_organic_zealots
-			home_planet.solar_system = {
-				count_system_planet = {
-					count <= 1
-					limit = { is_star = yes }
+		name = {
+			text = UNDERSTOOD
+			trigger = { NOT = { has_civic = civic_organic_zealots } }
+		}
+		name = {
+			text = "syndaw.1030.a.organic_zealots.unary"
+			trigger = {
+				has_civic = civic_organic_zealots
+				home_planet.solar_system = {
+					count_system_planet = {
+						count <= 1
+						limit = { is_star = yes }
+					}
 				}
 			}
 		}
-		name = "syndaw.1030.a.organic_zealots.unary"
-	}
-	option = {
-		trigger = {
-			has_civic = civic_organic_zealots
-			home_planet.solar_system = {
-				count_system_planet = {
-					count > 1
-					limit = { is_star = yes }
+		name = {
+			text = "syndaw.1030.a.organic_zealots.multary"
+			trigger = {
+				has_civic = civic_organic_zealots
+				home_planet.solar_system = {
+					count_system_planet = {
+						count > 1
+						limit = { is_star = yes }
+					}
 				}
 			}
 		}
-		name = "syndaw.1030.a.organic_zealots.multary"
 	}
 }
 
@@ -382,8 +384,21 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { has_synthethic_dawn = yes }
 	option = {
-		trigger = {
-			NAND = {
+		name = {
+			text = UNDERSTOOD
+			trigger = {
+				NAND = {
+					has_civic = civic_organic_zealots
+					is_war_participant = {
+						war = fromfromfrom
+						side = defenders
+					}
+				}
+			}
+		}
+		name = {
+			text = "syndaw.1035.a.organic_zealots"
+			trigger = {
 				has_civic = civic_organic_zealots
 				is_war_participant = {
 					war = fromfromfrom
@@ -391,17 +406,6 @@ country_event = {
 				}
 			}
 		}
-		name = UNDERSTOOD
-	}
-	option = {
-		trigger = {
-			has_civic = civic_organic_zealots
-			is_war_participant = {
-				war = fromfromfrom
-				side = defenders
-			}
-		}
-		name = "syndaw.1035.a.organic_zealots"
 	}
 }
 

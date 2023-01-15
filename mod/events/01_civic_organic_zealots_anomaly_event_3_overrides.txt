@@ -135,17 +135,23 @@ ship_event = {
 		from = { clear_deposits = yes }
 	}
 	option = {
-		trigger = {
-			exists = owner
-			owner = {
-				hidden_trigger = {
-					has_country_flag = edict_renewable_energy
-					NOT = { has_civic = civic_organic_zealots }
-				}
-				is_machine_empire = no
-			}
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		name = {
+			text = "anomaly.4105.a"
+			trigger = { owner = { is_machine_empire = no } }
 		}
-		name = "anomaly.4105.a"
+		name = {
+			text = "anomaly.4105.a.mach"
+			trigger = { owner = { is_machine_empire = yes } }
+		}
+		if = {
+			limit = { owner = { has_country_flag = edict_renewable_energy } }
+			custom_tooltip = "anomaly.4105.a.tooltip"
+		}
+		else = {
+			custom_tooltip = "anomaly.4105.b.tooltip"
+			hidden_effect = { owner = { set_country_flag = edict_renewable_energy } }
+		}
 		custom_tooltip = "anomaly.4105.a.tooltip"
 		hidden_effect = {
 			from = {
@@ -158,99 +164,16 @@ ship_event = {
 		}
 	}
 	option = {
-		trigger = {
-			exists = owner
-			owner = {
-				hidden_trigger = { has_country_flag = edict_renewable_energy }
-				is_machine_empire = yes
-			}
-		}
-		name = "anomaly.4105.a.mach"
-		custom_tooltip = "anomaly.4105.a.tooltip"
-		hidden_effect = {
-			from = {
-				add_deposit = d_engineering_6
-				add_modifier = {
-					modifier = fallen_robots
-					days = -1
-				}
-			}
-		}
-	}
-	option = {
-		trigger = {
-			owner = {
-				hidden_trigger = {
-					NOR = {
-						has_country_flag = edict_renewable_energy
-						has_civic = civic_organic_zealots
-					}
-				}
-				is_machine_empire = no
-			}
-		}
-		name = "anomaly.4105.a"
-		custom_tooltip = "anomaly.4105.b.tooltip"
-		hidden_effect = {
-			owner = { set_country_flag = edict_renewable_energy }
-			from = {
-				add_deposit = d_engineering_6
-				add_modifier = {
-					modifier = fallen_robots
-					days = -1
-				}
-			}
-		}
-	}
-	option = {
-		trigger = {
-			owner = {
-				hidden_trigger = { NOT = { has_country_flag = edict_renewable_energy } }
-				is_machine_empire = yes
-			}
-		}
-		name = "anomaly.4105.a.mach"
-		custom_tooltip = "anomaly.4105.b.tooltip"
-		hidden_effect = {
-			owner = { set_country_flag = edict_renewable_energy }
-			from = {
-				add_deposit = d_engineering_6
-				add_modifier = {
-					modifier = fallen_robots
-					days = -1
-				}
-			}
-		}
-	}
-	option = {
-		trigger = {
-			owner = {
-				hidden_trigger = { has_country_flag = edict_renewable_energy }
-				has_civic = civic_organic_zealots
-			}
-		}
+		trigger = { owner = { has_civic = civic_organic_zealots } }
 		name = CLEANSE_FROM_ORBIT
-		custom_tooltip = "anomaly.4105.a.organic_zealots.tooltip"
-		owner = {
-			add_monthly_resource_mult = {
-				resource = unity
-				value = @tier2unityreward
-				min = @tier2unitymin
-				max = @tier2unitymax
-			}
+		if = {
+			limit = { owner = { has_country_flag = edict_renewable_energy } }
+			custom_tooltip = "anomaly.4105.a.organic_zealots.tooltip"
 		}
-		from = { add_deposit = d_bomb_crater }
-	}
-	option = {
-		trigger = {
-			owner = {
-				hidden_trigger = { NOT = { has_country_flag = edict_renewable_energy } }
-				has_civic = civic_organic_zealots
-			}
+		else = {
+			custom_tooltip = "anomaly.4105.b.organic_zealots.tooltip"
+			hidden_effect = { owner = { set_country_flag = edict_renewable_energy } }
 		}
-		name = CLEANSE_FROM_ORBIT
-		custom_tooltip = "anomaly.4105.b.organic_zealots.tooltip"
-		hidden_effect = { owner = { set_country_flag = edict_renewable_energy } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity

@@ -12,12 +12,14 @@ country_event = {
 	}
 	is_triggered_only = yes
 	option = {
-		name = "crisis.2402.a"
-		trigger = { NOT = { has_civic = civic_organic_zealots } }
-	}
-	option = {
-		name = "crisis.2402.a.organic_zealots"
-		trigger = { has_civic = civic_organic_zealots }
+		name = {
+			text = "crisis.2402.a"
+			trigger = { NOT = { has_civic = civic_organic_zealots } }
+		}
+		name = {
+			text = "crisis.2402.a.organic_zealots"
+			trigger = { has_civic = civic_organic_zealots }
+		}
 	}
 }
 
@@ -158,12 +160,14 @@ country_event = {
 	}
 	is_triggered_only = yes
 	option = {
-		name = "crisis.2408.a"
-		trigger = { NOT = { has_civic = civic_organic_zealots } }
-	}
-	option = {
-		name = "crisis.2408.a.organic_zealots"
-		trigger = { has_civic = civic_organic_zealots }
+		name = {
+			text = "crisis.2408.a"
+			trigger = { NOT = { has_civic = civic_organic_zealots } }
+		}
+		name = {
+			text = "crisis.2408.a.organic_zealots"
+			trigger = { has_civic = civic_organic_zealots }
+		}
 	}
 }
 
@@ -248,11 +252,13 @@ country_event = {
 		}
 	}
 	option = {
-		name = "crisis.2473.b"
-		trigger = { NOT = { has_civic = civic_organic_zealots } }
-	}
-	option = {
-		name = "crisis.2473.b.organic_zealots"
-		trigger = { has_civic = civic_organic_zealots }
+		name = {
+			text = "crisis.2473.b"
+			trigger = { NOT = { has_civic = civic_organic_zealots } }
+		}
+		name = {
+			text = "crisis.2473.b.organic_zealots"
+			trigger = { has_civic = civic_organic_zealots }
+		}
 	}
 }

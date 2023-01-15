@@ -12,29 +12,24 @@ country_event = {
 	trackable = yes
 	is_triggered_only = yes
 	option = {
-		trigger = {
-			NOR = {
-				has_civic = civic_organic_zealots
-				has_policy_flag = ai_outlawed
+		name = {
+			text = "leviathans.3102.a"
+			trigger = {
+				NOR = {
+					has_civic = civic_organic_zealots
+					has_policy_flag = ai_outlawed
+				}
 			}
 		}
-		name = "leviathans.3102.a"
-		event_target:disabled_dreadnought_object = {
-			enable_special_project = {
-				name = "DISABLED_DREADNOUGHT_PROJECT"
-				location = THIS
-				owner = root
+		name = {
+			text = "leviathans.3102.a.anti_ai"
+			trigger = {
+				OR = {
+					has_civic = civic_organic_zealots
+					has_policy_flag = ai_outlawed
+				}
 			}
 		}
-	}
-	option = {
-		trigger = {
-			OR = {
-				has_civic = civic_organic_zealots
-				has_policy_flag = ai_outlawed
-			}
-		}
-		name = "leviathans.3102.a.anti_ai"
 		event_target:disabled_dreadnought_object = {
 			enable_special_project = {
 				name = "DISABLED_DREADNOUGHT_PROJECT"

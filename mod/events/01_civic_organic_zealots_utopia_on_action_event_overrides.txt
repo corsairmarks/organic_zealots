@@ -5,8 +5,8 @@ namespace = utopia
 # * fire the Organic Zealots "we hate you now and sever diplomatic ties" event regardless of whether the target country is an AI player
 country_event = {
 	id = utopia.2551
-	title = utopia.2551.name
-	desc = utopia.2551.desc
+	title = "utopia.2551.name"
+	desc = "utopia.2551.desc"
 	picture = GFX_evt_robot_assembly_plant
 	show_sound = event_synthetic_evolution
 	is_triggered_only = yes
@@ -316,23 +316,14 @@ country_event = {
 				}
 			}
 		}
-
-		root = {
-			set_country_flag = synth_assimilation
-		}
+		root = { set_country_flag = synth_assimilation }
 	}
 	option = {
-		trigger = {
-			is_homicidal = no
+		name = "utopia.2551.a"
+		if = {
+			limit = { is_homicidal = no }
+			custom_tooltip = "SYNTH_ASSIMILATION_CITIZENSHIP_ENABLED"
 		}
-		name = utopia.2551.a
-		custom_tooltip = SYNTH_ASSIMILATION_CITIZENSHIP_ENABLED
-	}
-	option = {
-		trigger = {
-			is_homicidal = yes
-		}
-		name = utopia.2551.a
 	}
 }
 
@@ -365,14 +356,14 @@ country_event = {
 	show_sound = event_synthetic_evolution
 	is_triggered_only = yes
 	option = {
-		name = utopia.2555.a
+		name = "utopia.2555.a"
 		trigger = {
 			is_spiritualist = no
 			NOT = { has_civic = civic_organic_zealots }
 		}
 	}
 	option = {
-		name = utopia.2555.b
+		name = "utopia.2555.b"
 		trigger = {
 			OR = {
 				is_spiritualist = yes
@@ -422,14 +413,14 @@ country_event = {
 		room = from.ruler
 	}
 	option = {
-		name = utopia.2556.a
+		name = "utopia.2556.a"
 		trigger = {
 			is_materialist = yes
 			NOT = { is_at_war_with = from }
 		}
 	}
 	option = {
-		name = utopia.2556.b
+		name = "utopia.2556.b"
 		trigger = {
 			is_spiritualist = yes
 			NOR = {
@@ -439,7 +430,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = utopia.2556.c
+		name = "utopia.2556.c"
 		trigger = {
 			OR = {
 				is_at_war_with = from
@@ -448,7 +439,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = utopia.2556.d
+		name = "utopia.2556.d"
 		trigger = {
 			is_materialist = no
 			is_spiritualist = no

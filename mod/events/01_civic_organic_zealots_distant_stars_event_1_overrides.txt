@@ -188,14 +188,14 @@ ship_event = {
 	location = from
 	is_triggered_only = yes
 	option = {
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		name = EXCELLENT
-	}
-	option = {
-		trigger = { owner = { has_civic = civic_organic_zealots } }
-		name = "distar.40.a.organic_zealots"
-	}
-	after = {
+		name = {
+			text = EXCELLENT
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "distar.40.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
 		owner = {
 			if = {
 				limit = { NOT = { has_technology = tech_engineering_1 } }

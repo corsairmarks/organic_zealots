@@ -205,30 +205,27 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {
-			owner = {
-				NOT = { has_civic = civic_organic_zealots }
-				is_xenophobe = no
-			}
-		}
-		name = "distar.5057.b"
-		owner = {
-			add_resource = { influence = 50 }
-		}
-	}
-	option = {
-		trigger = {
-			owner = {
-				OR = {
-					has_civic = civic_organic_zealots
-					is_xenophobe = yes
+		name = {
+			text = "distar.5057.b"
+			trigger = {
+				owner = {
+					NOT = { has_civic = civic_organic_zealots }
+					is_xenophobe = no
 				}
 			}
 		}
-		name = "distar.5057.phobe"
-		owner = {
-			add_resource = { influence = 50 }
+		name = {
+			text = "distar.5057.phobe"
+			trigger = {
+				owner = {
+					OR = {
+						has_civic = civic_organic_zealots
+						is_xenophobe = yes
+					}
+				}
+			}
 		}
+		owner = { add_resource = { influence = 50 } }
 	}
 }
 
