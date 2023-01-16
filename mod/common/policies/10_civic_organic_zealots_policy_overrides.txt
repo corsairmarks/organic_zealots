@@ -8,45 +8,32 @@ diplomatic_stance = {
 			is_country_type = awakened_marauders
 		}
 	}
-
-	allow = {
-		is_at_war = no # Not allowed to change policies in this group while at war
-	}
-
+	allow = { is_at_war = no } # Not allowed to change policies in this group while at war
 	option = {
 		name = "diplo_stance_belligerent"
 		icon = "GFX_diplomatic_stance_belligerent"
-
 		potential = {
 			OR = {
 				is_country_type = default
 				is_country_type = awakened_fallen_empire
 			}
 		}
-
 		valid = {
 			NOT = { has_valid_civic = civic_inwards_perfection }
 			is_homicidal = no # They have their own variants of this
 		}
-
-		policy_flags = {
-			diplo_stance_belligerent
-		}
-
+		policy_flags = { diplo_stance_belligerent }
 		modifier = {
 			country_war_exhaustion_mult = -0.1
 			country_naval_cap_mult = 0.1
 			country_claim_influence_cost_mult = -0.1
 		}
-
 		ai_weight = {
 			weight = 10
-
 			modifier = {
 				factor = 0
 				NOT = { has_country_flag = has_encountered_other_empire }
 			}
-
 			# Pacifists
 			modifier = { # Fanatic Pacifists will *only* go belligerent if there's a rival neighbor...
 				factor = 0
@@ -70,7 +57,6 @@ diplomatic_stance = {
 				factor = 0.5 # ...but they're still less likely to.
 				is_pacifist = yes
 			}
-
 			# Angry people like to be belligerent
 			modifier = {
 				factor = 2.0
@@ -105,7 +91,6 @@ diplomatic_stance = {
 					has_valid_civic = civic_warrior_culture
 				}
 			}
-
 			modifier = {
 				factor = 1.5
 				has_ai_personality_behaviour = conqueror
@@ -114,7 +99,6 @@ diplomatic_stance = {
 				factor = 1.5
 				has_ai_personality_behaviour = subjugator
 			}
-
 			modifier = {
 				factor = 3.0 # Blocked in propagators get ANGRY
 				has_ai_expansion_plan = no
@@ -122,27 +106,20 @@ diplomatic_stance = {
 			}
 		}
 	}
-
 	option = {
 		name = "diplo_stance_cooperative"
 		icon = "GFX_diplomatic_stance_cooperative"
-
 		potential = {
 			OR = {
 				is_country_type = default
 				is_country_type = awakened_fallen_empire
 			}
 		}
-
 		valid = {
 			NOT = { has_valid_civic = civic_inwards_perfection }
 			is_unfriendly = no # Not homicidal or barbaric despoilers
 		}
-
-		policy_flags = {
-			diplo_stance_cooperative
-		}
-
+		policy_flags = { diplo_stance_cooperative }
 		modifier = {
 			diplo_weight_mult = 0.25
 			envoy_improve_relations_mult = 0.5
@@ -150,20 +127,16 @@ diplomatic_stance = {
 			operations_cost_mult = 0.25
 			operations_upkeep_mult = 0.25
 		}
-
 		ai_weight = {
 			weight = 10
-
 			modifier = {
 				factor = 0.01
 				has_ascension_perk = ap_become_the_crisis
 			}
-
 			modifier = {
 				factor = 0
 				NOT = { has_country_flag = has_encountered_other_empire }
 			}
-
 			# Tons of Ethics modifiers!
 			# Cranky people:
 			modifier = {
@@ -182,7 +155,6 @@ diplomatic_stance = {
 				factor = 0.75
 				has_ethic = ethic_authoritarian
 			}
-
 			# Nice people:
 			modifier = {
 				factor = 2.0
@@ -216,39 +188,30 @@ diplomatic_stance = {
 				factor = 1.05
 				has_ethic = ethic_materialist
 			}
-
 			modifier = {
 				factor = 1.25
 				has_ai_personality_behaviour = multispecies
 			}
-
 			modifier = {
 				factor = 3.0
 				has_ai_personality = federation_builders
 			}
 		}
 	}
-
 	option = {
 		name = "diplo_stance_isolationist"
 		icon = "GFX_diplomatic_stance_isolationist"
-
 		potential = {
 			OR = {
 				is_country_type = default
 				is_country_type = awakened_fallen_empire
 			}
 		}
-
 		valid = {
 			is_megacorp = no # "NO! YOU CAN'T BUY OUR STUFF!" makes the shareholders sad
 			is_homicidal = no # Homicidal variants below
 		}
-
-		policy_flags = {
-			diplo_stance_isolationist
-		}
-
+		policy_flags = { diplo_stance_isolationist }
 		modifier = {
 			country_unity_produces_mult = 0.10
 			diplo_weight_mult = -0.50
@@ -256,23 +219,17 @@ diplomatic_stance = {
 			pop_government_ethic_attraction = 0.25
 			country_border_friction_mult = 2.0
 		}
-
-		on_enabled = {
-		}
-
+		on_enabled = { }
 		ai_weight = {
 			weight = 10
-
 			modifier = {
 				factor = 0.01
 				has_ascension_perk = ap_become_the_crisis
 			}
-
 			modifier = {
 				factor = 0.25 # Let the isolationists start in this if they want
 				NOT = { has_country_flag = has_encountered_other_empire }
 			}
-
 			modifier = {
 				factor = 0
 				OR = {
@@ -280,17 +237,14 @@ diplomatic_stance = {
 					has_ai_personality = fanatic_befrienders
 				}
 			}
-
 			modifier = {
 				factor = 100.0 # Inwards Perfection should almost always go isolationist
 				has_valid_civic = civic_inwards_perfection
 			}
-
 			modifier = {
 				factor = 3.0
 				has_ai_personality_behaviour = isolationist
 			}
-
 			modifier = {
 				factor = 2.0
 				is_xenophobe = yes
@@ -299,51 +253,37 @@ diplomatic_stance = {
 			}
 		}
 	}
-
 	option = {
 		name = "diplo_stance_expansionist"
 		icon = "GFX_diplomatic_stance_expansionist"
-
 		potential = {
 			OR = {
 				is_country_type = default
 				is_country_type = awakened_fallen_empire
 			}
 		}
-
-		valid = {
-			is_homicidal = no
-		}
-
-		policy_flags = {
-			diplo_stance_expansionist
-		}
-
+		valid = { is_homicidal = no }
+		policy_flags = { diplo_stance_expansionist }
 		modifier = {
 			starbase_outpost_cost_mult = -0.10
 			planet_colony_development_speed_mult = 0.15
 			country_border_friction_mult = 1.0
 		}
-
 		ai_weight = {
 			weight = 10
-
 			modifier = {
 				factor = 2
 				NOT = { has_country_flag = has_encountered_other_empire }
 			}
-
 			modifier = {
 				factor = 0.01
 				has_ascension_perk = ap_become_the_crisis
 			}
 		}
 	}
-
 	option = {
 		name = "diplo_stance_mercantile"
 		icon = "GFX_diplomatic_stance_mercantile"
-
 		potential = {
 			OR = {
 				is_country_type = default
@@ -351,7 +291,6 @@ diplomatic_stance = {
 			}
 			is_gestalt = no
 		}
-
 		valid = {
 			NOT = { has_valid_civic = civic_inwards_perfection }
 			is_homicidal = no
@@ -370,20 +309,14 @@ diplomatic_stance = {
 			}
 			else = { has_civic = civic_corporate_dominion }
 		}
-
-		policy_flags = {
-			diplo_stance_mercantile
-		}
-
+		policy_flags = { diplo_stance_mercantile }
 		modifier = {
 			diplo_weight_economy_mult = 0.25
 			trade_value_mult = 0.1
 			local_trade_protection_add = 5
 		}
-
 		ai_weight = {
 			weight = 10
-
 			modifier = {
 				factor = 0.01
 				has_ascension_perk = ap_become_the_crisis
@@ -405,11 +338,9 @@ diplomatic_stance = {
 			}
 		}
 	}
-
 	option = {
 		name = "diplo_stance_supremacist"
 		icon = "GFX_diplomatic_stance_supremacy"
-
 		potential = {
 			OR = {
 				is_country_type = awakened_fallen_empire
@@ -432,34 +363,24 @@ diplomatic_stance = {
 			}
 			is_subject = no
 		}
-
-		policy_flags = {
-			diplo_stance_supremacist
-		}
-
+		policy_flags = { diplo_stance_supremacist }
 		modifier = {
 			diplo_weight_naval_mult = 1.00
 			country_war_exhaustion_mult = -0.20
 			country_naval_cap_mult = 0.20
 			country_claim_influence_cost_mult = -0.1
 		}
-
-		on_enabled = {
-		}
-
+		on_enabled = { }
 		ai_weight = {
 			weight = 10
-
 			modifier = {
 				factor = 0
 				NOT = { has_country_flag = has_encountered_other_empire }
 			}
-
 			modifier = {
 				factor = 0
 				is_pacifist = yes
 			}
-
 			modifier = {
 				factor = 10
 				OR = {
@@ -467,7 +388,6 @@ diplomatic_stance = {
 					is_country_type = awakened_marauders
 				}
 			}
-
 			# Angry people want to be Supreme
 			modifier = {
 				factor = 2.0
@@ -502,7 +422,6 @@ diplomatic_stance = {
 					has_valid_civic = civic_warrior_culture
 				}
 			}
-
 			modifier = {
 				factor = 1.5
 				has_ai_personality_behaviour = conqueror
@@ -511,7 +430,6 @@ diplomatic_stance = {
 				factor = 1.5
 				has_ai_personality_behaviour = subjugator
 			}
-
 			modifier = { # Don't be suicidal
 				factor = 0
 				any_relation = {
@@ -541,117 +459,60 @@ diplomatic_stance = {
 			}
 		}
 	}
-
 	option = {
 		name = "diplo_stance_hunger"
 		icon = "GFX_diplomatic_stance_rest"
-
-		potential = {
-			is_hive_empire = yes
-		}
-
-		valid = {
-			has_valid_civic = civic_hive_devouring_swarm
-		}
-
-		policy_flags = {
-			diplo_stance_hunger
-		}
-
-		modifier = {
-		}
-
+		potential = { is_hive_empire = yes }
+		valid = { has_valid_civic = civic_hive_devouring_swarm }
+		policy_flags = { diplo_stance_hunger }
+		modifier = { }
 		ai_weight = {
 			weight = 100
 		}
 	}
-
 	option = {
 		name = "diplo_stance_extermination"
 		icon = "GFX_diplomatic_stance_recompiling"
-
-		potential = {
-			is_machine_empire = yes
-		}
-
-		valid = {
-			has_valid_civic = civic_machine_terminator
-		}
-
-		policy_flags = {
-			diplo_stance_extermination
-		}
-
-		modifier = {
-		}
-
+		potential = { is_machine_empire = yes }
+		valid = { has_valid_civic = civic_machine_terminator }
+		policy_flags = { diplo_stance_extermination }
+		modifier = { }
 		ai_weight = {
 			weight = 100
 		}
 	}
-
 	option = {
 		name = "diplo_stance_purification"
 		icon = "GFX_diplomatic_stance_withdrawn"
-
-		potential = {
-			has_utopia = yes
-		}
-
+		potential = { has_utopia = yes }
 		valid = {
 			OR = {
 				has_valid_civic = civic_fanatic_purifiers
 				has_valid_civic = civic_organic_zealots
 			}
 		}
-
-		policy_flags = {
-			diplo_stance_purification
-		}
-
-		modifier = {
-		}
-
+		policy_flags = { diplo_stance_purification }
+		modifier = { }
 		ai_weight = {
 			weight = 100
 		}
 	}
-
 	option = {
 		name = "diplo_stance_isolationist_fallen_empire"
 		icon = "GFX_diplomatic_stance_isolationist"
-
-		potential = {
-			is_country_type = fallen_empire
-		}
-
-		policy_flags = {
-			diplo_stance_isolationist_fallen_empire
-		}
-
-		modifier = {
-		}
-
+		potential = { is_country_type = fallen_empire }
+		policy_flags = { diplo_stance_isolationist_fallen_empire }
+		modifier = { }
 		ai_weight = {
 			weight = 100
 		}
 	}
-
 	option = {
 		name = "diplo_stance_primitive"
 		icon = "GFX_diplomatic_stance_isolationist"
-
-		potential = {
-			is_country_type = primitive
-		}
-
-		policy_flags = {
-			diplo_stance_primitive
-		}
-
-		modifier = {
-		}
-
+		potential = { is_country_type = primitive }
+		policy_flags = { diplo_stance_primitive }
+		modifier = { }
 		ai_weight = {
 			weight = 1
 		}
@@ -666,29 +527,19 @@ war_philosophy = {
 			is_fallen_empire = yes
 		}
 	}
-
-	allow = {
-		is_at_war = no # Not allowed to change policies in this group while at war
-	}
-
+	allow = { is_at_war = no } # Not allowed to change policies in this group while at war
 	option = {
 		name = "unrestricted_wars"
-
-		policy_flags = {
-			unrestricted_wars
-		}
-
+		policy_flags = { unrestricted_wars }
 		in_breach_of = {
 			{
 				key = resolution_rulesofwar_last_resort_doctrine
 			}
 		}
-
 		valid = {
 			is_pacifist = no
 			NOT = { has_valid_civic = "civic_inwards_perfection" }
 		}
-
 		AI_weight = {
 			modifier = {
 				factor = 10
@@ -728,23 +579,14 @@ war_philosophy = {
 			}
 		}
 	}
-
 	option = {
 		name = "liberation_wars"
-
-		policy_flags = {
-			liberation_wars
-		}
-
-		potential = {
-			is_gestalt = no
-		}
-
+		policy_flags = { liberation_wars }
+		potential = { is_gestalt = no }
 		valid = {
 			is_homicidal = no
 			NOT = { has_ethic = "ethic_fanatic_pacifist" }
 		}
-
 		on_enabled = {
 			hidden_effect = {
 				check_casus_belli_valid = {
@@ -752,7 +594,6 @@ war_philosophy = {
 				}
 			}
 		}
-
 		on_disabled = {
 			hidden_effect = {
 				check_casus_belli_valid = {
@@ -760,7 +601,6 @@ war_philosophy = {
 				}
 			}
 		}
-
 		AI_weight = {
 			modifier = {
 				factor = 2
@@ -782,19 +622,13 @@ war_philosophy = {
 			}
 		}
 	}
-
 	option = {
 		name = "no_wars"
-
-		policy_flags = {
-			no_wars
-		}
-
+		policy_flags = { no_wars }
 		valid = {
 			is_homicidal = no
 			NOT = { has_ethic = "ethic_fanatic_militarist" }
 		}
-
 		AI_weight = {
 			modifier = {
 				factor = 5
@@ -816,13 +650,9 @@ orbital_bombardment = {
 			is_country_type = vol
 		}
 	}
-
 	option = {
 		name = "orbital_bombardment_selective"
-		policy_flags = {
-			orbital_bombardment_selective
-		}
-
+		policy_flags = { orbital_bombardment_selective }
 		AI_weight = {
 			modifier = {
 				factor = 0
@@ -840,21 +670,14 @@ orbital_bombardment = {
 	}
 	option = {
 		name = "orbital_bombardment_indiscriminate"
-
 		in_breach_of = {
 			{
 				key = resolution_rulesofwar_independent_tribunals
 			}
 		}
-
-		policy_flags = {
-			orbital_bombardment_indiscriminate
-		}
-		modifier = {}
-
-		valid = {
-			is_pacifist = no
-		}
+		policy_flags = { orbital_bombardment_indiscriminate }
+		modifier = { }
+		valid = { is_pacifist = no }
 		AI_weight = {
 			modifier = {
 				factor = 0.1
@@ -868,13 +691,11 @@ orbital_bombardment = {
 	}
 	option = {
 		name = "orbital_bombardment_armageddon"
-
 		in_breach_of = {
 			{
 				key = resolution_rulesofwar_independent_tribunals
 			}
 		}
-
 		potential = {
 			OR = {
 				has_valid_civic = civic_fanatic_purifiers
@@ -882,12 +703,8 @@ orbital_bombardment = {
 				has_valid_civic = civic_machine_terminator
 			}
 		}
-
-		policy_flags = {
-			orbital_bombardment_armageddon
-		}
-		modifier = {}
-
+		policy_flags = { orbital_bombardment_armageddon }
+		modifier = { }
 		AI_weight = {
 			modifier = {
 				factor = 10
@@ -915,10 +732,8 @@ artificial_intelligence_policy = {
 			is_robot_empire = yes
 		}
 	}
-
 	option = {
 		name = "ai_outlawed"
-
 		valid = {
 			if = {
 				limit = { is_robot_empire = no }
@@ -950,17 +765,12 @@ artificial_intelligence_policy = {
 				is_robot_empire = no
 			}
 		}
-
-		policy_flags = {
-			ai_outlawed
-		}
-
+		policy_flags = { ai_outlawed }
 		in_breach_of = {
 			{
 				key = resolution_galacticstudies_advanced_xenostudies
 			}
 		}
-
 		AI_weight = {
 			modifier = {
 				factor = 0
@@ -1003,10 +813,8 @@ artificial_intelligence_policy = {
 			}
 		}
 	}
-
 	option = {
 		name = "ai_servitude"
-
 		valid = {
 			if = {
 				limit = { is_robot_empire = no }
@@ -1032,11 +840,7 @@ artificial_intelligence_policy = {
 				is_robot_empire = no
 			}
 		}
-
-		policy_flags = {
-			ai_servitude
-		}
-
+		policy_flags = { ai_servitude }
 		AI_weight = {
 			modifier = {
 				factor = 5
@@ -1077,10 +881,8 @@ artificial_intelligence_policy = {
 			}
 		}
 	}
-
 	option = {
 		name = "ai_full_rights"
-
 		valid = {
 			if = {
 				limit = { is_robot_empire = no }
@@ -1107,13 +909,8 @@ artificial_intelligence_policy = {
 				NOT = { has_policy_flag = robots_outlawed }
 			}
 		}
-
-		policy_flags = {
-			ai_full_rights
-		}
-
-		modifier = {}
-
+		policy_flags = { ai_full_rights }
+		modifier = { }
 		AI_weight = {
 			modifier = {
 				factor = 0.5
@@ -1152,10 +949,7 @@ artificial_intelligence_policy = {
 
 # Modified: materialists can be forced to outlaw robots if they lost a force policy war, Organic Zealots cannot allow robots
 robot_pop_policy = {
-	potential = {
-		is_gestalt = no
-	}
-
+	potential = { is_gestalt = no }
 	option = {
 		name = "robot_pops_outlawed"
 		valid = {
@@ -1190,11 +984,7 @@ robot_pop_policy = {
 			}
 			NOT = { has_policy_flag = ai_full_rights }
 		}
-
-		policy_flags = {
-			robots_outlawed
-		}
-
+		policy_flags = { robots_outlawed }
 		on_enabled = {
 			hidden_effect = {
 				every_owned_species = {
@@ -1206,7 +996,6 @@ robot_pop_policy = {
 				}
 			}
 		}
-
 		AI_weight = {
 			factor = 1
 			modifier = {
@@ -1238,23 +1027,21 @@ robot_pop_policy = {
 			}
 		}
 	}
-
 	option = {
 		name = "robot_pops_allowed"
-		# TODO: test
 		valid = {
 			if = {
 				limit = { is_robot_empire = no }
 				custom_tooltip = {
-					fail_text = lost_robot_policy_war_fail
+					fail_text = "lost_robot_policy_war_fail"
 					NOT = { has_country_flag = lost_robot_policy_war }
 				}
 				custom_tooltip = {
-					fail_text = civic_tooltip_not_organic_zealots_fail
+					fail_text = "civic_tooltip_not_organic_zealots_fail"
 					NOT = { has_valid_civic = civic_organic_zealots }
 				}
 				custom_tooltip = {
-					fail_text = civic_tooltip_overlord_not_organic_zealots_fail
+					fail_text = "civic_tooltip_overlord_not_organic_zealots_fail"
 					NAND = {
 						is_subject = yes
 						exists = overlord
@@ -1263,11 +1050,7 @@ robot_pop_policy = {
 				}
 			}
 		}
-
-		policy_flags = {
-			robots_allowed
-		}
-
+		policy_flags = { robots_allowed }
 		AI_weight = {
 			factor = 2
 			modifier = {
@@ -1289,35 +1072,17 @@ border_policy = {
 	potential = {
 		always = yes
 	}
-
 	option = {
 		name = "border_policy_open"
-
-		policy_flags = {
-			border_policy_open
-		}
-
-		potential = {
-			is_country_type = default
-		}
-
-		valid = {
-			is_homicidal = no
-		}
+		policy_flags = { border_policy_open }
+		potential = { is_country_type = default }
+		valid = { is_homicidal = no }
 	}
-
 	option = {
 		name = "border_policy_closed"
-
-		policy_flags = {
-			border_policy_closed
-		}
-		modifier = {}
-
-		valid = {
-			always = yes
-		}
-
+		policy_flags = { border_policy_closed }
+		modifier = { }
+		valid = { always = yes }
 		AI_weight = {
 			factor = 10
 			modifier = {
@@ -1349,31 +1114,20 @@ border_policy = {
 purge = {
 	option = {
 		name = "purge_not_allowed"
-
 		valid = {
 			is_gestalt = no
 			is_homicidal = no
 		}
-
-		policy_flags = {
-			purge_not_allowed
-		}
+		policy_flags = { purge_not_allowed }
 	}
-
 	option = {
 		name = "purge_displacement_only"
-
-		policy_flags = {
-			purge_displacement_only
-		}
-
-		modifier = {}
-
+		policy_flags = { purge_displacement_only }
+		modifier = { }
 		valid = {
 			is_xenophile = no
 			is_homicidal = no
 		}
-
 		AI_weight = {
 			factor = 5
 			modifier = {
@@ -1383,21 +1137,15 @@ purge = {
 			}
 		}
 	}
-
 	option = {
 		name = "purge_allowed"
-
 		in_breach_of = {
 			{
 				key = resolution_rulesofwar_reverence_for_life
 			}
 		}
-
-		policy_flags = {
-			purge_allowed
-		}
-		modifier = {}
-
+		policy_flags = { purge_allowed }
+		modifier = { }
 		valid = {
 			custom_tooltip = {
 				success_text = is_not_a_signatory_vassal_success
@@ -1411,7 +1159,6 @@ purge = {
 				has_menace_perk = menp_undertaker	# Unlocked with Crisis Level 1
 			}
 		}
-
 		AI_weight = {
 			factor = 10
 			modifier = {
