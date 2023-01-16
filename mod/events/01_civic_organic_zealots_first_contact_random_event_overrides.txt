@@ -1,0 +1,157 @@
+namespace = first_contact
+
+# Negative reaction to sight of aliens
+# Modified:
+# * fix errant is_machine_empire trigger
+# * add custom description for organic zealots vs machines
+# * custom option name for organic zealots vs machines
+first_contact_event = {
+	id = first_contact.5035
+	title = first_contact.5035.name
+	desc = {
+		text = "first_contact.5035.desc"
+		trigger = { contact_country = { is_synthetic_empire = no } }
+	}
+	desc = {
+		text = "first_contact.5035.desc.machine"
+		trigger = {
+			owner = { NOT = { has_civic = civic_organic_zealots } }
+			contact_country = { is_synthetic_empire = yes }
+		}
+	}
+	desc = {
+		text = "first_contact.5035.desc.machine.organic_zealots"
+		trigger = {
+			owner = { has_civic = civic_organic_zealots }
+			contact_country = { is_synthetic_empire = yes }
+		}
+	}
+	picture = {
+		trigger = { contact_country = { is_synthetic_empire = yes } }
+		picture = GFX_evt_robot_encounter
+	}
+	picture = {
+		trigger = { contact_country = { is_synthetic_empire = no } }
+		picture = GFX_evt_worrying_signal
+	}
+	show_sound = {
+		sound = event_robot_encounter
+		trigger = { contact_country = { is_synthetic_empire = yes } }
+	}
+	show_sound = {
+		sound = event_worrying_signal
+		trigger = { contact_country = { is_synthetic_empire = no } }
+	}
+	is_triggered_only = yes
+	first_contact = yes
+	immediate = {
+		set_site_progress_locked = yes
+		set_first_contact_flag = seen_aliens
+	}
+	after = {
+		set_site_progress_locked = no
+	}
+	option = {
+		name = {
+			text = "first_contact.5035.A"
+			trigger = {
+				NAND = {
+					owner = { has_civic = civic_organic_zealots }
+					contact_country = { is_synthetic_empire = yes }
+				}
+			}
+		}
+		name = {
+			text = "first_contact.5035.A.organic_zealots"
+			trigger = {
+				owner = { has_civic = civic_organic_zealots }
+				contact_country = { is_synthetic_empire = yes }
+			}
+		}
+		hidden_effect = {
+			owner = {
+				add_opinion_modifier = {
+					who = root.contact_country
+					modifier = opinion_first_contact_repulsive_aliens
+				}
+			}
+		}
+		if = {
+			limit = { contact_country = { is_synthetic_empire = yes } }
+			owner = {
+				add_modifier = {
+					modifier = robot_revulsion
+					days = 3600
+				}
+			}
+		}
+		else = {
+			owner = {
+				add_modifier = {
+					modifier = alien_revulsion
+					days = 3600
+				}
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+	option = {
+		name = "first_contact.5035.B"
+		allow = {
+			NAND = {
+				owner = { has_civic = civic_organic_zealots }
+				contact_country = { is_synthetic_empire = yes }
+			}
+		}
+		if = {
+			limit = {
+				contact_country = { is_synthetic_empire = yes }
+				owner = { has_faction = traditionalist }
+			}
+			owner = {
+				random_pop_faction = {
+					limit = { is_pop_faction_type = traditionalist }
+					add_modifier = {
+						modifier = repulsive_robot_contact
+						days = 3600
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				contact_country = { is_synthetic_empire = no }
+				owner = {
+					OR = {
+						has_faction = isolationist
+						has_faction = supremacist
+					}
+				}
+			}
+			owner = {
+				every_pop_faction = {
+					limit = {
+						OR = {
+							is_pop_faction_type = isolationist
+							is_pop_faction_type = supremacist
+						}
+					}
+					add_modifier = {
+						modifier = repulsive_alien_contact
+						days = 3600
+					}
+				}
+			}
+		}
+		else = {
+			owner = {
+				add_modifier = {
+					modifier = repulsive_aliens_uncondemned
+					days = 3600
+				}
+			}
+		}
+	}
+}
