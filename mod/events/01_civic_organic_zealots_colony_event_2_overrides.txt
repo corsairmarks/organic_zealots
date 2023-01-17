@@ -62,11 +62,11 @@ planet_event = {
 	title = "colony.1501.name"
 	desc = {
 		text = "colony.1501.desc"
-		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 	}
 	desc = {
 		text = "colony.1501.desc.organic_zealots"
-		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 	}
 	picture = GFX_evt_asteroid_approaching_planet
 	location = root
@@ -79,16 +79,16 @@ planet_event = {
 	option = {
 		name = {
 			text = "colony.1501.a"
-			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 		}
 		name = {
 			text = "colony.1501.a.organic_zealots"
-			trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+			trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 		}
 		hidden_effect = {
 			if = {
 				limit = {
-					orbit ={
+					orbit = {
 						any_deposit = {
 							is_blocker = yes
 							NOR = {
@@ -127,11 +127,11 @@ planet_event = {
 	title = "colony.1502.name"
 	desc = {
 		text = "colony.1502.desc"
-		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 	}
 	desc = {
 		text = "colony.1502.desc.organic_zealots"
-		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 	}
 	picture = GFX_evt_atmospheric_entry
 	location = root
@@ -144,11 +144,11 @@ planet_event = {
 	option = {
 		name = {
 			text = "colony.1502.a"
-			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 		}
 		name = {
 			text = "colony.1502.a.organic_zealots"
-			trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+			trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 		}
 		custom_tooltip = "colony.1502.a.tooltip"
 		orbit = {
@@ -184,11 +184,11 @@ planet_event = {
 	title = "colony.1503.name"
 	desc = {
 		text = "colony.1503.desc"
-		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 	}
 	desc = {
 		text = "colony.1503.desc.organic_zealots"
-		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 	}
 	picture = GFX_evt_big_landing_ship
 	location = root
@@ -201,11 +201,11 @@ planet_event = {
 	option = {
 		name = {
 			text = "colony.1503.a"
-			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 		}
 		name = {
 			text = "colony.1503.a.organic_zealots"
-			trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+			trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 		}
 		orbit = {
 			owner = {
@@ -281,11 +281,11 @@ planet_event = {
 	title = "colony.1505.name"
 	desc = {
 		text = "colony.1505.desc"
-		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 	}
 	desc = {
 		text = "colony.1505.desc"
-		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 	}
 	picture = GFX_evt_asteroid_approaching_planet
 	location = root
@@ -333,11 +333,11 @@ planet_event = {
 	title = "colony.1506.name"
 	desc = {
 		text = "colony.1506.desc"
-		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 	}
 	desc = {
 		text = "colony.1506.desc.organic_zealots"
-		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 	}
 	picture = GFX_evt_asteroid_approaching_planet
 	location = root
@@ -350,11 +350,11 @@ planet_event = {
 	option = {
 		name = {
 			text = "colony.1506.a"
-			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 		}
 		name = {
 			text = "colony.1506.a.organic_zealots"
-			trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+			trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 		}
 		hidden_effect = {
 			planet_event = {
@@ -373,11 +373,11 @@ planet_event = {
 	title = "colony.1507.name"
 	desc = {
 		text = "colony.1507.desc"
-		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 	}
 	desc = {
 		text = "colony.1507.desc.organic_zealots"
-		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 	}
 	picture = GFX_evt_asteroid_approaching_planet
 	location = root
@@ -406,11 +406,11 @@ planet_event = {
 	title = "colony.1508.name"
 	desc = {
 		text = "colony.1508.desc"
-		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 	}
 	desc = {
 		text = "colony.1508.desc"
-		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 	}
 	picture = GFX_evt_asteroid_approaching_planet
 	location = root
@@ -439,11 +439,11 @@ planet_event = {
 	title = "colony.1509.name"
 	desc = {
 		text = "colony.1509.desc"
-		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 	}
 	desc = {
 		text = "colony.1509.desc.organic_zealots"
-		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 	}
 	picture = GFX_evt_asteroid_approaching_planet
 	location = root
@@ -474,11 +474,11 @@ planet_event = {
 	title = "colony.1510.name"
 	desc = {
 		text = "colony.1510.desc"
-		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 	}
 	desc = {
 		text = "colony.1510.desc.organic_zealots"
-		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 	}
 	picture = GFX_evt_asteroid_approaching_planet
 	location = root
@@ -519,11 +519,11 @@ planet_event = {
 	option = {
 		name = {
 			text = "colony.1510.c"
-			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 		}
 		name = {
 			text = "colony.1510.c"
-			trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+			trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 		}
 		orbit.owner = {
 			if  = {
