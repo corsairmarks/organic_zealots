@@ -1,0 +1,740 @@
+namespace = colony
+
+########################
+# HELPFUL DRONES CHAIN #
+########################
+
+# Modified: saves the target moon for use in localisation and uses it as the location of the special project
+planet_event = {
+	id = colony.1500
+	title = "colony.1500.name"
+	desc = "colony.1500.desc"
+	picture = GFX_evt_asteroid_approaching_planet
+	location = root
+	trackable = yes
+	pre_triggers = {
+		has_owner = yes
+		is_homeworld = no
+		original_owner = yes
+		is_ai = no
+		has_ground_combat = no
+		is_capital = no
+		is_occupied_flag = no
+	}
+	trigger = {
+		owner = { NOT = { has_country_flag = FLDrone_country } }
+		num_pops > 0
+		NOR = {
+			is_planet_class = pc_habitat
+			has_planet_flag = colony_event
+			has_planet_flag = FLDrone_event
+		}
+		has_moon = yes
+		any_moon = { habitable_planet = no }
+	}
+	is_triggered_only = yes
+	immediate = {
+		set_planet_flag = FLDrone_event
+		set_planet_flag = colony_event
+		owner = { set_country_flag = FLDrone_country }
+		random_moon = {
+			limit = { habitable_planet = no }
+			save_event_target_as = fldrone_moon
+		}
+	}
+	option = {
+		name = "colony.1500.a"
+		enable_special_project = {
+			name = "HELPFUL_DRONES_1_PROJECT"
+			location = event_target:fldrone_moon
+			owner = owner
+		}
+	}
+}
+
+# Modified:
+# * adjust owner checks to use the planet this moon is orbiting
+# * custom description for organic zealots
+# * custom option text for organic zealots
+# * use the same blocker criteria as colony.1502
+planet_event = {
+	id = colony.1501
+	title = "colony.1501.name"
+	desc = {
+		text = "colony.1501.desc"
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+	}
+	desc = {
+		text = "colony.1501.desc.organic_zealots"
+		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+	}
+	picture = GFX_evt_asteroid_approaching_planet
+	location = root
+	is_triggered_only = yes
+	trigger = {
+		exists = orbit
+		orbit = { has_owner = yes }
+		orbit.owner = { has_country_flag = FLDrone_country }
+	}
+	option = {
+		name = {
+			text = "colony.1501.a"
+			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		}
+		name = {
+			text = "colony.1501.a.organic_zealots"
+			trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					orbit ={
+						any_deposit = {
+							is_blocker = yes
+							NOR = {
+								is_deposit_type = d_buried_lithoids
+								is_deposit_type = d_lithoid_devastation
+								is_deposit_type = d_terraforming_blocker
+								is_deposit_type = d_archaeological_site
+								is_deposit_type = d_ruined_arcology
+							}
+						}
+					}
+				}
+				planet_event = {
+					id = colony.1502
+					days = 360
+					random = 60
+				}
+			}
+			else = {
+				planet_event = {
+					id = colony.1503
+					days = 360
+					random = 60
+				}
+			}
+		}
+	}
+}
+
+# Modified:
+# * adjust owner checks to use the planet this moon is orbiting
+# * custom description for organic zealots
+# * custom option text for organic zealots
+planet_event = {
+	id = colony.1502
+	title = "colony.1502.name"
+	desc = {
+		text = "colony.1502.desc"
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+	}
+	desc = {
+		text = "colony.1502.desc.organic_zealots"
+		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+	}
+	picture = GFX_evt_atmospheric_entry
+	location = root
+	is_triggered_only = yes
+	trigger = {
+		exists = orbit
+		orbit = { has_owner = yes }
+		orbit.owner = { has_country_flag = FLDrone_country }
+	}
+	option = {
+		name = {
+			text = "colony.1502.a"
+			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		}
+		name = {
+			text = "colony.1502.a.organic_zealots"
+			trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		}
+		custom_tooltip = "colony.1502.a.tooltip"
+		orbit = {
+			random_deposit = {
+				limit = {
+					is_blocker = yes
+					NOR = {
+						is_deposit_type = d_buried_lithoids
+						is_deposit_type = d_lithoid_devastation
+						is_deposit_type = d_terraforming_blocker
+						is_deposit_type = d_archaeological_site
+						is_deposit_type = d_ruined_arcology
+					}
+				}
+				clear_blocker = yes
+			}
+		}
+		hidden_effect = {
+			planet_event = {
+				id = colony.1503
+				days = 360
+			}
+		}
+	}
+}
+
+# Modified:
+# * adjust owner checks to use the planet this moon is orbiting
+# * custom description for organic zealots
+# * custom option text for organic zealots
+planet_event = {
+	id = colony.1503
+	title = "colony.1503.name"
+	desc = {
+		text = "colony.1503.desc"
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+	}
+	desc = {
+		text = "colony.1503.desc.organic_zealots"
+		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+	}
+	picture = GFX_evt_big_landing_ship
+	location = root
+	is_triggered_only = yes
+	trigger = {
+		exists = orbit
+		orbit = { has_owner = yes }
+		orbit.owner = { has_country_flag = FLDrone_country }
+	}
+	option = {
+		name = {
+			text = "colony.1503.a"
+			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		}
+		name = {
+			text = "colony.1503.a.organic_zealots"
+			trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		}
+		orbit = {
+			owner = {
+				add_monthly_resource_mult = {
+					resource = engineering_research
+					value = @tier2researchreward
+					min = @tier2researchmin
+					max = @tier2researchmax
+				}
+			}
+			add_modifier = {
+				modifier = "drone_space_elevator"
+				days = 3600
+			}
+		}
+		hidden_effect = {
+			planet_event = {
+				id = colony.1504
+				days = 360
+			}
+		}
+	}
+}
+
+# Modified:
+# * adjust owner checks to use the planet this moon is orbiting
+# * custom description for organic zealots
+# * add_deposit so as to not clobber other mining deposits
+planet_event = {
+	id = colony.1504
+	title = "colony.1504.name"
+	desc = "colony.1504.desc"
+	picture = GFX_evt_asteroid_approaching_planet
+	location = root
+	is_triggered_only = yes
+	trigger = {
+		exists = orbit
+		orbit = { has_owner = yes }
+		orbit.owner = { has_country_flag = FLDrone_country }
+	}
+	option = {
+		name = "colony.1504.a"
+		if = {
+			limit = { has_deposit_for = shipclass_research_station }
+			orbit.owner = {
+				add_resource = {
+					minerals = 500
+				}
+			}
+		}
+		else = {
+			add_deposit = d_minerals_4
+			add_modifier = {
+				modifier = "drone_mineral_gift"
+				days = -1
+			}
+		}
+		hidden_effect = {
+			planet_event = {
+				id = colony.1505
+				days = 360
+			}
+		}
+	}
+}
+
+# Modified:
+# * adjust owner checks to use the planet this moon is orbiting
+# * custom description for organic zealots
+# * add_deposit so as to not clobber other research deposits
+planet_event = {
+	id = colony.1505
+	title = "colony.1505.name"
+	desc = {
+		text = "colony.1505.desc"
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+	}
+	desc = {
+		text = "colony.1505.desc"
+		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+	}
+	picture = GFX_evt_asteroid_approaching_planet
+	location = root
+	is_triggered_only = yes
+	trigger = {
+		exists = orbit
+		orbit = { has_owner = yes }
+		orbit.owner = { has_country_flag = FLDrone_country }
+	}
+	option = {
+		name = FASCINATING
+		if = {
+			limit = { has_deposit_for = shipclass_mining_station }
+			orbit.owner = {
+				add_monthly_resource_mult = {
+					resource = society_research
+					value = @tier3researchreward
+					min = @tier3researchmin
+					max = @tier3researchmax
+				}
+			}
+		}
+		else = {
+			add_deposit = d_society_3
+			add_modifier = {
+				modifier = "drone_fl_satellite"
+				days = -1
+			}
+		}
+		hidden_effect = {
+			planet_event = {
+				id = colony.1506
+				days = 360
+			}
+		}
+	}
+}
+
+# Modified:
+# * adjust owner checks to use the planet this moon is orbiting
+# * custom description for organic zealots
+# * custom option text for organic zealots
+planet_event = {
+	id = colony.1506
+	title = "colony.1506.name"
+	desc = {
+		text = "colony.1506.desc"
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+	}
+	desc = {
+		text = "colony.1506.desc.organic_zealots"
+		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+	}
+	picture = GFX_evt_asteroid_approaching_planet
+	location = root
+	is_triggered_only = yes
+	trigger = {
+		exists = orbit
+		orbit = { has_owner = yes }
+		orbit.owner = { has_country_flag = FLDrone_country }
+	}
+	option = {
+		name = {
+			text = "colony.1506.a"
+			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		}
+		name = {
+			text = "colony.1506.a.organic_zealots"
+			trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		}
+		hidden_effect = {
+			planet_event = {
+				id = colony.1507
+				days = 360
+			}
+		}
+	}
+}
+
+# Modified:
+# * adjust owner checks to use the planet this moon is orbiting
+# * custom description for organic zealots
+planet_event = {
+	id = colony.1507
+	title = "colony.1507.name"
+	desc = {
+		text = "colony.1507.desc"
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+	}
+	desc = {
+		text = "colony.1507.desc.organic_zealots"
+		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+	}
+	picture = GFX_evt_asteroid_approaching_planet
+	location = root
+	is_triggered_only = yes
+	trigger = {
+		exists = orbit
+		orbit = { has_owner = yes }
+		orbit.owner = { has_country_flag = FLDrone_country }
+	}
+	option = {
+		name = "colony.1507.a"
+		hidden_effect = {
+			planet_event = {
+				id = colony.1508
+				days = 360
+			}
+		}
+	}
+}
+
+# Modified:
+# * adjust owner checks to use the planet this moon is orbiting
+# * custom description for organic zealots
+planet_event = {
+	id = colony.1508
+	title = "colony.1508.name"
+	desc = {
+		text = "colony.1508.desc"
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+	}
+	desc = {
+		text = "colony.1508.desc"
+		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+	}
+	picture = GFX_evt_asteroid_approaching_planet
+	location = root
+	is_triggered_only = yes
+	trigger = {
+		exists = orbit
+		orbit = { has_owner = yes }
+		orbit.owner = { has_country_flag = FLDrone_country }
+	}
+	option = {
+		name = "colony.1508.a"
+		hidden_effect = {
+			planet_event = {
+				id = colony.1509
+				days = 360
+			}
+		}
+	}
+}
+
+# Modified:
+# * adjust owner checks to use the planet this moon is orbiting
+# * custom description for organic zealots
+planet_event = {
+	id = colony.1509
+	title = "colony.1509.name"
+	desc = {
+		text = "colony.1509.desc"
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+	}
+	desc = {
+		text = "colony.1509.desc.organic_zealots"
+		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+	}
+	picture = GFX_evt_asteroid_approaching_planet
+	location = root
+	is_triggered_only = yes
+	trigger = {
+		exists = orbit
+		orbit = { has_owner = yes }
+		orbit.owner = { has_country_flag = FLDrone_country }
+	}
+	option = {
+		name = "colony.1509.a"
+		hidden_effect = {
+			planet_event = {
+				id = colony.1510
+				days = 360
+			}
+		}
+	}
+}
+
+# Modified:
+# * adjust owner checks to use the planet this moon is orbiting
+# * custom description for organic zealots
+# * custom option text for organic zealots
+# * options A and B are not allowed for organic zealots
+planet_event = {
+	id = colony.1510
+	title = "colony.1510.name"
+	desc = {
+		text = "colony.1510.desc"
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+	}
+	desc = {
+		text = "colony.1510.desc.organic_zealots"
+		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+	}
+	picture = GFX_evt_asteroid_approaching_planet
+	location = root
+	is_triggered_only = yes
+	trigger = {
+		exists = orbit
+		orbit = { has_owner = yes }
+		orbit.owner = { has_country_flag = FLDrone_country }
+	}
+	option = {
+		name = "colony.1510.a"
+		allow = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
+		orbit.owner = {
+			add_monthly_resource_mult = {
+				resource = influence
+				value = @tier2influencereward
+				min = @tier2influencemin
+				max = @tier2influencemax
+			}
+		}
+		hidden_effect = {
+			planet_event = {
+				id = colony.1514
+				days = 730
+			}
+		}
+	}
+	option = {
+		name = "colony.1510.b"
+		allow = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
+		hidden_effect = {
+			planet_event = {
+				id = colony.1511
+				days = 7
+			}
+		}
+	}
+	option = {
+		name = {
+			text = "colony.1510.c"
+			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		}
+		name = {
+			text = "colony.1510.c"
+			trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		}
+		orbit.owner = {
+			if  = {
+				limit = { NOT = { has_civic = civic_organic_zealots } }
+				add_monthly_resource_mult = {
+					resource = engineering_research
+					value = @tier3researchreward
+					min = @tier3researchmin
+					max = @tier3researchmax
+				}
+			}
+			else = {
+				add_monthly_resource_mult = {
+					resource = unity
+					value = @tier3unityreward
+					min = @tier3unitymin
+					max = @tier3unitymax
+				}
+			}
+		}
+		hidden_effect = {
+			planet_event = {
+				id = colony.1513
+				days = 730
+			}
+		}
+	}
+}
+
+# Modified: adjust owner checks to use the planet this moon is orbiting
+planet_event = {
+	id = colony.1511
+	title = "colony.1511.name"
+	desc = "colony.1511.desc"
+	picture = GFX_evt_asteroid_approaching_planet
+	location = root
+	is_triggered_only = yes
+	trigger = {
+		exists = orbit
+		orbit = { has_owner = yes }
+		orbit.owner = { has_country_flag = FLDrone_country }
+	}
+	option = {
+		name = "colony.1511.a"
+		hidden_effect = {
+			planet_event = {
+				id = colony.1512
+				days = 700
+			}
+		}
+	}
+}
+
+# Modified:
+# * use a more pirate-y event picture
+# * adjust owner checks to use the planet this moon is orbiting
+# * remove defunct global flags
+planet_event = {
+	id = colony.1512
+	title = "colony.1512.name"
+	desc = "colony.1512.desc"
+	picture = GFX_evt_pirate_armada
+	location = root
+	is_triggered_only = yes
+	trigger = {
+		exists = orbit
+		orbit = { has_owner = yes }
+		orbit.owner = { has_country_flag = FLDrone_country }
+	}
+	option = {
+		name = BATTLESTATIONS
+		hidden_effect = {
+			create_country = {
+				name = "NAME_Wounded_Pirates"
+				type = faction
+				auto_delete = yes
+				effect = {
+					set_faction_hostility = { set_hostile = yes }
+					establish_communications_no_message = root.orbit.owner
+					create_fleet = {
+						name = "NAME_Wounded_Pirates"
+						effect = {
+							set_owner = prev
+							create_ship = {
+								name = "NAME_Scorched_Ravager"
+								design = "NAME_Dagger"
+							}
+							create_ship = {
+								name = "NAME_Damaged_Pillager"
+								design = "NAME_Dagger"
+							}
+							set_location = root.orbit
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Modified:
+# * adjust owner checks to use the planet this moon is orbiting
+# * use a more pirate-y event picture
+# * remove defunct global flags
+# * use the same name for the pirate country and fleet
+planet_event = {
+	id = colony.1513
+	title = "colony.1513.name"
+	desc = "colony.1513.desc"
+	picture = GFX_evt_pirate_armada
+	location = root
+	is_triggered_only = yes
+	trigger = {
+		exists = orbit
+		orbit = { has_owner = yes }
+		orbit.owner = { has_country_flag = FLDrone_country }
+	}
+	option = {
+		name = "colony.1513.a"
+		hidden_effect = {
+			create_country = {
+				name = "NAME_Numerous_Pirates"
+				type = faction
+				auto_delete = yes
+				effect = {
+					set_faction_hostility = { set_hostile = yes }
+					establish_communications_no_message = root.orbit.owner
+					create_fleet = {
+						name = "NAME_Numerous_Pirates"
+						effect = {
+							set_owner = prev
+							create_ship = {
+								name = "NAME_First_Ravager"
+								design = "NAME_Dagger"
+							}
+							create_ship = {
+								name = "NAME_First_Pillager"
+								design = "NAME_Dagger"
+							}
+							create_ship = {
+								name = "NAME_Second_Ravager"
+								design = "NAME_Dagger"
+							}
+							create_ship = {
+								name = "NAME_Second_Pillager"
+								design = "NAME_Dagger"
+							}
+							create_ship = {
+								name = "NAME_Third_Ravager"
+								design = "NAME_Dagger"
+							}
+							create_ship = {
+								name = "NAME_Third_Pillager"
+								design = "NAME_Dagger"
+							}
+							set_location = root.orbit
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Modified:
+# * adjust owner checks to use the planet this moon is orbiting
+# * use a more pirate-y event picture
+# * remove defunct global flags
+# * use the same name for the pirate country and fleet
+planet_event = {
+	id = colony.1514
+	title = "colony.1514.name"
+	desc = "colony.1514.desc"
+	picture = GFX_evt_pirate_armada
+	location = root
+	is_triggered_only = yes
+	trigger = {
+		exists = orbit
+		orbit = { has_owner = yes }
+		orbit.owner = { has_country_flag = FLDrone_country }
+	}
+	option = {
+		name = "colony.1514.a"
+		hidden_effect = {
+			create_country = {
+				name = "NAME_Cunning_Pirates"
+				type = faction
+				auto_delete = yes
+				effect = {
+					establish_communications_no_message = root.orbit.owner
+					create_fleet = {
+						name = "NAME_Cunning_Pirates"
+						effect = {
+							set_owner = prev
+							create_ship = {
+								name = "NAME_Ravager"
+								design = "NAME_Dagger"
+							}
+							create_ship = {
+								name = "NAME_Pillager"
+								design = "NAME_Dagger"
+							}
+							create_ship = {
+								name = "NAME_Swashbuckler"
+								design = "NAME_Dagger"
+							}
+							set_location = root.orbit
+						}
+					}
+				}
+			}
+		}
+	}
+}
