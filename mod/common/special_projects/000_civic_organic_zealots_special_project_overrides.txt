@@ -1,3 +1,4 @@
+# Modified: custom description for organic zealots
 special_project = {
 	key = "STUDY_NANITE_SWARM"
 	desc = {
