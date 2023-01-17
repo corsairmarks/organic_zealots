@@ -1,0 +1,71 @@
+# the values of these variables matches those found in common/relics/relics.txt
+@activation_cost = 3000
+@triumph_duration = 3600
+
+# Modified:
+# * no activation cost for organic zealots
+# * unity upkeep for organic zealots
+# * organic zealots can destroy it without concern for existing cooldowns or triggering a cooldown
+r_contingency_core = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_contingency_core"
+	sound = "relic_activation_isolated_contingency_core"
+	resources = {
+		category = relics
+		cost = {
+			trigger = { NOT = { has_civic = civic_organic_zealots } }
+			unity = @activation_cost
+		}
+		upkeep = {
+			trigger = { has_civic = civic_organic_zealots }
+			unity = 250
+		}
+	}
+	ai_weight = {
+		weight = 100
+	}
+	triggered_country_modifier = {
+		potential = { NOT = { has_civic = civic_organic_zealots } }
+		planet_pop_assembly_mult = 1.00
+	}
+	triggered_country_modifier = {
+		potential = { always = yes }
+		custom_tooltip = relic_contingecy_core
+	}
+	score = 5000
+	active_effect = {
+		if = {
+			limit = { NOT = { has_civic = civic_organic_zealots } }
+			add_modifier = {
+				modifier = "contingency_calculation"
+				days = @triumph_duration
+			}
+			custom_tooltip = relic_triumph_cooldown
+			hidden_effect = {
+				add_modifier = {
+					modifier = "relic_activation_cooldown"
+					days = @triumph_duration
+				}
+			}
+		}
+		else = {
+			# destroy this relic! then add a cool deposit to the capital
+			remove_relic = r_contingency_core
+			add_resource = { unity = @activation_cost }
+			capital_scope = { add_deposit = d_contingency_core_sundered }
+			add_victory_score = {
+				source = d_contingency_core_sundered_gained_score
+				score = 5000
+			}
+		}
+	}
+	possible = {
+		if = {
+			limit = { NOT = { has_civic = civic_organic_zealots } }
+			custom_tooltip = {
+				fail_text = "requires_relic_no_cooldown"
+				NOT = { has_modifier = relic_activation_cooldown }
+			}
+		}
+	}
+}

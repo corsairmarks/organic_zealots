@@ -262,3 +262,84 @@ country_event = {
 		}
 	}
 }
+
+# Mainframe Core Salvaged
+# Modified:
+# * custom description for organic zealots
+# * custom option for organic zealots
+country_event = {
+	id = crisis.2480
+	title = "crisis.2480.name"
+	desc = {
+		text = "crisis.2480.desc"
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+	}
+	desc = {
+		text = "crisis.2480.desc.organic_zealots"
+		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+	}
+	picture = GFX_evt_shattered_planet
+	show_sound = event_mystic_reveal
+	is_triggered_only = yes
+	option = {
+		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		name = GOOD
+		add_relic = r_contingency_core
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = EXCELLENT
+		add_monthly_resource_mult = {
+			resource = unity
+			value = @tier3unityreward
+			min = @tier3unitymin
+			max = @tier3unitymax
+		}
+		capital_scope = { add_deposit = d_contingency_core_sundered }
+		add_resource = { unity = 3000 }
+		add_victory_score = {
+			source = d_contingency_core_sundered_gained_score
+			score = 5000
+		}
+	}
+}
+
+# Mainframe Core captured (alternate event for shielding the last planet)
+# Modified:
+# * custom description for organic zealots
+# * custom option for organic zealots
+country_event = {
+	id = crisis.2481
+	title = "crisis.2480.name"
+	desc = {
+		text = "crisis.2481.desc"
+		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+	}
+	desc = {
+		text = "crisis.2481.desc.organic_zealots"
+		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+	}
+	picture = GFX_evt_satellite_in_orbit
+	show_sound = event_mystic_reveal
+	is_triggered_only = yes
+	option = {
+		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		name = GOOD
+		add_relic = r_contingency_core
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = EXCELLENT
+		capital_scope = { add_deposit = d_contingency_core_sundered }
+		add_monthly_resource_mult = {
+			resource = unity
+			value = @tier3unityreward
+			min = @tier3unitymin
+			max = @tier3unitymax
+		}
+		add_victory_score = {
+			source = d_contingency_core_sundered_gained_score
+			score = 5000
+		}
+	}
+}

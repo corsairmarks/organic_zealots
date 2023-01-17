@@ -66,6 +66,19 @@
  mod_job_cloning_technician_add: "$job_cloning_technician$ Jobs"
  building_clone_birth_labs: "Clone Birth-Labs"
  building_clone_birth_labs_desc: "State-of-the-art bio-engineering laboratories where $job_cloning_technician_plural$ oversee the accelerated maturation of clones and ensure that each clone is flash-imprinted with necessary skills for its predetermined job."
+ MOD_ROBOT_POP_HAPPINESS: "Robotic Pop Happiness"
+ MOD_ROBOT_POP_HAPPINESS_DESC: "Robotic Pops have their Happiness adjusted by this value."
+ mod_ROBOT_pop_happiness: "$MOD_ROBOT_POP_HAPPINESS$"
+ mod_ROBOT_pop_happiness_DESC: "$MOD_ROBOT_POP_HAPPINESS_DESC$"
+ MOD_MACHINE_POP_HAPPINESS: "Machine Pop Happiness"
+ MOD_MACHINE_POP_HAPPINESS_DESC: "Machine Pops have their Happiness adjusted by this value."
+ mod_MACHINE_pop_happiness: "$MOD_MACHINE_POP_HAPPINESS$"
+ mod_MACHINE_pop_happiness_DESC: "$MOD_MACHINE_POP_HAPPINESS_DESC$"
+
+ d_contingency_core_sundered: "Sundered Contingency Core"
+ d_contingency_core_sundered_desc: "A Contingency Mainframe Core that was sundered to render it inoperable. Its inert form is displayed as a testament to the triumph of organics over machines.\n\nWhoever owns the planet with this deposit receives 5000 Victory Score."
+ d_contingency_core_sundered_gained_score: "Gained $d_contingency_core_sundered$: $VALUE$"
+ d_contingency_core_sundered_lost_score: "Lost $d_contingency_core_sundered$: $VALUE$"
 
  # alternate "no AI" technologies
  tech_flash_learning: "Flash-Learning Inducers"

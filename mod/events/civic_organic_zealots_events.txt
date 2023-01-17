@@ -601,6 +601,49 @@ country_event = {
 	}
 }
 
+# triggered by on_planet_transfer and on_planet_ownerless
+# this = planet
+# from = country, new owner (if any)
+# fromfrom = country, former owner (if any)
+planet_event = {
+	id = civic_organic_zealots.40
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { has_deposit = d_contingency_core_sundered }
+	immediate = {
+		if = {
+			limit = {
+				exists = from
+				from = {
+					is_scope_type = country
+					is_scope_valid = yes
+				}
+			}
+			from = {
+				add_victory_score = {
+					source = d_contingency_core_sundered_gained_score
+					score = 5000
+				}
+			}
+		}
+		if = {
+			limit = {
+				exists = fromfrom
+				fromfrom = {
+					is_scope_type = country
+					is_scope_valid = yes
+				}
+			}
+			fromfrom = {
+				add_victory_score = {
+					source = d_contingency_core_sundered_lost_score
+					score = -5000
+				}
+			}
+		}
+	}
+}
+
 # triggered by graygoo.403
 # root = country
 country_event = {

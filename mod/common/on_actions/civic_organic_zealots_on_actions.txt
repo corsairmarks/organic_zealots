@@ -110,3 +110,23 @@ on_leader_species_changed = {
 	events = {
 	}
 }
+
+# fired whenever a new owner is set for a planet, be it after a war or through a trade
+# this = planet
+# from = country, new owner
+# fromfrom = country, former owner (if any)
+on_planet_transfer = {
+	events = {
+		civic_organic_zealots.40
+	}
+}
+
+# fired whenever a planet becomes ownerless
+# this = planet
+# from = country (invalid scope, since no new owner)
+# fromfrom = country, former owner
+on_planet_ownerless = {
+	events = {
+		civic_organic_zealots.40
+	}
+}
