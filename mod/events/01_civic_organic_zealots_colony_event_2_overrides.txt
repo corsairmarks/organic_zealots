@@ -284,7 +284,7 @@ planet_event = {
 		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 	}
 	desc = {
-		text = "colony.1505.desc"
+		text = "colony.1505.desc.organic_zealots"
 		trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 	}
 	picture = GFX_evt_asteroid_approaching_planet
@@ -409,7 +409,7 @@ planet_event = {
 		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 	}
 	desc = {
-		text = "colony.1508.desc"
+		text = "colony.1508.desc.organic_zealots"
 		trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 	}
 	picture = GFX_evt_asteroid_approaching_planet
@@ -522,7 +522,7 @@ planet_event = {
 			trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zealots } } }
 		}
 		name = {
-			text = "colony.1510.c"
+			text = "colony.1510.c.organic_zealots"
 			trigger = { orbit.owner = { has_civic = civic_organic_zealots } }
 		}
 		orbit.owner = {
