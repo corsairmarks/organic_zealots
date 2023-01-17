@@ -1,0 +1,116 @@
+namespace = first_contact_critters
+
+### Drones
+
+# Modified:
+# * custom desction for organic zealots
+# * custom option text for organic zealots
+first_contact_event = {
+	id = first_contact_critters.40
+	title = "first_contact_critters.40.name"
+	desc = {
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		text = "first_contact_critters.40.desc"
+	}
+	desc = {
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		text = "first_contact_critters.40.desc.organic_zealots"
+	}
+	picture = GFX_evt_ship_in_orbit
+	show_sound = event_ancient_drone
+	is_triggered_only = yes
+	first_contact = yes
+	immediate = {
+		set_site_progress_locked = yes
+	}
+	after = {
+		set_site_progress_locked = no
+	}
+	option = {
+		name = {
+			text = "first_contact_critters.40.A"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "first_contact_critters.40.A.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		set_first_contact_stage = drones_stage_2
+	}
+}
+
+# Modified:
+# * use triggers
+# * custom desction for organic zealots
+# * alternate option text for organic zealots
+first_contact_event = {
+	id = first_contact_critters.45
+	title = "first_contact_critters.45.name"
+	picture = GFX_evt_mining_station
+	desc = {
+		trigger = { owner = { is_gestalt = yes } }
+		text = "story.301.desc.gesta"
+	}
+	desc = {
+		trigger = {
+			owner = {
+				NOT = { has_civic = civic_organic_zealots }
+				is_materialist = yes
+			}
+		}
+		text = "story.301.desc.mater"
+	}
+	desc = {
+		trigger = {
+			owner = {
+				NOT = { has_civic = civic_organic_zealots }
+				is_pacifist = yes
+			}
+		}
+		text = "story.301.desc.pacif"
+	}
+	desc = {
+		trigger = {
+			owner = {
+				is_gestalt = no
+				NOT = { has_civic = civic_organic_zealots }
+				is_materialist = no
+				is_pacifist = no
+			}
+		}
+		text = "first_contact_critters.45.desc"
+	}
+	desc = {
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		text = "first_contact_critters.45.desc.organic_zealots"
+	}
+	show_sound = event_ancient_drone
+	is_triggered_only = yes
+	first_contact = yes
+	immediate = {
+		set_site_progress_locked = yes
+	}
+	after = {
+		set_site_progress_locked = no
+	}
+	option = {
+		name = {
+			text = UNDERSTOOD
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = DISTURBING
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		owner = {
+			capital_scope = {
+				enable_special_project = {
+					name = "DRONES_PROJECT"
+					location = this
+					owner = root.owner
+				}
+			}
+		}
+		finish_first_contact_effect = yes
+	}
+}
