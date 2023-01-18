@@ -218,9 +218,9 @@ fleet_event = {
 
 # Stage 5
 # Modified:
-# * allow synthetic/machine empires to select option c
-# * add trait_machine_unit to the species created by option e
-# * empire created by option e has specific civic (so as to not create homicidal vassals for non-machine empires, or servitor/assimilators without secondary Pops)
+# * allow synthetic/machine empires to select option c (they can't edit the relevant Robots Allowed policy!)
+# * add trait_machine_unit to the species created by option e, otherwise they aren't recognized as machines by most game code
+# * empire created by option e has specific civics (so as to not create homicidal vassals for non-machine empires, or servitor/assimilators without secondary Pops)
 fleet_event = {
 	id = ancrel.12090
 	title = ancrel.12090.name
@@ -314,11 +314,7 @@ fleet_event = {
 		}
 		hidden_effect = {
 			if = {
-				limit = {
-					owner = {
-						is_machine_empire = yes
-					}
-				}
+				limit = { owner = { is_machine_empire = yes } }
 				create_species = {
 					class = MACHINE
 					name = NAME_Surveillance_Bots
