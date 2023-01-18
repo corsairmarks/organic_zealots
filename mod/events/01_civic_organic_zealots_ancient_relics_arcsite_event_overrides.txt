@@ -1,0 +1,488 @@
+namespace = ancrel
+
+### The Sentinels ###
+# triggered via ancrel.4030
+
+# Site Discovery
+# Modified: the sentinels invade immediately if the land is budgeted for other purposes, using the same event as choosing to destroy them
+planet_event = {
+	id = ancrel.4051
+	title = "ancrel.4051.name"
+	desc = {
+		trigger = { has_planet_flag = sentinels_d_dense_jungle }
+		text = "ancrel.4051.desc_jungle"
+	}
+	desc = {
+		trigger = { has_planet_flag = sentinels_d_toxic_kelp }
+		text = "ancrel.4051.desc_kelp"
+	}
+	desc = {
+		trigger = { has_planet_flag = sentinels_d_noxious_swamp }
+		text = "ancrel.4051.desc_swamp"
+	}
+	desc = {
+		trigger = { has_planet_flag = sentinels_d_massive_glacier }
+		text = "ancrel.4051.desc_glacier"
+	}
+	picture = GFX_evt_huge_monument
+	show_sound = event_mystic_reveal
+	location = this
+	is_triggered_only = yes
+	option = {
+		name = "ancrel.4051.a"
+		create_archaeological_site = sentinels_digsite
+		add_deposit = d_archaeological_site
+	}
+	option = {
+		name = "ancrel.4051.b"
+		hidden_effect = {
+			planet_event = {
+				id = ancrel.4055
+			}
+		}
+	}
+}
+
+# Evermore Discovery
+# Modified:
+# * use triggers
+# * custom description for organic zealots
+# * custom option for organic zealots
+# * organic zealots cannot use the regular options
+ship_event = {
+	id = ancrel.4056
+	title = "ancrel.4056.name"
+	desc = {
+		text = "ancrel.4056.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.4056.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_huge_monument
+	show_sound = event_mystic_reveal
+	location = from
+	is_triggered_only = yes
+	option = {
+		name = "ancrel.4056.a" # Repurpose Tech
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		owner = { add_resource = { influence = 300 } }
+		event_target:sentinels_planet = { add_modifier = { modifier = the_evermore_modifier } }
+	}
+	option = {
+		name = "ancrel.4056.b" # Virtual Hunting Ground
+		trigger = {
+			owner = {
+				NOT = { has_civic = civic_organic_zealots } 
+				OR = {
+					is_xenophobe = yes
+					is_militarist = yes
+				}
+			}
+		}
+		owner = { add_resource = { influence = 300 } }
+		event_target:sentinels_planet = { add_modifier = { modifier = the_evermore_evil_modifier } }
+	}
+	option = {
+		name = "ancrel.4056.c" # Replicate Tech
+		trigger = {
+			owner = {
+				NOT = { has_civic = civic_organic_zealots }
+				is_xenophobe = no
+				is_militarist = no
+			}
+		}
+		owner = {
+			enable_special_project = {
+				name = "REPLICATE_THE_EVERMORE"
+				location = event_target:sentinels_planet
+				owner = root.owner
+			}
+		}
+	}
+	option = {
+		name = "ancrel.4056.d" # Study Aliens
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		event_target:sentinels_planet = { add_modifier = { modifier = study_the_sentinels_modifier } }
+	}
+	option = {
+		name = CLEANSE_FROM_ORBIT
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier4unityreward
+				min = @tier4unitymin
+				max = @tier4unitymax
+			}
+		}
+		from = { add_deposit = d_bomb_crater }
+	}
+}
+
+# Sentinels Defeated
+# Modified:
+# * custom description for organic zealots
+# * custom option text for organic zealots
+# * deposit creation moved to an after block
+country_event = {
+	id = ancrel.4057
+	title = "ancrel.4057.name"
+	desc = {
+		text = "ancrel.4057.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.4057.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_victorious_army
+	location = event_target:sentinels_planet
+	show_sound = event_dangerous_animals
+	is_triggered_only = yes
+	trigger = {
+		has_country_flag = sentinels_invade_country
+		exists = event_target:sentinels_planet
+		fromfrom = { is_same_value = event_target:sentinels_planet }
+		exists = event_target:sentinels
+		from = { is_same_value = event_target:sentinels }
+	}
+	immediate = {
+		remove_country_flag = sentinels_invade_country
+	}
+	option = {
+		name = {
+			text = "ancrel.4064.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "ancrel.4064.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		enable_special_project = {
+			name = "SECRET_TOMB"
+			location = event_target:sentinels_planet
+			owner = root
+		}
+	}
+	option = {
+		name = {
+			text = "ancrel.4057.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "ancrel.4057.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		add_resource = { influence = 150 }
+	}
+	after = {
+		event_target:sentinels_planet = { add_deposit = d_sentinels_metal }
+	}
+}
+
+### Investigate statues
+# Modified:
+# * custom description for organic zealots
+# * organic zealots must choose option b
+planet_event = {
+	id = ancrel.4058
+	title = "sentinels_digsite"
+	desc = {
+		text = "ancrel.4058.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.4058.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_huge_monument
+	location = event_target:sentinels_planet
+	show_sound = event_dangerous_animals
+	is_triggered_only = yes
+	option = {
+		name = "ancrel.4058.a"
+		allow = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		hidden_effect = {
+			planet_event = {
+				id = ancrel.4059
+			}
+		}
+	}
+	option = {
+		name = "ancrel.4058.b"
+		hidden_effect = {
+			owner = { set_country_flag = sentinels_invade_country }
+			create_country = {
+				name = "NAME_Sentinels"
+				type = faction
+				effect = {
+					establish_communications_no_message = root.owner
+					save_global_event_target_as = sentinels
+				}
+			}
+		}
+		event_target:sentinels_planet = {
+			remove_deposit = d_archaeological_site
+			while = {
+				count = 9
+				create_army = {
+					name = "NAME_Sentinels"
+					owner = event_target:sentinels
+					type = "sentinel_army"
+				}
+			}
+		}
+	}
+}
+
+# Defeated by Sentinels
+# Modified:
+# * custom description for organic zealots
+# * custom option text for organic zealots
+country_event = {
+	id = ancrel.4063
+	title = "ancrel.4063.name"
+	desc = {
+		text = "ancrel.4063.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.4063.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_ground_combat
+	location = event_target:sentinels_planet
+	show_sound = event_dangerous_animals
+	trigger = {
+		has_country_flag = sentinels_invade_country
+		exists = event_target:sentinels_planet
+		fromfrom = { is_same_value = event_target:sentinels_planet }
+	}
+	immediate = {
+		event_target:sentinels_planet = {
+			every_owned_pop = {
+				set_pop_flag = event_purge
+				unemploy_pop = yes
+			}
+			set_planet_flag = sentinels_won
+		}
+		save_global_event_target_as = losers
+	}
+	is_triggered_only = yes
+	option = {
+		name = {
+			text = "ancrel.4063.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "ancrel.4063.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+	}
+}
+
+# Liberated from Sentinels
+# Modified:
+# * custom description for organic zealots
+# * custom option text for organic zealots
+# * deposit creation moved to an after block
+country_event = {
+	id = ancrel.4064
+	title = "ancrel.4064.name"
+	desc = {
+		text = "ancrel.4064.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.4064.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_victorious_army
+	show_sound = event_ground_battle
+	location = fromfrom
+	is_triggered_only = yes
+	trigger = {
+		has_country_flag = sentinels_invade_country
+		exists = event_target:sentinels
+		fromfrom = {
+			has_planet_flag = sentinels_won
+			controller = { is_same_value = event_target:sentinels }
+		}
+	}
+	immediate = {
+		event_target:sentinels_planet = {
+			every_owned_pop = {
+				limit = { has_pop_flag = event_purge }
+				remove_pop_flag = event_purge
+			}
+			remove_planet_flag = sentinels_won
+		}
+		remove_country_flag = sentinels_invade_country
+		fromfrom = {
+			remove_planet_flag = sentinels_won
+			set_owner = root
+			every_owned_pop = {
+				remove_pop_flag = event_purge
+				unemploy_pop = yes
+			}
+			every_owned_pop = {
+				add_modifier = {
+					modifier = "pop_liberation_fever"
+					days = 3600
+				}
+			}
+		}
+	}
+	option = {
+		name = {
+			text = "ancrel.4064.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "ancrel.4064.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		enable_special_project = {
+			name = "SECRET_TOMB"
+			location = event_target:sentinels_planet
+			owner = root
+		}
+	}
+	option = {
+		name = {
+			text = "ancrel.4064.b"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "ancrel.4064.b.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		add_resource = { influence = 150 }
+	}
+	after = {
+		event_target:sentinels_planet = { add_deposit = d_sentinels_metal }
+	}
+}
+
+# Sentinels Purged All Pops
+# Modified:
+# * custom description for organic zealots
+# * custom option text for organic zealots
+# * Pop creation moved to an after block
+planet_event = {
+	id = ancrel.4075
+	title = "ancrel.4075.name"
+	desc = {
+		text = "ancrel.4075.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.4075.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_fleet_good
+	location = event_target:sentinels_planet
+	show_sound = event_dangerous_animals
+	is_triggered_only = yes
+	trigger = {
+		exists = event_target:sentinels_planet
+		is_same_value = event_target:sentinels_planet
+		exists = event_target:sentinels
+		exists = controller
+		controller = { is_same_value = event_target:sentinels }
+		num_pops = 1
+	}
+	immediate = {
+		event_target:losers = { random_owned_planet = { save_event_target_as = sentinels_new_home } }
+		set_planet_flag = sentinels_purged
+	}
+	option = {
+		name = {
+			text = "ancrel.4075.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "ancrel.4075.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		enable_special_project = {
+			name = "SECRET_TOMB"
+			location = event_target:sentinels_planet
+			owner = root
+		}
+	}
+	option = {
+		name = {
+			text = "ancrel.4075.b"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "ancrel.4075.b.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		from = { add_resource = { influence = 150 } }
+	}
+	after = {
+		event_target:sentinels_new_home = { create_pop = { species = event_target:losers } }
+	}
+}
+
+# Modified:
+# * custom description for organic zealots
+# * custom option for organic zealots
+# * organic zealots cannot use the regular options
+ship_event = {
+	id = ancrel.4076
+	title = "ancrel.4076.name"
+	desc = {
+		text = "ancrel.4076.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.4076.desc"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_ancient_databank
+	location = event_target:sentinels_planet
+	show_sound = event_dangerous_animals
+	is_triggered_only = yes
+	option = {
+		name = "ancrel.4076.a" # Science
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		owner = {
+			hidden_effect = { set_country_flag = evermore_science }
+			enable_special_project = {
+				name = "REPURPOSE_THE_EVERMORE"
+				location = event_target:sentinels_planet
+				owner = root.owner
+			}
+		}
+	}
+	option = {
+		name = "ancrel.4076.b" # Laughs
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		owner = {
+			hidden_effect = { set_country_flag = evermore_joy }
+			enable_special_project = {
+				name = "REPURPOSE_THE_EVERMORE"
+				location = event_target:sentinels_planet
+				owner = root.owner
+			}
+		}
+	}
+	option = {
+		name = CLEANSE_FROM_ORBIT
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier4unityreward
+				min = @tier4unitymin
+				max = @tier4unitymax
+			}
+		}
+		from = { add_deposit = d_bomb_crater }
+	}
+}
