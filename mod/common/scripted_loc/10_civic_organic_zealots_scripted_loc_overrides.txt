@@ -1,0 +1,18 @@
+# Modified:
+# * don't disallow based on civic - instead, the purge type handles that
+# * use triggers that work in the already-extant species scope
+# * use food as the default
+# this = species
+# from = country
+defined_text = {
+	name = GetPurgeProcessingResource
+	text = {
+		trigger = { is_robotic = yes }
+		localization_key = GetPurgeProcessingResource_alloys
+	}
+	text = {
+		trigger = { is_archetype = LITHOID }
+		localization_key = GetPurgeProcessingResource_minerals
+	}
+	default = GetPurgeProcessingResource_food
+}
