@@ -1,0 +1,125 @@
+namespace = ancrel
+
+### Robot Debris ###
+
+# Stage 1 - Two Sides
+# Modified:
+# * custom description for organic zealots
+# * custom option text for organic zealots
+fleet_event = {
+	id = ancrel.6250
+	title = "ancrel.6250.name"
+	desc = {
+		text = "ancrel.6250.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.6250.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_space_walk
+	show_sound = event_metal_fatigue
+	archaeology = yes
+	is_triggered_only = yes
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+	option = {
+		name = {
+			text = CURIOUS
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = DISTURBING
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		small_artifact_reward = yes
+	}
+}
+
+# Stage 2 - The Battle
+# Modified:
+# * custom description for organic zealots
+# * custom option text for organic zealots
+fleet_event = {
+	id = ancrel.6255
+	title = "ancrel.6255.name"
+	desc = {
+		text = "ancrel.6255.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.6255.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_ground_combat
+	show_sound = event_ground_battle
+	archaeology = yes
+	is_triggered_only = yes
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+	option = {
+		name = {
+			text = CURIOUS
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = DISTURBING
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		small_artifact_reward = yes
+	}
+}
+
+# Stage 3 - The Treaty
+# Modified:
+# * custom description for organic zealots
+# * custom option text for organic zealots
+fleet_event = {
+	id = ancrel.6260
+	title = "ancrel.6260.name"
+	desc = {
+		text = "ancrel.6260.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.6260.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_barren_dig_site
+	show_sound = event_finding_loot
+	archaeology = yes
+	is_triggered_only = yes
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+	option = {
+		name = {
+			text = CURIOUS
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = DISTURBING
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		medium_artifact_reward = yes
+		owner = {
+			add_monthly_resource_mult = {
+				resource = engineering_research
+				value = @tier5researchreward
+				min = @tier5researchmin
+				max = @tier5researchmax
+			}
+		}
+	}
+}
