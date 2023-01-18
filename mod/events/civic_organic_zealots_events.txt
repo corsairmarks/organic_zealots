@@ -873,3 +873,52 @@ country_event = {
 		name = civic_organic_zealots.2555.a
 	}
 }
+
+# triggered by on_planet_ownerless
+# this = planet
+# from = country (invalid scope, since no new owner)
+# fromfrom = country, former owner
+planet_event = {
+	id = civic_organic_zealots.12070
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_planet_flag = site_observation_terminal_organic_zealots_purge
+		exists = fromfrom
+		fromfrom = { has_valid_civic = civic_organic_zealots }
+	}
+	immediate = {
+		fromfrom = {
+			country_event = {
+				id = civic_organic_zealots.12071
+				scopes = {
+					from = root
+				}
+			}
+		}
+		# change_pc = pc_machine_broken
+	}
+}
+
+# triggered by civic_organic_zealots.12070
+# root = country
+# from = planet
+country_event = {
+	id = civic_organic_zealots.12071
+	title = civic_organic_zealots.12071.name
+	desc = civic_organic_zealots.12071.desc
+	picture = GFX_evt_burning_city
+	show_sound = event_burning_city
+	location = from
+	is_triggered_only = yes
+	option = {
+		name = EXCELLENT
+		add_monthly_resource_mult = {
+			resource = unity
+			value = @tier4unityreward
+			min = @tier4unitymin
+			max = @tier4unitymax
+		}
+		large_artifact_reward = yes
+	}
+}

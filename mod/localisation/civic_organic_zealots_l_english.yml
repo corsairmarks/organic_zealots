@@ -110,6 +110,8 @@
  civic_organic_zealots.2555.name: "Assets Seized!"
  civic_organic_zealots.2555.desc: "The [From.GetAdjective] response to rumors of our ascension as the [Root.GetSpeciesNamePlural] were swift, brutal, and (most notably) financially damaging. Across the [From.GetName], our corporate assets and holdings were seized and the on-site staff indiscriminately slaughtered.\n\nDatalinks from ongoing bilateral treaties abruptly ended. Routine diplomatic communications ceased. There has been no formal announcement from [From.GetAdjective] diplomats, but their complete silence speaks volumes. All that remains are preparations to defend against the inevitable jihad."
  civic_organic_zealots.2555.a: "It is only a matter of time."
+ civic_organic_zealots.12071.name: "[From.GetName] Desolated"
+ civic_organic_zealots.12071.desc: "Our forces report complete success in eradicating the abhorrent spy-drones on [From.GetName] and demolishing their obscene Machine constructions. Final flyovers show no activity among the planet-wide wreckage."
  CLEANSE_FROM_ORBIT: "Cleanse the entire site from orbit."
 
  # mirrors content from Deassimilate Machines
