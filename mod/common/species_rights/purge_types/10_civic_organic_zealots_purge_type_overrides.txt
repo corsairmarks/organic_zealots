@@ -1,3 +1,10 @@
+# from = country
+# this = species
+# triggered_pop_modifier = {
+# 	potential = { is_pop_category = ruler }
+# 	pop_happiness = 0.15
+# }
+
 # Modified:
 # * use triggers
 # * no one can neuter robots - how would that even work?
@@ -156,9 +163,9 @@ purge_processing = {
 		hidden_trigger = { exists = from }
 		custom_tooltip = {
 			fail_text = CAN_NOT_EAT_MACHINES
-			OR = {
-				is_robotic = no
-				from = {
+			from = {
+				OR = {
+					prev = { is_robotic = no }
 					# organic zealots waste not and want not
 					has_valid_civic = civic_organic_zealots
 					# devouring swarms can CRONCH. in edge cases.
