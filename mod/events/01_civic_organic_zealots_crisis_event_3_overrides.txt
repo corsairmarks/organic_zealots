@@ -272,11 +272,11 @@ country_event = {
 	title = "crisis.2480.name"
 	desc = {
 		text = "crisis.2480.desc"
-		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		trigger = { NOT = { has_civic = civic_organic_zealots } }
 	}
 	desc = {
 		text = "crisis.2480.desc.organic_zealots"
-		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		trigger = { has_civic = civic_organic_zealots }
 	}
 	picture = GFX_evt_shattered_planet
 	show_sound = event_mystic_reveal
@@ -313,11 +313,11 @@ country_event = {
 	title = "crisis.2480.name"
 	desc = {
 		text = "crisis.2481.desc"
-		trigger = { orbit.owner = { NOT = { has_civic = civic_organic_zaelots } } }
+		trigger = { NOT = { has_civic = civic_organic_zealots } }
 	}
 	desc = {
 		text = "crisis.2481.desc.organic_zealots"
-		trigger = { orbit.owner = { has_civic = civic_organic_zaelots } }
+		trigger = { has_civic = civic_organic_zealots }
 	}
 	picture = GFX_evt_satellite_in_orbit
 	show_sound = event_mystic_reveal
