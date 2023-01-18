@@ -1,0 +1,50 @@
+# this = country (potential owner)
+create_oracle_species = {
+	if = {
+		limit = { NOT = { species_portrait = art13 } }
+		create_species = {
+			name = NAME_Oracle
+			plural = NAME_Oracle
+			class = ART
+			portrait = art13
+			namelist = ART1
+			effect = {
+				save_global_event_target_as = oracle_species
+			}
+		}
+	}
+	else_if = {
+		limit = { species_portrait = art13 }
+		create_species = {
+			name = NAME_Oracle
+			plural = NAME_Oracle
+			class = ART
+			portrait = art17
+			namelist = ART1
+			effect = {
+				save_global_event_target_as = oracle_species
+			}
+		}
+	}
+}
+
+# this = country (potential owner)
+create_oracle_leader = {
+	create_saved_leader = {
+		key = the_oracle
+		class = governor
+		species = event_target:oracle_species
+		name = NAME_Oracle
+		# The Oracle is always female, as indicated by the localisation text
+		gender = female
+		immortal = yes
+		skill = 5
+		traits = {
+			trait = leader_trait_governor_oracle
+		}
+		effect = {
+			# set_immortal = yes
+			save_global_event_target_as = the_oracle
+		}
+	}
+}

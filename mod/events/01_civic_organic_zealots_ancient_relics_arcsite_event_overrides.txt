@@ -1,7 +1,299 @@
 namespace = ancrel
 
+### The Oracle ###
+
+# Stage 3
+# Modified:
+# * custom description for organic zealots
+# * custom option text for organic zealots
+fleet_event = {
+	id = ancrel.4034
+	title = "ancrel.4034.name"
+	desc = {
+		text = "ancrel.4034.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.4034.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_sapient_AI
+	show_sound = event_door_opening
+	location = from
+	archaeology = yes
+	is_triggered_only = yes
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+	option = {
+		name = {
+			text = CURIOUS
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = DISTURBING
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		small_artifact_reward = yes
+	}
+}
+
+# Stage 4
+# Modified:
+# * diplo event fires immediately rather than in 1 day
+# * create the Oracle's species and saved leader ahead of the diplo events
+# * custom description for organic zealots
+# * custom option text for organic zealots
+# * move arc site cleanup to the after block
+fleet_event = {
+	id = ancrel.4035
+	title = "ancrel.4035.name"
+	desc = {
+		text = "ancrel.4035.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.4035.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_sapient_AI
+	show_sound = event_bad_omen
+	location = from
+	archaeology = yes
+	is_triggered_only = yes
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+		event_target:oracle_digsite_planet = { remove_deposit = d_archaeological_site }
+	}
+	option = {
+		name = "ancrel.4035.a"
+		allow = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		owner = {
+			hidden_effect = {
+				create_oracle_species = yes
+				create_oracle_leader = yes
+			}
+			country_event = {
+				id = ancrel.4036
+			}
+		}
+	}
+	option = {
+		name = "ancrel.4035.b"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		owner = {
+			add_resource = {
+				alloys = 1000
+				engineering_research = 3500
+				influence = 500
+			}
+		}
+	}
+	option = {
+		name = CLEANSE_FROM_ORBIT
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier4unityreward
+				min = @tier4unitymin
+				max = @tier4unitymax
+			}
+		}
+		from = { add_deposit = d_bomb_crater }
+	}
+}
+
+# Oracle Diplo: Initial
+# Modified:
+# * subsequent diplo events fire immediately rather than in 1 day
+# * use oracle leader and planet for diplo picture data
+# * revise trigger usage
+country_event = {
+	id = ancrel.4036
+	title = "ancrel.4036.name"
+	diplomatic_title = BLANK_STRING
+	desc = "ancrel.4036.desc"
+	show_sound = event_administrative_work
+	location = from.from
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:the_oracle
+		graphical_culture = this
+		planet_background = event_target:oracle_digsite_planet
+		city_level = event_target:oracle_digsite_planet
+		room = ship_room
+	}
+	option = {
+		name = "ancrel.4036.a"
+		hidden_effect = {
+			country_event = {
+				id = ancrel.4037
+			}
+		}
+	}
+	option = {
+		name = "ancrel.4036.b"
+		response_text = "ancrel.4036.b.response"
+		is_dialog_only = yes
+	}
+	option = {
+		name = "ancrel.4036.d"
+		custom_tooltip = "ancrel.4036.d.tooltip"
+		trigger = {
+			is_machine_empire = no
+			is_hive_empire = no
+		}
+		activate_saved_leader = { key = the_oracle }
+	}
+	option = {
+		name = "ancrel.4038.e"
+		add_modifier = { modifier = oracle_administration }
+		hidden_effect = { remove_saved_leader = the_oracle }
+	}
+	option = {
+		name = "ancrel.4036.e"
+		custom_tooltip = "ancrel.4036.e.tooltip"
+		trigger = { is_machine_empire = yes }
+		set_country_flag = oracle_completed
+		hidden_effect = { remove_saved_leader = the_oracle }
+	}
+	option = {
+		name = "ancrel.4036.c"
+		tooltip = {
+			add_resource = {
+				alloys = 1000
+				engineering_research = 3500
+				influence = 250
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = ancrel.4038
+			}
+		}
+	}
+}
+
+# Oracle Diplo: "What Happened?"
+# Modified:
+# * use oracle leader and planet for diplo picture data
+# * revise trigger usage
+country_event = {
+	id = ancrel.4037
+	title = "ancrel.4037.name"
+	diplomatic_title = BLANK_STRING
+	desc = "ancrel.4037.desc"
+	show_sound = event_administrative_work
+	location = from.from.from
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:the_oracle
+		graphical_culture = this
+		planet_background = event_target:oracle_digsite_planet
+		city_level = event_target:oracle_digsite_planet
+		room = ship_room
+	}
+	option = {
+		name = "ancrel.4037.a"
+		response_text = "ancrel.4037.a.response"
+		is_dialog_only = yes
+	}
+	option = {
+		name = "ancrel.4037.b"
+		response_text = "ancrel.4037.b.response"
+		is_dialog_only = yes
+	}
+	option = {
+		name = "ancrel.4037.c"
+		response_text = "ancrel.4037.c.response"
+		is_dialog_only = yes
+	}
+	option = {
+		name = "ancrel.4037.d"
+		hidden_effect = {
+			country_event = {
+				id = ancrel.4036
+			}
+		}
+	}
+}
+
+# Oracle Diplo: "Is that a fancy processor?"
+# Modified:
+# * use oracle leader and planet for diplo picture data
+# * revise trigger usage
+# * condense options using alternate text
+country_event = {
+	id = ancrel.4038
+	title = "ancrel.4038.name"
+	diplomatic_title = BLANK_STRING
+	desc = "ancrel.4038.desc"
+	show_sound = event_administrative_work
+	location = fromfromfrom
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:the_oracle
+		graphical_culture = this
+		planet_background = event_target:oracle_digsite_planet
+		city_level = event_target:oracle_digsite_planet
+		room = ship_room
+	}
+	option = {
+		name = "ancrel.4038.a"
+		trigger = {
+			is_machine_empire = no
+			is_hive_empire = no
+		}
+		activate_saved_leader = { key = the_oracle }
+	}
+	option = {
+		name = "ancrel.4036.e"
+		custom_tooltip = "ancrel.4036.e.tooltip"
+		trigger = { is_machine_empire = yes }
+		set_country_flag = oracle_completed
+		hidden_effect = { remove_saved_leader = the_oracle }
+	}
+	option = {
+		name = {
+			text = "ancrel.4038.b"
+			trigger = {
+				is_machine_empire = no
+				is_hive_empire = no
+			}
+		}
+		name = {
+			text = "ancrel.4038.c"
+			trigger = { is_machine_empire = yes }
+		}
+		name = {
+			text = "ancrel.4038.d"
+			trigger = { is_hive_empire = yes }
+		}
+		add_resource = {
+			alloys = 1000
+			engineering_research = 3500
+			influence = 250
+		}
+		hidden_effect = { remove_saved_leader = the_oracle }
+	}
+	option = {
+		name = "ancrel.4038.e"
+		add_modifier = { modifier = oracle_administration }
+		hidden_effect = { remove_saved_leader = the_oracle }
+	}
+}
+
 ### The Sentinels ###
-# triggered via ancrel.4030
 
 # Site Discovery
 # Modified: the sentinels invade immediately if the land is budgeted for other purposes, using the same event as choosing to destroy them
