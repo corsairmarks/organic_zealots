@@ -1,11 +1,251 @@
 namespace = ancrel
 
+### The Planetary Mechanocalibrator and the Ferrophage ###
+
+# Anomaly completion
+# Modified:
+# * alternate description for organic zealots
+# * alternate option text for organic zealots
+ship_event = {
+	id = ancrel.2050
+	title = "ancrel.2050.name"
+	desc = {
+		text = "ancrel.2050.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.2050.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_relic_world
+	show_sound = event_metal_fatigue
+	location = from
+	is_triggered_only = yes
+	trigger = {
+		exists = event_target:mechanocalibrator_planet
+		from = { is_same_value = event_target:mechanocalibrator_planet }
+	}
+	option = {
+		name = {
+			text = "ancrel.2050.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "ancrel.2050.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		from = { create_archaeological_site = planetary_mechanocalibrator }
+	}
+}
+
+# Stage 6
+# Modified:
+# * alternate description for organic zealots
+# * trigger for plantoid robot portrait gated behind the correct DLC
+fleet_event = {
+	id = ancrel.2056
+	title = "ancrel.2056.name"
+	desc = {
+		text = "ancrel.2056.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.2056.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_generator_powerup
+	show_sound = event_energy_field
+	location = from
+	archaeology = yes
+	is_triggered_only = yes
+	option = {
+		name = ONSCREEN
+		owner = {
+			add_monthly_resource_mult = {
+				resource = engineering_research
+				value = @tier3researchreward
+				min = @tier3researchmin
+				max = @tier3researchmax
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = { has_plantoids = yes }
+				create_species = {
+					name = "NAME_planetary_mechanocalibrator_species"
+					class = MACHINE
+					portrait = sd_pla_robot
+					namelist = "AI"
+					traits = {
+						trait = trait_mechanical
+						trait = trait_robot_mass_produced
+						trait = trait_robot_luxurious
+						trait = trait_robot_learning_algorithms
+						trait = trait_robot_high_maintenance
+						trait = trait_robot_logic_engines
+					}
+					effect = {
+						set_species_flag = mechanocalibrator_species_flag
+						save_global_event_target_as = mechanocalibrator_species
+					}
+				}
+			}
+			else = {
+				create_species = {
+					name = "NAME_planetary_mechanocalibrator_species"
+					class = MACHINE
+					portrait = default_robot
+					namelist = "AI"
+					traits = {
+						trait = trait_mechanical
+						trait = trait_robot_mass_produced
+						trait = trait_robot_luxurious
+						trait = trait_robot_learning_algorithms
+						trait = trait_robot_high_maintenance
+						trait = trait_robot_logic_engines
+					}
+					effect = {
+						save_global_event_target_as = mechanocalibrator_species
+					}
+				}
+			}
+			create_country = {
+				name = "NAME_planetary_mechanocalibrator"
+				ethos = {
+					ethic = ethic_gestalt_consciousness
+				}
+				authority = auth_machine_intelligence
+				civics = {
+					civic = civic_machine_predictive_analysis
+					civic = civic_machine_introspective
+				}
+				species = event_target:mechanocalibrator_species
+				type = mechanocalibrator
+				auto_delete = no
+				flag = {
+					icon = {
+						category = "corporate"
+						file = "corporate_06.dds"
+					}
+					background = {
+						category = "backgrounds"
+						file = "00_solid.dds"
+					}
+					colors = {
+						"dark_grey"
+						"dark_grey"
+						"null"
+						"null"
+					}
+				}
+				ignore_initial_colony_error = yes
+				effect = {
+					save_event_target_as = mechanocalibrator_country
+				}
+			}
+			event_target:mechanocalibrator_country = {
+				set_faction_hostility = {
+					target = root.owner
+					set_hostile = no
+					set_neutral = yes
+					set_friendly = no
+				}
+				create_leader = {
+					class = governor
+					species = event_target:mechanocalibrator_species
+					name = "NAME_planetary_mechanocalibrator"
+					immortal = yes
+					skill = 7
+					event_leader = yes
+				}
+				last_created_leader = {
+					save_event_target_as = mechanocalibrator_ai
+				}
+			}
+			owner = {
+				country_event = {
+					id = ancrel.2057
+				}
+			}
+		}
+	}
+}
+
+# Rebooted
+# Modified:
+# * original option not shown for organic zealots
+# * custom option for organic zealots
+country_event = {
+	id = ancrel.2058
+	title = "ancrel.2058.name"
+	desc = "ancrel.2058.desc"
+	location = event_target:mechanocalibrator_planet
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:mechanocalibrator_ai
+		room = personality_hegemonic_imperialists_room
+		planet_background = event_target:mechanocalibrator_planet
+	}
+	option = {
+		name = "ancrel.2058.a"
+		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		hidden_effect = {
+			country_event = {
+				id = ancrel.2059
+			}
+		}
+	}
+	option = {
+		name = "ancrel.2058.b.organic_zealots"
+		trigger = { has_civic = civic_organic_zealots }
+		hidden_effect = {
+			country_event = {
+				id = ancrel.2064
+			}
+		}
+	}
+}
+
+# Attempt to destroy
+# * original option not shown for organic zealots
+# * custom option for organic zealots
+country_event = {
+	id = ancrel.2064
+	title = "ancrel.2064.name"
+	desc = "ancrel.2064.desc"
+	location = event_target:mechanocalibrator_planet
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:mechanocalibrator_ai
+		room = personality_hegemonic_imperialists_room
+		planet_background = event_target:mechanocalibrator_planet
+	}
+	option = {
+		name = {
+			text = "ancrel.2064.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "ancrel.2064.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		add_resource = { influence = 100 }
+		hidden_effect = {
+			country_event = {
+				id = ancrel.2067
+			}
+		}
+	}
+}
+
 ### The Oracle ###
 
 # Stage 3
 # Modified:
-# * custom description for organic zealots
-# * custom option text for organic zealots
+# * alternate description for organic zealots
+# * alternate option text for organic zealots
 fleet_event = {
 	id = ancrel.4034
 	title = "ancrel.4034.name"
@@ -45,8 +285,8 @@ fleet_event = {
 # Modified:
 # * diplo event fires immediately rather than in 1 day
 # * create the Oracle's species and saved leader ahead of the diplo events
-# * custom description for organic zealots
-# * custom option text for organic zealots
+# * alternate description for organic zealots
+# * alternate option text for organic zealots
 # * move arc site cleanup to the after block
 fleet_event = {
 	id = ancrel.4035
@@ -338,7 +578,7 @@ planet_event = {
 # Evermore Discovery
 # Modified:
 # * use triggers
-# * custom description for organic zealots
+# * alternate description for organic zealots
 # * custom option for organic zealots
 # * organic zealots cannot use the regular options
 ship_event = {
@@ -366,7 +606,7 @@ ship_event = {
 		name = "ancrel.4056.b" # Virtual Hunting Ground
 		trigger = {
 			owner = {
-				NOT = { has_civic = civic_organic_zealots } 
+				NOT = { has_civic = civic_organic_zealots }
 				OR = {
 					is_xenophobe = yes
 					is_militarist = yes
@@ -415,8 +655,8 @@ ship_event = {
 
 # Sentinels Defeated
 # Modified:
-# * custom description for organic zealots
-# * custom option text for organic zealots
+# * alternate description for organic zealots
+# * alternate option text for organic zealots
 # * deposit creation moved to an after block
 country_event = {
 	id = ancrel.4057
@@ -476,7 +716,7 @@ country_event = {
 
 ### Investigate statues
 # Modified:
-# * custom description for organic zealots
+# * alternate description for organic zealots
 # * organic zealots must choose option b
 planet_event = {
 	id = ancrel.4058
@@ -531,8 +771,8 @@ planet_event = {
 
 # Defeated by Sentinels
 # Modified:
-# * custom description for organic zealots
-# * custom option text for organic zealots
+# * alternate description for organic zealots
+# * alternate option text for organic zealots
 country_event = {
 	id = ancrel.4063
 	title = "ancrel.4063.name"
@@ -577,8 +817,8 @@ country_event = {
 
 # Liberated from Sentinels
 # Modified:
-# * custom description for organic zealots
-# * custom option text for organic zealots
+# * alternate description for organic zealots
+# * alternate option text for organic zealots
 # * deposit creation moved to an after block
 country_event = {
 	id = ancrel.4064
@@ -660,8 +900,8 @@ country_event = {
 
 # Sentinels Purged All Pops
 # Modified:
-# * custom description for organic zealots
-# * custom option text for organic zealots
+# * alternate description for organic zealots
+# * alternate option text for organic zealots
 # * Pop creation moved to an after block
 planet_event = {
 	id = ancrel.4075
@@ -722,7 +962,7 @@ planet_event = {
 }
 
 # Modified:
-# * custom description for organic zealots
+# * alternate description for organic zealots
 # * custom option for organic zealots
 # * organic zealots cannot use the regular options
 ship_event = {
