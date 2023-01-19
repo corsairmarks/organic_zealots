@@ -1,0 +1,94 @@
+namespace = akx
+
+### The Retainer ###
+
+# on fleet entering technosphere system
+# Modified: does not fire for organic zealots, even if they love the worm
+fleet_event = {
+	id = akx.9600
+	title = "akx.9600.name"
+	desc = "akx.9600.desc"
+	location = root
+	is_triggered_only = yes
+	diplomatic = yes
+	trigger = {
+		owner = {
+			is_ai = no
+			has_country_flag = worm_events_available
+			from = {
+				any_fleet_in_system = {
+					exists = owner
+					owner = { is_country_type = guardian_sphere } }
+			}
+			NOR = {
+				has_civic = civic_organic_zealots
+				has_country_flag = retainer_conversation
+				has_country_flag = retainer_first_convo_concluded
+			}
+		}
+	}
+	picture_event_data = {
+		room = technosphere_room
+	}
+	option = {
+		name = "akx.9600.a"
+		trigger = { owner = { NOT = { has_country_flag = retainer_questioned_brief } } }
+		hidden_effect = {
+			owner = { set_country_flag = retainer_questioned_brief }
+			fleet_event = {
+				id = akx.9601
+			}
+		}
+	}
+	option = {
+		name = "akx.9600.b"
+		trigger = { owner = { NOT = { has_country_flag = retainer_questioned_loop } } }
+		hidden_effect = {
+			owner = { set_country_flag = retainer_questioned_loop }
+			fleet_event = {
+				id = akx.9602
+			}
+		}
+	}
+	option = {
+		name = "akx.9600.c"
+		allow = {
+			owner = {
+				resource_stockpile_compare = { resource = energy value >= 800 }
+				resource_stockpile_compare = { resource = minerals value >= 800 }
+			}
+		}
+		owner = {
+			add_resource = {
+				energy = -800
+				minerals = -800
+			}
+		}
+		hidden_effect = {
+			fleet_event = {
+				id = akx.9620
+			}
+		}
+	}
+	option = {
+		name = "akx.9600.d"
+		response_text = "akx.9600.d.response"
+		default_hide_option = yes
+		hidden_effect = {
+			owner = {
+				remove_country_flag = retainer_conversation
+				set_country_flag = retainer_first_convo_concluded
+			}
+		}
+	}
+	option = {
+		name = "akx.9600.e"
+		response_text = "akx.9600.e.response"
+		hidden_effect = {
+			owner = {
+				remove_country_flag = retainer_conversation
+				set_country_flag = retainer_first_convo_concluded
+			}
+		}
+	}
+}
