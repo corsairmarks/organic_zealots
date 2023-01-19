@@ -129,8 +129,7 @@ fleet_event = {
 # Stage 1
 # Modified:
 # * alternate description for organic zealots
-# * original option not shown for organic zealots
-# * custom option for organic zealots
+# * alternate option text for organic zealots
 fleet_event = {
 	id = ancrel.12070
 	title = "ancrel.12070.name"
@@ -150,69 +149,97 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
-	option = {
-		name = INTERESTING
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		small_artifact_reward = yes
+	after = {
 		from = { set_site_progress_locked = no }
 	}
-	option = { # create the machines for purging
-		name = "ancrel.12070.b.organic_zealots"
-		custom_tooltip = "ancrel.12070.b.tooltip.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
-		hidden_effect = {
-			from = {
-				finish_site = no # no = do not trigger any stage completed
-				set_site_progress_locked = yes # re-lock it
-				planet = {
-					set_planet_flag = site_observation_terminal_organic_zealots_purge
-					change_pc = pc_machine
-					set_owner = root.owner
-					create_species = {
-						class = MACHINE
-						name = NAME_Surveillance_Bots
-						portrait = random
-						traits = {
-							trait = trait_machine_unit
-							trait = trait_robot_logic_engines
-							trait = trait_robot_double_jointed
-							trait = trait_robot_enhanced_memory
-							trait = trait_robot_durable
-							trait = trait_robot_custom_made
-							trait = trait_robot_repurposed_hardware
-						}
-						effect = {
-							save_event_target_as = new_robots
-						}
-					}
-					add_building = building_machine_major_capital
-					add_building = building_machine_assembly_complex
-					while = {
-						count = 10
-						add_district = district_nexus
-					}
-					while = {
-						count = 5
-						add_district = district_industrial
-						add_district = district_generator_uncapped
-						add_district = district_mining_uncapped
-					}
-					while = {
-						count = 80
-						create_pop = { species = event_target:new_robots }
-					}
-				}
-			}
-			owner = {
-				random = {
-					chance = 50
-					country_event = {
-						id = ancrel.12095
-						days = 30
-					}
-				}
-			}
+	option = {
+		name = {
+			text = INTERESTING
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
 		}
+		name = {
+			text = "ancrel.12070.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		small_artifact_reward = yes
+	}
+}
+
+# Stage 2
+# Modified:
+# * alternate description for organic zealots
+# * alternate option text for organic zealots
+fleet_event = {
+	id = ancrel.12075
+	title = "ancrel.12075.name"
+	desc = {
+		text = "ancrel.12075.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.12075.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_satellite_in_orbit
+	show_sound = event_laboratory_sound
+	location = from
+	archaeology = yes
+	is_triggered_only = yes
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+	option = {
+		name = {
+			text = PECULIAR
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "ancrel.12075.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		small_artifact_reward = yes
+	}
+}
+
+# Stage 4
+# Modified:
+# * alternate description for organic zealots
+# * alternate option text for organic zealots
+fleet_event = {
+	id = ancrel.12085
+	title = "ancrel.12085.name"
+	desc = {
+		text = "ancrel.12085.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.12085.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	picture = GFX_evt_spy_orb
+	show_sound = event_activating_unknown_technology
+	location = from
+	archaeology = yes
+	is_triggered_only = yes
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+	option = {
+		name = {
+			text = KEEP_SEARCHING
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "ancrel.12085.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		small_artifact_reward = yes
 	}
 }
 
@@ -221,10 +248,19 @@ fleet_event = {
 # * allow synthetic/machine empires to select option c (they can't edit the relevant Robots Allowed policy!)
 # * add trait_machine_unit to the species created by option e, otherwise they aren't recognized as machines by most game code
 # * empire created by option e has specific civics (so as to not create homicidal vassals for non-machine empires, or servitor/assimilators without secondary Pops)
+# * alternate description for organic zealots
+# * alternate option text for organic zealots
 fleet_event = {
 	id = ancrel.12090
-	title = ancrel.12090.name
-	desc = ancrel.12090.desc
+	title = "ancrel.12090.name"
+	desc = {
+		text = "ancrel.12090.desc"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+	}
+	desc = {
+		text = "ancrel.12090.desc.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
 	picture = GFX_evt_ai_planet
 	show_sound = event_mystic_reveal
 	location = from
@@ -237,7 +273,7 @@ fleet_event = {
 		from = { set_site_progress_locked = no }
 		large_artifact_reward = yes
 	}
-	option = {
+	option = { # Machine integration
 		name = "ancrel.12090.A"
 		trigger = { owner = { is_machine_empire = yes } }
 		from.planet = {
@@ -291,8 +327,9 @@ fleet_event = {
 			}
 		}
 	}
-	option = {
+	option = { # Spy orb
 		name = "ancrel.12090.B"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
 		solar_system = {
 			spawn_megastructure = {
 				type = spy_orb_restored
@@ -301,9 +338,10 @@ fleet_event = {
 			}
 		}
 	}
-	option = {
+	option = { # Distribute 80 Pops
 		name = "ancrel.12090.C"
 		custom_tooltip = "ancrel.12090.C.tooltip"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
 		allow = {
 			owner = {
 				OR = {
@@ -370,10 +408,6 @@ fleet_event = {
 						}
 					}
 				}
-			}
-		}
-		hidden_effect = {
-			owner = {
 				random = {
 					chance = 50
 					country_event = {
@@ -384,9 +418,14 @@ fleet_event = {
 			}
 		}
 	}
-	option = {
+	option = { # Alloy deposit
 		name = "ancrel.12090.D"
-		trigger = { owner = { is_spiritualist = yes } }
+		trigger = {
+			owner = {
+				is_spiritualist = yes
+				NOT = { has_civic = civic_organic_zealots }
+			}
+		}
 		from.planet = { add_deposit = d_alloys_25 }
 		hidden_effect = {
 			owner = {
@@ -401,8 +440,35 @@ fleet_event = {
 		}
 	}
 	option = {
+		name = "ancrel.12090.D.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		from.planet = { add_deposit = d_alloys_25 }
+		owner = {
+			# 80x the amount for purging a single Pop, with higher caps
+			add_monthly_resource_mult = {
+				resource = unity
+				value = 160 # 2 * 80
+				min = @tier5unitymin
+				max = @tier5unitymax
+			}
+		}
+		hidden_effect = {
+			from.planet = { change_pc = this } # animation represents destruction I suppose
+			owner = {
+				random = {
+					chance = 50
+					country_event = {
+						id = ancrel.12095
+						days = 30
+					}
+				}
+			}
+		}
+	}
+	option = { # Subject empire
 		name = "ancrel.12090.E"
 		custom_tooltip = "ancrel.12090.E.tooltip"
+		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
 		allow = { owner = { is_spiritualist = no } }
 		hidden_effect = {
 			from.planet = {
