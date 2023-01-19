@@ -166,11 +166,11 @@ country_event = {
 	option = {
 		name = {
 			text = "fallen_machine_empire.41.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+			trigger = { NOT = { has_civic = civic_organic_zealots } }
 		}
 		name = {
 			text = "fallen_machine_empire.41.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
+			trigger = { has_civic = civic_organic_zealots }
 		}
 		allow = {
 			OR = {
@@ -200,11 +200,11 @@ country_event = {
 	option = {
 		name = {
 			text = "fallen_machine_empire.41.b"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+			trigger = { NOT = { has_civic = civic_organic_zealots } }
 		}
 		name = {
 			text = "fallen_machine_empire.41.b.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
+			trigger = { has_civic = civic_organic_zealots }
 		}
 		custom_tooltip = "fallen_machine_empire_unhappy_tooltip"
 		ai_chance = {
@@ -263,11 +263,11 @@ country_event = {
 	option = {
 		name = {
 			text = "fallen_machine_empire.42.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+			trigger = { NOT = { has_civic = civic_organic_zealots } }
 		}
 		name = {
 			text = "fallen_machine_empire.42.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
+			trigger = { has_civic = civic_organic_zealots }
 		}
 		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
 		hidden_effect = {
@@ -324,11 +324,11 @@ country_event = {
 	option = {
 		name = {
 			text = "fallen_machine_empire.43.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+			trigger = { NOT = { has_civic = civic_organic_zealots } }
 		}
 		name = {
 			text = "fallen_machine_empire.43.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
+			trigger = { has_civic = civic_organic_zealots }
 		}
 		custom_tooltip = "fallen_machine_empire_unhappy_task_tooltip"
 		hidden_effect = {
@@ -366,7 +366,7 @@ country_event = {
 	}
 	option = {
 		name = "fallen_machine_empire.51.a"
-		allow = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		allow = { NOT = { has_civic = civic_organic_zealots } }
 		ai_chance = {
 			factor = 90
 		}
@@ -389,11 +389,11 @@ country_event = {
 	option = {
 		name = {
 			text = "fallen_machine_empire.51.b"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+			trigger = { NOT = { has_civic = civic_organic_zealots } }
 		}
 		name = {
 			text = "fallen_machine_empire.51.b.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
+			trigger = { has_civic = civic_organic_zealots }
 		}
 		custom_tooltip = "fallen_machine_empire_unhappy_tooltip"
 		ai_chance = {
@@ -429,11 +429,11 @@ country_event = {
 	option = {
 		name = {
 			text = "fallen_machine_empire.61.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+			trigger = { NOT = { has_civic = civic_organic_zealots } }
 		}
 		name = {
 			text = "fallen_machine_empire.61.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
+			trigger = { has_civic = civic_organic_zealots }
 		}
 		begin_event_chain = {
 			event_chain = fe_no_wars_task_chain
@@ -485,11 +485,11 @@ country_event = {
 	option = {
 		name = {
 			text = "fallen_machine_empire.62.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+			trigger = { NOT = { has_civic = civic_organic_zealots } }
 		}
 		name = {
 			text = "fallen_machine_empire.62.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
+			trigger = { has_civic = civic_organic_zealots }
 		}
 		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
 		hidden_effect = {
@@ -542,11 +542,11 @@ country_event = {
 	option = {
 		name = {
 			text = "fallen_machine_empire.63.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+			trigger = { NOT = { has_civic = civic_organic_zealots } }
 		}
 		name = {
 			text = "fallen_machine_empire.63.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
+			trigger = { has_civic = civic_organic_zealots }
 		}
 		custom_tooltip = "fallen_machine_empire_angry_task_tooltip"
 		hidden_effect = {
@@ -725,11 +725,11 @@ country_event = {
 	option = {
 		name = {
 			text = "fallen_machine_empire.72.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+			trigger = { NOT = { has_civic = civic_organic_zealots } }
 		}
 		name = {
 			text = "fallen_machine_empire.72.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
+			trigger = { has_civic = civic_organic_zealots }
 		}
 		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
 		hidden_effect = {
@@ -781,11 +781,11 @@ country_event = {
 	option = {
 		name = {
 			text = "fallen_machine_empire.73.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+			trigger = { NOT = { has_civic = civic_organic_zealots } }
 		}
 		name = {
 			text = "fallen_machine_empire.73.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
+			trigger = { has_civic = civic_organic_zealots }
 		}
 		custom_tooltip = "fallen_machine_empire_angry_task_tooltip"
 		hidden_effect = {
