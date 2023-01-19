@@ -187,7 +187,6 @@ country_event = {
 			event_target:FallenEmpireTaskOrigin = { is_fallen_empire_spiritualist = yes }
 		}
 	}
-
 	option = {
 		name = "fallen_empires_tasks.2.a"
 		allow = {
