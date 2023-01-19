@@ -14,7 +14,7 @@ To offset the penalty Organic Zealots suffer by not being able to assemble robot
 
 Organic Zealots and empires that outlaw AI can no longer research Positronic AI, but can instead now research Mentat Computation to unlock special leader traits for organic rulers, governors, and scientists.
 
-Finally, this mod overrides many built-in events where artificial intelligence or robotics come into play in order to offer Organic Zealot-themed options.  As a side-effect of needing to override related events anyway... the Enigmatic Cache scans planets 10x faster (1 years vs the original 10) so that it has a hope of completing its task at some point before the end of the game and getting to the event where it offers to "uplift" an empire.
+Finally, this mod overrides many built-in events where artificial intelligence or robotics come into play in order to offer Organic Zealot-themed options, excluding First Contact events.  As a side-effect of needing to override related events anyway... the Enigmatic Cache scans planets 10x faster (1 years vs the original 10) so that it has a hope of completing its task at some point before the end of the game and getting to the event where it offers to "uplift" an empire.
 
 ## Compatibility
 
@@ -39,7 +39,7 @@ This mod is intentionally not included in my modpack [Subtle Polish: A Collectio
 
 ## Known Issues
 
-So, so many game object overwrites will leave warnings in the error.log file.  These overwrites are to enforce the homicidal nature of Organic Zealots and having other empires react accordingly.  Here is a short list of what is affected: some ascension perks, many diplomatic actions, some game rules, many policies, a few crucial built-in scripted triggers, the assimilation citizenship type, several purge types, some AI-related technologies, and the traditions which enable the cybernetic and synthetic special projects.
+So, so many game object overwrites will leave warnings in the error.log file.  These overwrites are to enforce the homicidal nature of Organic Zealots and having other empires react accordingly.  Here is a short list of what is affected: some ascension perks, many diplomatic actions, some game rules, many policies, a few crucial built-in scripted triggers, the assimilation citizenship type, several purge types, some AI-related technologies, the traditions which enable the cybernetic and synthetic special projects, and most built-in events dealing with AI or robots/machines.
 
 ## Changelog
 
