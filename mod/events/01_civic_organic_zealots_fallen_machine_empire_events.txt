@@ -1,0 +1,804 @@
+namespace = fallen_machine_empire
+
+# Awakening
+# Modified: custom option for organic zealots
+country_event = {
+	id = fallen_machine_empire.2
+	title = "fallen_machine_empire.2.name"
+	location = event_target:awakened_machine_empire.capital_scope
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:awakened_machine_empire
+		planet_background = event_target:awakened_machine_empire
+		graphical_culture = event_target:awakened_machine_empire
+		city_level = event_target:awakened_machine_empire
+		room = event_target:awakened_machine_empire.ruler
+	}
+	desc = {
+		text = "fallen_machine_empire.2.desc_01"
+		trigger = { event_target:awakened_machine_empire = { has_country_flag = fallen_machine_empire_awaken_1 } }
+	}
+	desc = {
+		text = "fallen_machine_empire.2.desc_02"
+		trigger = { event_target:awakened_machine_empire = { has_country_flag = fallen_machine_empire_awaken_2 } }
+	}
+	option = {
+		trigger = {
+			event_target:awakened_machine_empire = { has_country_flag = fallen_machine_empire_awaken_1 }
+			NOT = { has_civic = civic_organic_zealots }
+		}
+		name = "fallen_machine_empire.2.a"
+	}
+	option = {
+		trigger = {
+			event_target:awakened_machine_empire = { has_country_flag = fallen_machine_empire_awaken_2 }
+			NOT = { has_civic = civic_organic_zealots }
+		}
+		name = "fallen_machine_empire.2.b"
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "fallen_machine_empire.2.c.organic_zealots"
+	}
+}
+
+# Innoculations
+# Modified:
+# * use triggers
+# * condense options b and c into one option (same outcome but mutually-exclusive text)
+# * alternate option text for organic zealots
+country_event = {
+	id = fallen_machine_empire.11
+	title = "fallen_machine_empire.11.name"
+	desc = "fallen_machine_empire.11.desc"
+	is_triggered_only = yes
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:FallenEmpireTaskOrigin
+		planet_background = event_target:FallenEmpireTaskOrigin
+		graphical_culture = event_target:FallenEmpireTaskOrigin
+		city_level = event_target:FallenEmpireTaskOrigin
+		room = event_target:FallenEmpireTaskOrigin.ruler
+	}
+	option = {
+		name = "fallen_machine_empire.11.a"
+		custom_tooltip = "fallen_machine_empire.11.tooltip"
+		custom_tooltip = "fallen_machine_empire_happy_tooltip"
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 2
+				has_ethic = ethic_xenophile
+			}
+			modifier = {
+				factor = 10
+				has_ethic = ethic_fanatic_xenophile
+			}
+			modifier = {
+				factor = 0.1
+				has_ethic = ethic_xenophobe
+			}
+			modifier = {
+				factor = 0.01
+				has_ethic = ethic_fanatic_xenophobe
+			}
+			modifier = {
+				factor = 0.5
+				fleet_power > 10000
+			}
+		}
+		if = {
+			limit = { is_xenophobe = yes }
+			add_modifier = {
+				modifier = machine_empire_inoculations_xenophobe
+				days = -1
+			}
+		}
+		else_if = {
+			limit = { is_xenophobe = no }
+			add_modifier = {
+				modifier = machine_empire_inoculations
+				days = -1
+			}
+		}
+		hidden_effect = {
+			event_target:FallenEmpireTaskOrigin = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
+			}
+		}
+	}
+	option = {
+		name = {
+			text = "fallen_machine_empire.11.b"
+			trigger = {
+				is_xenophobe = yes
+				NOT = { has_civic = civic_organic_zealots }
+			}
+		}
+		name = {
+			text = "fallen_machine_empire.11.c"
+			trigger = {
+				is_xenophobe = no
+				NOT = { has_civic = civic_organic_zealots }
+			}
+		}
+		name = {
+			text = "fallen_machine_empire.11.b.organic_zealots"
+			trigger = { has_civic = civic_organic_zealots }
+		}
+		custom_tooltip = "fallen_machine_empire_unhappy_tooltip"
+		trigger = { is_xenophobe = yes }
+		ai_chance = {
+			factor = 10
+		}
+		hidden_effect = {
+			event_target:FallenEmpireTaskOrigin = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
+		}
+	}
+}
+
+# Attack an empire
+# Modified:
+# * alternate option text for organic zealots
+# * organic zealots can only choose option a (agree) if the target is a synthetic/machine empire
+country_event = {
+	id = fallen_machine_empire.41
+	title = "fallen_machine_empire.41.name"
+	desc = fallen_machine_empire.41.desc
+	is_triggered_only = yes
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:FallenEmpireTaskOrigin
+		planet_background = event_target:FallenEmpireTaskOrigin
+		graphical_culture = event_target:FallenEmpireTaskOrigin
+		city_level = event_target:FallenEmpireTaskOrigin
+		room = event_target:FallenEmpireTaskOrigin.ruler
+	}
+	option = {
+		name = {
+			text = "fallen_machine_empire.41.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "fallen_machine_empire.41.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		allow = {
+			OR = {
+				NOT = { has_civic = civic_organic_zealots }
+				event_target:FallenEmpireTaskTarget = { is_synthetic_empire = yes }
+			}
+		}
+		ai_chance = {
+			factor = 90
+		}
+		begin_event_chain = {
+			event_chain = fe_attack_empire_task_chain
+			target = root
+		}
+		hidden_effect = {
+			set_global_flag = fe_task_attack_empire_active
+			set_country_flag = fe_task_attack_empire
+			set_timed_country_flag = {
+				flag = fe_task_attack_empire_timer
+				days = 7200
+			}
+			event_target:FallenEmpireTaskOrigin = { set_country_flag = fe_task_attack_empire_origin }
+			event_target:FallenEmpireTaskTarget = { set_country_flag = fe_task_attack_empire_target }
+			remove_country_flag = fe_task_given
+		}
+	}
+	option = {
+		name = {
+			text = "fallen_machine_empire.41.b"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "fallen_machine_empire.41.b.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		custom_tooltip = "fallen_machine_empire_unhappy_tooltip"
+		ai_chance = {
+			factor = 10
+		}
+		hidden_effect = {
+			event_target:FallenEmpireTaskOrigin = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_task
+				}
+			}
+			remove_country_flag = fe_task_given
+		}
+	}
+}
+
+# Attack an empire: success
+# Modified: alternate option text for organic zealots
+country_event = {
+	id = fallen_machine_empire.42
+	title = "fallen_machine_empire.42.name"
+	desc = "fallen_machine_empire.42.desc"
+	trigger = {
+		has_global_flag = fe_task_attack_empire_active
+		has_country_flag = fe_task_attack_empire
+		is_at_war = yes
+		any_country = {
+			has_country_flag = fe_task_attack_empire_target
+			is_at_war_with = root
+		}
+	}
+	mean_time_to_happen = {
+		days = 10
+	}
+	immediate = {
+		remove_global_flag = fe_task_attack_empire_active
+		random_country = {
+			limit = { has_country_flag = fe_task_attack_empire_origin }
+			save_event_target_as = FallenEmpireTaskOrigin
+		}
+		random_country = {
+			limit = { has_country_flag = fe_task_attack_empire_target }
+			save_event_target_as = FallenEmpireTaskTarget
+		}
+		end_event_chain = fe_attack_empire_task_chain
+	}
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:FallenEmpireTaskOrigin
+		planet_background = event_target:FallenEmpireTaskOrigin
+		graphical_culture = event_target:FallenEmpireTaskOrigin
+		city_level = event_target:FallenEmpireTaskOrigin
+		room = event_target:FallenEmpireTaskOrigin.ruler
+	}
+	option = {
+		name = {
+			text = "fallen_machine_empire.42.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "fallen_machine_empire.42.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
+		hidden_effect = {
+			event_target:FallenEmpireTaskOrigin = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_completed_fallen_empire_task
+				}
+			}
+			every_country = {
+				remove_country_flag = fe_task_attack_empire
+				remove_country_flag = fe_task_attack_empire_origin
+				remove_country_flag = fe_task_attack_empire_target
+			}
+		}
+	}
+}
+
+# Attack an empire: failure - timer ran out
+# Modified: alternate option text for organic zealots
+country_event = {
+	id = fallen_machine_empire.43
+	title = "fallen_machine_empire.43.name"
+	desc = "fallen_machine_empire.43.desc"
+	trigger = {
+		has_global_flag = fe_task_attack_empire_active
+		has_country_flag = fe_task_attack_empire
+		NOT = { has_country_flag = fe_task_attack_empire_timer }
+		is_at_war = no
+	}
+	mean_time_to_happen = {
+		months = 12
+	}
+	immediate = {
+		remove_global_flag = fe_task_attack_empire_active
+		random_country = {
+			limit = { has_country_flag = fe_task_attack_empire_origin }
+			save_event_target_as = FallenEmpireTaskOrigin
+		}
+		random_country = {
+			limit = { has_country_flag = fe_task_attack_empire_target }
+			save_event_target_as = FallenEmpireTaskTarget
+		}
+		end_event_chain = fe_attack_empire_task_chain
+	}
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:FallenEmpireTaskOrigin
+		planet_background = event_target:FallenEmpireTaskOrigin
+		graphical_culture = event_target:FallenEmpireTaskOrigin
+		city_level = event_target:FallenEmpireTaskOrigin
+		room = event_target:FallenEmpireTaskOrigin.ruler
+	}
+	option = {
+		name = {
+			text = "fallen_machine_empire.43.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "fallen_machine_empire.43.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		custom_tooltip = "fallen_machine_empire_unhappy_task_tooltip"
+		hidden_effect = {
+			event_target:FallenEmpireTaskOrigin = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_failed_fallen_empire_task
+				}
+			}
+			every_country = {
+				remove_country_flag = fe_task_attack_empire
+				remove_country_flag = fe_task_attack_empire_origin
+				remove_country_flag = fe_task_attack_empire_target
+			}
+		}
+	}
+}
+
+# Colonize a planet
+# Modified:
+# * alternate option text for organic zealots
+# * organic zealots cannot choose option a (agree)
+country_event = {
+	id = fallen_machine_empire.51
+	title = "fallen_machine_empire.51.name"
+	desc = "fallen_machine_empire.51.desc"
+	is_triggered_only = yes
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:FallenEmpireTaskOrigin
+		planet_background = event_target:FallenEmpireTaskOrigin
+		graphical_culture = event_target:FallenEmpireTaskOrigin
+		city_level = event_target:FallenEmpireTaskOrigin
+		room = event_target:FallenEmpireTaskOrigin.ruler
+	}
+	option = {
+		name = "fallen_machine_empire.51.a"
+		allow = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		ai_chance = {
+			factor = 90
+		}
+		begin_event_chain = {
+			event_chain = fe_colonize_planet_task_chain
+			target = root
+		}
+		hidden_effect = {
+			set_global_flag = fe_task_colonize_planet_active
+			set_country_flag = fe_task_colonize_planet
+			set_timed_country_flag = {
+				flag = fe_task_colonize_planet_timer
+				days = 7200
+			}
+			event_target:FallenEmpireTaskOrigin = { set_country_flag = fe_task_colonize_planet_origin }
+			event_target:FallenEmpireTaskTarget = { set_planet_flag = fe_task_colonize_planet_target }
+			remove_country_flag = fe_task_given
+		}
+	}
+	option = {
+		name = {
+			text = "fallen_machine_empire.51.b"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "fallen_machine_empire.51.b.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		custom_tooltip = "fallen_machine_empire_unhappy_tooltip"
+		ai_chance = {
+			factor = 10
+		}
+		hidden_effect = {
+			event_target:FallenEmpireTaskOrigin = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_task
+				}
+			}
+			remove_country_flag = fe_task_given
+		}
+	}
+}
+
+# Stop declaring war
+# Modified: alternate option text for organic zealots
+country_event = {
+	id = fallen_machine_empire.61
+	title = "fallen_machine_empire.61.name"
+	desc = "fallen_machine_empire.61.desc"
+	is_triggered_only = yes
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:FallenEmpireTaskOrigin
+		planet_background = event_target:FallenEmpireTaskOrigin
+		graphical_culture = event_target:FallenEmpireTaskOrigin
+		city_level = event_target:FallenEmpireTaskOrigin
+		room = event_target:FallenEmpireTaskOrigin.ruler
+	}
+	option = {
+		name = {
+			text = "fallen_machine_empire.61.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "fallen_machine_empire.61.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		begin_event_chain = {
+			event_chain = fe_no_wars_task_chain
+			target = root
+		}
+		hidden_effect = {
+			set_global_flag = fe_task_no_wars_active
+			set_country_flag = fe_task_no_wars
+			set_timed_country_flag = {
+				flag = fe_task_no_wars_timer
+				days = 7200
+			}
+			event_target:FallenEmpireTaskOrigin = { set_country_flag = fe_task_no_wars_origin }
+			remove_country_flag = fe_task_given
+		}
+	}
+}
+
+# Stop declaring war: success
+# Modified: alternate option text for organic zealots
+country_event = {
+	id = fallen_machine_empire.62
+	title = "fallen_machine_empire.62.name"
+	desc = "fallen_machine_empire.62.desc"
+	trigger = {
+		has_global_flag = fe_task_no_wars_active
+		has_country_flag = fe_task_no_wars
+		NOT = { has_country_flag = fe_task_no_wars_timer }
+	}
+	mean_time_to_happen = {
+		days = 10
+	}
+	immediate = {
+		remove_global_flag = fe_task_no_wars_active
+		random_country = {
+			limit = { has_country_flag = fe_task_no_wars_origin }
+			save_event_target_as = FallenEmpireTaskOrigin
+		}
+		end_event_chain = fe_no_wars_task_chain
+	}
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:FallenEmpireTaskOrigin
+		planet_background = event_target:FallenEmpireTaskOrigin
+		graphical_culture = event_target:FallenEmpireTaskOrigin
+		city_level = event_target:FallenEmpireTaskOrigin
+		room = event_target:FallenEmpireTaskOrigin.ruler
+	}
+	option = {
+		name = {
+			text = "fallen_machine_empire.62.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "fallen_machine_empire.62.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
+		hidden_effect = {
+			event_target:FallenEmpireTaskOrigin = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_completed_fallen_empire_task
+				}
+			}
+			every_country = {
+				remove_country_flag = fe_task_no_wars
+				remove_country_flag = fe_task_no_wars_origin
+			}
+		}
+	}
+}
+
+# Stop declaring war: failure
+# Modified: alternate option text for organic zealots
+country_event = {
+	id = fallen_machine_empire.63
+	title = "fallen_machine_empire.63.name"
+	desc = "fallen_machine_empire.63.desc"
+	trigger = {
+		has_global_flag = fe_task_no_wars_active
+		has_country_flag = fe_task_no_wars
+		has_country_flag = fe_task_no_wars_timer
+		is_at_war = yes
+		any_war = { is_war_participant = { who = root side = attackers } }
+	}
+	mean_time_to_happen = {
+		days = 10
+	}
+	immediate = {
+		remove_global_flag = fe_task_no_wars_active
+		random_country = {
+			limit = { has_country_flag = fe_task_no_wars_origin }
+			save_event_target_as = FallenEmpireTaskOrigin
+		}
+		end_event_chain = fe_no_wars_task_chain
+	}
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:FallenEmpireTaskOrigin
+		planet_background = event_target:FallenEmpireTaskOrigin
+		graphical_culture = event_target:FallenEmpireTaskOrigin
+		city_level = event_target:FallenEmpireTaskOrigin
+		room = event_target:FallenEmpireTaskOrigin.ruler
+	}
+	option = {
+		name = {
+			text = "fallen_machine_empire.63.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "fallen_machine_empire.63.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		custom_tooltip = "fallen_machine_empire_angry_task_tooltip"
+		hidden_effect = {
+			event_target:FallenEmpireTaskOrigin = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_angered_fallen_machine_empire
+				}
+			}
+			every_country = {
+				remove_country_flag = fe_task_no_wars
+				remove_country_flag = fe_task_no_wars_origin
+			}
+		}
+	}
+}
+
+# Stop colonizing planets: preperation
+# Modified: use triggers, including for homicidal (includes organic zealots)
+country_event = {
+	id = fallen_machine_empire.70
+	hide_window = yes
+	mean_time_to_happen = {
+		years = 100
+		modifier = {
+			factor = 3.0
+			is_homicidal = yes
+		}
+		modifier = {
+			factor = 0.5
+			any_country = {
+				is_valid_fallen_empire_for_task = yes
+				is_machine_empire = yes
+				is_enigmatic_to = root
+				has_communications = root
+				has_opinion_modifier = {
+					who = prev
+					modifier = opinion_failed_fallen_empire_task
+				}
+			}
+		}
+	}
+	trigger = {
+		is_ai = no
+		is_country_type = default
+		is_subject = no
+		is_machine_empire = no
+		NOR = {
+			has_country_flag = fe_task_given
+			has_country_flag = fe_task_no_wars
+			has_country_flag = fe_task_no_colonies
+			has_global_flag = fe_task_no_colonies_active
+			any_owned_planet = { is_under_colonization = yes }
+		}
+		end_game_years_passed < 0
+		any_country = {
+			is_valid_fallen_empire_for_task = yes
+			is_machine_empire = yes
+			is_enigmatic_to = root
+			has_communications = root
+			OR = {
+				has_opinion_modifier = {
+					who = prev
+					modifier = opinion_refused_fallen_empire_request
+				}
+				has_opinion_modifier = {
+					who = prev
+					modifier = opinion_refused_fallen_empire_task
+				}
+				has_opinion_modifier = {
+					who = prev
+					modifier = opinion_failed_fallen_empire_task
+				}
+				prev = { is_homicidal = yes }
+			}
+		}
+	}
+	immediate = {
+		set_country_flag = fe_task_given
+		random_country = {
+			limit = {
+				is_valid_fallen_empire_for_task = yes
+				is_machine_empire = yes
+				is_enigmatic_to = root
+				has_communications = root
+				OR = {
+					has_opinion_modifier = {
+						who = prev
+						modifier = opinion_refused_fallen_empire_request
+					}
+					has_opinion_modifier = {
+						who = prev
+						modifier = opinion_refused_fallen_empire_task
+					}
+					has_opinion_modifier = {
+						who = prev
+						modifier = opinion_failed_fallen_empire_task
+					}
+					root = { is_homicidal = yes }
+				}
+			}
+			save_event_target_as = FallenEmpireTaskOrigin
+			root = {
+				country_event = {
+					id = fallen_machine_empire.71
+				}
+			}
+		}
+	}
+}
+
+# Stop colonizing planets
+# Modified: alternate option text for organic zealots
+country_event = {
+	id = fallen_machine_empire.71
+	title = "fallen_machine_empire.71.name"
+	desc = "fallen_machine_empire.71.desc"
+	is_triggered_only = yes
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:FallenEmpireTaskOrigin
+		planet_background = event_target:FallenEmpireTaskOrigin
+		graphical_culture = event_target:FallenEmpireTaskOrigin
+		city_level = event_target:FallenEmpireTaskOrigin
+		room = event_target:FallenEmpireTaskOrigin.ruler
+	}
+	option = {
+		name = "fallen_machine_empire.71.a"
+		begin_event_chain = {
+			event_chain = fe_no_colonies_task_chain
+			target = root
+		}
+		hidden_effect = {
+			set_global_flag = fe_task_no_colonies_active
+			set_country_flag = fe_task_no_colonies
+			set_timed_country_flag = {
+				flag = fe_task_no_colonies_timer
+				days = 3600
+			}
+			event_target:FallenEmpireTaskOrigin = { set_country_flag = fe_task_no_colonies_origin }
+		}
+		hidden_effect = { remove_country_flag = fe_task_given }
+	}
+}
+
+# Stop colonizing planets: success
+# Modified: alternate option text for organic zealots
+country_event = {
+	id = fallen_machine_empire.72
+	title = "fallen_machine_empire.72.name"
+	desc = "fallen_machine_empire.72.desc"
+	trigger = {
+		has_global_flag = fe_task_no_colonies_active
+		has_country_flag = fe_task_no_colonies
+		NOT = { has_country_flag = fe_task_no_colonies_timer }
+	}
+	mean_time_to_happen = {
+		days = 10
+	}
+	immediate = {
+		remove_global_flag = fe_task_no_colonies_active
+		random_country = {
+			limit = { has_country_flag = fe_task_no_colonies_origin }
+			save_event_target_as = FallenEmpireTaskOrigin
+		}
+		end_event_chain = fe_no_colonies_task_chain
+	}
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:FallenEmpireTaskOrigin
+		planet_background = event_target:FallenEmpireTaskOrigin
+		graphical_culture = event_target:FallenEmpireTaskOrigin
+		city_level = event_target:FallenEmpireTaskOrigin
+		room = event_target:FallenEmpireTaskOrigin.ruler
+	}
+	option = {
+		name = {
+			text = "fallen_machine_empire.72.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "fallen_machine_empire.72.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
+		hidden_effect = {
+			event_target:FallenEmpireTaskOrigin = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_completed_fallen_empire_task
+				}
+			}
+			every_country = {
+				remove_country_flag = fe_task_no_colonies
+				remove_country_flag = fe_task_no_colonies_origin
+			}
+		}
+	}
+}
+
+# Stop colonizing planets: failure
+# Modified: alternate option text for organic zealots
+country_event = {
+	id = fallen_machine_empire.73
+	title = "fallen_machine_empire.73.name"
+	desc = "fallen_machine_empire.73.desc"
+	trigger = {
+		has_global_flag = fe_task_no_colonies_active
+		has_country_flag = fe_task_no_colonies
+		has_country_flag = fe_task_no_colonies_timer
+		any_owned_planet = { is_under_colonization = yes }
+	}
+	mean_time_to_happen = {
+		days = 10
+	}
+	immediate = {
+		remove_global_flag = fe_task_no_colonies_active
+		random_country = {
+			limit = { has_country_flag = fe_task_no_colonies_origin }
+			save_event_target_as = FallenEmpireTaskOrigin
+		}
+		end_event_chain = fe_no_colonies_task_chain
+	}
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:FallenEmpireTaskOrigin
+		planet_background = event_target:FallenEmpireTaskOrigin
+		graphical_culture = event_target:FallenEmpireTaskOrigin
+		city_level = event_target:FallenEmpireTaskOrigin
+		room = event_target:FallenEmpireTaskOrigin.ruler
+	}
+	option = {
+		name = {
+			text = "fallen_machine_empire.73.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "fallen_machine_empire.73.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		custom_tooltip = "fallen_machine_empire_angry_task_tooltip"
+		hidden_effect = {
+			event_target:FallenEmpireTaskOrigin = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_angered_fallen_machine_empire
+				}
+			}
+			every_country = {
+				remove_country_flag = fe_task_no_colonies
+				remove_country_flag = fe_task_no_colonies_origin
+			}
+		}
+	}
+}
