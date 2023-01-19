@@ -25,3 +25,27 @@ special_project = {
 		}
 	}
 }
+
+# Modified: set sabotage flag before firing leviathans.1040, rather than when enabling the project
+special_project = {
+	key = "TECHNOSPHERE_DESTRUCTION"
+	cost = 0
+	days_to_research = 10
+	tech_department = engineering_technology
+	picture = GFX_evt_technosphere
+	timelimit = -1
+	event_scope = ship_event
+	requirements = {
+		shipclass_transport = 1
+	}
+	on_success = {
+		owner = {
+			set_country_flag = technosphere_sabotaged
+			country_event = {
+				id = leviathans.1040
+			}
+		}
+		from = { fleet = { destroy_fleet = this } }
+	}
+	on_fail = { }
+}
