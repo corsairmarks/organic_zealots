@@ -1,0 +1,390 @@
+namespace = federations3
+
+### Kept Grounds ###
+
+# Conclusion to the anomaly (WENKWORT_CAT) of Wenkwort Artem's gardens
+# Modified: set faction hostility to neutral before spawning the fleet
+ship_event = {
+	id = federations3.115
+	title = "federations3.115.name"
+	desc = "federations3.115.desc"
+	picture = GFX_evt_glitchy_matrix
+	show_sound = event_scanner
+	location = from
+	is_triggered_only = yes
+	option = {
+		name = MARVELOUS
+		owner = {
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier2researchreward
+				min = @tier2researchmin
+				max = @tier2researchmax
+			}
+		}
+		begin_event_chain = {
+			event_chain = "wenkwort_chain"
+			target = owner
+		}
+		enable_special_project = {
+			name = "WENKWORT_PROJECT"
+			location = event_target:wenkwort_rellrait
+			owner = root.owner
+		}
+		hidden_effect = {
+			create_species = {
+				name = "NAME_Wenkwort_Keeper"
+				plural = "NAME_Wenkwort_Keeper_plural"
+				class = ROBOT
+				portrait = "sd_art_robot"
+				namelist = "PLANT3"
+				traits = { trait = "trait_mechanical" }
+				effect = {
+					save_global_event_target_as = wenkwort_audon
+				}
+			}
+			create_country = {
+				name = "NAME_Gardeners"
+				type = drone # Can make them the target of other events or effects, à la Mining Drones
+				species = event_target:wenkwort_audon
+				flag = {
+					icon = {
+						category = "ornate"
+						file = "flag_ornate_18.dds"
+					}
+					background = {
+						category = "backgrounds"
+						file = "v.dds"
+					}
+					colors = {
+						"red_orange"
+						"green"
+						"null"
+						"null"
+					}
+				}
+				effect = {
+					save_global_event_target_as = gardener_country
+					set_faction_hostility = { set_neutral = yes }
+				}
+			}
+			create_fleet = {
+				name = "NAME_Gardener_Drone_plural"
+				effect = {
+					create_ship_design = { design = "NAME_Gardener_Drone" }
+					event_target:gardener_country = { add_ship_design = last_created_design }
+					set_owner = event_target:gardener_country
+					create_ship = {
+						name = "NAME_Gardener1"
+						design = last_created_design
+					}
+					create_ship = {
+						name = "NAME_Gardener2"
+						design = last_created_design
+					}
+					create_ship = {
+						name = "NAME_Gardener3"
+						design = last_created_design
+					}
+					save_global_event_target_as = gardener_drones
+					set_location = event_target:wenkwort_rellrait
+					set_fleet_stance = passive
+					auto_move_to_planet = {
+						target = event_target:wenkwort_artem
+						clear_auto_move_on_arrival = no
+						arrival_effect = wenkwort_continue_patrol
+					}
+				}
+			}
+		}
+	}
+}
+
+# Conclusion to the Zen World special project (WENKWORT_PROJECT) on Rellrait
+# Modified:
+# * alternate descriptions for organic zealots
+# * alternate option text for organic zealots
+ship_event = { 
+	id = federations3.135
+	title = "federations3.135.name"
+	desc = {
+		trigger = {
+			owner = {
+				NOT = { has_civic = civic_organic_zealots }
+				OR = {
+					has_country_flag = human_1
+					has_country_flag = human_2
+					is_human_species = yes
+				}
+			}
+		}
+		text = "federations3.135.human.desc"
+	}
+	desc = {
+		trigger = {
+			owner = {
+				NOR = {
+					has_civic = civic_organic_zealots
+					has_country_flag = human_1
+					has_country_flag = human_2
+				}
+				is_human_species = no
+			}
+		}
+		text = "federations3.135.nonhuman.desc"
+	}
+	desc = {
+		trigger = {
+			owner = {
+				has_civic = civic_organic_zealots
+				OR = {
+					has_country_flag = human_1
+					has_country_flag = human_2
+					is_human_species = yes
+				}
+			}
+		}
+		text = "federations3.135.human.desc.organic_zealots"
+	}
+	desc = {
+		trigger = {
+			owner = {
+				has_civic = civic_organic_zealots
+				NOR = {
+					has_country_flag = human_1
+					has_country_flag = human_2
+				}
+				is_human_species = no
+			}
+		}
+		text = "federations3.135.nonhuman.desc.organic_zealots"
+	}
+	picture = GFX_evt_ship_in_orbit
+	show_sound = event_scanner
+	location = event_target:wenkwort_rellrait
+	is_triggered_only = yes
+	option = {
+		name = {
+			text = FASCINATING
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = DISCONCERTING
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		event_target:wenkwort_rellrait = {
+			add_deposit = d_society_4
+			add_modifier = {
+				modifier = "pm_wenkwort_zen"
+				days = -1
+			}
+		}
+	}
+}
+
+# Initial dialogue with the Keeper
+# Modified:
+# * organic zealots cannot cooperate
+# * alternate option text for organic zealots
+planet_event = {
+	id = federations3.121
+	title = "federations3.121.name"
+	desc = "federations3.121.desc"
+	location = event_target:wenkwort_artem
+	show_sound = event_ancient_drone
+	diplomatic = yes
+	is_triggered_only = yes
+	pre_triggers = {
+		has_owner = yes
+	}
+	picture_event_data = {
+		portrait = event_target:wenkwort_audon
+		room = "ethic_spaceship_room"
+	}
+	option = { # What?! Who..?
+		name = {
+			text = "federations3.121.a"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "federations3.121.a.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		is_dialog_only = yes # Prevents the event window from closing, but fires the response text below
+		response_text = "federations3.121.a.response"
+	}
+	option = { # Refusal
+		name = {
+			text = "federations3.121.b"
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = "federations3.121.b.organic_zealots"
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		hidden_effect = {
+			planet_event = {
+				id = federations3.130
+			}
+		}
+	}
+	option = { # Co-operate
+		name = "federations3.121.c"
+		trigger = {
+			owner = {
+				NOR = {
+					has_valid_civic = civic_hive_devouring_swarm
+					has_valid_civic = civic_organic_zealots
+				}
+			}
+		}
+		hidden_effect = {
+			planet_event = {
+				id = federations3.125
+			}
+		}
+	}
+}
+
+# Disregard the Keeper
+# Modified: alternate option text for organic zealots
+planet_event = {
+	id = federations3.130
+	title = "federations3.121.name"
+	desc = "federations3.130.desc"
+	location = event_target:wenkwort_keeper
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = event_target:wenkwort_audon
+		room = "ethic_spaceship_room"
+	}
+	pre_triggers = {
+		has_owner = yes
+	}
+	option = {
+		name = {
+			text = GOODBYE
+			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		}
+		name = {
+			text = END_TRANSMISSION
+			trigger = { owner = { has_civic = civic_organic_zealots } }
+		}
+		hidden_effect = {
+			owner = { set_country_flag = wenkwort_defiler }
+			planet_event = {
+				id = federations3.131
+				days = 20
+			}
+		}
+	}
+}
+
+# Wenkwort's enforcer fleet is about to arrive
+# Modified: organic zealots may not surrender
+planet_event = {
+	id = federations3.131
+	title = "federations3.131.name"
+	desc = "federations3.131.desc"
+	location = event_target:wenkwort_artem
+	diplomatic = yes
+	is_triggered_only = yes
+	pre_triggers = {
+		has_owner = yes
+	}
+	trigger = {
+		owner = { has_country_flag = wenkwort_defiler }
+	}
+	picture_event_data = {
+		portrait = event_target:gardener_country
+		room = "ethic_spaceship_room"
+	}
+	option = { # Bring it on!
+		name = BATTLESTATIONS
+		hidden_effect = {
+			if = {
+				limit = { NOT = { exists = event_target:gardener_country } }
+				if = {
+					limit = { NOT = { exists = event_target:wenkwort_audon } }
+					create_species = {
+						name = "NAME_Wenkwort_Keeper"
+						plural = "NAME_Wenkwort_Keeper_plural"
+						class = ROBOT
+						portrait = "sd_art_robot"
+						namelist = "PLANT3"
+						traits = { trait = "trait_mechanical" }
+						effect = {
+							save_global_event_target_as = wenkwort_audon
+						}
+					}
+				}
+				create_country = {
+					name = "NAME_Gardeners"
+					type = drone # Can make them the target of other events or effects, à la Mining Drones
+					species = event_target:wenkwort_audon
+					flag = {
+						icon = {
+							category = "ornate"
+							file = "flag_ornate_18.dds"
+						}
+						background = {
+							category = "backgrounds"
+							file = "v.dds"
+						}
+						colors = {
+							"red_orange"
+							"green"
+							"null"
+							"null"
+						}
+					}
+					effect = {
+						save_global_event_target_as = gardener_country
+						set_faction_hostility = { set_neutral = yes }
+					}
+				}
+			}
+			create_fleet = {
+				name = "NAME_Wenkwort_Enforcer_plural"
+				effect = {
+					create_ship_design = { design = "NAME_Wenkwort_Enforcer" }
+					event_target:gardener_country = { add_ship_design = last_created_design }
+					set_owner = event_target:gardener_country
+					while = {
+						count = 9
+						create_ship = { design = "NAME_Wenkwort_Enforcer" }
+					}
+					save_event_target_as = wenkwort_enforcers
+					set_location = event_target:wenkwort_artem
+					set_fleet_stance = aggressive
+				}
+			}
+			event_target:gardener_country = {
+				set_faction_hostility = {
+					target = root.owner
+					set_hostile = yes
+				}
+			}
+			event_target:wenkwort_keeper = { destroy_ambient_object = this }
+		}
+	}
+	option = { # Surrender
+		name = "federations3.131.a"
+		custom_tooltip = "federations3.131.tooltip"
+		trigger = {
+			owner = {
+				NOR = {
+					has_valid_civic = civic_hive_devouring_swarm
+					has_valid_civic = civic_organic_zealots
+				}
+			}
+		}
+		owner = { remove_country_flag = wenkwort_defiler }
+		hidden_effect = {
+			planet_event = {
+				id = federations3.125
+			}
+		}
+	}
+}
