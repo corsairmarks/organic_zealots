@@ -36,6 +36,7 @@ This mod is intentionally not included in my modpack [Subtle Polish: A Collectio
 
 * [Assimilate All the Pops](https://steamcommunity.com/sharedfiles/filedetails/?id=2908463208) respects restrictions that can be placed on assimilation and ascension by losing an "Outlaw Cybernetics, Robot Pops, and AI" war or having an Organic Zealot as an overlord
 * [Deassimilate Machines](https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372) outlaws Machine Deassimilation in the event of losing an "Outlaw Cybernetics, Robot Pops, and AI" war or having an Organic Zealot as an overlord
+* [Forgotten History](https://steamcommunity.com/sharedfiles/filedetails/?id=2916982793) by [kroun](https://steamcommunity.com/id/metallichydra/myworkshopfiles/?appid=281990) allows you to begin as Origin: Banished Threat, an origin specifically for homicidal empires - start having just escaped your shielded world!
 
 ## Known Issues
 
@@ -44,6 +45,7 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
 ## Changelog
 
 * 1.0.0 Initial version
+* 1.1.0 Add support for Origin: Banished Threat from [Forgotten History](https://steamcommunity.com/sharedfiles/filedetails/?id=2916982793)
 
 ## Source Code
 
