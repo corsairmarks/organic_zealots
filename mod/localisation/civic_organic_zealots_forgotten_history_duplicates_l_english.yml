@@ -2,3 +2,6 @@
  origin_banished_threat: "Banished Threat"
  origin_banished_threat_desc: "Defeated and sealed on their homeworld, this empire has been plotting their revenge for centuries. Only now has the shield started to weaken."
  origin_banished_threat_effects: "- Start on a §Y$pc_nuked$§! as your capital\n- Your Guaranteed Habitable Worlds are §YShielded Worlds§! with deteriorating shields"
+ origin_AAA_apocalypse: "Insurgency"
+ origin_AAA_apocalypse_desc: "This civilization turned their world into a grand city a long time ago. The unintended consequences of this was food shortages, which in turn caused a major rebel group to form which now tries to destabilize the government."
+ origin_AAA_apocalypse_effects: "- Start on an §YEcumenopolis§!\n- §RInsurgents§! will try to destabilize your planets.\n- Normal factions will be §RReplaced§! by the §YInsurgent§! and §YLoyalist§! factions"

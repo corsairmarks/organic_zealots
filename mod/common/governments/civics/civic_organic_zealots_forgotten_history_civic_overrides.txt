@@ -40,3 +40,38 @@ origin_banished_threat = {
 		base = 5
 	}
 }
+
+# Modified:
+# * requires the corresponding mod to be active
+# * organic zealots may not choose this origin
+origin_AAA_apocalypse = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_apocalypse.dds"
+	picture = GFX_origin_apocalypse
+	flags = { custom_start_screen suppress_vanilla_factions }
+	starting_colony = pc_apocalyptic_city
+	playable = { has_forgotten_history_active = yes }
+	ai_playable = { has_forgotten_history_active = yes }
+	possible = {
+		ethics = {
+			NOR = {
+				value = ethic_gestalt_consciousness # more of a nuclear apocalypse-type I think. Not sure, but it certainly doesn't fit with gestalts no matter what type of apocalypse. Should be split factions kind of, a bit like GWTB
+				value = ethic_fanatic_pacifist
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_fanatic_purifiers
+				value = civic_organic_zealots
+				value = civic_parliamentary_system
+				value = civic_agrarian_idyll
+				value = civic_environmentalist
+			}
+		}
+	}
+	description = origin_AAA_apocalypse_effects
+	advanced_start = yes
+	random_weight = {
+		base = 2
+	}
+}
