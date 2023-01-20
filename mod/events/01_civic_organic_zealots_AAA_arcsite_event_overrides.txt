@@ -9,11 +9,11 @@ namespace = AAA_arcsite
 fleet_event = {
 	id = AAA_arcsite.34
 	title = "AAA_arcsite.34.name"
-	name = {
+	desc = {
 		text = "AAA_arcsite.34.desc"
 		trigger = { owner = { NOT = { has_civic = civic_organic_zealots} } }
 	}
-	name = {
+	desc = {
 		text = "AAA_arcsite.34.desc.organic_zealots"
 		trigger = { owner = { has_civic = civic_organic_zealots} }
 	}
