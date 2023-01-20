@@ -34,7 +34,7 @@ This mod is intentionally not included in my modpack [url=https://steamcommunity
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2916982793]Forgotten History[/url] by [url=https://steamcommunity.com/id/metallichydra/myworkshopfiles/?appid=281990]kroun[/url] allows you to begin as Origin: Banished Threat, an origin specifically for homicidal empires - start having just escaped your shielded world!
 [/list]
 [h2]Known Issues[/h2]
-So, so many game object overwrites will leave warnings in the error.log file.  These overwrites are to enforce the homicidal nature of Organic Zealots and having other empires react accordingly.  Here is a short list of what is affected: some ascension perks, many diplomatic actions, some game rules, many policies, a few crucial built-in scripted triggers, the assimilation citizenship type, several purge types, some AI-related technologies, the traditions which enable the cybernetic and synthetic special projects, and most built-in events dealing with AI or robots/machines
+So, so many game object overwrites will leave warnings in the error.log file.  These overwrites are to enforce the homicidal nature of Organic Zealots and having other empires react accordingly.  Here is a short list of what is affected: some ascension perks, many diplomatic actions, some game rules, many policies, a few crucial built-in scripted triggers, the assimilation citizenship type, several purge types, some AI-related technologies, the traditions which enable the cybernetic and synthetic special projects, and most built-in events dealing with AI or robots/machines.
 
 [h2]Changelog[/h2]
 See [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2920668465]Change Notes[/url]
