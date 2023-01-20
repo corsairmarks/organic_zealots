@@ -1,0 +1,27 @@
+# Banished Threat
+part = {
+	location = 0
+	localization = "START_SCREEN_BANISHED_ZEALOTS"
+	trigger = {
+		has_origin = origin_banished_threat
+		has_valid_civic = civic_organic_zealots
+	}
+}
+
+part = {
+	location = 1
+	localization = "START_SCREEN_BANISHED_ZEALOTS_PART_TWO"
+	trigger = {
+		has_origin = origin_banished_threat
+		has_valid_civic = civic_organic_zealots
+	}
+}
+
+part = {
+	location = 2
+	localization = "START_SCREEN_BANISHED_ZEALOTS_PART_THREE"
+	trigger = {
+		has_origin = origin_banished_threat
+		has_valid_civic = civic_organic_zealots
+	}
+}
