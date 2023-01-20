@@ -1,0 +1,42 @@
+# Modified:
+# * use DLC triggers
+# * requires the corresponding mod to be active
+# * organic zealots may choose this origin
+origin_banished_threat = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_banished_threat.dds"
+	picture = GFX_origin_banished_threat
+	flags = { custom_start_screen starting_event Story7 }
+	initializers = { banished_threat_start banished_threat_sol_start }
+	starting_colony = pc_nuked
+	playable = {
+		has_forgotten_history_active = yes
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+	}
+	ai_playable = {
+		has_forgotten_history_active = yes
+		OR = {
+			has_utopia = yes
+			has_synthethic_dawn = yes
+		}
+	}
+	possible = {
+		civics = {
+			OR = {
+				value = civic_fanatic_purifiers
+				value = civic_organic_zealots
+				value = civic_hive_devouring_swarm
+				value = civic_machine_terminator
+			}
+		}
+	}
+	description = origin_banished_threat_effects
+	traits = { }
+	advanced_start = yes
+	random_weight = {
+		base = 5
+	}
+}

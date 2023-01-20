@@ -1,0 +1,4 @@
+﻿l_english:
+ origin_banished_threat: "Banished Threat"
+ origin_banished_threat_desc: "Defeated and sealed on their homeworld, this empire has been plotting their revenge for centuries. Only now has the shield started to weaken."
+ origin_banished_threat_effects: "- Start on a §Y$pc_nuked$§! as your capital.\n\n- Your Guaranteed Habitable Worlds are §YShielded Worlds§! with deteriorating shields."
