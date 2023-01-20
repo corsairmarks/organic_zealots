@@ -42,6 +42,8 @@ origin_banished_threat = {
 }
 
 # Modified:
+# * just use the pc_city type - seems a bit of an end-run around the DLC requirements
+# * require the megacorp expansion, which is required for ap_arcology_project that creates ecumenopoleis
 # * requires the corresponding mod to be active
 # * organic zealots may not choose this origin
 origin_AAA_apocalypse = {
@@ -49,9 +51,15 @@ origin_AAA_apocalypse = {
 	icon = "gfx/interface/icons/origins/origin_apocalypse.dds"
 	picture = GFX_origin_apocalypse
 	flags = { custom_start_screen suppress_vanilla_factions }
-	starting_colony = pc_apocalyptic_city
-	playable = { has_forgotten_history_active = yes }
-	ai_playable = { has_forgotten_history_active = yes }
+	starting_colony = pc_city
+	playable = {
+		has_megacorp = yes
+		has_forgotten_history_active = yes
+	}
+	ai_playable = {
+		has_megacorp = yes
+		has_forgotten_history_active = yes
+	}
 	possible = {
 		ethics = {
 			NOR = {
