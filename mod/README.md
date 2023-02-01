@@ -46,6 +46,9 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
 
 * 1.0.0 Initial version
 * 1.1.0 Add support for Origin: Banished Threat from [Forgotten History](https://steamcommunity.com/sharedfiles/filedetails/?id=2916982793)
+* 1.2.0 New anti-cybernetics features for Civic: Organic Zealots
+    * Cannot research Integrated Cybernetics (and by extension, also Quantum Neuro-Links)
+    * Can deassimilate cybernetic species to remove their cybernetic implants, attempting to convert them to the relevant biological traits in the process (with the technologies Gene Tailoring and Gene Banks)
 
 ## Source Code
 
