@@ -24,19 +24,25 @@ citizenship_assimilation = {
 					is_hive_empire = yes
 					NOT = { has_valid_civic = civic_hive_devouring_swarm }
 					OR = {
-						has_tradition = tr_genetics_creation # hive assimilation
-						has_tradition = tr_cybernetics_transubstantiation_synthesis # cybernetic assimilation (hive)
+						has_active_tradition = tr_genetics_creation # hive assimilation
+						has_active_tradition = tr_cybernetics_transubstantiation_synthesis # cybernetic assimilation (hive)
 					}
 				}
 				AND = {
 					is_gestalt = no
 					NOT = { has_valid_civic = civic_fanatic_purifiers }
 					OR = {
-						# machine deassimilation overwrites this citizenship - no need for trigger
 						has_country_flag = synth_assimilation # synthetic assimilation (regular)
 						has_active_tradition = tr_cybernetics_transubstantiation_synthesis # cybernetic assimilation (regular)
 						has_active_tradition = tr_psionics_psionic_assimilation # psionic assimilation
 						has_active_tradition = tr_genetics_creation # hive deassimilation
+						# machine deassimilation overwrites this citizenship - no need for trigger
+						# cyborg deassimilation
+						AND = {
+							has_technology = tech_gene_tailoring
+							has_technology = tech_gene_banks
+							prev = { has_trait = trait_cybernetic }
+						}
 					}
 				}
 			}
@@ -54,9 +60,9 @@ citizenship_assimilation = {
 				fail_text = lonely_hive_mind_pops_kill_themselves_citizenship_assimilation
 				from = {
 					OR = {
-						has_tradition = tr_genetics_creation
-						has_tradition = tr_cybernetics_transubstantiation_synthesis
-						has_tradition = tr_cybernetics_assimilator_inevitable_assimilation
+						has_active_tradition = tr_genetics_creation
+						has_active_tradition = tr_cybernetics_transubstantiation_synthesis
+						has_active_tradition = tr_cybernetics_assimilator_inevitable_assimilation
 					}
 				}
 			}
@@ -223,6 +229,17 @@ citizenship_assimilation = {
 					has_trait = trait_hive_mind
 				}
 			}
+			# cybernetic deassimilation
+			else_if = {
+				limit = {
+					has_trait = trait_cybernetic
+					from = {
+						has_technology = tech_gene_tailoring
+						has_technology = tech_gene_banks
+					}
+				}
+				NOT = { has_trait = trait_hive_mind }
+			}
 		}
 	}
 	ai_will_do = {
@@ -251,13 +268,20 @@ citizenship_assimilation = {
 								has_active_tradition = tr_genetics_creation
 								prev = { has_trait = trait_hive_mind }
 							}
+							AND = {
+								has_technology = tech_gene_tailoring
+								has_technology = tech_gene_banks
+								prev = {
+									has_trait = trait_cybernetic
+									NOT = { has_trait = trait_hive_mind }
+								}
+							}
 						}
 					}
 					has_valid_civic = civic_hive_devouring_swarm
 					has_valid_civic = civic_fanatic_purifiers
 				}
 			}
-
 		}
 	}
 }

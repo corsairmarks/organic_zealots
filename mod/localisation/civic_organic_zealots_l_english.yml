@@ -59,6 +59,10 @@
  wg_force_policy_outlaw_robots_and_ai_accept_2: "$wg_force_ideology_accept_2$"
  wg_force_policy_outlaw_robots_and_ai_accept_subject: "\n$wg_force_policy_outlaw_robots_and_ai_accept$\n$wg_force_policy_outlaw_robots_and_ai_accept_2$\n"
 
+ living_standard_deassimilation_cyborg: "Expurgatory Transfiguration"
+ living_standard_deassimilation_cyborg_tooltip: "This species is being returned to its purely organic roots."
+ living_standard_deassimilation_cyborg_tooltip_delayed: "§LSupremus organicum.§!"
+
  job_cloning_technician: "Cloning Technician"
  job_cloning_technician_plural: "Cloning Technicians"
  job_cloning_technician_desc: "These technicians meticulously nurture the growth of clones in order to supplement the empire's manpower."

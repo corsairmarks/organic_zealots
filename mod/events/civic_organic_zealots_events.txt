@@ -644,6 +644,62 @@ planet_event = {
 	}
 }
 
+# prepare cybernetic Pops to be deassimilated - fired by on_yearly_pulse before action.64, see common/on_actions/000_civic_organic_zealots_early_on_actions.txt
+# because the correct flags are set, the changes will be picked up automatically by assimilation_effect without changes
+event = {
+	id = civic_organic_zealots.64
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		any_playable_country = {
+			num_unique_species > 1
+			any_owned_pop_species = {
+				has_citizenship_type = {
+					type = citizenship_assimilation
+					country = prev
+				}
+				has_living_standard = {
+					type = living_standard_deassimilation_cyborg
+					country = prev
+				}
+			}
+		}
+	}
+	immediate = {
+		log = "civic_organic_zealots.64"
+		every_playable_country = {
+			limit = {
+				num_unique_species > 1
+				any_owned_pop_species = {
+					has_citizenship_type = {
+						type = citizenship_assimilation
+						country = prev
+					}
+					has_living_standard = {
+						type = living_standard_deassimilation_cyborg
+						country = prev
+					}
+				}
+			}
+			log = "civic_organic_zealots.64.every_playable_country: [This.GetRealName]"
+			every_owned_pop_species = {
+				limit = {
+					has_citizenship_type = {
+						type = citizenship_assimilation
+						country = prev
+					}
+					has_living_standard = {
+						type = living_standard_deassimilation_cyborg
+						country = prev
+					}
+				}
+				log = "civic_organic_zealots.64.every_owned_pop_species: [This.GetName]"
+				coz_prepare_uncyborg_species = yes
+			}
+		}
+	}
+}
+
 # triggered by graygoo.403
 # root = country
 country_event = {

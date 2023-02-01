@@ -1,0 +1,35 @@
+living_standard_deassimilation_cyborg = {
+	pop_modifier = {}
+	potential = {
+		OR = {
+			has_synthethic_dawn = yes
+			has_utopia = yes
+		}
+		has_trait = trait_cybernetic
+		NOT = { has_trait = trait_hive_mind }
+		exists = from
+		from = {
+			is_regular_empire = yes
+			has_technology = tech_gene_tailoring
+			has_technology = tech_gene_banks
+		}
+	}
+	allow = {
+		hidden_trigger = { exists = from }
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = {
+				type = citizenship_assimilation
+				country = from
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 0
+		modifier = {
+			add = 50
+			exists = from
+			from = { has_civic = civic_organic_zealots }
+		}
+	}
+}
