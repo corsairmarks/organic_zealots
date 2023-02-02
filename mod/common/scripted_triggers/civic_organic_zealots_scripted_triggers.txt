@@ -83,9 +83,9 @@ diplomacy_actor_is_not_homicidal_non_gestalt = {
 		fail_text = "requires_actor_not_organic_zealots"
 		OR = {
 			is_same_species = from
-			NOT = { has_valid_civic = civic_organic_zealots }
+			is_valid_organic_zealots = no
 			AND = {
-				has_valid_civic = civic_organic_zealots
+				is_valid_organic_zealots = yes
 				from = { is_robot_empire = no }
 			}
 		}
@@ -128,9 +128,9 @@ diplomacy_recipient_is_not_homicidal_non_gestalt = {
 		fail_text = "requires_recipient_not_organic_zealots"
 		OR = {
 			is_same_species = from
-			from = { NOT = { has_valid_civic = civic_organic_zealots } }
+			from = { is_valid_organic_zealots = no }
 			AND = {
-				from = { has_valid_civic = civic_organic_zealots }
+				from = { is_valid_organic_zealots = yes }
 				is_robot_empire = no
 			}
 		}
@@ -156,4 +156,16 @@ diplomacy_recipient_is_not_homicidal_gestalt = {
 			}
 		}
 	}
+}
+
+# this = country
+is_organic_zealots = {
+	optimize_memory
+	has_civic = civic_organic_zealots
+}
+
+# this = country
+is_valid_organic_zealots = {
+	optimize_memory
+	has_valid_civic = civic_organic_zealots
 }
