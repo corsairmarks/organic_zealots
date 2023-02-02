@@ -7,7 +7,7 @@ special_project = {
 	}
 	desc = {
 		text = "STUDY_NANITE_SWARM_ORGANIC_ZEALOTS_DESC"
-		trigger = {	owner = { is_organic_zealots = yes } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	days_to_research = 300
 	tech_department = physics_technology
