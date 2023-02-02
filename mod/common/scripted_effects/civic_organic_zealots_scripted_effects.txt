@@ -333,14 +333,14 @@ coz_set_assimilation_flags = {
 }
 
 # set up a species for cybernetic deassimilation
-# this = something with a species (country, leader, pop, etc)
+# this = species
 # prev = country (assimilator)
 coz_prepare_uncyborg_species = {
 	optimize_memory
-	species = { save_event_target_as = new_non_cyborg_species }
+	save_event_target_as = uncyborg_species
 	try_swap_species_traits_cyborg_to_organic = yes
 	modify_species = {
-		species = event_target:new_non_cyborg_species
+		species = event_target:uncyborg_species
 		remove_trait = trait_self_modified
 		remove_trait = trait_cybernetic
 		# these traits have no biological equivalents - lose 'em with no replacements
@@ -354,175 +354,175 @@ coz_prepare_uncyborg_species = {
 	}
 }
 
-# species = the (original) species to inspect for traits to convert to non-cybernetic traits to event_target:new_non_cyborg_species
-# event_target:new_non_cyborg_species = used as the base species to be modified, will be overwritten with the new species if one or more traits are added
+# species = the (original) species to inspect for traits to convert to non-cybernetic traits to event_target:uncyborg_species
+# event_target:uncyborg_species = used as the base species to be modified, will be overwritten with the new species if one or more traits are added
 try_swap_species_traits_cyborg_to_organic = {
 	optimize_memory
 	if = {
 		limit = { has_trait = trait_cyborg_harvesters }
 		modify_species = {
-			species = event_target:new_non_cyborg_species
+			species = event_target:uncyborg_species
 			remove_trait = trait_cyborg_harvesters
 			add_trait = trait_agrarian
 			change_scoped_species = no
 			effect = {
-				save_event_target_as = new_non_cyborg_species
+				save_event_target_as = uncyborg_species
 			}
 		}
 	}
 	if = {
 		limit = { has_trait = trait_cyborg_superconductive }
 		modify_species = {
-			species = event_target:new_non_cyborg_species
+			species = event_target:uncyborg_species
 			remove_trait = trait_cyborg_superconductive
 			add_trait = trait_ingenious
 			change_scoped_species = no
 			effect = {
-				save_event_target_as = new_non_cyborg_species
+				save_event_target_as = uncyborg_species
 			}
 		}
 	}
 	if = {
 		limit = { has_trait = trait_cyborg_power_drills }
 		modify_species = {
-			species = event_target:new_non_cyborg_species
+			species = event_target:uncyborg_species
 			remove_trait = trait_cyborg_power_drills
 			add_trait = trait_industrious
 			change_scoped_species = no
 			effect = {
-				save_event_target_as = new_non_cyborg_species
+				save_event_target_as = uncyborg_species
 			}
 		}
 	}
 	if = {
 		limit = { has_trait = trait_cyborg_logic_engines }
 		modify_species = {
-			species = event_target:new_non_cyborg_species
+			species = event_target:uncyborg_species
 			remove_trait = trait_cyborg_logic_engines
 			add_trait = trait_intelligent
 			change_scoped_species = no
 			effect = {
-				save_event_target_as = new_non_cyborg_species
+				save_event_target_as = uncyborg_species
 			}
 		}
 	}
 	if = {
 		limit = { has_trait = trait_cyborg_trading_algorithms }
 		modify_species = {
-			species = event_target:new_non_cyborg_species
+			species = event_target:uncyborg_species
 			remove_trait = trait_cyborg_trading_algorithms
 			add_trait = trait_thrifty
 			change_scoped_species = no
 			effect = {
-				save_event_target_as = new_non_cyborg_species
+				save_event_target_as = uncyborg_species
 			}
 		}
 	}
 	if = {
 		limit = { has_trait = trait_cyborg_durable }
 		modify_species = {
-			species = event_target:new_non_cyborg_species
+			species = event_target:uncyborg_species
 			remove_trait = trait_cyborg_durable
 			add_trait = trait_conservational
 			change_scoped_species = no
 			effect = {
-				save_event_target_as = new_non_cyborg_species
+				save_event_target_as = uncyborg_species
 			}
 		}
 	}
 	if = {
 		limit = { has_trait = trait_cyborg_high_maintenance }
 		modify_species = {
-			species = event_target:new_non_cyborg_species
+			species = event_target:uncyborg_species
 			remove_trait = trait_cyborg_high_maintenance
 			add_trait = trait_wasteful
 			change_scoped_species = no
 			effect = {
-				save_event_target_as = new_non_cyborg_species
+				save_event_target_as = uncyborg_species
 			}
 		}
 	}
 	if = {
 		limit = { has_trait = trait_cyborg_enhanced_memory }
 		modify_species = {
-			species = event_target:new_non_cyborg_species
+			species = event_target:uncyborg_species
 			remove_trait = trait_cyborg_enhanced_memory
 			add_trait = trait_talented
 			change_scoped_species = no
 			effect = {
-				save_event_target_as = new_non_cyborg_species
+				save_event_target_as = uncyborg_species
 			}
 		}
 	}
 	if = {
 		limit = { has_trait = trait_cyborg_learning_algorithms }
 		modify_species = {
-			species = event_target:new_non_cyborg_species
+			species = event_target:uncyborg_species
 			remove_trait = trait_cyborg_learning_algorithms
 			add_trait = trait_quick_learners
 			change_scoped_species = no
 			effect = {
-				save_event_target_as = new_non_cyborg_species
+				save_event_target_as = uncyborg_species
 			}
 		}
 	}
 	if = {
 		limit = { has_trait = trait_cyborg_neural_limiters }
 		modify_species = {
-			species = event_target:new_non_cyborg_species
+			species = event_target:uncyborg_species
 			remove_trait = trait_cyborg_neural_limiters
 			add_trait = trait_slow_learners
 			change_scoped_species = no
 			effect = {
-				save_event_target_as = new_non_cyborg_species
+				save_event_target_as = uncyborg_species
 			}
 		}
 	}
 	if = {
 		limit = { has_trait = trait_cyborg_streamlined_protocols }
 		modify_species = {
-			species = event_target:new_non_cyborg_species
+			species = event_target:uncyborg_species
 			remove_trait = trait_cyborg_streamlined_protocols
 			add_trait = trait_docile
 			change_scoped_species = no
 			effect = {
-				save_event_target_as = new_non_cyborg_species
+				save_event_target_as = uncyborg_species
 			}
 		}
 	}
 	if = {
 		limit = { has_trait = trait_cyborg_high_bandwidth }
 		modify_species = {
-			species = event_target:new_non_cyborg_species
+			species = event_target:uncyborg_species
 			remove_trait = trait_cyborg_high_bandwidth
 			add_trait = trait_unruly
 			change_scoped_species = no
 			effect = {
-				save_event_target_as = new_non_cyborg_species
+				save_event_target_as = uncyborg_species
 			}
 		}
 	}
 	if = {
 		limit = { has_trait = trait_cyborg_double_jointed }
 		modify_species = {
-			species = event_target:new_non_cyborg_species
+			species = event_target:uncyborg_species
 			remove_trait = trait_cyborg_double_jointed
 			add_trait = trait_communal
 			change_scoped_species = no
 			effect = {
-				save_event_target_as = new_non_cyborg_species
+				save_event_target_as = uncyborg_species
 			}
 		}
 	}
 	if = {
 		limit = { has_trait = trait_cyborg_bulky }
 		modify_species = {
-			species = event_target:new_non_cyborg_species
+			species = event_target:uncyborg_species
 			remove_trait = trait_cyborg_bulky
 			add_trait = trait_solitary
 			change_scoped_species = no
 			effect = {
-				save_event_target_as = new_non_cyborg_species
+				save_event_target_as = uncyborg_species
 			}
 		}
 	}
