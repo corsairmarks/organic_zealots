@@ -4,37 +4,28 @@ namespace = AAA_arcsite
 # Modified:
 # * use triggers
 # * alternate description for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 # * organic zealots do not qualify for options b or c
 fleet_event = {
 	id = AAA_arcsite.34
 	title = "AAA_arcsite.34.name"
 	desc = {
 		text = "AAA_arcsite.34.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots} } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "AAA_arcsite.34.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots} }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_robot_assembly_plant
 	location = from
 	show_sound = event_power_down
 	archaeology = yes
 	is_triggered_only = yes
-	immediate = {
-		from = { set_site_progress_locked = yes }
-	}
-	# Dismantle the robots
-	option = {
-		name = {
-			text = DISMANTLE_THE_ROBOTS
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots} } }
-		}
-		name = {
-			text = "AAA_arcsite.34.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
+	immediate = { from = { set_site_progress_locked = yes } }
+	option = { # dismantle the robots (regular)
+		name = DISMANTLE_THE_ROBOTS
+		trigger = { owner = { is_organic_zealots = no } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = alloys
@@ -44,14 +35,25 @@ fleet_event = {
 			}
 		}
 	}
-	# figure out how they work
-	option = {
+	option = { # dismantle the robots (organic zealots)
+		name = "AAA_arcsite.34.a.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		owner = {
+			add_monthly_resource_mult = {
+				resource = alloys
+				value = @tier3materialreward
+				min = @tier3materialmin
+				max = @tier3materialmax
+			}
+		}
+	}
+	option = { # figure out how they work
 		# get next tier of robots
 		name = RESEARCH_THE_ROBOTS
 		trigger = {
 			owner = {
 				is_gestalt = no
-				NOT = { has_civic = civic_organic_zealots }
+				is_organic_zealots = no
 			}
 		}
 		owner = {
@@ -113,8 +115,7 @@ fleet_event = {
 			}
 		}
 	}
-	# scavengers option
-	option = {
+	option = { # scavengers option
 		name = DO_BOTH
 		trigger = {
 			owner = {
@@ -122,7 +123,7 @@ fleet_event = {
 					has_valid_civic = civic_scavengers
 					has_valid_civic = civic_corporate_scavengers
 				}
-				NOT = { has_civic = civic_organic_zealots }
+				is_organic_zealots = no
 			}
 		}
 		owner = {
@@ -190,7 +191,5 @@ fleet_event = {
 			}
 		}
 	}
-	after = {
-		from = { set_site_progress_locked = no }
-	}
+	after = { from = { set_site_progress_locked = no } }
 }

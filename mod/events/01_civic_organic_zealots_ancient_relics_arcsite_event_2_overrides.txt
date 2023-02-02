@@ -5,113 +5,92 @@ namespace = ancrel
 # Stage 1 - Two Sides
 # Modified:
 # * alternate description for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 fleet_event = {
 	id = ancrel.6250
 	title = "ancrel.6250.name"
 	desc = {
 		text = "ancrel.6250.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.6250.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_space_walk
 	show_sound = event_metal_fatigue
 	archaeology = yes
 	is_triggered_only = yes
-	immediate = {
-		from = { set_site_progress_locked = yes }
-	}
+	immediate = { from = { set_site_progress_locked = yes } }
 	after = {
+		small_artifact_reward = yes
 		from = { set_site_progress_locked = no }
 	}
 	option = {
-		name = {
-			text = CURIOUS
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = DISTURBING
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
-		small_artifact_reward = yes
+		name = CURIOUS
+		trigger = { owner = { is_organic_zealots = no } }
+	}
+	option = {
+		name = DISTURBING
+		trigger = { owner = { has_civic = civic_organic_zealots } }
 	}
 }
 
 # Stage 2 - The Battle
 # Modified:
 # * alternate description for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 fleet_event = {
 	id = ancrel.6255
 	title = "ancrel.6255.name"
 	desc = {
 		text = "ancrel.6255.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.6255.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_ground_combat
 	show_sound = event_ground_battle
 	archaeology = yes
 	is_triggered_only = yes
-	immediate = {
-		from = { set_site_progress_locked = yes }
-	}
+	immediate = { from = { set_site_progress_locked = yes } }
 	after = {
+		small_artifact_reward = yes
 		from = { set_site_progress_locked = no }
 	}
 	option = {
-		name = {
-			text = CURIOUS
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = DISTURBING
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
-		small_artifact_reward = yes
+		name = CURIOUS
+		trigger = { owner = { is_organic_zealots = no } }
+	}
+	option = {
+		name = DISTURBING
+		trigger = { owner = { has_civic = civic_organic_zealots } }
 	}
 }
 
 # Stage 3 - The Treaty
 # Modified:
 # * alternate description for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 fleet_event = {
 	id = ancrel.6260
 	title = "ancrel.6260.name"
 	desc = {
 		text = "ancrel.6260.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.6260.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_barren_dig_site
 	show_sound = event_finding_loot
 	archaeology = yes
 	is_triggered_only = yes
-	immediate = {
-		from = { set_site_progress_locked = yes }
-	}
+	immediate = { from = { set_site_progress_locked = yes } }
 	after = {
-		from = { set_site_progress_locked = no }
-	}
-	option = {
-		name = {
-			text = CURIOUS
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = DISTURBING
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
 		medium_artifact_reward = yes
 		owner = {
 			add_monthly_resource_mult = {
@@ -121,6 +100,15 @@ fleet_event = {
 				max = @tier5researchmax
 			}
 		}
+		from = { set_site_progress_locked = no }
+	}
+	option = {
+		name = CURIOUS
+		trigger = { owner = { is_organic_zealots = no } }
+	}
+	option = {
+		name = DISTURBING
+		trigger = { owner = { has_civic = civic_organic_zealots } }
 	}
 }
 
@@ -129,117 +117,105 @@ fleet_event = {
 # Stage 1
 # Modified:
 # * alternate description for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 fleet_event = {
 	id = ancrel.12070
 	title = "ancrel.12070.name"
 	desc = {
 		text = "ancrel.12070.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.12070.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_busy_spaceport
 	show_sound = event_ghost_town
 	location = from
 	archaeology = yes
 	is_triggered_only = yes
-	immediate = {
-		from = { set_site_progress_locked = yes }
-	}
+	immediate = { from = { set_site_progress_locked = yes } }
 	after = {
+		small_artifact_reward = yes
 		from = { set_site_progress_locked = no }
 	}
 	option = {
-		name = {
-			text = INTERESTING
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = "ancrel.12070.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
-		small_artifact_reward = yes
+		name = INTERESTING
+		trigger = { owner = { is_organic_zealots = no } }
+	}
+	option = {
+		name = "ancrel.12070.a.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
 	}
 }
 
 # Stage 2
 # Modified:
 # * alternate description for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 fleet_event = {
 	id = ancrel.12075
 	title = "ancrel.12075.name"
 	desc = {
 		text = "ancrel.12075.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.12075.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_satellite_in_orbit
 	show_sound = event_laboratory_sound
 	location = from
 	archaeology = yes
 	is_triggered_only = yes
-	immediate = {
-		from = { set_site_progress_locked = yes }
-	}
+	immediate = { from = { set_site_progress_locked = yes } }
 	after = {
+		small_artifact_reward = yes
 		from = { set_site_progress_locked = no }
 	}
 	option = {
-		name = {
-			text = PECULIAR
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = "ancrel.12075.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
-		small_artifact_reward = yes
+		name = PECULIAR
+		trigger = { owner = { is_organic_zealots = no } }
+	}
+	option = {
+		name = "ancrel.12075.a.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
 	}
 }
 
 # Stage 4
 # Modified:
 # * alternate description for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 fleet_event = {
 	id = ancrel.12085
 	title = "ancrel.12085.name"
 	desc = {
 		text = "ancrel.12085.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.12085.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_spy_orb
 	show_sound = event_activating_unknown_technology
 	location = from
 	archaeology = yes
 	is_triggered_only = yes
-	immediate = {
-		from = { set_site_progress_locked = yes }
-	}
+	immediate = { from = { set_site_progress_locked = yes } }
 	after = {
+		small_artifact_reward = yes
 		from = { set_site_progress_locked = no }
 	}
 	option = {
-		name = {
-			text = KEEP_SEARCHING
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = "ancrel.12085.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
-		small_artifact_reward = yes
+		name = KEEP_SEARCHING
+		trigger = { owner = { is_organic_zealots = no } }
+	}
+	option = {
+		name = "ancrel.12085.a.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
 	}
 }
 
@@ -249,33 +225,31 @@ fleet_event = {
 # * add trait_machine_unit to the species created by option e, otherwise they aren't recognized as machines by most game code
 # * empire created by option e has specific civics (so as to not create homicidal vassals for non-machine empires, or servitor/assimilators without secondary Pops)
 # * alternate description for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 fleet_event = {
 	id = ancrel.12090
 	title = "ancrel.12090.name"
 	desc = {
 		text = "ancrel.12090.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.12090.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_ai_planet
 	show_sound = event_mystic_reveal
 	location = from
 	archaeology = yes
 	is_triggered_only = yes
-	immediate = {
-		from = { set_site_progress_locked = yes }
-	}
+	immediate = { from = { set_site_progress_locked = yes } }
 	after = {
-		from = { set_site_progress_locked = no }
 		large_artifact_reward = yes
+		from = { set_site_progress_locked = no }
 	}
 	option = { # Machine integration
 		name = "ancrel.12090.A"
-		trigger = { owner = { is_machine_empire = yes } }
+		trigger = { owner = { has_authority = auth_machine_intelligence } }
 		from.planet = {
 			change_pc = pc_machine
 			hidden_effect = {
@@ -329,7 +303,7 @@ fleet_event = {
 	}
 	option = { # Spy orb
 		name = "ancrel.12090.B"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		solar_system = {
 			spawn_megastructure = {
 				type = spy_orb_restored
@@ -341,7 +315,7 @@ fleet_event = {
 	option = { # Distribute 80 Pops
 		name = "ancrel.12090.C"
 		custom_tooltip = "ancrel.12090.C.tooltip"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		allow = {
 			owner = {
 				OR = {
@@ -422,8 +396,9 @@ fleet_event = {
 		name = "ancrel.12090.D"
 		trigger = {
 			owner = {
-				is_spiritualist = yes
-				NOT = { has_civic = civic_organic_zealots }
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+				is_organic_zealots = no
 			}
 		}
 		from.planet = { add_deposit = d_alloys_25 }
@@ -468,7 +443,7 @@ fleet_event = {
 	option = { # Subject empire
 		name = "ancrel.12090.E"
 		custom_tooltip = "ancrel.12090.E.tooltip"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		allow = { owner = { is_spiritualist = no } }
 		hidden_effect = {
 			from.planet = {

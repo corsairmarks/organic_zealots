@@ -6,7 +6,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		has_valid_civic = civic_organic_zealots
+		is_valid_organic_zealots = yes
 	}
 	immediate = {
 		give_technology = {
@@ -30,7 +30,7 @@ planet_event = {
 	is_triggered_only = yes
 	trigger = {
 		exists = from
-		from = { has_valid_civic = civic_organic_zealots }
+		from = { is_valid_organic_zealots = yes }
 		is_controlled_by = from
 		exists = fromfrom
 		fromfrom = { is_robot_pop = yes }
@@ -66,7 +66,7 @@ country_event = {
 			}
 		}
 		exists = from
-		from = { has_valid_civic = civic_organic_zealots }
+		from = { is_valid_organic_zealots = yes }
 	}
 	immediate = {
 		force_disable_tech_ascension_special_projects = yes
@@ -86,7 +86,7 @@ country_event = {
 			is_robot_empire = yes
 		}
 		exists = from
-		from = { has_valid_civic = civic_organic_zealots }
+		from = { is_valid_organic_zealots = yes }
 	}
 	immediate = {
 		deactivate_ongoing_tech_assimilation = yes
@@ -103,7 +103,7 @@ country_event = {
 	trigger = {
 		is_valid_target_to_outlaw_cybernetics_or_robot_pops_or_ai = yes
 		exists = from
-		from = { has_valid_civic = civic_organic_zealots }
+		from = { is_valid_organic_zealots = yes }
 	}
 	immediate = {
 		set_policies_robot_pops_and_ai_to_outlawed = yes
@@ -125,7 +125,7 @@ country_event = {
 			is_subject = yes
 			exists = overlord
 			# intentionally does NOT check civic validity
-			overlord = { has_civic = civic_organic_zealots }
+			overlord = { is_organic_zealots = yes }
 		}
 	}
 	immediate = {
@@ -144,7 +144,7 @@ planet_event = {
 		has_owner = yes
 	}
 	trigger = {
-		owner = { has_valid_civic = civic_organic_zealots }
+		owner = { is_valid_organic_zealots = yes }
 		free_building_slots > 0
 	}
 	immediate = {
@@ -219,7 +219,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		has_valid_civic = civic_organic_zealots
+		is_valid_organic_zealots = yes
 		exists = from
 		from = {
 			leader_class = scientist
@@ -772,7 +772,7 @@ country_event = {
 	picture = GFX_evt_exploding_ship
 	show_sound = event_celebration
 	trigger = {
-		has_civic = civic_organic_zealots
+		is_organic_zealots = yes
 		from = { is_country_type = gray_angry }
 	}
 	immediate = {
@@ -789,8 +789,6 @@ country_event = {
 			min = @tier4unitymin
 			max = @tier4unitymax
 		}
-	}
-	after = {
 		hidden_effect = { from = { destroy_country = yes } }
 	}
 }
@@ -884,7 +882,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		has_valid_civic = civic_organic_zealots
+		is_valid_organic_zealots = yes
 		exists = from
 	}
 	immediate = {

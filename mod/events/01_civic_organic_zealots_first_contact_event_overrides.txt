@@ -82,7 +82,7 @@ first_contact_event = {
 	}
 	desc = {
 		trigger = {
-			owner = { has_valid_civic = civic_organic_zealots }
+			owner = { is_valid_organic_zealots = yes }
 			NOT = { contact_country = { is_country_type = dragon_dummy } }
 		}
 		text = "first_contact.1.desc.organic_zealots"
@@ -161,14 +161,14 @@ first_contact_event = {
 	title = first_contact.104.name
 	desc = {
 		trigger = {
-			owner = { NOT = { has_civic = civic_organic_zealots } }
+			owner = { is_organic_zealots = no }
 			NOT = { exists = event_target:secondary_species }
 		}
 		text = "first_contact.104.desc.terminator_or_default"
 	}
 	desc = {
 		trigger = {
-			owner = { NOT = { has_civic = civic_organic_zealots } }
+			owner = { is_organic_zealots = no }
 			exists = event_target:secondary_species
 			contact_country = { has_valid_civic = civic_machine_servitor }
 		}
@@ -178,7 +178,7 @@ first_contact_event = {
 		trigger = {
 			owner = {
 				is_hive_empire = no
-				NOT = { has_civic = civic_organic_zealots }
+				is_organic_zealots = no
 			}
 			exists = event_target:secondary_species
 			contact_country = { has_valid_civic = civic_machine_assimilator }
@@ -195,14 +195,14 @@ first_contact_event = {
 	}
 	desc = {
 		trigger = {
-			owner = { has_civic = civic_organic_zealots }
+			owner = { is_organic_zealots = yes }
 			NOT = { exists = event_target:secondary_species }
 		}
 		text = "first_contact.104.desc.organic_zealots.terminator_or_default"
 	}
 	desc = {
 		trigger = {
-			owner = { has_civic = civic_organic_zealots }
+			owner = { is_organic_zealots = yes }
 			exists = event_target:secondary_species
 			contact_country = { has_valid_civic = civic_machine_servitor }
 		}
@@ -212,12 +212,12 @@ first_contact_event = {
 		trigger = {
 			owner = {
 				is_hive_empire = no
-				has_civic = civic_organic_zealots
+				is_organic_zealots = yes
 			}
 			exists = event_target:secondary_species
 			contact_country = { has_valid_civic = civic_machine_assimilator }
 		}
-		text = "first_contact.104.desc.organic_zealots.assimilator.regular"
+		text = "first_contact.104.desc.organic_zealots.assimilator"
 	}
 	picture = GFX_evt_robot_encounter
 	show_sound = event_robot_encounter
@@ -241,8 +241,26 @@ first_contact_event = {
 		}
 	}
 	after = {
+		owner = { 
+			if = {
+				limit = {
+					OR = {
+						is_homicidal = yes
+						is_spiritualist = yes
+					}
+					is_machine_empire = no
+					NOT = { has_country_flag = met_machine_empire }
+				}
+				add_monthly_resource_mult = {
+					resource = unity
+					value = @tier3unityreward
+					min = @tier3unitymin
+					max = @tier3unitymax
+				}
+			}
+			set_country_flag = met_machine_empire
+		}
 		set_site_progress_locked = no
-		owner = { set_country_flag = met_machine_empire }
 		finish_first_contact_effect = yes
 		first_contact_inform_intel = yes
 	}
@@ -266,59 +284,35 @@ first_contact_event = {
 		}
 	}
 	option = {
-		name = {
-			text = "first_contact.104.B1"
-			trigger = {
-				owner = {
-					is_spiritualist = yes
-					NOT = { has_valid_civic = civic_organic_zealots }
-				}
-			}
-		}
-		name = {
-			text = "first_contact.104.B2"
-			trigger = { owner = { has_valid_civic = civic_fanatic_purifiers } }
-		}
-		name = {
-			text = "first_contact.104.B3"
-			trigger = { owner = { has_valid_civic = civic_hive_devouring_swarm } }
-		}
-		name = {
-			text = "first_contact.104.B4"
-			trigger = { owner = { has_valid_civic = civic_organic_zealots } }
-		}
-		if = {
-			limit = {
-				owner = {
-					has_valid_civic = civic_organic_zealots
-					NOT = { has_country_flag = met_machine_empire }
-				}
-			}
-			owner = {
-				add_monthly_resource_mult = {
-					resource = unity
-					value = @tier3unityreward
-					min = @tier3unitymin
-					max = @tier3unitymax
-				}
-			}
-		}
 		trigger = {
 			owner = {
-				is_machine_empire = no
 				OR = {
-					is_homicidal = yes
-					is_spiritualist = yes
+					has_ethic = ethic_spiritualist
+					has_ethic = ethic_fanatic_spiritualist
 				}
+				is_valid_organic_zealots = no
 			}
 		}
+		name = "first_contact.104.B1"
+	}
+	option = {
+		trigger = { owner = { has_valid_civic = civic_fanatic_purifiers } }
+		name = "first_contact.104.B2"
+	}
+	option = {
+		trigger = { owner = { has_valid_civic = civic_hive_devouring_swarm } }
+		name = "first_contact.104.B3"
+	}
+	option = {
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		name = "first_contact.104.B4"
 	}
 	option = {
 		name = ON_SCREEN
 		trigger = {
 			owner = {
 				OR = {
-					is_machine_empire = yes
+					has_authority = auth_machine_intelligence
 					has_country_flag = met_machine_empire
 				}
 			}

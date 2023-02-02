@@ -9,11 +9,11 @@ ship_event = {
 	title = "anomaly.2550.name"
 	desc = {
 		text = "anomaly.2550.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "anomaly.2550.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_ruined_system
 	location = FROM
@@ -29,7 +29,7 @@ ship_event = {
 	}
 	option = {
 		name = INTERESTING
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		from = {
 			enable_special_project = {
 				name = "AUTOMATED_SHIPYARD_PROJECT"
@@ -61,18 +61,18 @@ ship_event = {
 	title = "anomaly.2080.name"
 	desc = {
 		text = "anomaly.2580.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "anomaly.2580.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_alien_ruins
 	location = from
 	is_triggered_only = yes
 	option = {
 		name = EXCELLENT
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		from = { add_deposit = d_hab_lonely_bot_deposit }
 		owner = {
 			add_monthly_resource_mult = {
@@ -110,11 +110,11 @@ ship_event = {
 	title = "anomaly.3025.name"
 	desc = {
 		text = "anomaly.3027.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "anomaly.3027.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_excavation_team
 	show_sound = event_activating_unknown_technology
@@ -126,9 +126,7 @@ ship_event = {
 			add_experience = 100
 			add_trait = leader_trait_expertise_industry
 		}
-		hidden_effect = {
-			fromfrom = { add_deposit = d_ancient_mining_site }
-		}
+		hidden_effect = { fromfrom = { add_deposit = d_ancient_mining_site } }
 	}
 }
 
@@ -154,7 +152,7 @@ ship_event = {
 	}
 	option = {
 		name = "anomaly.3080.a"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		from = { add_deposit = d_toy_factory_complex }
 	}
 	option = {

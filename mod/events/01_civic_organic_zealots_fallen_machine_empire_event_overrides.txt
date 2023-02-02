@@ -26,14 +26,14 @@ country_event = {
 	option = {
 		trigger = {
 			event_target:awakened_machine_empire = { has_country_flag = fallen_machine_empire_awaken_1 }
-			NOT = { has_civic = civic_organic_zealots }
+			is_organic_zealots = no
 		}
 		name = "fallen_machine_empire.2.a"
 	}
 	option = {
 		trigger = {
 			event_target:awakened_machine_empire = { has_country_flag = fallen_machine_empire_awaken_2 }
-			NOT = { has_civic = civic_organic_zealots }
+			is_organic_zealots = no
 		}
 		name = "fallen_machine_empire.2.b"
 	}
@@ -46,8 +46,7 @@ country_event = {
 # Innoculations
 # Modified:
 # * use triggers
-# * condense options b and c into one option (same outcome but mutually-exclusive text)
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 country_event = {
 	id = fallen_machine_empire.11
 	title = "fallen_machine_empire.11.name"
@@ -63,6 +62,7 @@ country_event = {
 	}
 	option = {
 		name = "fallen_machine_empire.11.a"
+		trigger = { is_organic_zealots = no }
 		custom_tooltip = "fallen_machine_empire.11.tooltip"
 		custom_tooltip = "fallen_machine_empire_happy_tooltip"
 		ai_chance = {
@@ -95,8 +95,7 @@ country_event = {
 				days = -1
 			}
 		}
-		else_if = {
-			limit = { is_xenophobe = no }
+		else = {
 			add_modifier = {
 				modifier = machine_empire_inoculations
 				days = -1
@@ -112,29 +111,47 @@ country_event = {
 		}
 	}
 	option = {
-		name = {
-			text = "fallen_machine_empire.11.b"
-			trigger = {
-				is_xenophobe = yes
-				NOT = { has_civic = civic_organic_zealots }
+		trigger = {
+			OR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
 			}
+			is_organic_zealots = no
 		}
-		name = {
-			text = "fallen_machine_empire.11.c"
-			trigger = {
-				is_xenophobe = no
-				NOT = { has_civic = civic_organic_zealots }
-			}
-		}
-		name = {
-			text = "fallen_machine_empire.11.b.organic_zealots"
-			trigger = { has_civic = civic_organic_zealots }
-		}
+		name = "fallen_machine_empire.11.b"
 		custom_tooltip = "fallen_machine_empire_unhappy_tooltip"
-		trigger = { is_xenophobe = yes }
-		ai_chance = {
-			factor = 10
+		ai_chance = { factor = 10 }
+		hidden_effect = {
+			event_target:FallenEmpireTaskOrigin = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
 		}
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "fallen_machine_empire.11.b.organic_zealots"
+		custom_tooltip = "fallen_machine_empire_unhappy_tooltip"
+		ai_chance = { factor = 10 }
+		hidden_effect = {
+			event_target:FallenEmpireTaskOrigin = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			is_xenophobe = no
+			is_organic_zealots = no
+		}
+		name = "fallen_machine_empire.11.c"
+		custom_tooltip = "fallen_machine_empire_unhappy_tooltip"
+		ai_chance = { factor = 10 }
 		hidden_effect = {
 			event_target:FallenEmpireTaskOrigin = {
 				add_opinion_modifier = {
@@ -148,7 +165,7 @@ country_event = {
 
 # Attack an empire
 # Modified:
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 # * organic zealots can only choose option a (agree) if the target is a synthetic/machine empire
 country_event = {
 	id = fallen_machine_empire.41
@@ -164,20 +181,8 @@ country_event = {
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
 	option = {
-		name = {
-			text = "fallen_machine_empire.41.a"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
-		}
-		name = {
-			text = "fallen_machine_empire.41.a.organic_zealots"
-			trigger = { has_civic = civic_organic_zealots }
-		}
-		allow = {
-			OR = {
-				NOT = { has_civic = civic_organic_zealots }
-				event_target:FallenEmpireTaskTarget = { is_synthetic_empire = yes }
-			}
-		}
+		trigger = { is_organic_zealots = no }
+		name = "fallen_machine_empire.41.a"
 		ai_chance = {
 			factor = 90
 		}
@@ -194,22 +199,33 @@ country_event = {
 			}
 			event_target:FallenEmpireTaskOrigin = { set_country_flag = fe_task_attack_empire_origin }
 			event_target:FallenEmpireTaskTarget = { set_country_flag = fe_task_attack_empire_target }
-			remove_country_flag = fe_task_given
 		}
 	}
 	option = {
-		name = {
-			text = "fallen_machine_empire.41.b"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
+		trigger = { has_civic = civic_organic_zealots }
+		allow = { event_target:FallenEmpireTaskTarget = { is_synthetic_empire = yes } }
+		name = "fallen_machine_empire.41.a.organic_zealots"
+		ai_chance = { factor = 90 }
+		begin_event_chain = {
+			event_chain = fe_attack_empire_task_chain
+			target = root
 		}
-		name = {
-			text = "fallen_machine_empire.41.b.organic_zealots"
-			trigger = { has_civic = civic_organic_zealots }
+		hidden_effect = {
+			set_global_flag = fe_task_attack_empire_active
+			set_country_flag = fe_task_attack_empire
+			set_timed_country_flag = {
+				flag = fe_task_attack_empire_timer
+				days = 7200
+			}
+			event_target:FallenEmpireTaskOrigin = { set_country_flag = fe_task_attack_empire_origin }
+			event_target:FallenEmpireTaskTarget = { set_country_flag = fe_task_attack_empire_target }
 		}
+	}
+	option = {
+		trigger = { is_organic_zealots = no }
+		name = "fallen_machine_empire.41.b"
 		custom_tooltip = "fallen_machine_empire_unhappy_tooltip"
-		ai_chance = {
-			factor = 10
-		}
+		ai_chance = { factor = 10 }
 		hidden_effect = {
 			event_target:FallenEmpireTaskOrigin = {
 				add_opinion_modifier = {
@@ -217,13 +233,27 @@ country_event = {
 					modifier = opinion_refused_fallen_empire_task
 				}
 			}
-			remove_country_flag = fe_task_given
 		}
 	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "fallen_machine_empire.41.b.organic_zealots"
+		custom_tooltip = "fallen_machine_empire_unhappy_tooltip"
+		ai_chance = { factor = 10 }
+		hidden_effect = {
+			event_target:FallenEmpireTaskOrigin = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_task
+				}
+			}
+		}
+	}
+	after = { hidden_effect = { remove_country_flag = fe_task_given } }
 }
 
 # Attack an empire: success
-# Modified: alternate option text for organic zealots
+# Modified: custom option for organic zealots
 country_event = {
 	id = fallen_machine_empire.42
 	title = "fallen_machine_empire.42.name"
@@ -261,15 +291,16 @@ country_event = {
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
 	option = {
-		name = {
-			text = "fallen_machine_empire.42.a"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
-		}
-		name = {
-			text = "fallen_machine_empire.42.a.organic_zealots"
-			trigger = { has_civic = civic_organic_zealots }
-		}
+		trigger = { is_organic_zealots = no }
+		name = "fallen_machine_empire.42.a"
 		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "fallen_machine_empire.42.a.organic_zealots"
+		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
+	}
+	after = {
 		hidden_effect = {
 			event_target:FallenEmpireTaskOrigin = {
 				add_opinion_modifier = {
@@ -287,7 +318,7 @@ country_event = {
 }
 
 # Attack an empire: failure - timer ran out
-# Modified: alternate option text for organic zealots
+# Modified: custom option for organic zealots
 country_event = {
 	id = fallen_machine_empire.43
 	title = "fallen_machine_empire.43.name"
@@ -322,15 +353,16 @@ country_event = {
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
 	option = {
-		name = {
-			text = "fallen_machine_empire.43.a"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
-		}
-		name = {
-			text = "fallen_machine_empire.43.a.organic_zealots"
-			trigger = { has_civic = civic_organic_zealots }
-		}
+		trigger = { is_organic_zealots = no }
+		name = "fallen_machine_empire.43.a"
 		custom_tooltip = "fallen_machine_empire_unhappy_task_tooltip"
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "fallen_machine_empire.43.a.organic_zealots"
+		custom_tooltip = "fallen_machine_empire_unhappy_task_tooltip"
+	}
+	after = {
 		hidden_effect = {
 			event_target:FallenEmpireTaskOrigin = {
 				add_opinion_modifier = {
@@ -349,7 +381,7 @@ country_event = {
 
 # Colonize a planet
 # Modified:
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 # * organic zealots cannot choose option a (agree)
 country_event = {
 	id = fallen_machine_empire.51
@@ -365,11 +397,9 @@ country_event = {
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
 	option = {
+		allow = { is_organic_zealots = no }
 		name = "fallen_machine_empire.51.a"
-		allow = { NOT = { has_civic = civic_organic_zealots } }
-		ai_chance = {
-			factor = 90
-		}
+		ai_chance = { factor = 90 }
 		begin_event_chain = {
 			event_chain = fe_colonize_planet_task_chain
 			target = root
@@ -383,22 +413,13 @@ country_event = {
 			}
 			event_target:FallenEmpireTaskOrigin = { set_country_flag = fe_task_colonize_planet_origin }
 			event_target:FallenEmpireTaskTarget = { set_planet_flag = fe_task_colonize_planet_target }
-			remove_country_flag = fe_task_given
 		}
 	}
 	option = {
-		name = {
-			text = "fallen_machine_empire.51.b"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
-		}
-		name = {
-			text = "fallen_machine_empire.51.b.organic_zealots"
-			trigger = { has_civic = civic_organic_zealots }
-		}
+		trigger = { is_organic_zealots = no }
+		name = "fallen_machine_empire.51.b"
 		custom_tooltip = "fallen_machine_empire_unhappy_tooltip"
-		ai_chance = {
-			factor = 10
-		}
+		ai_chance = { factor = 10 }
 		hidden_effect = {
 			event_target:FallenEmpireTaskOrigin = {
 				add_opinion_modifier = {
@@ -406,13 +427,27 @@ country_event = {
 					modifier = opinion_refused_fallen_empire_task
 				}
 			}
-			remove_country_flag = fe_task_given
 		}
 	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "fallen_machine_empire.51.b.organic_zealots"
+		custom_tooltip = "fallen_machine_empire_unhappy_tooltip"
+		ai_chance = { factor = 10 }
+		hidden_effect = {
+			event_target:FallenEmpireTaskOrigin = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_task
+				}
+			}
+		}
+	}
+	after = { hidden_effect = { remove_country_flag = fe_task_given } }
 }
 
 # Stop declaring war
-# Modified: alternate option text for organic zealots
+# Modified: custom option for organic zealots
 country_event = {
 	id = fallen_machine_empire.61
 	title = "fallen_machine_empire.61.name"
@@ -427,14 +462,14 @@ country_event = {
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
 	option = {
-		name = {
-			text = "fallen_machine_empire.61.a"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
-		}
-		name = {
-			text = "fallen_machine_empire.61.a.organic_zealots"
-			trigger = { has_civic = civic_organic_zealots }
-		}
+		trigger = { is_organic_zealots = no }
+		name = "fallen_machine_empire.61.a"
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "fallen_machine_empire.61.a.organic_zealots"
+	}
+	after = {
 		begin_event_chain = {
 			event_chain = fe_no_wars_task_chain
 			target = root
@@ -453,7 +488,7 @@ country_event = {
 }
 
 # Stop declaring war: success
-# Modified: alternate option text for organic zealots
+# Modified: custom option for organic zealots
 country_event = {
 	id = fallen_machine_empire.62
 	title = "fallen_machine_empire.62.name"
@@ -483,15 +518,16 @@ country_event = {
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
 	option = {
-		name = {
-			text = "fallen_machine_empire.62.a"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
-		}
-		name = {
-			text = "fallen_machine_empire.62.a.organic_zealots"
-			trigger = { has_civic = civic_organic_zealots }
-		}
+		trigger = { is_organic_zealots = no }
+		name = "fallen_machine_empire.62.a"
 		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "fallen_machine_empire.62.a.organic_zealots"
+		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
+	}
+	after = {
 		hidden_effect = {
 			event_target:FallenEmpireTaskOrigin = {
 				add_opinion_modifier = {
@@ -508,7 +544,7 @@ country_event = {
 }
 
 # Stop declaring war: failure
-# Modified: alternate option text for organic zealots
+# Modified: custom option for organic zealots
 country_event = {
 	id = fallen_machine_empire.63
 	title = "fallen_machine_empire.63.name"
@@ -520,9 +556,7 @@ country_event = {
 		is_at_war = yes
 		any_war = { is_war_participant = { who = root side = attackers } }
 	}
-	mean_time_to_happen = {
-		days = 10
-	}
+	mean_time_to_happen = { days = 10 }
 	immediate = {
 		remove_global_flag = fe_task_no_wars_active
 		random_country = {
@@ -540,15 +574,16 @@ country_event = {
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
 	option = {
-		name = {
-			text = "fallen_machine_empire.63.a"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
-		}
-		name = {
-			text = "fallen_machine_empire.63.a.organic_zealots"
-			trigger = { has_civic = civic_organic_zealots }
-		}
+		trigger = { is_organic_zealots = no }
+		name = "fallen_machine_empire.63.a"
 		custom_tooltip = "fallen_machine_empire_angry_task_tooltip"
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "fallen_machine_empire.63.a.organic_zealots"
+		custom_tooltip = "fallen_machine_empire_angry_task_tooltip"
+	}
+	after = {
 		hidden_effect = {
 			event_target:FallenEmpireTaskOrigin = {
 				add_opinion_modifier = {
@@ -659,7 +694,7 @@ country_event = {
 }
 
 # Stop colonizing planets
-# Modified: alternate option text for organic zealots
+# Modified: custom option for organic zealots
 country_event = {
 	id = fallen_machine_empire.71
 	title = "fallen_machine_empire.71.name"
@@ -674,7 +709,14 @@ country_event = {
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
 	option = {
+		trigger = { is_organic_zealots = no }
 		name = "fallen_machine_empire.71.a"
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "fallen_machine_empire.71.a.organic_zealots"
+	}
+	after = {
 		begin_event_chain = {
 			event_chain = fe_no_colonies_task_chain
 			target = root
@@ -687,13 +729,13 @@ country_event = {
 				days = 3600
 			}
 			event_target:FallenEmpireTaskOrigin = { set_country_flag = fe_task_no_colonies_origin }
+			remove_country_flag = fe_task_given
 		}
-		hidden_effect = { remove_country_flag = fe_task_given }
 	}
 }
 
 # Stop colonizing planets: success
-# Modified: alternate option text for organic zealots
+# Modified: custom option for organic zealots
 country_event = {
 	id = fallen_machine_empire.72
 	title = "fallen_machine_empire.72.name"
@@ -703,9 +745,7 @@ country_event = {
 		has_country_flag = fe_task_no_colonies
 		NOT = { has_country_flag = fe_task_no_colonies_timer }
 	}
-	mean_time_to_happen = {
-		days = 10
-	}
+	mean_time_to_happen = { days = 10 }
 	immediate = {
 		remove_global_flag = fe_task_no_colonies_active
 		random_country = {
@@ -723,15 +763,16 @@ country_event = {
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
 	option = {
-		name = {
-			text = "fallen_machine_empire.72.a"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
-		}
-		name = {
-			text = "fallen_machine_empire.72.a.organic_zealots"
-			trigger = { has_civic = civic_organic_zealots }
-		}
+		trigger = { is_organic_zealots = no }
+		name = "fallen_machine_empire.72.a"
 		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "fallen_machine_empire.72.a.organic_zealots"
+		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
+	}
+	after = {
 		hidden_effect = {
 			event_target:FallenEmpireTaskOrigin = {
 				add_opinion_modifier = {
@@ -748,7 +789,7 @@ country_event = {
 }
 
 # Stop colonizing planets: failure
-# Modified: alternate option text for organic zealots
+# Modified: custom option for organic zealots
 country_event = {
 	id = fallen_machine_empire.73
 	title = "fallen_machine_empire.73.name"
@@ -779,15 +820,17 @@ country_event = {
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
 	option = {
-		name = {
-			text = "fallen_machine_empire.73.a"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
-		}
-		name = {
-			text = "fallen_machine_empire.73.a.organic_zealots"
-			trigger = { has_civic = civic_organic_zealots }
-		}
+		trigger = { is_organic_zealots = no }
+		name = "fallen_machine_empire.73.a"
 		custom_tooltip = "fallen_machine_empire_angry_task_tooltip"
+	}
+	
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "fallen_machine_empire.73.a.organic_zealots"
+		custom_tooltip = "fallen_machine_empire_angry_task_tooltip"
+	}
+	after = {
 		hidden_effect = {
 			event_target:FallenEmpireTaskOrigin = {
 				add_opinion_modifier = {

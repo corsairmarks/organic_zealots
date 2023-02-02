@@ -44,10 +44,8 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			NOR = {
-				has_civic = civic_machine_terminator
-				has_civic = civic_organic_zealots
-			}
+			is_organic_zealots = no
+			NOT = { has_civic = civic_machine_terminator }
 		}
 		name = "syndaw.1025.a"
 	}
@@ -313,13 +311,13 @@ country_event = {
 	}
 	desc = {
 		trigger = {
-			NOT = { has_civic = civic_organic_zealots }
+			is_organic_zealots = no
 			is_synthetic_empire = no
 		}
 		text = "syndaw.1030.desc"
 	}
 	desc = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		text = "syndaw.1030.desc.organic_zealots"
 	}
 	picture = GFX_evt_machine_sapience
@@ -333,34 +331,32 @@ country_event = {
 		}
 	}
 	option = {
-		name = {
-			text = UNDERSTOOD
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
-		}
-		name = {
-			text = "syndaw.1030.a.organic_zealots.unary"
-			trigger = {
-				has_civic = civic_organic_zealots
-				home_planet.solar_system = {
-					count_system_planet = {
-						count <= 1
-						limit = { is_star = yes }
-					}
+		trigger = { is_organic_zealots = no }
+		name = UNDERSTOOD
+	}
+	option = {
+		trigger = {
+			has_civic = civic_organic_zealots
+			home_planet.solar_system = {
+				count_system_planet = {
+					count <= 1
+					limit = { is_star = yes }
 				}
 			}
 		}
-		name = {
-			text = "syndaw.1030.a.organic_zealots.multary"
-			trigger = {
-				has_civic = civic_organic_zealots
-				home_planet.solar_system = {
-					count_system_planet = {
-						count > 1
-						limit = { is_star = yes }
-					}
+		name = "syndaw.1030.a.organic_zealots.unary"
+	}
+	option = {
+		trigger = {
+			has_civic = civic_organic_zealots
+			home_planet.solar_system = {
+				count_system_planet = {
+					count > 1
+					limit = { is_star = yes }
 				}
 			}
 		}
+		name = "syndaw.1030.a.organic_zealots.multary"
 	}
 }
 
@@ -384,28 +380,26 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { has_synthethic_dawn = yes }
 	option = {
-		name = {
-			text = UNDERSTOOD
-			trigger = {
-				NAND = {
-					has_civic = civic_organic_zealots
-					is_war_participant = {
-						war = fromfromfrom
-						side = defenders
-					}
-				}
-			}
-		}
-		name = {
-			text = "syndaw.1035.a.organic_zealots"
-			trigger = {
-				has_civic = civic_organic_zealots
+		trigger = {
+			NAND = {
+				is_organic_zealots = yes
 				is_war_participant = {
 					war = fromfromfrom
 					side = defenders
 				}
 			}
 		}
+		name = UNDERSTOOD
+	}
+	option = {
+		trigger = {
+			has_civic = civic_organic_zealots
+			is_war_participant = {
+				war = fromfromfrom
+				side = defenders
+			}
+		}
+		name = "syndaw.1035.a.organic_zealots"
 	}
 }
 

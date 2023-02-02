@@ -5,15 +5,11 @@ ship_event = {
 	title = "anomaly.4030.name"
 	desc = {
 		text = "anomaly.4030.desc"
-		trigger = {
-			owner = { NOT = { has_civic = civic_organic_zealots } }
-		}
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "anomaly.4030.desc.organic_zealots"
-		trigger = {
-			owner = { has_civic = civic_organic_zealots }
-		}
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_archaeological_dig
 	show_sound = event_sensor_ping
@@ -30,9 +26,7 @@ ship_event = {
 	}
 	option = {
 		name = "anomaly.4030.a"
-		trigger = {
-			hidden:owner = { NOT = { has_civic = civic_organic_zealots } }
-		}
+		trigger = { hidden:owner = { is_organic_zealots = no } }
 		from = {
 			enable_special_project = {
 				name = "AI_ADMIRAL_PROJECT"
@@ -43,9 +37,7 @@ ship_event = {
 	}
 	option = {
 		name = "anomaly.4030.b"
-		trigger = {
-			hidden:owner = { NOT = { has_civic = civic_organic_zealots } }
-		}
+		trigger = { hidden:owner = { is_organic_zealots = no } }
 		custom_tooltip = "anomaly.4030.b.tooltip"
 		hidden_effect = {
 			from = {
@@ -59,9 +51,7 @@ ship_event = {
 	}
 	option = {
 		name = "anomaly.4030.c.organic_zealots"
-		trigger = {
-			owner = { has_civic = civic_organic_zealots }
-		}
+		trigger = { owner = { has_civic = civic_organic_zealots } }
 		custom_tooltip = "anomaly.4030.b.tooltip"
 		hidden_effect = {
 			from = {
@@ -97,7 +87,7 @@ ship_event = {
 		trigger = {
 			owner = {
 				is_machine_empire = no
-				NOT = { has_civic = civic_organic_zealots }
+				is_organic_zealots = no
 			}
 		}
 		text = "anomaly.4105.desc"
@@ -106,7 +96,7 @@ ship_event = {
 		trigger = {
 			owner = {
 				is_machine_empire = no
-				has_civic = civic_organic_zealots
+				is_organic_zealots = yes
 			}
 		}
 		text = "anomaly.4105.desc.organic_zealots"
@@ -135,15 +125,13 @@ ship_event = {
 		from = { clear_deposits = yes }
 	}
 	option = {
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		name = {
-			text = "anomaly.4105.a"
-			trigger = { owner = { is_machine_empire = no } }
+		trigger = {
+			hidden:owner = {
+				is_machine_empire = no
+				is_organic_zealots = no
+			}
 		}
-		name = {
-			text = "anomaly.4105.a.mach"
-			trigger = { owner = { is_machine_empire = yes } }
-		}
+		name = "anomaly.4105.a"
 		if = {
 			limit = { owner = { has_country_flag = edict_renewable_energy } }
 			custom_tooltip = "anomaly.4105.a.tooltip"
@@ -152,7 +140,32 @@ ship_event = {
 			custom_tooltip = "anomaly.4105.b.tooltip"
 			hidden_effect = { owner = { set_country_flag = edict_renewable_energy } }
 		}
-		custom_tooltip = "anomaly.4105.a.tooltip"
+		hidden_effect = {
+			from = {
+				add_deposit = d_engineering_6
+				add_modifier = {
+					modifier = fallen_robots
+					days = -1
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+				is_organic_zealots = no
+			}
+		}
+		name = "anomaly.4105.a.mach"
+		if = {
+			limit = { owner = { has_country_flag = edict_renewable_energy } }
+			custom_tooltip = "anomaly.4105.a.tooltip"
+		}
+		else = {
+			custom_tooltip = "anomaly.4105.b.tooltip"
+			hidden_effect = { owner = { set_country_flag = edict_renewable_energy } }
+		}
 		hidden_effect = {
 			from = {
 				add_deposit = d_engineering_6
@@ -186,7 +199,7 @@ ship_event = {
 	}
 	option = {
 		trigger = {
-			hidden_trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+			hidden:owner = { is_organic_zealots = no }
 			leader = {
 				OR = {
 					has_trait = leader_trait_inspired_surveyor

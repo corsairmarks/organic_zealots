@@ -4,7 +4,7 @@ namespace = first_contact
 # Modified:
 # * fix errant is_machine_empire trigger
 # * add custom description for organic zealots vs machines
-# * custom option name for organic zealots vs machines
+# * custom option for organic zealots vs machines
 first_contact_event = {
 	id = first_contact.5035
 	title = first_contact.5035.name
@@ -15,14 +15,14 @@ first_contact_event = {
 	desc = {
 		text = "first_contact.5035.desc.machine"
 		trigger = {
-			owner = { NOT = { has_civic = civic_organic_zealots } }
+			owner = { is_organic_zealots = no }
 			contact_country = { is_synthetic_empire = yes }
 		}
 	}
 	desc = {
 		text = "first_contact.5035.desc.machine.organic_zealots"
 		trigger = {
-			owner = { has_civic = civic_organic_zealots }
+			owner = { is_organic_zealots = yes }
 			contact_country = { is_synthetic_empire = yes }
 		}
 	}
@@ -48,26 +48,15 @@ first_contact_event = {
 		set_site_progress_locked = yes
 		set_first_contact_flag = seen_aliens
 	}
-	after = {
-		set_site_progress_locked = no
-	}
+	after = { set_site_progress_locked = no }
 	option = {
-		name = {
-			text = "first_contact.5035.A"
-			trigger = {
-				NAND = {
-					owner = { has_civic = civic_organic_zealots }
-					contact_country = { is_synthetic_empire = yes }
-				}
+		trigger = {
+			OR = {
+				owner = { is_organic_zealots = no }
+				contact_country = { is_synthetic_empire = no }
 			}
 		}
-		name = {
-			text = "first_contact.5035.A.organic_zealots"
-			trigger = {
-				owner = { has_civic = civic_organic_zealots }
-				contact_country = { is_synthetic_empire = yes }
-			}
-		}
+		name = "first_contact.5035.A"
 		hidden_effect = {
 			owner = {
 				add_opinion_modifier = {
@@ -93,16 +82,36 @@ first_contact_event = {
 				}
 			}
 		}
-		ai_chance = {
-			factor = 2
+		ai_chance = { factor = 2 }
+	}
+	option = {
+		trigger = {
+			owner = { has_civic = civic_organic_zealots }
+			contact_country = { is_synthetic_empire = yes }
 		}
+		name = "first_contact.5035.A.organic_zealots"
+		hidden_effect = {
+			owner = {
+				add_opinion_modifier = {
+					who = root.contact_country
+					modifier = opinion_first_contact_repulsive_aliens
+				}
+			}
+		}
+		owner = {
+			add_modifier = {
+				modifier = robot_revulsion
+				days = 3600
+			}
+		}
+		ai_chance = { factor = 2 }
 	}
 	option = {
 		name = "first_contact.5035.B"
 		allow = {
-			NAND = {
-				owner = { has_civic = civic_organic_zealots }
-				contact_country = { is_synthetic_empire = yes }
+			OR = {
+				owner = { is_organic_zealots = no }
+				contact_country = { is_synthetic_empire = no }
 			}
 		}
 		if = {

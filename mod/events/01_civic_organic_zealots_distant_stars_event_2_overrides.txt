@@ -9,11 +9,11 @@ ship_event = {
 	title = "distar.1040.name"
 	desc = {
 		text = "distar.1040.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "distar.1040.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_sapient_AI
 	show_sound = event_alien_signal
@@ -27,11 +27,11 @@ ship_event = {
 			}
 		}
 	}
+	after = { hidden_effect = { owner = { pop_lcluster_event = yes } } }
 	option = {
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		name = "distar.1040.a"
 		custom_tooltip = "distar.1040.a.tooltip"
-		hidden_effect = { owner = { pop_lcluster_event = yes } }
 		owner = {
 			add_resource = {
 				alloys = 100
@@ -41,10 +41,9 @@ ship_event = {
 		}
 	}
 	option = {
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		name = "distar.1040.b"
 		custom_tooltip = "distar.1040.b.tooltip"
-		hidden_effect = { owner = { pop_lcluster_event = yes } }
 		owner = {
 			add_modifier = {
 				modifier = mega_computer
@@ -53,10 +52,9 @@ ship_event = {
 		}
 	}
 	option = {
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		name = "distar.1040.c"
 		custom_tooltip = "distar.1040.c.tooltip"
-		hidden_effect = { owner = { pop_lcluster_event = yes } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -69,7 +67,6 @@ ship_event = {
 	option = {
 		trigger = { owner = { has_civic = civic_organic_zealots } }
 		name = CLEANSE_FROM_ORBIT
-		hidden_effect = { owner = { pop_lcluster_event = yes } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -114,7 +111,7 @@ country_event = {
 					limit = { NOT = { has_modifier = enigmatic_cache_in_orbit } }
 					add_modifier = { modifier = enigmatic_cache_in_orbit }
 					if = {
-						limit = { owner = { has_civic = civic_organic_zealots } }
+						limit = { owner = { is_organic_zealots = yes } }
 						every_owned_pop = {
 							limit = {
 								pop_has_happiness = yes
@@ -166,7 +163,7 @@ planet_event = {
 		text = "distar.5057.desc"
 		trigger = {
 			owner = {
-				NOT = { has_civic = civic_organic_zealots }
+				is_organic_zealots = no
 				is_xenophobe = no
 			}
 		}
@@ -177,7 +174,8 @@ planet_event = {
 			owner = {
 				OR = {
 					has_civic = civic_organic_zealots
-					is_xenophobe = yes
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_fanatic_xenophobe
 				}
 			}
 		}
@@ -186,17 +184,11 @@ planet_event = {
 	show_sound = event_mystic_reveal
 	location = root
 	is_triggered_only = yes
-	pre_triggers = {
-		has_owner = yes
-	}
-	trigger = {
-		owner = { NOT = { has_country_flag = discovered_enigmatic_cache } }
-	}
-	immediate = {
-		owner = { set_country_flag = discovered_enigmatic_cache }
-	}
+	pre_triggers = { has_owner = yes }
+	trigger = { owner = { NOT = { has_country_flag = discovered_enigmatic_cache } } }
+	immediate = { owner = { set_country_flag = discovered_enigmatic_cache } }
 	option = {
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		name = "distar.5057.a"
 		enable_special_project = {
 			name = "ENIGMATIC_CACHE_PROJECT"
@@ -205,26 +197,26 @@ planet_event = {
 		}
 	}
 	option = {
-		name = {
-			text = "distar.5057.b"
-			trigger = {
-				owner = {
-					NOT = { has_civic = civic_organic_zealots }
-					is_xenophobe = no
+		trigger = {
+			owner = {
+				is_organic_zealots = no
+				is_xenophobe = no
+			}
+		}
+		name = "distar.5057.b"
+		owner = { add_resource = { influence = 50 } }
+	}
+	option = {
+		trigger = {
+			owner = {
+				OR = {
+					has_civic = civic_organic_zealots
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_fanatic_xenophobe
 				}
 			}
 		}
-		name = {
-			text = "distar.5057.phobe"
-			trigger = {
-				owner = {
-					OR = {
-						has_civic = civic_organic_zealots
-						is_xenophobe = yes
-					}
-				}
-			}
-		}
+		name = "distar.5057.phobe"
 		owner = { add_resource = { influence = 50 } }
 	}
 }
@@ -248,20 +240,12 @@ planet_event = {
 	show_sound = event_mystic_reveal
 	location = this
 	is_triggered_only = yes
-	pre_triggers = {
-		has_owner = yes
-	}
-	trigger = {
-		owner = { NOT = { has_country_flag = cache_has_changed_location } }
-	}
-	immediate = {
-		owner = { set_country_flag = cache_has_changed_location }
-	}
+	pre_triggers = { has_owner = yes }
+	trigger = { owner = { NOT = { has_country_flag = cache_has_changed_location } } }
+	immediate = { owner = { set_country_flag = cache_has_changed_location } }
+	option = { name = "distar.5059.a" }
 	option = {
-		name = "distar.5059.a"
-	}
-	option = {
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		name = "distar.5059.b"
 	}
 }

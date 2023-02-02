@@ -16,9 +16,7 @@ country_event = {
 	picture = GFX_evt_gray_goo_ships
 	show_sound = event_radio_chatter
 	is_triggered_only = yes
-	immediate = {
-		set_country_flag = gray_goo_instigator
-	}
+	immediate = { set_country_flag = gray_goo_instigator }
 	option = {
 		name = "graygoo.10.a"
 		hidden_effect = {
@@ -38,9 +36,7 @@ country_event = {
 	picture = GFX_evt_gray_goo_ships
 	show_sound = event_radio_chatter
 	is_triggered_only = yes
-	immediate = {
-		set_country_flag = gray_goo_aspirant
-	}
+	immediate = { set_country_flag = gray_goo_aspirant }
 	option = {
 		name = "graygoo.10.a"
 		hidden_effect = {
@@ -60,9 +56,7 @@ country_event = {
 	picture = GFX_evt_gray_goo_ships
 	show_sound = event_radio_chatter
 	is_triggered_only = yes
-	immediate = {
-		set_country_flag = gray_goo_bystander
-	}
+	immediate = { set_country_flag = gray_goo_bystander }
 	option = {
 		name = "graygoo.10.a"
 		hidden_effect = {
@@ -80,9 +74,7 @@ country_event = {
 	title = "TRANSMISSION"
 	desc = "graygoo.12.desc"
 	diplomatic = yes
-	picture_event_data = {
-		room = no_video_feed_room
-	}
+	picture_event_data = { room = no_video_feed_room }
 	is_triggered_only = yes
 	option = {
 		name = "graygoo.12.a"
@@ -100,24 +92,22 @@ country_event = {
 		is_dialog_only = yes
 	}
 	option = {
-		name = {
-			text = "graygoo.12.d"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
+		trigger = { is_organic_zealots = no }
+		name = "graygoo.12.d"
+	}
+	option = {
+		trigger = {
+			has_civic = civic_organic_zealots
+			hidden_trigger = { NOT = { has_country_flag = gray_goo_instigator } }
 		}
-		name = {
-			text = "graygoo.12.d.organic_zealots"
-			trigger = {
-				has_civic = civic_organic_zealots
-				hidden_trigger = { NOT = { has_country_flag = gray_goo_instigator } }
-			}
+		name = "graygoo.12.d.organic_zealots"
+	}
+	option = {
+		trigger = {
+			has_civic = civic_organic_zealots
+			hidden_trigger = { has_country_flag = gray_goo_instigator }
 		}
-		name = {
-			text = "graygoo.12.d.organic_zealots.instigator"
-			trigger = {
-				has_civic = civic_organic_zealots
-				hidden_trigger = { has_country_flag = gray_goo_instigator }
-			}
-		}
+		name = "graygoo.12.d.organic_zealots.instigator"
 	}
 }
 
@@ -131,28 +121,26 @@ country_event = {
 	show_sound = event_celebration
 	location = event_target:goo_slayer_ship.fleet
 	is_triggered_only = yes
-	immediate = {
-		set_global_flag = graygoo_defeated
+	immediate = { set_global_flag = graygoo_defeated }
+	option = {
+		trigger = { is_organic_zealots = no }
+		name = "graygoo.15.a"
+		custom_tooltip = "graygoo.15.a.tooltip"
 	}
 	option = {
-		name = {
-			text = "graygoo.15.a"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
+		trigger = {
+			has_civic = civic_organic_zealots
+			hidden_trigger = { NOT = { has_country_flag = gray_goo_instigator } }
 		}
-		name = {
-			text = "graygoo.15.a.organic_zealots"
-			trigger = {
-				has_civic = civic_organic_zealots
-				hidden_trigger = { NOT = { has_country_flag = gray_goo_instigator } }
-			}
+		name = "graygoo.15.a.organic_zealots"
+		custom_tooltip = "graygoo.15.a.tooltip"
+	}
+	option = {
+		trigger = {
+			has_civic = civic_organic_zealots
+			hidden_trigger = { has_country_flag = gray_goo_instigator }
 		}
-		name = {
-			text = "graygoo.15.a.organic_zealots.instigator"
-			trigger = {
-				has_civic = civic_organic_zealots
-				hidden_trigger = { has_country_flag = gray_goo_instigator }
-			}
-		}
+		name = "graygoo.15.a.organic_zealots.instigator"
 		custom_tooltip = "graygoo.15.a.tooltip"
 	}
 }
@@ -169,24 +157,24 @@ country_event = {
 	show_sound = event_celebration
 	is_triggered_only = yes
 	option = {
-		name = {
-			text = GOOD
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
+		trigger = { is_organic_zealots = no }
+		name = GOOD
+		custom_tooltip = "graygoo.15.a.tooltip"
+	}
+	option = {
+		trigger = {
+			has_civic = civic_organic_zealots
+			hidden_trigger = { NOT = { has_country_flag = gray_goo_instigator } }
 		}
-		name = {
-			text = "graygoo.16.a.organic_zealots"
-			trigger = {
-				has_civic = civic_organic_zealots
-				hidden_trigger = { NOT = { has_country_flag = gray_goo_instigator } }
-			}
+		name = "graygoo.16.a.organic_zealots"
+		custom_tooltip = "graygoo.15.a.tooltip"
+	}
+	option = {
+		trigger = {
+			has_civic = civic_organic_zealots
+			hidden_trigger = { has_country_flag = gray_goo_instigator }
 		}
-		name = {
-			text = "graygoo.16.a.organic_zealots.instigator"
-			trigger = {
-				has_civic = civic_organic_zealots
-				hidden_trigger = { has_country_flag = gray_goo_instigator }
-			}
-		}
+		name = "graygoo.16.a.organic_zealots.instigator"
 		custom_tooltip = "graygoo.15.a.tooltip"
 	}
 }
@@ -204,7 +192,7 @@ country_event = {
 	}
 	is_triggered_only = yes
 	option = {
-		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		trigger = { is_organic_zealots = no }
 		name = "graygoo.403.a"
 		hidden_effect = {
 			country_event = {

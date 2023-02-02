@@ -14,7 +14,7 @@ country_event = {
 	option = {
 		name = {
 			text = "crisis.2402.a"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
+			trigger = { is_organic_zealots = no }
 		}
 		name = {
 			text = "crisis.2402.a.organic_zealots"
@@ -58,7 +58,7 @@ country_event = {
 	}
 	option = {
 		name = "crisis.2403.a"
-		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		trigger = { is_organic_zealots = no }
 		is_dialog_only = yes
 		response_text = "crisis.2403.a.response"
 	}
@@ -70,7 +70,7 @@ country_event = {
 	}
 	option = {
 		name = "crisis.2403.b"
-		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		trigger = { is_organic_zealots = no }
 		is_dialog_only = yes
 		response_text = "crisis.2403.b.response"
 	}
@@ -129,17 +129,15 @@ country_event = {
 	option = {
 		name = DISCONCERTING
 		trigger = {
-			NOR = {
-				is_same_value = event_target:killer
-				has_civic = civic_organic_zealots
-			}
+			NOT = { is_same_value = event_target:killer }
+			is_organic_zealots = no
 		}
 	}
 	option = {
 		name = EXCELLENT
 		trigger = {
 			NOT = { is_same_value = event_target:killer }
-			has_civic = civic_organic_zealots
+			has_civic = civic_organic_zealots # 
 		}
 	}
 	option = {
@@ -162,7 +160,7 @@ country_event = {
 	option = {
 		name = {
 			text = "crisis.2408.a"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
+			trigger = { is_organic_zealots = no }
 		}
 		name = {
 			text = "crisis.2408.a.organic_zealots"
@@ -213,7 +211,7 @@ country_event = {
 	option = {
 		name = "crisis.2473.a"
 		custom_tooltip = cybrex_fleet_gained
-		allow = { NOT = { has_civic = civic_organic_zealots } }
+		allow = { is_organic_zealots = no }
 		hidden_effect = {
 			capital_scope = {
 				create_fleet = {
@@ -254,7 +252,7 @@ country_event = {
 	option = {
 		name = {
 			text = "crisis.2473.b"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
+			trigger = { is_organic_zealots = no }
 		}
 		name = {
 			text = "crisis.2473.b.organic_zealots"
@@ -272,17 +270,17 @@ country_event = {
 	title = "crisis.2480.name"
 	desc = {
 		text = "crisis.2480.desc"
-		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		trigger = { is_organic_zealots = no }
 	}
 	desc = {
 		text = "crisis.2480.desc.organic_zealots"
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 	}
 	picture = GFX_evt_shattered_planet
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
 	option = {
-		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		trigger = { is_organic_zealots = no }
 		name = GOOD
 		add_relic = r_contingency_core
 	}
@@ -313,7 +311,7 @@ country_event = {
 	title = "crisis.2480.name"
 	desc = {
 		text = "crisis.2481.desc"
-		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		trigger = { is_organic_zealots = no }
 	}
 	desc = {
 		text = "crisis.2481.desc.organic_zealots"
@@ -323,7 +321,7 @@ country_event = {
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
 	option = {
-		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		trigger = { is_organic_zealots = no }
 		name = GOOD
 		add_relic = r_contingency_core
 	}

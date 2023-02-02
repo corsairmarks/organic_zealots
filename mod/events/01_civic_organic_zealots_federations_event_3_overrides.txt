@@ -103,14 +103,14 @@ ship_event = {
 # Conclusion to the Zen World special project (WENKWORT_PROJECT) on Rellrait
 # Modified:
 # * alternate descriptions for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 ship_event = { 
 	id = federations3.135
 	title = "federations3.135.name"
 	desc = {
 		trigger = {
 			owner = {
-				NOT = { has_civic = civic_organic_zealots }
+				is_organic_zealots = no
 				OR = {
 					has_country_flag = human_1
 					has_country_flag = human_2
@@ -123,8 +123,8 @@ ship_event = {
 	desc = {
 		trigger = {
 			owner = {
+				is_organic_zealots = no
 				NOR = {
-					has_civic = civic_organic_zealots
 					has_country_flag = human_1
 					has_country_flag = human_2
 				}
@@ -136,7 +136,7 @@ ship_event = {
 	desc = {
 		trigger = {
 			owner = {
-				has_civic = civic_organic_zealots
+				is_organic_zealots = yes
 				OR = {
 					has_country_flag = human_1
 					has_country_flag = human_2
@@ -149,7 +149,7 @@ ship_event = {
 	desc = {
 		trigger = {
 			owner = {
-				has_civic = civic_organic_zealots
+				is_organic_zealots = yes
 				NOR = {
 					has_country_flag = human_1
 					has_country_flag = human_2
@@ -164,14 +164,14 @@ ship_event = {
 	location = event_target:wenkwort_rellrait
 	is_triggered_only = yes
 	option = {
-		name = {
-			text = FASCINATING
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = DISCONCERTING
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
+		name = FASCINATING
+		trigger = { owner = { is_organic_zealots = no } }
+	}
+	option = {
+		name = DISCONCERTING
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	after = {
 		event_target:wenkwort_rellrait = {
 			add_deposit = d_society_4
 			add_modifier = {
@@ -185,7 +185,7 @@ ship_event = {
 # Initial dialogue with the Keeper
 # Modified:
 # * organic zealots cannot cooperate
-# * alternate option text for organic zealots
+# * custom options for organic zealots
 planet_event = {
 	id = federations3.121
 	title = "federations3.121.name"
@@ -194,34 +194,35 @@ planet_event = {
 	show_sound = event_ancient_drone
 	diplomatic = yes
 	is_triggered_only = yes
-	pre_triggers = {
-		has_owner = yes
-	}
+	pre_triggers = { has_owner = yes }
 	picture_event_data = {
 		portrait = event_target:wenkwort_audon
 		room = "ethic_spaceship_room"
 	}
 	option = { # What?! Who..?
-		name = {
-			text = "federations3.121.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = "federations3.121.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
+		trigger = { owner = { is_organic_zealots = no } }
+		name = "federations3.121.a"
+		is_dialog_only = yes # Prevents the event window from closing, but fires the response text below
+		response_text = "federations3.121.a.response"
+	}
+	option = { # What?! Who..? (organic zealots)
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		name = "federations3.121.a.organic_zealots"
 		is_dialog_only = yes # Prevents the event window from closing, but fires the response text below
 		response_text = "federations3.121.a.response"
 	}
 	option = { # Refusal
-		name = {
-			text = "federations3.121.b"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
+		name = "federations3.121.b"
+		hidden_effect = {
+			planet_event = {
+				id = federations3.130
+			}
 		}
-		name = {
-			text = "federations3.121.b.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
+	}
+	option = { # Refusal (organic zealots)
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		name = "federations3.121.b.organic_zealots"
 		hidden_effect = {
 			planet_event = {
 				id = federations3.130
@@ -229,15 +230,13 @@ planet_event = {
 		}
 	}
 	option = { # Co-operate
-		name = "federations3.121.c"
 		trigger = {
 			owner = {
-				NOR = {
-					has_valid_civic = civic_hive_devouring_swarm
-					has_valid_civic = civic_organic_zealots
-				}
+				NOT = { has_valid_civic = civic_hive_devouring_swarm }
+				is_valid_organic_zealots = no
 			}
 		}
+		name = "federations3.121.c"
 		hidden_effect = {
 			planet_event = {
 				id = federations3.125
@@ -247,7 +246,7 @@ planet_event = {
 }
 
 # Disregard the Keeper
-# Modified: alternate option text for organic zealots
+# Modified: custom option for organic zealots
 planet_event = {
 	id = federations3.130
 	title = "federations3.121.name"
@@ -259,18 +258,16 @@ planet_event = {
 		portrait = event_target:wenkwort_audon
 		room = "ethic_spaceship_room"
 	}
-	pre_triggers = {
-		has_owner = yes
+	pre_triggers = { has_owner = yes }
+	option = {
+		trigger = { owner = { is_organic_zealots = no } }
+		name = GOODBYE
 	}
 	option = {
-		name = {
-			text = GOODBYE
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = END_TRANSMISSION
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		name = END_TRANSMISSION
+	}
+	after = {
 		hidden_effect = {
 			owner = { set_country_flag = wenkwort_defiler }
 			planet_event = {
@@ -290,12 +287,8 @@ planet_event = {
 	location = event_target:wenkwort_artem
 	diplomatic = yes
 	is_triggered_only = yes
-	pre_triggers = {
-		has_owner = yes
-	}
-	trigger = {
-		owner = { has_country_flag = wenkwort_defiler }
-	}
+	pre_triggers = { has_owner = yes }
+	trigger = { owner = { has_country_flag = wenkwort_defiler } }
 	picture_event_data = {
 		portrait = event_target:gardener_country
 		room = "ethic_spaceship_room"
@@ -374,10 +367,8 @@ planet_event = {
 		custom_tooltip = "federations3.131.tooltip"
 		trigger = {
 			owner = {
-				NOR = {
-					has_valid_civic = civic_hive_devouring_swarm
-					has_valid_civic = civic_organic_zealots
-				}
+				NOT = { has_valid_civic = civic_hive_devouring_swarm }
+				is_valid_organic_zealots = no
 			}
 		}
 		owner = { remove_country_flag = wenkwort_defiler }

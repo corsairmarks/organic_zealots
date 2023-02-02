@@ -11,31 +11,27 @@ ship_event = {
 		text = "anomaly.186.desc.v1"
 		trigger = {
 			owner = {
-				NOT = { has_civic = civic_organic_zealots }
+				is_organic_zealots = no
 				OR = {
+					is_spiritualist = yes
 					has_policy_flag = ai_outlawed
 					NOT = { has_technology = tech_synthetic_workers }
-					is_spiritualist = yes
 				}
 			}
 		}
 	}
 	desc = {
 		text = "anomaly.186.desc.organic_zealots"
-		trigger = {
-			owner = { has_civic = civic_organic_zealots }
-		}
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	desc = {
 		text = "anomaly.186.desc.v3"
 		trigger = {
 			owner = {
-				NOR = {
-					has_civic = civic_organic_zealots
-					has_policy_flag = ai_outlawed
-				}
-				has_technology = tech_synthetic_workers
+				is_organic_zealots = no
 				is_spiritualist = no
+				NOT = { has_policy_flag = ai_outlawed }
+				has_technology = tech_synthetic_workers
 			}
 		}
 	}
@@ -46,9 +42,7 @@ ship_event = {
 	trackable = yes
 	option = {
 		name = "anomaly.186.a"
-		trigger = {
-			hidden:owner = { NOT = { has_civic = civic_organic_zealots } }
-		}
+		trigger = { hidden:owner = { is_organic_zealots = no } }
 		hidden_effect = {
 			owner = {
 				country_event = {
@@ -83,12 +77,10 @@ ship_event = {
 		name = "anomaly.186.c"
 		trigger = {
 			hidden:owner = {
-				NOR = {
-					has_civic = civic_organic_zealots
-					has_policy_flag = ai_outlawed
-				}
-				has_technology = tech_synthetic_workers
+				is_organic_zealots = no
 				is_spiritualist = no
+				NOT = { has_policy_flag = ai_outlawed }
+				has_technology = tech_synthetic_workers
 			}
 		}
 		allow = { owner = { NOT = { has_policy_flag = ai_outlawed } }}
@@ -105,12 +97,13 @@ ship_event = {
 	option = {
 		name = "anomaly.186.d"
 		trigger = {
-			hidden:owner = {
-				NOT = { has_civic = civic_organic_zealots }
+			owner = {
+				is_organic_zealots = no
 				OR = {
+					has_ethic = ethic_spiritualist
+					has_ethic = ethic_fanatic_spiritualist
 					has_policy_flag = ai_outlawed
 					NOT = { has_technology = tech_synthetic_workers }
-					is_spiritualist = yes
 				}
 			}
 		}

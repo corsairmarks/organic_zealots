@@ -16,7 +16,7 @@ ship_event = {
 		owner = {
 			is_ai = no
 			has_precursor_intro = no
-			NOT = { has_valid_civic = civic_organic_zealots }
+			is_valid_organic_zealots = no
 		}
 		from = {
 			has_anomaly = no
@@ -33,9 +33,7 @@ ship_event = {
 			}
 		}
 	}
-	immediate = {
-		owner = { set_country_flag = cybrex_intro }
-	}
+	immediate = { owner = { set_country_flag = cybrex_intro } }
 	option = {
 		name = INTERESTING
 		hidden_effect = { owner = { country_event = { id = story.5 days = 30 } } }
@@ -55,7 +53,8 @@ ship_event = {
 # Modified:
 # * use triggers
 # * use else_if instead of break
-# * more corporate forms of governmetn can negotiate price (option b), not just corporate dominions
+# * more corporate forms of government can negotiate price (option b), not just corporate dominions
+# * corporate forms of government aren't shown the more expensive option
 # * not possible for organic zealots to sell a cybrex artifact
 # Neighbor Offers to Sell Artifact
 country_event = {
@@ -201,6 +200,7 @@ country_event = {
 					is_country_type = default
 					is_subject = no
 					is_gestalt = no
+					is_valid_organic_zealots = no
 					NOR = {
 						is_at_war_with = root
 						is_same_value = root
@@ -210,7 +210,6 @@ country_event = {
 						is_hostile_to = root
 						is_domineering_to = root
 						is_unfriendly_to = root
-						has_valid_civic = civic_organic_zealots
 					}
 					any_system_within_border = { has_star_flag = precursor_5 }
 				}
@@ -346,6 +345,7 @@ country_event = {
 					is_country_type = default
 					is_subject = no
 					is_gestalt = no
+					is_valid_organic_zealots = no
 					NOR = {
 						is_at_war_with = root
 						is_same_value = root
@@ -355,7 +355,6 @@ country_event = {
 						is_hostile_to = root
 						is_domineering_to = root
 						is_unfriendly_to = root
-						has_valid_civic = civic_organic_zealots
 					}
 					any_system_within_border = { has_star_flag = precursor_5 }
 				}
@@ -367,14 +366,24 @@ country_event = {
 			flag = precursor_artifact_deal
 		}
 	}
-
 	option = {
 		name = "precursor.311.a"
-		response_text = precursor.311.a.reply
-		allow = {
-			resource_stockpile_compare = { resource = energy value >= 1000 }
+		custom_tooltip = "purchase_artifact"
+		response_text = "precursor.311.a.reply"
+		trigger = {
+			NOR = {
+				has_authority = auth_corporate
+				has_civic = civic_corporate_dominion
+				has_civic = civic_merchant_guilds
+				has_civic = civic_galactic_sovereign_megacorp
+			}
 		}
-		custom_tooltip = purchase_artifact
+		allow = {
+			resource_stockpile_compare = {
+				resource = energy
+				value >= 1000
+			}
+		}
 		add_resource = { energy = -1000 }
 		hidden_effect = {
 			event_target:artifact_seller = {
@@ -385,17 +394,22 @@ country_event = {
 	}
 	option = {
 		name = "precursor.311.b"
-		response_text = precursor.311.b.reply
+		custom_tooltip = "purchase_artifact"
+		response_text = "precursor.311.b.reply"
 		trigger = {
 			OR = {
-				is_capitalist = yes
-				has_corporate_government = yes
+				has_authority = auth_corporate
+				has_civic = civic_corporate_dominion
+				has_civic = civic_merchant_guilds
+				has_civic = civic_galactic_sovereign_megacorp
 			}
 		}
 		allow = {
-			resource_stockpile_compare = { resource = energy value >= 500 }
+			resource_stockpile_compare = {
+				resource = energy
+				value >= 500
+			}
 		}
-		custom_tooltip = purchase_artifact
 		add_resource = { energy = -500 }
 		hidden_effect = {
 			event_target:artifact_seller = {
@@ -457,11 +471,9 @@ country_event = {
 				}
 			}
 		}
-		custom_tooltip = coerce_artifact
+		custom_tooltip = "coerce_artifact"
 	}
-	option = {
-		name = "precursor.311.d"
-	}
+	option = { name = "precursor.311.d" }
 	after = {
 		hidden_effect = {
 			remove_country_flag = vultaum_artifact_recoverer
@@ -622,10 +634,10 @@ country_event = {
 						is_loyal_to = root
 					}
 					is_gestalt = no
+					is_valid_organic_zealots = no
 					NOR = {
 						is_at_war_with = root
 						is_same_value = root
-						has_valid_civic = civic_organic_zealots
 					}
 					any_system_within_border = { has_star_flag = precursor_5 }
 				}
@@ -746,10 +758,10 @@ country_event = {
 						is_loyal_to = root
 					}
 					is_gestalt = no
+					is_valid_organic_zealots = no
 					NOR = {
 						is_at_war_with = root
 						is_same_value = root
-						has_valid_civic = civic_organic_zealots
 					}
 					any_system_within_border = { has_star_flag = precursor_5 }
 				}
@@ -761,7 +773,6 @@ country_event = {
 			flag = precursor_artifact_deal
 		}
 	}
-
 	after = {
 		hidden_effect = {
 			remove_country_flag = vultaum_artifact_recoverer
@@ -771,7 +782,6 @@ country_event = {
 			remove_country_flag = cybrex_artifact_recoverer
 		}
 	}
-
 	option = {
 		name = "precursor.314.a"
 		collector_surrenders_artifact = yes

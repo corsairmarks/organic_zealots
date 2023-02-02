@@ -25,7 +25,7 @@ ship_event = {
 		}
 	}
 	option = {
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		name = INTERESTING
 		custom_tooltip = distar.25.b.tooltip
 	}
@@ -161,7 +161,7 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = { owner = { is_machine_empire = yes } }
+		trigger = { owner = { has_authority = auth_machine_intelligence } }
 		name = "distar.26.mach"
 		custom_tooltip = "distar.26.a.tooltip"
 		hidden_effect = {
@@ -172,9 +172,7 @@ planet_event = {
 			}
 		}
 	}
-	after = {
-		hidden_effect = { remove_modifier = "primitive_robots" }
-	}
+	after = { hidden_effect = { remove_modifier = "primitive_robots" } }
 }
 
 ## Gray Goo
@@ -188,14 +186,14 @@ ship_event = {
 	location = from
 	is_triggered_only = yes
 	option = {
-		name = {
-			text = EXCELLENT
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = "distar.40.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
+		name = EXCELLENT
+		trigger = { owner = { is_organic_zealots = no } }
+	}
+	option = {
+		name = "distar.40.a.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	after = {
 		owner = {
 			if = {
 				limit = { NOT = { has_technology = tech_engineering_1 } }
@@ -234,10 +232,8 @@ ship_event = {
 		trigger = {
 			owner = {
 				is_machine_empire = no
-				NOR = {
-					has_civic = civic_organic_zealots
-					has_policy_flag = ai_outlawed
-				}
+				is_organic_zealots = no
+				NOT = { has_policy_flag = ai_outlawed }
 			}
 		}
 		name = "distar.155.a"
@@ -253,10 +249,8 @@ ship_event = {
 		trigger = {
 			owner = {
 				is_machine_empire = no
-				NOR = {
-					has_civic = civic_organic_zealots
-					has_policy_flag = ai_outlawed
-				}
+				is_organic_zealots = no
+				NOT = { has_policy_flag = ai_outlawed }
 			}
 		}
 		name = "distar.155.b"
@@ -265,7 +259,7 @@ ship_event = {
 		trigger = {
 			owner = {
 				OR = {
-					has_civic = civic_organic_zealots # for the icon
+					has_civic = civic_organic_zealots
 					has_policy_flag = ai_outlawed
 				}
 			}
@@ -273,7 +267,7 @@ ship_event = {
 		name = "distar.155.c"
 		custom_tooltip = "distar.155.c.tooltip"
 		if = {
-			limit = { owner = { has_civic = civic_organic_zealots } }
+			limit = { owner = { is_organic_zealots = yes } }
 			owner = {
 				add_monthly_resource_mult = {
 					resource = unity
@@ -320,10 +314,10 @@ country_event = {
 		name = "distar.246.a"
 		trigger = {
 			is_machine_empire = no
+			is_organic_zealots = no
 			NOR = {
 				has_policy_flag = ai_outlawed
 				has_civic = civic_fanatic_purifiers
-				has_civic = civic_organic_zealots
 			}
 		}
 		custom_tooltip = "distar.246.a.tooltip"
@@ -341,10 +335,8 @@ country_event = {
 		name = "distar.246.b"
 		trigger = {
 			is_machine_empire = no
-			NOR = {
-				has_policy_flag = ai_outlawed
-				has_civic = civic_organic_zealots
-			}
+			is_organic_zealots = no
+			NOT = { has_policy_flag = ai_outlawed }
 		}
 		custom_tooltip = "distar.246.b.tooltip"
 		tooltip = {
@@ -366,8 +358,8 @@ country_event = {
 		name = "distar.246.c"
 		trigger = {
 			is_machine_empire = no
+			is_organic_zealots = no
 			has_policy_flag = ai_outlawed
-			NOT = { has_civic = civic_organic_zealots }
 		}
 		tooltip = {
 			add_monthly_resource_mult = {
@@ -403,7 +395,7 @@ country_event = {
 		}
 	}
 	option = { # Accept the leader (MI)
-		trigger = { is_machine_empire = yes }
+		trigger = { has_authority = auth_machine_intelligence }
 		name = "distar.246.machi"
 		custom_tooltip = "distar.246.a.tooltip"
 		activate_saved_leader = {
@@ -417,7 +409,7 @@ country_event = {
 		}
 	}
 	option = { # Repurpose the leader (MI)
-		trigger = { is_machine_empire = yes }
+		trigger = { has_authority = auth_machine_intelligence }
 		name = "distar.246.machi.b"
 		custom_tooltip = "distar.246.b.tooltip"
 		tooltip = {

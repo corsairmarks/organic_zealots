@@ -6,7 +6,7 @@ namespace = fallen_empires_tasks
 # * use else_if as appropriate
 # * move shared option cleanup to an after block
 # * organic zealots may not accept gifts from fallen machine empires
-# * custom option text for organic zealots to deny fallen machine empires
+# * custom option for organic zealots to deny fallen machine empires
 country_event = {
 	id = fallen_empires_tasks.2
 	title = "fallen_empires_tasks.2.name"
@@ -190,16 +190,16 @@ country_event = {
 	option = {
 		name = "fallen_empires_tasks.2.a"
 		allow = {
-			NAND = {
-				has_civic = civic_organic_zealots
-				event_target:FallenEmpireTaskOrigin = { is_fallen_empire_machine = yes }
+			OR = {
+				is_organic_zealots = no
+				event_target:FallenEmpireTaskOrigin = { is_fallen_empire_machine = no }
 			}
 		}
 		ai_chance = {
 			base = 5
 			modifier = {
 				factor = 0
-				has_civic = civic_organic_zealots
+				is_organic_zealots = yes
 				event_target:FallenEmpireTaskOrigin = { is_fallen_empire_machine = yes }
 			}
 		}
@@ -433,21 +433,45 @@ country_event = {
 		}
 	}
 	option = {
-		name = {
-			text = "fallen_empires_tasks.2.b"
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
+		name = "fallen_empires_tasks.2.b"
+		trigger = {
+			hidden_trigger = {
+				OR = {
+					is_organic_zealots = no
+					event_target:FallenEmpireTaskOrigin = { is_fallen_empire_machine = no }
+				}
+			}
 		}
-		name = {
-			text = "fallen_empires_tasks.2.b.organic_zealots"
-			trigger = { has_civic = civic_organic_zealots }
+		ai_chance = { base = 5 }
+		hidden_effect = {
+			event_target:FallenEmpireTaskOrigin = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_spurned_fallen_empire_gift
+				}
+			}
+		}
+		if = {
+			limit = { event_target:FallenEmpireTaskOrigin = { is_enigmatic_to = root } }
+			custom_tooltip = "fallen_empire_enigmatic_tooltip"
+		}
+		else = {
+			custom_tooltip = "fallen_empire_unhappy_tooltip"
+		}
+	}
+	option = {
+		name = "fallen_empires_tasks.2.b.organic_zealots"
+		trigger = {
+			has_civic = civic_organic_zealots
+			hidden_trigger = { event_target:FallenEmpireTaskOrigin = { is_fallen_empire_machine = yes } }
 		}
 		ai_chance = {
 			base = 5
 			modifier = {
 				factor = 0
-				NAND = {
-					has_civic = civic_organic_zealots
-					event_target:FallenEmpireTaskOrigin = { is_fallen_empire_machine = yes }
+				OR = {
+					is_organic_zealots = no
+					event_target:FallenEmpireTaskOrigin = { is_fallen_empire_machine = no }
 				}
 			}
 		}

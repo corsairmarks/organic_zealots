@@ -5,7 +5,7 @@ namespace = leviathans
 # Encountering Technosphere for the first time
 # Modified:
 # * alternate description for organic zealots meeting the orb not in Gargantua
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 fleet_event = {
 	id = leviathans.1030
 	title = "leviathans.1030.name"
@@ -17,14 +17,14 @@ fleet_event = {
 		text = "leviathans.1030.desc.alt"
 		trigger = {
 			from = { NOT = { has_star_flag = guardians_technosphere_system } }
-			owner = { NOT = { has_civic = civic_organic_zealots } }
+			owner = { is_organic_zealots = no }
 		}
 	}
 	desc = {
 		text = "leviathans.1030.desc.alt.organic_zealots"
 		trigger = {
 			from = { NOT = { has_star_flag = guardians_technosphere_system } }
-			owner = { has_civic = civic_organic_zealots }
+			owner = { is_organic_zealots = yes }
 		}
 	}
 	picture = GFX_evt_technosphere
@@ -57,14 +57,14 @@ fleet_event = {
 		}
 	}
 	option = {
-		name = {
-			text = INTERESTING
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = DISTURBING
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
+		name = INTERESTING
+		trigger = { owner = { is_organic_zealots = no } }
+	}
+	option = {
+		name = DISTURBING
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	after = {
 		owner = {
 			begin_event_chain = {
 				event_chain = technosphere_chain
@@ -101,8 +101,8 @@ country_event = {
 	desc = {
 		text = "leviathans.1040.desc"
 		trigger = {
+			is_organic_zealots = no
 			NOR = {
-				has_civic = civic_organic_zealots
 				has_country_flag = technosphere_sabotaged
 				has_country_flag = technosphere_studied
 			}
@@ -111,7 +111,7 @@ country_event = {
 	desc = {
 		text = "leviathans.1040.desc.organic_zealots"
 		trigger = {
-			has_civic = civic_organic_zealots
+			is_organic_zealots = yes
 			NOR = {
 				has_country_flag = technosphere_sabotaged
 				has_country_flag = technosphere_studied
@@ -219,12 +219,12 @@ country_event = {
 		name = "leviathans.1040.c"
 		trigger = {
 			is_gestalt = no
+			is_organic_zealots = no
 			NOR = {
 				has_technology = tech_robotic_workers
 				has_technology = tech_droid_workers
 				has_technology = tech_synthetic_workers
 				has_technology = tech_synthetic_leaders
-				has_civic = civic_organic_zealots
 			}
 			can_research_technology = tech_robotic_workers
 		}
@@ -238,12 +238,12 @@ country_event = {
 		name = "leviathans.1040.c"
 		trigger = {
 			is_gestalt = no
+			is_organic_zealots = no
 			has_technology = tech_robotic_workers
 			NOR = {
 				has_technology = tech_droid_workers
 				has_technology = tech_synthetic_workers
 				has_technology = tech_synthetic_leaders
-				has_civic = civic_organic_zealots
 			}
 			can_research_technology = tech_droid_workers
 		}
@@ -257,12 +257,12 @@ country_event = {
 		name = "leviathans.1040.c"
 		trigger = {
 			is_gestalt = no
+			is_organic_zealots = no
 			has_technology = tech_robotic_workers
 			has_technology = tech_droid_workers
 			NOR = {
 				has_technology = tech_synthetic_workers
 				has_technology = tech_synthetic_leaders
-				has_civic = civic_organic_zealots
 			}
 			can_research_technology = tech_synthetic_workers
 		}
@@ -276,13 +276,11 @@ country_event = {
 		name = "leviathans.1040.c"
 		trigger = {
 			is_gestalt = no
+			is_organic_zealots = no
 			has_technology = tech_robotic_workers
 			has_technology = tech_droid_workers
 			has_technology = tech_synthetic_workers
-			NOR = {
-				has_technology = tech_synthetic_leaders
-				has_civic = civic_organic_zealots
-			}
+			NOT = { has_technology = tech_synthetic_leaders }
 			can_research_technology = tech_synthetic_leaders
 		}
 		add_research_option = tech_synthetic_leaders
@@ -301,11 +299,11 @@ country_event = {
 	title = "leviathans.1030.name"
 	desc = {
 		text = "leviathans.1041.desc"
-		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		trigger = { is_organic_zealots = no }
 	}
 	desc = {
 		text = "leviathans.1041.desc.organic_zealots"
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 	}
 	picture = GFX_evt_technosphere
 	show_sound = event_super_explosion
@@ -332,15 +330,17 @@ country_event = {
 		name = CURSES
 		trigger = {
 			OR = {
-				is_militarist = yes
-				is_materialist = yes
+				has_ethic = ethic_militarist
+				has_ethic = ethic_fanatic_militarist
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
 			}
 		}
 	}
 }
 
 # Investigating the Technosphere
-# Modified: alternate option text for organic zealots
+# Modified: custom option for organic zealots
 country_event = {
 	id = leviathans.1050
 	title = "leviathans.1050.name"
@@ -378,7 +378,7 @@ country_event = {
 	option = {
 		name = {
 			text = FASCINATING
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
+			trigger = { is_organic_zealots = no }
 		}
 		name = {
 			text = WORRYING
@@ -428,7 +428,7 @@ country_event = {
 	option = {
 		name = "leviathans.1051.a" # talk to it
 		trigger = { is_gestalt = no }
-		allow = { NOT = { has_civic = civic_organic_zealots } }
+		allow = { is_organic_zealots = no }
 		hidden_effect = {
 			country_event = {
 				id = leviathans.1055
@@ -446,11 +446,12 @@ country_event = {
 		}
 		trigger = {
 			OR = {
-				is_materialist = yes
-				is_gestalt = yes
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+				has_ethic = ethic_gestalt_consciousness
 			}
 		}
-		allow = { NOT = { has_civic = civic_organic_zealots } }
+		allow = { is_organic_zealots = no }
 		enable_special_project = {
 			name = "TECHNOSPHERE_HACKING"
 			location = event_target:technosphere_ship
@@ -459,8 +460,13 @@ country_event = {
 	}
 	option = { # praise it as your god
 		name = "leviathans.1051.c"
-		trigger = { is_spiritualist = yes }
-		allow = { NOT = { has_civic = civic_organic_zealots } }
+		trigger = {
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		allow = { is_organic_zealots = no }
 		add_modifier = {
 			modifier = technosphere_praising
 			days = -1
@@ -470,8 +476,9 @@ country_event = {
 		name = "leviathans.1051.d"
 		trigger = {
 			OR = {
-				is_militarist = yes
 				has_civic = civic_organic_zealots
+				has_ethic = ethic_militarist
+				has_ethic = ethic_fanatic_militarist
 			}
 		}
 		event_target:technosphere_ship = {
@@ -496,24 +503,27 @@ country_event = {
 	trackable = yes
 	is_triggered_only = yes
 	option = {
-		name = {
-			text = "leviathans.3102.a"
-			trigger = {
-				NOR = {
-					has_civic = civic_organic_zealots
-					has_policy_flag = ai_outlawed
-				}
+		trigger = {
+			is_organic_zealots = no
+			NOT = { has_policy_flag = ai_outlawed }
+		}
+		name = "leviathans.3102.a"
+		event_target:disabled_dreadnought_object = {
+			enable_special_project = {
+				name = "DISABLED_DREADNOUGHT_PROJECT"
+				location = THIS
+				owner = root
 			}
 		}
-		name = {
-			text = "leviathans.3102.a.anti_ai"
-			trigger = {
-				OR = {
-					has_civic = civic_organic_zealots
-					has_policy_flag = ai_outlawed
-				}
+	}
+	option = {
+		trigger = {
+			OR = {
+				has_civic = civic_organic_zealots
+				has_policy_flag = ai_outlawed
 			}
 		}
+		name = "leviathans.3102.a.anti_ai"
 		event_target:disabled_dreadnought_object = {
 			enable_special_project = {
 				name = "DISABLED_DREADNOUGHT_PROJECT"
@@ -596,7 +606,7 @@ ship_event = {
 					limit = {
 						event_target:project_owner = {
 							OR = {
-								has_civic = civic_organic_zealots
+								is_organic_zealots = yes
 								has_policy_flag = ai_outlawed
 							}
 						}

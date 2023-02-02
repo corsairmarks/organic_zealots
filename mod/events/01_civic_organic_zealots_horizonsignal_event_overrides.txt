@@ -20,8 +20,8 @@ fleet_event = {
 					exists = owner
 					owner = { is_country_type = guardian_sphere } }
 			}
+			is_organic_zealots = no
 			NOR = {
-				has_civic = civic_organic_zealots
 				has_country_flag = retainer_conversation
 				has_country_flag = retainer_first_convo_concluded
 			}

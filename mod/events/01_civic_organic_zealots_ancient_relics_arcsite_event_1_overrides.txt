@@ -5,17 +5,17 @@ namespace = ancrel
 # Anomaly completion
 # Modified:
 # * alternate description for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 ship_event = {
 	id = ancrel.2050
 	title = "ancrel.2050.name"
 	desc = {
 		text = "ancrel.2050.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.2050.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_relic_world
 	show_sound = event_metal_fatigue
@@ -26,16 +26,14 @@ ship_event = {
 		from = { is_same_value = event_target:mechanocalibrator_planet }
 	}
 	option = {
-		name = {
-			text = "ancrel.2050.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = "ancrel.2050.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
-		from = { create_archaeological_site = planetary_mechanocalibrator }
+		name = "ancrel.2050.a"
+		trigger = { owner = { is_organic_zealots = no } }
 	}
+	option = {
+		name = "ancrel.2050.a.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	after = { from = { create_archaeological_site = planetary_mechanocalibrator } }
 }
 
 # Stage 6
@@ -47,11 +45,11 @@ fleet_event = {
 	title = "ancrel.2056.name"
 	desc = {
 		text = "ancrel.2056.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.2056.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_generator_powerup
 	show_sound = event_energy_field
@@ -189,7 +187,7 @@ country_event = {
 	}
 	option = {
 		name = "ancrel.2058.a"
-		trigger = { NOT = { has_civic = civic_organic_zealots } }
+		trigger = { is_organic_zealots = no }
 		hidden_effect = {
 			country_event = {
 				id = ancrel.2059
@@ -223,14 +221,14 @@ country_event = {
 		planet_background = event_target:mechanocalibrator_planet
 	}
 	option = {
-		name = {
-			text = "ancrel.2064.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = "ancrel.2064.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
+		name = "ancrel.2064.a"
+		trigger = { owner = { is_organic_zealots = no } }
+	}
+	option = {
+		name = "ancrel.2064.a.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+	}
+	after = {
 		add_resource = { influence = 100 }
 		hidden_effect = {
 			country_event = {
@@ -245,39 +243,35 @@ country_event = {
 # Stage 3
 # Modified:
 # * alternate description for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 fleet_event = {
 	id = ancrel.4034
 	title = "ancrel.4034.name"
 	desc = {
 		text = "ancrel.4034.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.4034.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_sapient_AI
 	show_sound = event_door_opening
 	location = from
 	archaeology = yes
 	is_triggered_only = yes
-	immediate = {
-		from = { set_site_progress_locked = yes }
-	}
+	immediate = { from = { set_site_progress_locked = yes } }
 	after = {
+		small_artifact_reward = yes
 		from = { set_site_progress_locked = no }
 	}
 	option = {
-		name = {
-			text = CURIOUS
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = DISTURBING
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
-		small_artifact_reward = yes
+		name = CURIOUS
+		trigger = { owner = { is_organic_zealots = no } }
+	}
+	option = {
+		name = DISTURBING
+		trigger = { owner = { has_civic = civic_organic_zealots } }
 	}
 }
 
@@ -286,34 +280,32 @@ fleet_event = {
 # * diplo event fires immediately rather than in 1 day
 # * create the Oracle's species and saved leader ahead of the diplo events
 # * alternate description for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 # * move arc site cleanup to the after block
 fleet_event = {
 	id = ancrel.4035
 	title = "ancrel.4035.name"
 	desc = {
 		text = "ancrel.4035.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.4035.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_sapient_AI
 	show_sound = event_bad_omen
 	location = from
 	archaeology = yes
 	is_triggered_only = yes
-	immediate = {
-		from = { set_site_progress_locked = yes }
-	}
+	immediate = { from = { set_site_progress_locked = yes } }
 	after = {
 		from = { set_site_progress_locked = no }
 		event_target:oracle_digsite_planet = { remove_deposit = d_archaeological_site }
 	}
 	option = {
 		name = "ancrel.4035.a"
-		allow = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		allow = { owner = { is_organic_zealots = no } }
 		owner = {
 			hidden_effect = {
 				create_oracle_species = yes
@@ -326,7 +318,7 @@ fleet_event = {
 	}
 	option = {
 		name = "ancrel.4035.b"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = no } }
 		owner = {
 			add_resource = {
 				alloys = 1000
@@ -401,7 +393,7 @@ country_event = {
 	option = {
 		name = "ancrel.4036.e"
 		custom_tooltip = "ancrel.4036.e.tooltip"
-		trigger = { is_machine_empire = yes }
+		trigger = { has_authority = auth_machine_intelligence }
 		set_country_flag = oracle_completed
 		hidden_effect = { remove_saved_leader = the_oracle }
 	}
@@ -497,13 +489,6 @@ country_event = {
 		activate_saved_leader = { key = the_oracle }
 	}
 	option = {
-		name = "ancrel.4036.e"
-		custom_tooltip = "ancrel.4036.e.tooltip"
-		trigger = { is_machine_empire = yes }
-		set_country_flag = oracle_completed
-		hidden_effect = { remove_saved_leader = the_oracle }
-	}
-	option = {
 		name = {
 			text = "ancrel.4038.b"
 			trigger = {
@@ -511,13 +496,29 @@ country_event = {
 				is_hive_empire = no
 			}
 		}
+		add_resource = {
+			alloys = 1000
+			engineering_research = 3500
+			influence = 250
+		}
+		hidden_effect = { remove_saved_leader = the_oracle }
+	}
+	option = {
 		name = {
 			text = "ancrel.4038.c"
-			trigger = { is_machine_empire = yes }
+			trigger = { has_authority = auth_machine_intelligence }
 		}
+		add_resource = {
+			alloys = 1000
+			engineering_research = 3500
+			influence = 250
+		}
+		hidden_effect = { remove_saved_leader = the_oracle }
+	}
+	option = {
 		name = {
 			text = "ancrel.4038.d"
-			trigger = { is_hive_empire = yes }
+			trigger = { has_authority = auth_hive_mind }
 		}
 		add_resource = {
 			alloys = 1000
@@ -529,6 +530,14 @@ country_event = {
 	option = {
 		name = "ancrel.4038.e"
 		add_modifier = { modifier = oracle_administration }
+		hidden_effect = { remove_saved_leader = the_oracle }
+	}
+	
+	option = {
+		name = "ancrel.4036.e"
+		custom_tooltip = "ancrel.4036.e.tooltip"
+		trigger = { has_authority = auth_machine_intelligence }
+		set_country_flag = oracle_completed
 		hidden_effect = { remove_saved_leader = the_oracle }
 	}
 }
@@ -586,11 +595,11 @@ ship_event = {
 	title = "ancrel.4056.name"
 	desc = {
 		text = "ancrel.4056.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.4056.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_huge_monument
 	show_sound = event_mystic_reveal
@@ -598,7 +607,7 @@ ship_event = {
 	is_triggered_only = yes
 	option = {
 		name = "ancrel.4056.a" # Repurpose Tech
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		owner = { add_resource = { influence = 300 } }
 		event_target:sentinels_planet = { add_modifier = { modifier = the_evermore_modifier } }
 	}
@@ -606,10 +615,12 @@ ship_event = {
 		name = "ancrel.4056.b" # Virtual Hunting Ground
 		trigger = {
 			owner = {
-				NOT = { has_civic = civic_organic_zealots }
+				is_organic_zealots = no
 				OR = {
-					is_xenophobe = yes
-					is_militarist = yes
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_militarist
 				}
 			}
 		}
@@ -620,7 +631,7 @@ ship_event = {
 		name = "ancrel.4056.c" # Replicate Tech
 		trigger = {
 			owner = {
-				NOT = { has_civic = civic_organic_zealots }
+				is_organic_zealots = no
 				is_xenophobe = no
 				is_militarist = no
 			}
@@ -635,7 +646,7 @@ ship_event = {
 	}
 	option = {
 		name = "ancrel.4056.d" # Study Aliens
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		event_target:sentinels_planet = { add_modifier = { modifier = study_the_sentinels_modifier } }
 	}
 	option = {
@@ -656,18 +667,18 @@ ship_event = {
 # Sentinels Defeated
 # Modified:
 # * alternate description for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 # * deposit creation moved to an after block
 country_event = {
 	id = ancrel.4057
 	title = "ancrel.4057.name"
 	desc = {
 		text = "ancrel.4057.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.4057.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_victorious_army
 	location = event_target:sentinels_planet
@@ -680,18 +691,10 @@ country_event = {
 		exists = event_target:sentinels
 		from = { is_same_value = event_target:sentinels }
 	}
-	immediate = {
-		remove_country_flag = sentinels_invade_country
-	}
+	immediate = { remove_country_flag = sentinels_invade_country }
 	option = {
-		name = {
-			text = "ancrel.4064.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = "ancrel.4064.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
+		name = "ancrel.4064.a"
+		trigger = { owner = { is_organic_zealots = no } }
 		enable_special_project = {
 			name = "SECRET_TOMB"
 			location = event_target:sentinels_planet
@@ -699,19 +702,25 @@ country_event = {
 		}
 	}
 	option = {
-		name = {
-			text = "ancrel.4057.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		name = "ancrel.4064.a.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		enable_special_project = {
+			name = "SECRET_TOMB"
+			location = event_target:sentinels_planet
+			owner = root
 		}
-		name = {
-			text = "ancrel.4057.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
+	}
+	option = {
+		name = "ancrel.4057.a"
+		trigger = { owner = { is_organic_zealots = no } }
 		add_resource = { influence = 150 }
 	}
-	after = {
-		event_target:sentinels_planet = { add_deposit = d_sentinels_metal }
+	option = {
+		name = "ancrel.4057.a.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		add_resource = { influence = 150 }
 	}
+	after = { event_target:sentinels_planet = { add_deposit = d_sentinels_metal } }
 }
 
 ### Investigate statues
@@ -723,11 +732,11 @@ planet_event = {
 	title = "sentinels_digsite"
 	desc = {
 		text = "ancrel.4058.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.4058.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_huge_monument
 	location = event_target:sentinels_planet
@@ -735,7 +744,7 @@ planet_event = {
 	is_triggered_only = yes
 	option = {
 		name = "ancrel.4058.a"
-		allow = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		allow = { owner = { is_organic_zealots = no } }
 		hidden_effect = {
 			planet_event = {
 				id = ancrel.4059
@@ -772,17 +781,17 @@ planet_event = {
 # Defeated by Sentinels
 # Modified:
 # * alternate description for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 country_event = {
 	id = ancrel.4063
 	title = "ancrel.4063.name"
 	desc = {
 		text = "ancrel.4063.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.4063.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_ground_combat
 	location = event_target:sentinels_planet
@@ -804,32 +813,30 @@ country_event = {
 	}
 	is_triggered_only = yes
 	option = {
-		name = {
-			text = "ancrel.4063.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = "ancrel.4063.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
+		name = "ancrel.4063.a"
+		trigger = { owner = { is_organic_zealots = no } }
+	}
+	option = {
+		name = "ancrel.4063.a.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
 	}
 }
 
 # Liberated from Sentinels
 # Modified:
 # * alternate description for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 # * deposit creation moved to an after block
 country_event = {
 	id = ancrel.4064
 	title = "ancrel.4064.name"
 	desc = {
 		text = "ancrel.4064.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.4064.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_victorious_army
 	show_sound = event_ground_battle
@@ -868,14 +875,8 @@ country_event = {
 		}
 	}
 	option = {
-		name = {
-			text = "ancrel.4064.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = "ancrel.4064.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
+		name = "ancrel.4064.a"
+		trigger = { owner = { is_organic_zealots = no } }
 		enable_special_project = {
 			name = "SECRET_TOMB"
 			location = event_target:sentinels_planet
@@ -883,36 +884,42 @@ country_event = {
 		}
 	}
 	option = {
-		name = {
-			text = "ancrel.4064.b"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		name = "ancrel.4064.a.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		enable_special_project = {
+			name = "SECRET_TOMB"
+			location = event_target:sentinels_planet
+			owner = root
 		}
-		name = {
-			text = "ancrel.4064.b.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
+	}
+	option = {
+		name = "ancrel.4064.b"
+		trigger = { owner = { is_organic_zealots = no } }
 		add_resource = { influence = 150 }
 	}
-	after = {
-		event_target:sentinels_planet = { add_deposit = d_sentinels_metal }
+	option = {
+		name = "ancrel.4064.b.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		add_resource = { influence = 150 }
 	}
+	after = { event_target:sentinels_planet = { add_deposit = d_sentinels_metal } }
 }
 
 # Sentinels Purged All Pops
 # Modified:
 # * alternate description for organic zealots
-# * alternate option text for organic zealots
+# * custom option for organic zealots
 # * Pop creation moved to an after block
 planet_event = {
 	id = ancrel.4075
 	title = "ancrel.4075.name"
 	desc = {
 		text = "ancrel.4075.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.4075.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_fleet_good
 	location = event_target:sentinels_planet
@@ -931,14 +938,8 @@ planet_event = {
 		set_planet_flag = sentinels_purged
 	}
 	option = {
-		name = {
-			text = "ancrel.4075.a"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
-		}
-		name = {
-			text = "ancrel.4075.a.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
+		name = "ancrel.4075.a"
+		trigger = { owner = { is_organic_zealots = no } }
 		enable_special_project = {
 			name = "SECRET_TOMB"
 			location = event_target:sentinels_planet
@@ -946,19 +947,25 @@ planet_event = {
 		}
 	}
 	option = {
-		name = {
-			text = "ancrel.4075.b"
-			trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		name = "ancrel.4075.a.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		enable_special_project = {
+			name = "SECRET_TOMB"
+			location = event_target:sentinels_planet
+			owner = root
 		}
-		name = {
-			text = "ancrel.4075.b.organic_zealots"
-			trigger = { owner = { has_civic = civic_organic_zealots } }
-		}
+	}
+	option = {
+		name = "ancrel.4075.b"
+		trigger = { owner = { is_organic_zealots = no } }
 		from = { add_resource = { influence = 150 } }
 	}
-	after = {
-		event_target:sentinels_new_home = { create_pop = { species = event_target:losers } }
+	option = {
+		name = "ancrel.4075.b.organic_zealots"
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		from = { add_resource = { influence = 150 } }
 	}
+	after = { event_target:sentinels_new_home = { create_pop = { species = event_target:losers } } }
 }
 
 # Modified:
@@ -970,11 +977,11 @@ ship_event = {
 	title = "ancrel.4076.name"
 	desc = {
 		text = "ancrel.4076.desc"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "ancrel.4076.desc.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_ancient_databank
 	location = event_target:sentinels_planet
@@ -982,7 +989,7 @@ ship_event = {
 	is_triggered_only = yes
 	option = {
 		name = "ancrel.4076.a" # Science
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		owner = {
 			hidden_effect = { set_country_flag = evermore_science }
 			enable_special_project = {
@@ -994,7 +1001,7 @@ ship_event = {
 	}
 	option = {
 		name = "ancrel.4076.b" # Laughs
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 		owner = {
 			hidden_effect = { set_country_flag = evermore_joy }
 			enable_special_project = {
