@@ -20,7 +20,7 @@ technologist = {
 
 	is_potential = {
 		is_faction_allowed = yes
-		NOT = { has_valid_civic = civic_organic_zealots }
+		is_valid_organic_zealots = no
 	}
 
 	parameters = {

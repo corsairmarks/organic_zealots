@@ -137,7 +137,7 @@ ap_colossus = {
 			factor = 10
 			OR = {
 				has_valid_civic = civic_fanatic_purifiers
-				has_valid_civic = civic_organic_zealots
+				is_valid_organic_zealots = yes
 				has_valid_civic = civic_machine_terminator
 			}
 		}

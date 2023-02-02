@@ -345,7 +345,7 @@ tech_integrated_cybernetics = {
 		OR = {
 			AND = {
 				is_machine_empire = no
-				NOT = { has_civic = civic_organic_zealots }
+				is_organic_zealots = no
 			}
 			has_civic = civic_machine_assimilator
 		}

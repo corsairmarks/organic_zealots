@@ -2,11 +2,11 @@
 site_robot_debris = {
 	desc = {
 		text = "site_robot_debris_intro"
-		trigger = { owner = { NOT = { has_civic = civic_organic_zealots } } }
+		trigger = { owner = { is_organic_zealots = no } }
 	}
 	desc = {
 		text = "site_robot_debris_intro.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	picture = GFX_evt_space_debris
 	stages = 3

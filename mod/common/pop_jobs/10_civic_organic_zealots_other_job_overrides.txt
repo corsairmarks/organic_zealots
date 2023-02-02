@@ -28,7 +28,7 @@ purge = {
 			trigger = {
 				is_robotic_species = yes
 				exists = owner
-				owner = { has_valid_civic = civic_organic_zealots }
+				owner = { is_valid_organic_zealots = yes }
 			}
 			unity = 2
 		}

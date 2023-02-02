@@ -13,11 +13,11 @@ r_contingency_core = {
 	resources = {
 		category = relics
 		cost = {
-			trigger = { NOT = { has_civic = civic_organic_zealots } }
+			trigger = { is_organic_zealots = no }
 			unity = @activation_cost
 		}
 		upkeep = {
-			trigger = { has_civic = civic_organic_zealots }
+			trigger = { is_organic_zealots = yes }
 			unity = 250
 		}
 	}
@@ -25,7 +25,7 @@ r_contingency_core = {
 		weight = 100
 	}
 	triggered_country_modifier = {
-		potential = { NOT = { has_civic = civic_organic_zealots } }
+		potential = { is_organic_zealots = no }
 		planet_pop_assembly_mult = 1.00
 	}
 	triggered_country_modifier = {
@@ -35,7 +35,7 @@ r_contingency_core = {
 	score = 5000
 	active_effect = {
 		if = {
-			limit = { NOT = { has_civic = civic_organic_zealots } }
+			limit = { is_organic_zealots = no }
 			add_modifier = {
 				modifier = "contingency_calculation"
 				days = @triumph_duration
@@ -61,7 +61,7 @@ r_contingency_core = {
 	}
 	possible = {
 		if = {
-			limit = { NOT = { has_civic = civic_organic_zealots } }
+			limit = { is_organic_zealots = no }
 			custom_tooltip = {
 				fail_text = "requires_relic_no_cooldown"
 				NOT = { has_modifier = relic_activation_cooldown }

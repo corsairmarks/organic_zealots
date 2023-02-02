@@ -29,7 +29,7 @@ living_standard_deassimilation_cyborg = {
 		modifier = {
 			add = 50
 			exists = from
-			from = { has_civic = civic_organic_zealots }
+			from = { is_organic_zealots = yes }
 		}
 	}
 }

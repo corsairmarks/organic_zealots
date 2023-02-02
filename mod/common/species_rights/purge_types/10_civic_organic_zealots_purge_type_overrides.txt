@@ -114,7 +114,7 @@ purge_displacement = {
 		custom_tooltip = {
 			fail_text = ORGANIC_ZEALOTS_MUST_PURIFY
 			OR = {
-				NOT = { from = { has_valid_civic = civic_organic_zealots } }
+				NOT = { from = { is_valid_organic_zealots = yes } }
 				is_robotic = no
 			}
 		}
@@ -167,7 +167,7 @@ purge_processing = {
 				OR = {
 					prev = { is_robotic = no }
 					# organic zealots waste not and want not
-					has_valid_civic = civic_organic_zealots
+					is_valid_organic_zealots = yes
 					# devouring swarms can CRONCH. in edge cases.
 					has_valid_civic = civic_hive_devouring_swarm
 				}
@@ -184,7 +184,7 @@ purge_processing = {
 					is_gestalt = yes
 					has_valid_civic = civic_fanatic_purifiers
 					AND = {
-						has_valid_civic = civic_organic_zealots
+						is_valid_organic_zealots = yes
 						prev = { is_robotic = yes }
 					}
 					has_policy_flag = purge_allowed
@@ -202,7 +202,7 @@ purge_processing = {
 				from = {
 					OR = {
 						AND = {
-							has_valid_civic = civic_organic_zealots
+							is_valid_organic_zealots = yes
 							prev = { is_robotic = yes }
 						}
 						has_valid_civic = civic_hive_devouring_swarm
@@ -221,7 +221,7 @@ purge_processing = {
 				NOR = {
 					has_ai_personality_behaviour = purger
 					AND = {
-						has_valid_civic = civic_organic_zealots
+						is_valid_organic_zealots = yes
 						prev = { is_robotic = yes }
 					}
 				}

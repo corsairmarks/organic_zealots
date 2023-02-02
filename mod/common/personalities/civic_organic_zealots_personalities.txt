@@ -47,7 +47,7 @@ organic_zealots = {
 
 	allow = {
 		is_country_type = default
-		has_valid_civic = civic_organic_zealots
+		is_valid_organic_zealots = yes
 	}
 
 	weight_modifier = {

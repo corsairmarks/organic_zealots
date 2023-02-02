@@ -32,7 +32,7 @@ subject_can_do_diplomacy_but_not_vote = {
 			}
 			custom_tooltip = {
 				fail_text = not_allowed_for_organic_zealots
-				NOT = { target = { has_civic = civic_organic_zealots } }
+				target = { is_organic_zealots = no }
 			}
 			custom_tooltip = {
 				fail_text = not_allowed_for_devouring_swarm

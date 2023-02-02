@@ -4,7 +4,7 @@ part = {
 	localization = "START_SCREEN_BANISHED_ZEALOTS"
 	trigger = {
 		has_origin = origin_banished_threat
-		has_valid_civic = civic_organic_zealots
+		is_valid_organic_zealots = yes
 	}
 }
 
@@ -13,7 +13,7 @@ part = {
 	localization = "START_SCREEN_BANISHED_ZEALOTS_PART_TWO"
 	trigger = {
 		has_origin = origin_banished_threat
-		has_valid_civic = civic_organic_zealots
+		is_valid_organic_zealots = yes
 	}
 }
 
@@ -22,6 +22,6 @@ part = {
 	localization = "START_SCREEN_BANISHED_ZEALOTS_PART_THREE"
 	trigger = {
 		has_origin = origin_banished_threat
-		has_valid_civic = civic_organic_zealots
+		is_valid_organic_zealots = yes
 	}
 }

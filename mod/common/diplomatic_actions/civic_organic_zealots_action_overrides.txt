@@ -1383,7 +1383,7 @@ action_release_subject = {
 		hidden_effect = {
 			if = {
 				# intentionally does NOT check civic validity
-				limit = { has_civic = civic_organic_zealots }
+				limit = { is_organic_zealots = yes }
 				from = { re_enable_tech_ascension_special_projects_if_force_disabled = yes }
 			}
 		}
@@ -1403,7 +1403,7 @@ action_ask_to_be_released_subject = {
 		hidden_effect = {
 			if = {
 				# intentionally does NOT check civic validity
-				limit = { from = { has_civic = civic_organic_zealots } }
+				limit = { from = { is_organic_zealots = yes } }
 				re_enable_tech_ascension_special_projects_if_force_disabled = yes
 			}
 		}
@@ -1554,7 +1554,7 @@ action_pledge_secret_fealty = {
 		}
 
 		if = {
-			limit = { from = { has_valid_civic = civic_organic_zealots } }
+			limit = { from = { is_valid_organic_zealots = yes } }
 			if = {
 				limit = {
 					has_intel = {
@@ -1565,7 +1565,7 @@ action_pledge_secret_fealty = {
 				custom_tooltip = {
 					fail_text = requires_recipient_not_organic_zealots
 					AND = {
-						from = { has_civic = civic_organic_zealots }
+						from = { is_organic_zealots = yes }
 						is_robot_empire = no
 					}
 				}
@@ -1574,7 +1574,7 @@ action_pledge_secret_fealty = {
 				custom_tooltip = {
 					fail_text = diplo_action_no_low_intel
 					AND = {
-						from = { has_civic = civic_organic_zealots }
+						from = { is_organic_zealots = yes }
 						is_robot_empire = no
 					}
 				}
@@ -1738,7 +1738,7 @@ action_propose_secret_fealty = {
 		}
 
 		if = {
-			limit = { from = { has_valid_civic = civic_organic_zealots } }
+			limit = { from = { is_valid_organic_zealots = no } }
 			if = {
 				limit = {
 					has_intel = {
@@ -1749,7 +1749,7 @@ action_propose_secret_fealty = {
 				custom_tooltip = {
 					fail_text = requires_recipient_not_organic_zealots
 					AND = {
-						from = { has_civic = civic_organic_zealots }
+						from = { is_organic_zealots = yes }
 						is_robot_empire = no
 					}
 				}
@@ -1758,7 +1758,7 @@ action_propose_secret_fealty = {
 				custom_tooltip = {
 					fail_text = diplo_action_no_low_intel
 					AND = {
-						from = { has_civic = civic_organic_zealots }
+						from = { is_organic_zealots = yes }
 						is_robot_empire = no
 					}
 				}

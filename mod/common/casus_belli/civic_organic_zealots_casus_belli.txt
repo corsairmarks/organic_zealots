@@ -38,7 +38,7 @@ cb_containment_organic_zealots = {
 	}
 	is_valid = {
 		hidden_trigger = { exists = from }
-		from = { has_valid_civic = civic_organic_zealots }
+		from = { is_valid_organic_zealots = yes }
 		has_total_war_cb = yes
 		NOT = { is_overlord_to = from }
 		OR = {
@@ -52,7 +52,7 @@ cb_robotic_purification = {
 	show_in_diplomacy = no
 	show_notification = no
 	potential = {
-		has_valid_civic = civic_organic_zealots
+		is_valid_organic_zealots = yes
 		exists = from
 		from = {
 			OR = {

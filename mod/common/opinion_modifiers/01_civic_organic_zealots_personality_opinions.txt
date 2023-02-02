@@ -1,6 +1,6 @@
 opinion_organic_zealots_vs_machines = {
 	trigger = {
-		has_valid_civic = civic_organic_zealots
+		is_valid_organic_zealots = yes
 		from = {
 			is_robot_empire = yes
 			is_homicidal = no
@@ -23,7 +23,7 @@ opinion_machines_vs_organic_zealots = {
 	trigger = {
 		is_homicidal = no
 		is_robot_empire = yes
-		from = { has_valid_civic = civic_organic_zealots }
+		from = { is_valid_organic_zealots = yes }
 	}
 	opinion = {
 		base = -1000
@@ -32,7 +32,7 @@ opinion_machines_vs_organic_zealots = {
 
 opinion_organic_zealots_vs_robots_outlawed = {
 	trigger = {
-		has_valid_civic = civic_organic_zealots
+		is_valid_organic_zealots = yes
 		from = { has_policy_flag = robots_outlawed }
 	}
 	opinion = {
@@ -42,7 +42,7 @@ opinion_organic_zealots_vs_robots_outlawed = {
 
 opinion_organic_zealots_vs_robots_allowed = {
 	trigger = {
-		has_valid_civic = civic_organic_zealots
+		is_valid_organic_zealots = yes
 		from = {
 			has_policy_flag = robots_allowed
 			is_robot_empire = no
@@ -55,7 +55,7 @@ opinion_organic_zealots_vs_robots_allowed = {
 
 opinion_organic_zealots_vs_ai_outlawed = {
 	trigger = {
-		has_valid_civic = civic_organic_zealots
+		is_valid_organic_zealots = yes
 		from = {
 			can_set_ai_policy = yes
 			has_policy_flag = ai_outlawed
@@ -68,7 +68,7 @@ opinion_organic_zealots_vs_ai_outlawed = {
 
 opinion_organic_zealots_vs_ai_servitude_or_ai_full_rights = {
 	trigger = {
-		has_valid_civic = civic_organic_zealots
+		is_valid_organic_zealots = yes
 		from = { can_set_ai_policy = yes }
 	}
 	opinion = {
@@ -86,7 +86,7 @@ opinion_organic_zealots_vs_ai_servitude_or_ai_full_rights = {
 
 opinion_organic_zealots_vs_cyborgs = {
 	trigger = {
-		has_valid_civic = civic_organic_zealots
+		is_valid_organic_zealots = yes
 		from = { is_cyborg_empire = yes }
 	}
 	opinion = {
@@ -104,7 +104,7 @@ opinion_cyborgs_vs_organic_zealots = {
 		is_homicidal = no
 		is_cyborg_empire = yes
 		NOT = { is_country_type = fallen_empire } # they don't care while they are fallen
-		from = { has_valid_civic = civic_organic_zealots }
+		from = { is_valid_organic_zealots = yes }
 	}
 	opinion = {
 		base = -200
@@ -114,7 +114,7 @@ opinion_cyborgs_vs_organic_zealots = {
 machine_fe_opinion_of_organic_zealots = {
 	trigger = {
 		is_fallen_machine_empire = yes
-		from = { has_valid_civic = civic_organic_zealots }
+		from = { is_valid_organic_zealots = yes }
 	}
 	opinion = {
 		base = -40
@@ -123,7 +123,7 @@ machine_fe_opinion_of_organic_zealots = {
 
 opinion_organic_zealots_of_materialist = {
 	trigger = {
-		has_valid_civic = civic_organic_zealots
+		is_valid_organic_zealots = yes
 		from = {
 			is_materialist = yes
 			is_robot_empire = no
@@ -147,7 +147,7 @@ opinion_materialist_of_organic_zealots = {
 		is_materialist = yes
 		is_robot_empire = no
 		NOT = { is_country_type = fallen_empire } # they don't care while they are fallen
-		from = { has_valid_civic = civic_organic_zealots }
+		from = { is_valid_organic_zealots = yes }
 	}
 	opinion = {
 		base = 0
@@ -164,8 +164,8 @@ opinion_materialist_of_organic_zealots = {
 
 opinion_both_organic_zealots = {
 	trigger = {
-		has_valid_civic = civic_organic_zealots
-		from = { has_valid_civic = civic_organic_zealots }
+		is_valid_organic_zealots = yes
+		from = { is_valid_organic_zealots = yes }
 	}
 	opinion = {
 		base = 200
