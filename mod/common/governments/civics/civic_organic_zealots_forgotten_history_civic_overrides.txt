@@ -80,6 +80,6 @@ origin_AAA_apocalypse = {
 	description = origin_AAA_apocalypse_effects
 	advanced_start = yes
 	random_weight = {
-		base = 2
+		base = 0
 	}
 }
