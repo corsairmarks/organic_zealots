@@ -215,6 +215,7 @@ planet_event = {
 
 # Modified:
 # * custom description for organic zealots
+# * custom option for organic zealots
 # * add_deposit so as to not clobber other mining deposits
 planet_event = {
 	id = colony.1504
@@ -226,7 +227,14 @@ planet_event = {
 	pre_triggers = { has_owner = yes }
 	trigger = { owner = { has_country_flag = FLDrone_country } }
 	option = {
+		trigger = { owner = { is_organic_zealots = no } }
 		name = "colony.1504.a"
+	}
+	option = {
+		trigger = { owner = { has_civic = civic_organic_zealots } }
+		name = "colony.1504.a.organic_zealots"
+	}
+	after = {
 		if = {
 			limit = { event_target:fldrone_moon = { has_deposit_for = shipclass_research_station } }
 			owner = {
@@ -238,10 +246,7 @@ planet_event = {
 		else = {
 			event_target:fldrone_moon = {
 				add_deposit = d_minerals_4
-				add_modifier = {
-					modifier = "drone_mineral_gift"
-					days = -1
-				}
+				add_modifier = { modifier = "drone_mineral_gift" }
 			}
 		}
 		hidden_effect = {
@@ -288,10 +293,7 @@ planet_event = {
 		else = {
 			event_target:fldrone_moon = {
 				add_deposit = d_society_3
-				add_modifier = {
-					modifier = "drone_fl_satellite"
-					days = -1
-				}
+				add_modifier = { modifier = "drone_fl_satellite" }
 			}
 		}
 		hidden_effect = {
