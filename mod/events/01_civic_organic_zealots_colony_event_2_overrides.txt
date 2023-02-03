@@ -60,12 +60,12 @@ planet_event = {
 	id = colony.1501
 	title = "colony.1501.name"
 	desc = {
-		text = "colony.1501.desc"
 		trigger = { owner = { is_organic_zealots = no } }
+		text = "colony.1501.desc"
 	}
 	desc = {
-		text = "colony.1501.desc.organic_zealots"
 		trigger = { owner = { is_organic_zealots = yes } }
+		text = "colony.1501.desc.organic_zealots"
 	}
 	picture = GFX_evt_asteroid_approaching_planet
 	location = event_target:fldrone_moon
@@ -119,12 +119,12 @@ planet_event = {
 	id = colony.1502
 	title = "colony.1502.name"
 	desc = {
-		text = "colony.1502.desc"
 		trigger = { owner = { is_organic_zealots = no } }
+		text = "colony.1502.desc"
 	}
 	desc = {
-		text = "colony.1502.desc.organic_zealots"
 		trigger = { owner = { is_organic_zealots = yes } }
+		text = "colony.1502.desc.organic_zealots"
 	}
 	picture = GFX_evt_atmospheric_entry
 	location = root
@@ -171,12 +171,12 @@ planet_event = {
 	id = colony.1503
 	title = "colony.1503.name"
 	desc = {
-		text = "colony.1503.desc"
 		trigger = { owner = { is_organic_zealots = no } }
+		text = "colony.1503.desc"
 	}
 	desc = {
-		text = "colony.1503.desc.organic_zealots"
 		trigger = { owner = { is_organic_zealots = yes } }
+		text = "colony.1503.desc.organic_zealots"
 	}
 	picture = GFX_evt_big_landing_ship
 	location = root
@@ -261,12 +261,12 @@ planet_event = {
 	id = colony.1505
 	title = "colony.1505.name"
 	desc = {
-		text = "colony.1505.desc"
 		trigger = { owner = { is_organic_zealots = no } }
+		text = "colony.1505.desc"
 	}
 	desc = {
-		text = "colony.1505.desc.organic_zealots"
 		trigger = { owner = { is_organic_zealots = yes } }
+		text = "colony.1505.desc.organic_zealots"
 	}
 	picture = GFX_evt_asteroid_approaching_planet
 	location = event_target:fldrone_moon
@@ -308,12 +308,12 @@ planet_event = {
 	id = colony.1506
 	title = "colony.1506.name"
 	desc = {
-		text = "colony.1506.desc"
 		trigger = { owner = { is_organic_zealots = no } }
+		text = "colony.1506.desc"
 	}
 	desc = {
-		text = "colony.1506.desc.organic_zealots"
 		trigger = { owner = { is_organic_zealots = yes } }
+		text = "colony.1506.desc.organic_zealots"
 	}
 	picture = GFX_evt_asteroid_approaching_planet
 	location = root
@@ -343,12 +343,12 @@ planet_event = {
 	id = colony.1507
 	title = "colony.1507.name"
 	desc = {
-		text = "colony.1507.desc"
 		trigger = { owner = { is_organic_zealots = no } }
+		text = "colony.1507.desc"
 	}
 	desc = {
-		text = "colony.1507.desc.organic_zealots"
 		trigger = { owner = { is_organic_zealots = yes } }
+		text = "colony.1507.desc.organic_zealots"
 	}
 	picture = GFX_evt_asteroid_approaching_planet
 	location = root
@@ -371,12 +371,12 @@ planet_event = {
 	id = colony.1508
 	title = "colony.1508.name"
 	desc = {
-		text = "colony.1508.desc"
 		trigger = { owner = { is_organic_zealots = no } }
+		text = "colony.1508.desc"
 	}
 	desc = {
-		text = "colony.1508.desc.organic_zealots"
 		trigger = { owner = { is_organic_zealots = yes } }
+		text = "colony.1508.desc.organic_zealots"
 	}
 	picture = GFX_evt_asteroid_approaching_planet
 	location = root
@@ -399,12 +399,12 @@ planet_event = {
 	id = colony.1509
 	title = "colony.1509.name"
 	desc = {
-		text = "colony.1509.desc"
 		trigger = { owner = { is_organic_zealots = no } }
+		text = "colony.1509.desc"
 	}
 	desc = {
-		text = "colony.1509.desc.organic_zealots"
 		trigger = { owner = { is_organic_zealots = yes } }
+		text = "colony.1509.desc.organic_zealots"
 	}
 	picture = GFX_evt_asteroid_approaching_planet
 	location = root
