@@ -237,11 +237,7 @@ planet_event = {
 	after = {
 		if = {
 			limit = { event_target:fldrone_moon = { has_deposit_for = shipclass_research_station } }
-			owner = {
-				add_resource = {
-					minerals = 500
-				}
-			}
+			owner = { add_resource = { minerals = 500 } }
 		}
 		else = {
 			event_target:fldrone_moon = {
