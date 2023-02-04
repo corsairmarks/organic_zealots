@@ -481,21 +481,19 @@ country_event = {
 		room = ship_room
 	}
 	option = {
-		name = "ancrel.4038.a"
 		trigger = {
 			is_machine_empire = no
 			is_hive_empire = no
 		}
+		name = "ancrel.4038.a"
 		activate_saved_leader = { key = the_oracle }
 	}
 	option = {
-		name = {
-			text = "ancrel.4038.b"
-			trigger = {
-				is_machine_empire = no
-				is_hive_empire = no
-			}
+		trigger = {
+			is_machine_empire = no
+			is_hive_empire = no
 		}
+		name = "ancrel.4038.b"
 		add_resource = {
 			alloys = 1000
 			engineering_research = 3500
@@ -504,10 +502,8 @@ country_event = {
 		hidden_effect = { remove_saved_leader = the_oracle }
 	}
 	option = {
-		name = {
-			text = "ancrel.4038.c"
-			trigger = { has_authority = auth_machine_intelligence }
-		}
+		trigger = { has_authority = auth_machine_intelligence }
+		name = "ancrel.4038.c"
 		add_resource = {
 			alloys = 1000
 			engineering_research = 3500
@@ -516,10 +512,8 @@ country_event = {
 		hidden_effect = { remove_saved_leader = the_oracle }
 	}
 	option = {
-		name = {
-			text = "ancrel.4038.d"
-			trigger = { has_authority = auth_hive_mind }
-		}
+		trigger = { has_authority = auth_hive_mind }
+		name = "ancrel.4038.d"
 		add_resource = {
 			alloys = 1000
 			engineering_research = 3500
@@ -534,9 +528,9 @@ country_event = {
 	}
 	
 	option = {
+		trigger = { has_authority = auth_machine_intelligence }
 		name = "ancrel.4036.e"
 		custom_tooltip = "ancrel.4036.e.tooltip"
-		trigger = { has_authority = auth_machine_intelligence }
 		set_country_flag = oracle_completed
 		hidden_effect = { remove_saved_leader = the_oracle }
 	}

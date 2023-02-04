@@ -376,14 +376,17 @@ country_event = {
 		end_event_chain = technosphere_chain
 	}
 	option = {
-		name = {
-			text = FASCINATING
-			trigger = { is_organic_zealots = no }
+		trigger = { is_organic_zealots = no }
+		name = FASCINATING
+		enable_special_project = {
+			name = "TECHNOSPHERE_PROJECT"
+			location = event_target:technosphere_ship
+			owner = root
 		}
-		name = {
-			text = WORRYING
-			trigger = { has_civic = civic_organic_zealots }
-		}
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = WORRYING
 		enable_special_project = {
 			name = "TECHNOSPHERE_PROJECT"
 			location = event_target:technosphere_ship

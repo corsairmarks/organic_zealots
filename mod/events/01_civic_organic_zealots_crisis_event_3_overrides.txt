@@ -7,19 +7,15 @@ country_event = {
 	title = "TRANSMISSION"
 	desc = "crisis.2402.desc"
 	diplomatic = yes
-	picture_event_data = {
-		portrait = ai_crisis_2
-	}
+	picture_event_data = { portrait = ai_crisis_2 }
 	is_triggered_only = yes
 	option = {
-		name = {
-			text = "crisis.2402.a"
-			trigger = { is_organic_zealots = no }
-		}
-		name = {
-			text = "crisis.2402.a.organic_zealots"
-			trigger = { has_civic = civic_organic_zealots }
-		}
+		trigger = { is_organic_zealots = no }
+		name = "crisis.2402.a"
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "crisis.2402.a.organic_zealots"
 	}
 }
 
@@ -45,6 +41,7 @@ country_event = {
 	}
 	is_triggered_only = yes
 	trigger = {
+		exists = from
 		from = { is_country_type = cybrex_empire }
 		NOT = { has_country_flag = cybrex_diplomacy_engaged }
 	}
@@ -57,61 +54,61 @@ country_event = {
 		}
 	}
 	option = {
+		trigger = { is_organic_zealots = no }
 		name = "crisis.2403.a"
-		trigger = { is_organic_zealots = no }
-		is_dialog_only = yes
 		response_text = "crisis.2403.a.response"
+		is_dialog_only = yes
 	}
 	option = {
+		trigger = { has_civic = civic_organic_zealots }
 		name = "crisis.2403.a.organic_zealots"
-		trigger = { has_civic = civic_organic_zealots }
-		is_dialog_only = yes
 		response_text = "crisis.2403.a.response"
+		is_dialog_only = yes
 	}
 	option = {
-		name = "crisis.2403.b"
 		trigger = { is_organic_zealots = no }
-		is_dialog_only = yes
+		name = "crisis.2403.b"
 		response_text = "crisis.2403.b.response"
+		is_dialog_only = yes
 	}
 	option = {
+		trigger = { has_civic = civic_organic_zealots }
 		name = "crisis.2403.b.organic_zealots"
-		trigger = { has_civic = civic_organic_zealots }
-		is_dialog_only = yes
 		response_text = "crisis.2403.b.response"
+		is_dialog_only = yes
 	}
 	option = {
-		name = "crisis.2403.d"
 		trigger = { has_civic = civic_fanatic_purifiers }
-		is_dialog_only = yes
+		name = "crisis.2403.d"
 		response_text = "crisis.2403.d.response"
+		is_dialog_only = yes
 	}
 	option = {
-		name = "crisis.2403.e"
 		trigger = { has_civic = civic_hive_devouring_swarm }
-		is_dialog_only = yes
+		name = "crisis.2403.e"
 		response_text = "crisis.2403.e.response"
+		is_dialog_only = yes
 	}
 	option = {
-		name = "crisis.2403.f"
 		trigger = { has_civic = civic_machine_terminator }
-		is_dialog_only = yes
+		name = "crisis.2403.f"
 		response_text = "crisis.2403.f.response"
-	}
-	option = {
-		name = "crisis.2403.g"
-		trigger = { has_civic = civic_organic_zealots }
 		is_dialog_only = yes
-		response_text = "crisis.2403.f.response" # intentionally reused f, it applies here
 	}
 	option = {
-		name = "crisis.2403.c"
+		trigger = { has_civic = civic_organic_zealots }
+		name = "crisis.2403.g"
+		response_text = "crisis.2403.f.response" # intentionally reused f, it applies here
+		is_dialog_only = yes
+	}
+	option = {
 		trigger = { is_homicidal = no }
+		name = "crisis.2403.c"
 		response_text = "crisis.2403.c.response"
 	}
 	option = {
-		name = END_TRANSMISSION
 		trigger = { is_homicidal = yes }
+		name = END_TRANSMISSION
 		response_text = "crisis.2403.c.homicidal.response"
 	}
 }
@@ -127,22 +124,22 @@ country_event = {
 	location = event_target:cybrex_beta
 	is_triggered_only = yes
 	option = {
-		name = DISCONCERTING
 		trigger = {
 			NOT = { is_same_value = event_target:killer }
 			is_organic_zealots = no
 		}
+		name = DISCONCERTING
 	}
 	option = {
-		name = EXCELLENT
 		trigger = {
 			NOT = { is_same_value = event_target:killer }
-			has_civic = civic_organic_zealots # 
+			has_civic = civic_organic_zealots
 		}
+		name = EXCELLENT
 	}
 	option = {
-		name = "crisis.2405.b"
 		trigger = { is_same_value = event_target:killer }
+		name = "crisis.2405.b"
 	}
 }
 
@@ -158,14 +155,12 @@ country_event = {
 	}
 	is_triggered_only = yes
 	option = {
-		name = {
-			text = "crisis.2408.a"
-			trigger = { is_organic_zealots = no }
-		}
-		name = {
-			text = "crisis.2408.a.organic_zealots"
-			trigger = { has_civic = civic_organic_zealots }
-		}
+		trigger = { is_organic_zealots = no }
+		name = "crisis.2408.a"
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "crisis.2408.a.organic_zealots"
 	}
 }
 
@@ -250,14 +245,12 @@ country_event = {
 		}
 	}
 	option = {
-		name = {
-			text = "crisis.2473.b"
-			trigger = { is_organic_zealots = no }
-		}
-		name = {
-			text = "crisis.2473.b.organic_zealots"
-			trigger = { has_civic = civic_organic_zealots }
-		}
+		trigger = { is_organic_zealots = no }
+		name = "crisis.2473.b"
+	}
+	option = {
+		trigger = { has_civic = civic_organic_zealots }
+		name = "crisis.2473.b.organic_zealots"
 	}
 }
 
@@ -269,12 +262,12 @@ country_event = {
 	id = crisis.2480
 	title = "crisis.2480.name"
 	desc = {
-		text = "crisis.2480.desc"
 		trigger = { is_organic_zealots = no }
+		text = "crisis.2480.desc"
 	}
 	desc = {
-		text = "crisis.2480.desc.organic_zealots"
 		trigger = { is_organic_zealots = yes }
+		text = "crisis.2480.desc.organic_zealots"
 	}
 	picture = GFX_evt_shattered_planet
 	show_sound = event_mystic_reveal
@@ -310,12 +303,12 @@ country_event = {
 	id = crisis.2481
 	title = "crisis.2480.name"
 	desc = {
-		text = "crisis.2481.desc"
 		trigger = { is_organic_zealots = no }
+		text = "crisis.2481.desc"
 	}
 	desc = {
-		text = "crisis.2481.desc.organic_zealots"
 		trigger = { has_civic = civic_organic_zealots }
+		text = "crisis.2481.desc.organic_zealots"
 	}
 	picture = GFX_evt_satellite_in_orbit
 	show_sound = event_mystic_reveal
