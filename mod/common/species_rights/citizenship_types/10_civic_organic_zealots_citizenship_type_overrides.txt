@@ -1,8 +1,8 @@
 # Modified:
 # * does not account for content from Deassimilate Machines, which will always overwrite this version of citizenship_assimilation
 # * homicidals are not blanket-denied from assimilating (potential)
-# * cybernetic and tech assimilation are restricted based on organic zealots and the outlaw cybernetics, robots, and ai wargoal
-# * terminators and organic zealots cas assimilate robotic/non-robotic species as appropriate
+# * cybernetic/synthetic assimilation can be restricted if an empire/overlord has the organic zealots civic or was affected by the outlaw cybernetics, robots, and ai wargoal
+# * terminators and organic zealots can assimilate robotic/non-robotic species as appropriate
 citizenship_assimilation = {
 	is_assimilation = yes
 	potential = {
