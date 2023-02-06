@@ -50,6 +50,7 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
     * Cannot research Integrated Cybernetics (and by extension, also Quantum Neuro-Links)
     * Can deassimilate cybernetic species to remove their cybernetic implants, attempting to convert them to the relevant biological traits in the process (with the technologies Gene Tailoring and Gene Banks)
     * Improve compatibility with Forgotten History
+    * Fix broken edits for the Helpful Drones event chain
 
 ## Source Code
 
