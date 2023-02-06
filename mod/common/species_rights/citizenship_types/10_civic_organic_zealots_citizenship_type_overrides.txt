@@ -1,5 +1,5 @@
 # Modified:
-# * does not account for content from Deassimilate Machines, which will always overwrite this version of citizenship_assimilation
+# * does not account for content from Assimilate All the Pops!, which will always overwrite this version of citizenship_assimilation
 # * homicidals are not blanket-denied from assimilating (potential)
 # * cybernetic/synthetic assimilation can be restricted if an empire/overlord has the organic zealots civic or was affected by the outlaw cybernetics, robots, and ai wargoal
 # * terminators and organic zealots can assimilate robotic/non-robotic species as appropriate
@@ -36,7 +36,12 @@ citizenship_assimilation = {
 						has_active_tradition = tr_cybernetics_transubstantiation_synthesis # cybernetic assimilation (regular)
 						has_active_tradition = tr_psionics_psionic_assimilation # psionic assimilation
 						has_active_tradition = tr_genetics_creation # hive deassimilation
-						# machine deassimilation overwrites this citizenship - no need for trigger
+						# machine deassimilation
+						AND = {
+							has_deassimilate_machines_active = yes
+							has_technology = tech_sapient_ai
+							prev = { has_trait = trait_machine_unit }
+						}
 						# cyborg deassimilation
 						AND = {
 							has_technology = tech_gene_tailoring
@@ -67,11 +72,11 @@ citizenship_assimilation = {
 				}
 			}
 		}
-		custom_tooltip = {
-			fail_text = disconnected_machine_pops_collapse_citizenship
-			OR = {
+		if = {
+			limit = { is_disconnected_machine_pop = yes }
+			custom_tooltip = {
+				fail_text = disconnected_machine_pops_collapse_citizenship
 				from = { has_country_flag = synth_assimilation }
-				is_disconnected_machine_pop = no
 			}
 		}
 		if = {
@@ -153,9 +158,29 @@ citizenship_assimilation = {
 		}
 		else_if = {
 			limit = { from = { is_gestalt = no } }
+			# machine deassimilation
+			if = {
+				limit = {
+					has_deassimilate_machines_active = yes
+					has_technology = tech_sapient_ai
+				}
+				custom_tooltip = {
+					fail_text = UNMACHINE_SPECIES_MUST_BE_MACHINE
+					prev = { has_trait = trait_machine_unit }
+				}
+				custom_tooltip = {
+					fail_text = ROBOTS_ARE_ALLOWED
+					has_policy_flag = robots_allowed
+				}
+				custom_tooltip = {
+					fail_text = AI_IS_ALLOWED
+					NOT = { has_policy_flag = ai_outlawed }
+				}
+			}
 			# synthetic assimilation (regular)
 			if = {
-				limit = { from = { has_active_tradition = tr_synthetics_adopt } }
+				limit = { from = { has_country_flag = synth_assimilation } }
+				# no default allow conditions for synthetics, hive exclusion handled above
 				custom_tooltip = {
 					fail_text = lost_robot_policy_war_fail
 					from = { NOT = { has_country_flag = lost_robot_policy_war } }

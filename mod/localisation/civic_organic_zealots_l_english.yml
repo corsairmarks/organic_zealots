@@ -118,6 +118,15 @@
  civic_organic_zealots.12071.desc: "Our forces report complete success in eradicating the abhorrent spy-drones on [From.GetName] and demolishing their obscene Machine constructions. Final flyovers show no activity among the planet-wide wreckage."
  CLEANSE_FROM_ORBIT: "Cleanse the entire site from orbit."
 
- # mirrors content from Deassimilate Machines
- CYBORG_SPECIES_CANT_BE_CYBORG_FAIL: "$TRIGGER_FAIL$This species already has cybernetic implants."
- HIVE_SPECIES_CANT_BE_HIVE_FAIL: "$TRIGGER_FAIL$Only organic non-§Y$trait_hive_mind$§! species can be connected to our Hive Mind."
+ # Duplicated from Deassimilate machines
+ disconnected_machine_pops_collapse_citizenship_assimilation: "$disconnected_machine_pops_collapse_citizenship$ Unless they could be retrofitted with individual §Y$tech_sapient_ai$§!..."
+ ROBOTS_ARE_ALLOWED: "Robots must be §Gallowed§!."
+ ROBOTS_ARE_ALLOWED_FAIL: "$TRIGGER_FAIL$$ROBOTS_ARE_ALLOWED$"
+ AI_IS_ALLOWED: "Artificial Intelligence must be §Gallowed§!. §Y$trait_machine_unit$§! species are too sophisticated to convert into mindless robots."
+ AI_IS_ALLOWED_FAIL: "$TRIGGER_FAIL$$AI_IS_ALLOWED$"
+ UNMACHINE_SPECIES_MUST_BE_MACHINE: "Only §Y$trait_machine_unit$§! species can be disconnected from a Machine Intelligence."
+ UNMACHINE_SPECIES_MUST_BE_MACHINE_FAIL: "$TRIGGER_FAIL$$UNMACHINE_SPECIES_MUST_BE_MACHINE$"
+ CYBORG_SPECIES_CANT_BE_CYBORG: "This species already has cybernetic implants."
+ CYBORG_SPECIES_CANT_BE_CYBORG_FAIL: "$TRIGGER_FAIL$$CYBORG_SPECIES_CANT_BE_CYBORG$"
+ HIVE_SPECIES_CANT_BE_HIVE: "Only organic non-§Y$trait_hive_mind$§! species can be connected to our Hive Mind."
+ HIVE_SPECIES_CANT_BE_HIVE_FAIL: "$TRIGGER_FAIL$$HIVE_SPECIES_CANT_BE_HIVE$"
