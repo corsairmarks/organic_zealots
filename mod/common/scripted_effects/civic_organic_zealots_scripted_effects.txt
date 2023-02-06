@@ -350,6 +350,7 @@ coz_prepare_uncyborg_species = {
 		change_scoped_species = no
 		effect = {
 			coz_set_assimilation_flags = yes
+			save_event_target_as = prepared_species
 		}
 	}
 }
