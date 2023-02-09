@@ -52,6 +52,7 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
     * Improve compatibility with Forgotten History
     * Fix broken edits for the Helpful Drones event chain
     * Properly allow _all_ other empire types to declare an End Threat (Containment) total war against Organic Zealots - was incorrectly limited to robotic empires only
+* 1.3.0 Update Mentat traits for governors and rulers - governors now reduce pop upkeep by 5% and have decreased other bonuses, rulers have a lower unity bonus
 
 ## Source Code
 
