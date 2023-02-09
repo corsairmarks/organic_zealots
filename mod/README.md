@@ -51,6 +51,7 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
     * Can deassimilate cybernetic species to remove their cybernetic implants, attempting to convert them to the relevant biological traits in the process (with the technologies Gene Tailoring and Gene Banks)
     * Improve compatibility with Forgotten History
     * Fix broken edits for the Helpful Drones event chain
+    * Properly allow _all_ other empire types to declare an End Threat (Containment) total war against Organic Zealots - was incorrectly limited to robotic empires only
 
 ## Source Code
 
