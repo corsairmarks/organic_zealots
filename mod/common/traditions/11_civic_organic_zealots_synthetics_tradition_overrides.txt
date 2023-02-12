@@ -7,7 +7,7 @@ tr_synthetics_synthetic_age = {
 					is_machine_empire = yes
 				}
 			}
-			always = yes
+			hidden_trigger = { always = yes }
 		}
 		else = {
 			has_technology = tech_synthetic_leaders
