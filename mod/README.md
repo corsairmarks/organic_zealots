@@ -47,7 +47,7 @@ This mod is intentionally not included in my modpack [Subtle Polish: A Collectio
     * Could be added but requires overwriting two significant events with compatibility concerns
 * Some events and diplomacy screens may have no options for empires with Civic: Organic Zealots
     * Please report which ones in the Steam comments, my Discord channel, or GitHub
-    * This is usually because the game uses the `is_homicidal` trigger to exclude those types of empires, but only offers options for explicit homicidal civics rather than a catch-all choice - I can address it by overriding the relevant event to add an appropriate option
+    * This is usually because the game uses the `is_homicidal` trigger to exclude those types of empires, but only offers options for the built-in homicidal civics rather than a catch-all choice - I can fix it by overriding the relevant event to add an appropriate option
 
 ### Error Logs
 
@@ -64,6 +64,7 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
     * Fix broken edits for the Helpful Drones event chain
     * Properly allow _all_ other empire types to declare an End Threat (Containment) total war against Organic Zealots - was incorrectly limited to robotic empires only
 * 1.3.0 Update Mentat traits for governors and rulers - governors now reduce pop upkeep by 5% and have decreased other bonuses, rulers have a lower unity bonus
+* 1.3.1 Fix bug introduced in 1.2.0 that disallowed Civic: Organic Zealots from proposing Secret Fealty, courtesy of reporting by [MrFunEGUY](https://steamcommunity.com/profiles/76561198025143641/myworkshopfiles/?appid=281990)
 
 ## Source Code
 

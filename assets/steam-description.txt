@@ -44,7 +44,7 @@ This mod is intentionally not included in my modpack [url=https://steamcommunity
 [*]Some events and diplomacy screens may have no options for empires with Civic: Organic Zealots
 	[list]
 	[*]Please report which ones in the Steam comments, my Discord channel, or GitHub
-	[*]This is usually because the game uses the [b]is_homicidal[/b] trigger to exclude those types of empires, but only offers options for explicit homicidal civics rather than a catch-all choice - I can address it by overriding the relevant event to add an appropriate option
+	[*]This is usually because the game uses the [b]is_homicidal[/b] trigger to exclude those types of empires, but only offers options for the built-in homicidal civics rather than a catch-all choice - I can fix it by overriding the relevant event to add an appropriate option
 	[/list]
 [/list]
 [h3]Error Logs[/h3]
