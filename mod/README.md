@@ -40,6 +40,17 @@ This mod is intentionally not included in my modpack [Subtle Polish: A Collectio
 
 ## Known Issues
 
+### Gameplay
+
+* Empires with Civic: Organic Zealots can never choose a "friendly" greeting when meeting other empires
+    * There will never be a "green" option when making first contact, only the yellow and red options
+    * Could be added but requires overwriting two significant events with compatibility concerns
+* Some events and diplomacy screens may have no options for empires with Civic: Organic Zealots
+    * Please report which ones in the Steam comments, my Discord channel, or GitHub
+    * This is usually because the game uses the `is_homicidal` trigger to exclude those types of empires, but only offers options for explicit homicidal civics rather than a catch-all choice - I can address it by overriding the relevant event to add an appropriate option
+
+### Error Logs
+
 So, so many game object overwrites will leave warnings in the error.log file.  These overwrites are to enforce the homicidal nature of Organic Zealots and having other empires react accordingly.  Here is a short list of what is affected: some ascension perks, many diplomatic actions, some game rules, many policies, a few crucial built-in scripted triggers, the assimilation citizenship type, several purge types, some AI-related technologies, the traditions which enable the cybernetic and synthetic special projects, and most built-in events dealing with AI or robots/machines.
 
 ## Changelog
