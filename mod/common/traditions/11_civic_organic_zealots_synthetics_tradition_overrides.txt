@@ -1,3 +1,4 @@
+# Modified: add restrictions for organic zealots, their subjects, and robot policy wars
 tr_synthetics_synthetic_age = {
 	possible = {
 		if = {
@@ -57,22 +58,16 @@ tr_synthetics_synthetic_age = {
 				}
 			}
 		}
-		weight = {
-			factor = 1
-		}
+		weight = { factor = 1 }
 	}
 	tradition_swap = {
 		name = tr_synthetics_power_systems
 		inherit_effects = no
 		inherit_icon = no
-		trigger = {
-			is_machine_empire = yes
-		}
+		trigger = { is_machine_empire = yes }
 		modifier = {
 			MACHINE_species_trait_picks_add = 1
 		}
-		weight = {
-			factor = 2
-		}
+		weight = { factor = 2 }
 	}
 }
