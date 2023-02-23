@@ -1,6 +1,8 @@
 namespace = galcom
 
-# Modified: add cutom option for organic zealots
+# Modified:
+# * fallback option for any homicidal type without an explicit option
+# * custom option for organic zealots
 country_event = {
 	id = galcom.16
 	title = "galcom.5.name"
@@ -17,6 +19,11 @@ country_event = {
 			limit = { is_homicidal = yes }
 			set_country_flag = galcom_form_nay
 		}
+	}
+	option = {
+		name = DISGUSTING
+		 # if no option triggers are yes, the first one is displayed
+		trigger = { always = no }
 	}
 	option = {
 		name = "galcom.16.a"
