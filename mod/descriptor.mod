@@ -3,7 +3,7 @@ tags={
 	"Diplomacy"
 	"Gameplay"
 }
-version="1.3.1"
+version="1.3.2"
 picture="thumbnail.png"
 supported_version="3.6.*"
 remote_file_id="2920668465"

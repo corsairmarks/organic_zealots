@@ -65,6 +65,7 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
     * Properly allow _all_ other empire types to declare an End Threat (Containment) total war against Organic Zealots - was incorrectly limited to robotic empires only
 * 1.3.0 Update Mentat traits for governors and rulers - governors now reduce pop upkeep by 5% and have decreased other bonuses, rulers have a lower unity bonus
 * 1.3.1 Fix bug introduced in 1.2.0 that disallowed Civic: Organic Zealots from proposing Secret Fealty, courtesy of reporting by [MrFunEGUY](https://steamcommunity.com/profiles/76561198025143641/myworkshopfiles/?appid=281990)
+* 1.3.2 Fix the Galactic Community invitation event to be able to be rejected by empires with Civic: Organic Zealots ([MrFunEGUY](https://steamcommunity.com/profiles/76561198025143641/myworkshopfiles/?appid=281990) strikes again)
 
 ## Source Code
 
