@@ -15,13 +15,15 @@ country_event = {
 	title = "marauder_diplo_header_3"
 	desc = {
 		text = "marauder.19.desc.fallback"
-		from = { has_country_flag = marauder_1 }
-		NOR = {
-			has_civic = civic_fanatic_purifiers
-			has_civic = civic_machine_terminator
-			has_civic = civic_hive_devouring_swarm
+		trigger = {
+			from = { has_country_flag = marauder_1 }
+			NOR = {
+				has_civic = civic_fanatic_purifiers
+				has_civic = civic_machine_terminator
+				has_civic = civic_hive_devouring_swarm
+			}
+			is_organic_zealots = no
 		}
-		is_organic_zealots = no
 	}
 	desc = {
 		text = "marauder.19.desc_01"
@@ -53,13 +55,15 @@ country_event = {
 	}
 	desc = {
 		text = "marauder.19.2.desc.fallback"
-		from = { has_country_flag = marauder_2 }
-		NOR = {
-			has_civic = civic_fanatic_purifiers
-			has_civic = civic_machine_terminator
-			has_civic = civic_hive_devouring_swarm
+		trigger = {
+			from = { has_country_flag = marauder_2 }
+			NOR = {
+				has_civic = civic_fanatic_purifiers
+				has_civic = civic_machine_terminator
+				has_civic = civic_hive_devouring_swarm
+			}
+			is_organic_zealots = no
 		}
-		is_organic_zealots = no
 	}
 	desc = {
 		text = "marauder.19.2.desc_01"
@@ -91,13 +95,15 @@ country_event = {
 	}
 	desc = {
 		text = "marauder.19.3.desc.fallback"
-		from = { has_country_flag = marauder_3 }
-		NOR = {
-			has_civic = civic_fanatic_purifiers
-			has_civic = civic_machine_terminator
-			has_civic = civic_hive_devouring_swarm
+		trigger = {
+			from = { has_country_flag = marauder_3 }
+			NOR = {
+				has_civic = civic_fanatic_purifiers
+				has_civic = civic_machine_terminator
+				has_civic = civic_hive_devouring_swarm
+			}
+			is_organic_zealots = no
 		}
-		is_organic_zealots = no
 	}
 	desc = {
 		text = "marauder.19.3.desc_01"
