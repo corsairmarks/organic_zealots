@@ -42,12 +42,13 @@ This mod is intentionally not included in my modpack [Subtle Polish: A Collectio
 
 ### Gameplay
 
-* Empires with Civic: Organic Zealots can never choose a "friendly" greeting when meeting other empires
+* Organic Zealots can never choose a "friendly" greeting when meeting other empires
     * There will never be a "green" option when making first contact, only the yellow and red options
     * Could be added but requires overwriting two significant events with compatibility concerns
-* Some events and diplomacy screens may have no options for empires with Civic: Organic Zealots
+* Some events and diplomacy screens may have no options for Organic Zealots
     * Please report which ones in the Steam comments, my Discord channel, or GitHub
     * This is usually because the game uses the `is_homicidal` trigger to exclude those types of empires, but only offers options for the built-in homicidal civics rather than a catch-all choice - I can fix it by overriding the relevant event to add an appropriate option
+* Organic Zealots cannot interact with enclaves or the caravaneers - Paradox blanket-bans any homicidal empires from communicating with them, and this mod does not alter those restrictions
 
 ### Error Logs
 
