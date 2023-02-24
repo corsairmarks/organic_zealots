@@ -21,7 +21,7 @@ is_unfriendly = {
 # Modified: use triggers, include conditions for civic_organic_zealots
 has_total_war_cb = {
 	OR = {
-		#attacker checks
+		# attacker checks
 		AND = {
 			OR = {
 				is_country_type = default
@@ -50,7 +50,7 @@ has_total_war_cb = {
 				}
 			}
 		}
-		#end threat checks
+		# end threat checks
 		AND = {
 			is_country_type = default
 			NOR = {
@@ -63,6 +63,19 @@ has_total_war_cb = {
 					is_country_type = awakened_fallen_empire
 					has_valid_civic = civic_machine_assimilator
 					is_homicidal = yes
+				}
+			}
+		}
+		AND = {
+			is_valid_organic_zealots = yes
+			from = {
+				OR = {
+					is_country_type = awakened_fallen_empire
+					has_valid_civic = civic_machine_assimilator
+					AND = {
+						is_valid_organic_zealots = no
+						is_homicidal = yes
+					}
 				}
 			}
 		}
