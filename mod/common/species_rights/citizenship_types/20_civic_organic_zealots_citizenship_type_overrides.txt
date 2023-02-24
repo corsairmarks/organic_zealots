@@ -78,7 +78,7 @@ citizenship_assimilation = {
 				fail_text = disconnected_machine_pops_collapse_citizenship
 				from = {
 					OR = {
-						AND =- {
+						AND = {
 							has_deassimilate_machines_active = no
 							has_country_flag = synth_assimilation
 						}
