@@ -155,11 +155,6 @@ country_event = {
 		from.owner_species = { save_event_target_as = marauder_species }
 	}
 	option = {
-		name = END_TRANSMISSION
-		 # if no option triggers are yes, the first one is displayed
-		trigger = { always = no }
-	}
-	option = {
 		name = "marauder.19.a"
 		trigger = { has_civic = civic_hive_devouring_swarm }
 	}
@@ -174,5 +169,19 @@ country_event = {
 	option = {
 		name = "marauder.19.d.organic_zealots"
 		trigger = { has_civic = civic_organic_zealots }
+	}
+	option = { # fallback for other, unknown homicidals
+		name = END_TRANSMISSION
+		trigger = {
+			hidden_trigger = {
+				is_homicidal = yes
+				NOR = {
+					has_civic = civic_fanatic_purifiers
+					has_civic = civic_machine_terminator
+					has_civic = civic_hive_devouring_swarm
+					has_civic = civic_organic_zealots
+				}
+			}
+		}
 	}
 }
