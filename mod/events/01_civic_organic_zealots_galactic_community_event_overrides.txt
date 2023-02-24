@@ -1,8 +1,8 @@
 namespace = galcom
 
 # Modified:
-# * fallback option for any homicidal type without an explicit option
 # * custom option for organic zealots
+# * fallback option for any homicidal type without an explicit option
 country_event = {
 	id = galcom.16
 	title = "galcom.5.name"
@@ -19,11 +19,6 @@ country_event = {
 			limit = { is_homicidal = yes }
 			set_country_flag = galcom_form_nay
 		}
-	}
-	option = {
-		name = DISGUSTING
-		 # if no option triggers are yes, the first one is displayed
-		trigger = { always = no }
 	}
 	option = {
 		name = "galcom.16.a"
@@ -81,5 +76,19 @@ country_event = {
 	option = {
 		name = "galcom.16.c.organic_zealots"
 		trigger = { has_civic = civic_organic_zealots }
+	}
+	option = { # fallback for other, unknown homicidals
+		name = DISGUSTING
+		trigger = {
+			hidden_trigger = {
+				is_homicidal = yes
+				NOR = {
+					has_civic = civic_fanatic_purifiers
+					has_civic = civic_machine_terminator
+					has_civic = civic_hive_devouring_swarm
+					has_civic = civic_organic_zealots
+				}
+			}
+		}
 	}
 }
