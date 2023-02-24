@@ -122,7 +122,7 @@
  leviathans.1051.desc.organic_zealots: "The metallic orb has been opened up. Our hacking team has been able to use the outgoing signal as a gateway into one of the auxiliary CPUs of the sphere. We are receiving some data from it and can tell that it's been scanning the black hole Gargantua for a very long time.\n\nIt is old. Very old.\n\nWhat it does with that data remains inscrutable, but surely such research is to the detriment of organic life everywhere."
  leviathans.3102.a.anti_ai: "Purged of AI taint, it shall lead our navy to glory!"
  marauder.19.desc_04.organic_zealots: "There is no honor in fighting only the machine. The warriors of the [marauder_country_1.GetSpeciesNamePlural] could not serve under those who do not glorify true tests of combat prowess."
- marauder.19.desc.fallback: "You are so utterly devoid of honor that our warriors consider target practise against your kind to be a punishment for losing a wager.Avoid our territory and spare them the disgrace."
+ marauder.19.desc.fallback: "You are so utterly devoid of honor that our warriors consider target practise against your kind to be a punishment for losing a wager. Avoid our territory and spare them the disgrace."
  marauder.19.2.desc_04.organic_zealots: "You bash windup toys and no leave some for us! HYEEEIIIEEEE!!! You dwamaks hog all fun, we no help!"
  marauder.19.2.desc.fallback: "HYEEEIIIEEEE!!! You only good to bash!"
  marauder.19.3.desc_04.organic_zealots: "The ruination of the cold and soulless gladdens She of the Void. We do not aid those who would usurp Her favor.\n\nOn this, even the heretical factions agree."
