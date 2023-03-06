@@ -413,9 +413,7 @@ action_form_commercial_pact = {
 				NOT = {
 					AND = {
 						has_federation = yes
-						federation = {
-							has_federation_law = treaties_separate_no
-						}
+						federation = { has_federation_law = treaties_separate_no }
 						NOT = { federation = { any_member = { is_same_value = root } } }
 					}
 				}
