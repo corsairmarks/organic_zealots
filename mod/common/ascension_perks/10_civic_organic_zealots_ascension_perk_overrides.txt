@@ -78,6 +78,7 @@ ap_nihilistic_acquisition = {
 		NOR = {
 			has_ascension_perk = ap_nihilistic_acquisition
 			has_valid_civic = civic_barbaric_despoilers
+			has_origin = origin_slavers
 		}
 	}
 	on_enabled = {

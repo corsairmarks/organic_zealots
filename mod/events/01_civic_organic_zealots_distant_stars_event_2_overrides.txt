@@ -81,8 +81,13 @@ ship_event = {
 					OR = {
 						habitable_planet = yes
 						is_planet_class = pc_nuked
+						is_pd_nuked = yes
 						is_planet_class = pc_hive
+						is_pd_hive_world = yes
+						is_pd_hive_arcology = yes
 						is_planet_class = pc_machine
+						is_pd_machine = yes
+						is_pd_robot_arcology = yes
 					}
 				}
 			}

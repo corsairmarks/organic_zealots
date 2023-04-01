@@ -9,8 +9,14 @@ purge = {
 	possible = {
 		exists = owner
 		OR = {
-			has_citizenship_type = { type = citizenship_purge_machine }
-			has_citizenship_type = { type = citizenship_purge }
+			has_citizenship_type = {
+				type = citizenship_purge_machine
+				country = owner
+			}
+			has_citizenship_type = {
+				type = citizenship_purge
+				country = owner
+			}
 			has_pop_flag = event_purge
 		}
 	}

@@ -19,6 +19,8 @@ is_unfriendly = {
 }
 
 # Modified: use triggers, include conditions for civic_organic_zealots
+# this = country, attacker
+# from = country, defender
 has_total_war_cb = {
 	OR = {
 		# attacker checks
@@ -82,18 +84,19 @@ has_total_war_cb = {
 	}
 }
 
-# Modified: use gestalt trigger, added civic_organic_zealots
+# Modified: use is_gestalt trigger, use is_homicidal trigger
+# this = country
 allows_purge = {
 	OR = {
 		is_gestalt = yes
-		has_valid_civic = civic_fanatic_purifiers
-		is_valid_organic_zealots = yes
+		is_homicidal = yes
 		has_policy_flag = purge_allowed
 		has_policy_flag = purge_displacement_only
 	}
 }
 
 # Modified: use gestalt trigger and homicidal trigger
+# this = country
 is_valid_target_fe_stop_atrocities = {
 	OR = {
 		allows_slavery = yes
@@ -104,7 +107,7 @@ is_valid_target_fe_stop_atrocities = {
 }
 
 # Modified: use gestalt trigger and homicidal trigger
-# fleet scope
+# this = fleet
 is_merc_enclave_founding_allowed = {
 	owner = {
 		is_gestalt = no
@@ -119,12 +122,22 @@ is_merc_enclave_founding_allowed = {
 	}
 	fleet_size >= 50
 	custom_tooltip = {
+		fail_text = enclave.2.tooltip.cloak
+		count_owned_ship = {
+			limit = { has_cloaking_strength > 0 }
+			count = 0
+		}
+	}
+	custom_tooltip = {
 		fail_text = enclave.2.tooltip.c
 		success_text = enclave.2.tooltip.cc
 		exists = solar_system
 		solar_system = {
 			exists = owner
-			owner = { is_same_value = root.owner }
+			owner = {
+				is_same_value = root.owner
+				is_same_value = root.controller
+			}
 			NOT = {
 				any_fleet_in_system = {
 					owner = {
@@ -174,4 +187,107 @@ is_merc_enclave_founding_allowed = {
 			has_ship_owner_type = galactic_community
 		}
 	}
+}
+
+# Modified: can be prevented by losing a robot policy war or having an organic zealot overlord
+# this = pop
+can_assemble_cyborg_pop = {
+	hidden_trigger  ={ exists = owner }
+	owner = {
+		custom_tooltip = {
+			fail_text = lost_robot_policy_war_fail
+			NOT = { has_country_flag = lost_robot_policy_war }
+		}
+		custom_tooltip = {
+			fail_text = civic_tooltip_not_organic_zealots_fail
+			is_valid_organic_zealots = no
+		}
+		custom_tooltip = {
+			fail_text = civic_tooltip_overlord_not_organic_zealots_fail
+			NAND = {
+				is_subject = yes
+				exists = overlord
+				overlord = { is_valid_organic_zealots = yes }
+			}
+		}
+	}
+	hidden_trigger = { exists = planet }
+	planet = {
+		OR = {
+			NOT = { exists = assembling_species }
+			AND = {
+				exists = assembling_species
+				assembling_species = {
+					OR = {
+						has_trait = trait_cybernetic
+						is_robotic = yes
+					}
+				}
+			}
+		}
+	}
+}
+
+# Modified: can be prevented by losing a robot policy war or having an organic zealot overlord
+# this = pop
+can_assemble_robot = {
+	hidden_trigger = { exists = owner }
+	owner = {
+		custom_tooltip = {
+			fail_text = lost_robot_policy_war_fail
+			NOT = { has_country_flag = lost_robot_policy_war }
+		}
+		custom_tooltip = {
+			fail_text = civic_tooltip_not_organic_zealots_fail
+			is_valid_organic_zealots = no
+		}
+		custom_tooltip = {
+			fail_text = civic_tooltip_overlord_not_organic_zealots_fail
+			NAND = {
+				is_subject = yes
+				exists = overlord
+				overlord = { is_valid_organic_zealots = yes }
+			}
+		}
+	}
+	hidden_trigger = { exists = planet }
+	planet = {
+		OR = {
+			NOT = { exists = assembling_species }
+			AND = {
+				exists = assembling_species
+				assembling_species = { is_robotic = yes }
+			}
+		}
+	}
+}
+
+# Modified: can be prevented by losing a robot policy war or having an organic zealot overlord
+# this = species
+# from = country, owner
+can_add_cybernetic_traits = {
+	hidden_trigger = { exists = from }
+	from = {
+		custom_tooltip = {
+			fail_text = lost_robot_policy_war_fail
+			NOT = { has_country_flag = lost_robot_policy_war }
+		}
+		custom_tooltip = {
+			fail_text = civic_tooltip_not_organic_zealots_fail
+			is_valid_organic_zealots = no
+		}
+		custom_tooltip = {
+			fail_text = civic_tooltip_overlord_not_organic_zealots_fail
+			NAND = {
+				is_subject = yes
+				exists = overlord
+				overlord = { is_valid_organic_zealots = yes }
+			}
+		}
+		OR = {
+			has_tradition = tr_cybernetics_integrated_anatomy
+			has_tradition = tr_cybernetics_assimilator_integrated_anatomy
+		}
+	}
+	has_trait = trait_cybernetic
 }

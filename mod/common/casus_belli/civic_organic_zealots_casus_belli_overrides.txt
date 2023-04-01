@@ -1,18 +1,9 @@
-#my_casus_belli = {
-#	potential = { ... }		# trigger to make some CBs invalid for certain types of countries; this = attacker (CB owner); default: { always = yes }
-#	is_valid = { ... }		# trigger, evaluated daily to check if CB should be created or destroyed automatically, does not affect CBs granted via script;
-#								# this = attacker (CB owner), from = defender (target country); default: { always = yes }
-#	destroy_if = { ... }	# trigger, evaluated daily to destroy CBs that have been granted via script ahead of expiration date;
-#								# this = attacker (CB owner), from = defender (target country); default: { always = no }
-#	show_notification = no/yes	# optional (default = yes), flag to control whether this CB will generate a notification (to avoid duplicate
-#								# notification when a claim CB is generated)
-#}
-
 # Modification: use triggers
 cb_galatron = {
 	show_in_diplomacy = yes
 	show_notification = yes
 	potential = {
+		has_global_flag = galatron_activated_first_time
 		is_country_type = default
 		is_berserk_fallen_machine_empire = no
 		is_homicidal = no
@@ -27,6 +18,9 @@ cb_galatron = {
 			has_closed_borders = prev
 		}
 		has_total_war_cb = no
-		NOT = { is_overlord_to = from }
+		NOR = {
+			is_overlord_to = from
+			from = { is_overlord_to = root }
+		}
 	}
 }

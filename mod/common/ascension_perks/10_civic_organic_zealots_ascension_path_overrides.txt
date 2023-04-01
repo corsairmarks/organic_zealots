@@ -156,12 +156,7 @@ ap_synthetic_evolution = {
 			custom_tooltip = disables_overtuned_features
 		}
 		if = {
-			limit = {
-				OR = {
-					has_valid_civic = civic_idyllic_bloom
-					has_valid_civic = civic_hive_idyllic_bloom
-				}
-			}
+			limit = { is_idyllic_bloom_empire = yes }
 			custom_tooltip = disables_idyllic_bloom
 		}
 	}
@@ -234,7 +229,10 @@ ap_synthetic_evolution = {
 		}
 		modifier = {
 			factor = 0
-			has_origin = origin_necrophage
+			OR = {
+				has_origin = origin_necrophage
+				has_origin = origin_slavers
+			}
 		}
 	}
 }

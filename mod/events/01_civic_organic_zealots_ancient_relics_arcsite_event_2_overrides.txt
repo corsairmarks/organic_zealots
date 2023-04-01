@@ -95,9 +95,22 @@ fleet_event = {
 		owner = {
 			add_monthly_resource_mult = {
 				resource = engineering_research
-				value = @tier5researchreward
-				min = @tier5researchmin
-				max = @tier5researchmax
+				value = @tier3researchreward
+				min = @tier3researchmin
+				max = @tier3researchmax
+			}
+			if = {
+				limit = {
+					NOR = {
+						has_technology = tech_archaeo_mass_drivers
+						has_tech_option = tech_archaeo_mass_drivers
+					}
+				}
+				add_research_option = tech_archaeo_mass_drivers
+				add_tech_progress = {
+					tech = tech_archaeo_mass_drivers
+					progress = 0.25
+				}
 			}
 		}
 		from = { set_site_progress_locked = no }

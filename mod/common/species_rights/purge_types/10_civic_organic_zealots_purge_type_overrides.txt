@@ -85,11 +85,9 @@ purge_displacement = {
 				}
 			}
 			is_robotic = no
-			NOR = {
-				AND = {
-					from = { has_civic = civic_machine_assimilator }
-					has_trait = trait_cybernetic
-				}
+			NAND = {
+				from = { has_civic = civic_machine_assimilator }
+				has_trait = trait_cybernetic
 			}
 		}
 	}
@@ -114,8 +112,8 @@ purge_displacement = {
 		custom_tooltip = {
 			fail_text = ORGANIC_ZEALOTS_MUST_PURIFY
 			OR = {
-				NOT = { from = { is_valid_organic_zealots = yes } }
 				is_robotic = no
+				NOT = { from = { is_valid_organic_zealots = yes } }
 			}
 		}
 		custom_tooltip = {
@@ -131,7 +129,7 @@ purge_displacement = {
 		modifier = {
 			factor = 10
 			from = {
-				has_authority = auth_hive_mind
+				is_hive_empire = yes
 				NOT = { has_valid_civic = civic_hive_strength_of_legions }
 			}
 		}
