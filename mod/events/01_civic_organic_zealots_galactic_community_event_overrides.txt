@@ -73,6 +73,13 @@ country_event = {
 		name = "anomaly.180.e"
 		trigger = { has_civic = civic_hive_devouring_swarm }
 	}
+	option = { # This will make the Solarpunk Empire refuse to join the galcom until they return to the galaxy.
+		exclusive_trigger = {
+			has_country_flag = solarpunk_country
+			NOT = { has_country_flag = solarpunk_returned }
+		}
+		name = NO
+	}
 	option = {
 		name = "galcom.16.c.organic_zealots"
 		trigger = { has_civic = civic_organic_zealots }

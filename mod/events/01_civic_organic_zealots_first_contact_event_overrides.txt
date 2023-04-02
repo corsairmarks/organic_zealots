@@ -10,27 +10,7 @@ first_contact_event = {
 	title = first_contact_start_title
 	desc = {
 		trigger = {
-			contact_country = { is_country_type = dragon_dummy }
-			owner = { is_gestalt = no }
-		}
-		text = "aquatic_events.250.desc"
-	}
-	desc = {
-		trigger = {
-			contact_country = { is_country_type = dragon_dummy }
-			owner = { is_hive_empire = yes }
-		}
-		text = "aquatic_events.250.desc.hive"
-	}
-	desc = {
-		trigger = {
-			contact_country = { is_country_type = dragon_dummy }
-			owner = { is_machine_empire = yes }
-		}
-		text = "aquatic_events.250.desc.machine"
-	}
-	desc = {
-		trigger = {
+			exists = owner
 			owner = {
 				is_gestalt = no
 				is_xenophobe = no
@@ -39,12 +19,12 @@ first_contact_event = {
 					is_xenophile = yes
 				}
 			}
-			NOT = { contact_country = { is_country_type = dragon_dummy } }
 		}
 		text = "first_contact.1.desc.default"
 	}
 	desc = {
 		trigger = {
+			exists = owner
 			owner = {
 				OR = {
 					is_xenophobe = yes
@@ -55,55 +35,54 @@ first_contact_event = {
 				}
 				is_homicidal = no
 			}
-			NOT = { contact_country = { is_country_type = dragon_dummy } }
 		}
 		text = "first_contact.1.desc.xenophobe"
 	}
 	desc = {
 		trigger = {
+			exists = owner
 			owner = { has_valid_civic = civic_machine_terminator }
-			NOT = { contact_country = { is_country_type = dragon_dummy } }
 		}
 		text = "first_contact.1.desc.terminator"
 	}
 	desc = {
 		trigger = {
+			exists = owner
 			owner = { has_valid_civic = civic_hive_devouring_swarm }
-			NOT = { contact_country = { is_country_type = dragon_dummy } }
 		}
 		text = "first_contact.1.desc.devourer"
 	}
 	desc = {
 		trigger = {
+			exists = owner
 			owner = { has_valid_civic = civic_fanatic_purifiers }
-			NOT = { contact_country = { is_country_type = dragon_dummy } }
 		}
 		text = "first_contact.1.desc.purifier"
 	}
 	desc = {
 		trigger = {
+			exists = owner
 			owner = { is_valid_organic_zealots = yes }
-			NOT = { contact_country = { is_country_type = dragon_dummy } }
 		}
 		text = "first_contact.1.desc.organic_zealots"
 	}
 	desc = {
 		trigger = {
+			exists = owner
 			owner = {
 				is_hive_empire = yes
 				NOT = { has_valid_civic = civic_hive_devouring_swarm }
 			}
-			NOT = { contact_country = { is_country_type = dragon_dummy } }
 		}
 		text = "first_contact.1.desc.hive"
 	}
 	desc = {
 		trigger = {
+			exists = owner
 			owner = {
 				is_machine_empire = yes
 				NOT = { has_valid_civic = civic_machine_terminator }
 			}
-			NOT = { contact_country = { is_country_type = dragon_dummy } }
 		}
 		text = "first_contact.1.desc.machine"
 	}
@@ -116,24 +95,8 @@ first_contact_event = {
 		OR = {
 			NOT = { exists = owner }
 			NOT = { exists = contact_country }
+			contact_country = { is_country_type = primitive }
 			owner = { has_communications = root.contact_country }
-		}
-	}
-	immediate = {
-		# set_site_progress_locked = yes # deliberately commented out to stop the notification from showing; site is locked anyway by dint of having no envoy
-		if = {
-			limit = { contact_country = { is_country_type = dragon_dummy } }
-			set_name = "first_contact_dragon"
-			owner = {
-				create_leader = { # just for locs
-					class = scientist
-					species = this
-					effect = {
-						save_event_target_as = needed_name
-						exile_leader_as = needed_name
-					}
-				}
-			}
 		}
 	}
 	after = {
