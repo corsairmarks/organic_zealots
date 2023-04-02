@@ -22,7 +22,7 @@ Due to a significant number of overrides to implement the new, homicidal Organic
 
 What this means to you as a player is that you should carefully vet other complex mods to see whether they will work alongside this one. You may wish to use a mod conflict solver such as [Irony Mod Manager](https://bcssov.github.io/IronyModManager/) to detect and potentially resolve conflicts between this mod and others.
 
-Built for Stellaris version 3.6 "Orion."  Not compatible with achievements.
+Built for Stellaris version 3.7 "Canis Minor."  Not compatible with achievements.
 
 ### When to Install
 
@@ -72,6 +72,9 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
     * Add a fallback homicidal option for both the above events
     * [Machine Deassimilation](https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372) was not allowed after an empire gained access different form of assimilation - thanks [wagnerleung0079](https://steamcommunity.com/profiles/76561198261183621)
 * 1.3.3 Ensure that Organic Zealots have can declare Total War on normal End Threat targets (Awakened Empires, other homicidal empires)
+* 2.0.0 Update for Stellaris version 3.7 "Canis Minor"
+    * Integrate underlying game changes
+    * Civic: Organic Zealots is now more rare
 
 ## Source Code
 
