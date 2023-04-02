@@ -1,6 +1,5 @@
 # Modified:
 # * does not account for content from Assimilate All the Pops!, which will always overwrite this version of citizenship_assimilation
-# * homicidals are not blanket-denied from assimilating (potential)
 # * cybernetic/synthetic assimilation can be restricted if an empire/overlord has the organic zealots civic or was affected by the outlaw cybernetics, robots, and ai wargoal
 # * terminators and organic zealots can assimilate robotic/non-robotic species as appropriate
 citizenship_assimilation = {
@@ -22,7 +21,10 @@ citizenship_assimilation = {
 				}
 				AND = {
 					is_hive_empire = yes
-					NOT = { has_valid_civic = civic_hive_devouring_swarm }
+					OR = {
+						NOT = { has_valid_civic = civic_hive_devouring_swarm }
+						root = { is_same_species = prev }
+					}
 					OR = {
 						has_active_tradition = tr_genetics_creation # hive assimilation
 						has_active_tradition = tr_cybernetics_transubstantiation_synthesis # cybernetic assimilation (hive)
@@ -30,7 +32,10 @@ citizenship_assimilation = {
 				}
 				AND = {
 					is_gestalt = no
-					NOT = { has_valid_civic = civic_fanatic_purifiers }
+					OR = {
+						NOT = { has_valid_civic = civic_fanatic_purifiers }
+						root = { is_same_species = prev }
+					}
 					OR = {
 						has_country_flag = synth_assimilation # synthetic assimilation (regular)
 						has_active_tradition = tr_cybernetics_transubstantiation_synthesis # cybernetic assimilation (regular)
