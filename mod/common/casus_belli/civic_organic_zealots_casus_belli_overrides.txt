@@ -7,7 +7,7 @@ cb_galatron = {
 		is_country_type = default
 		is_berserk_fallen_machine_empire = no
 		is_homicidal = no
-		has_valid_civic = civic_machine_assimilator
+		NOT = { has_valid_civic = civic_machine_assimilator }
 	}
 	is_valid = {
 		from = {
