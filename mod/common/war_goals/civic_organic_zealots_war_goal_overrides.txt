@@ -37,27 +37,56 @@ wg_independence = {
 	on_status_quo = {
 		custom_tooltip = wg_independence_status_quo
 		hidden_effect = {
-			if = {
-				# intentionally does NOT check civic validity
-				limit = { from = { is_organic_zealots = yes } }
-				re_enable_tech_ascension_special_projects_if_force_disabled = yes
-			}
 			set_subject_of = { who = none }
+		}
+		hidden_effect = {
+			fromfrom = {
+				every_war_participant = {
+					limit = {
+						fromfrom = {
+							is_war_participant = {
+								who = prev
+								side = root
+							}
+						}
+						has_overlord = root.from
+					}
+					if = {
+						# intentionally does NOT check civic validity
+						limit = { root.from = { is_organic_zealots = yes } }
+						re_enable_tech_ascension_special_projects_if_force_disabled = yes
+					}
+					set_subject_of = { who = none }
+				}
+			}
 		}
 	}
 
 	on_accept = {
 		custom_tooltip = wg_independence_accept
 		hidden_effect = {
-			if = {
-				# intentionally does NOT check civic validity
-				limit = { from = { is_organic_zealots = yes } }
-				re_enable_tech_ascension_special_projects_if_force_disabled = yes
-			}
-			set_subject_of = { who = none }
-			every_system_within_border = {
-				limit = { from = { has_claim = prev } }
-				remove_claims = { who = from }
+			fromfrom = {
+				every_war_participant = {
+					limit = {
+						fromfrom = {
+							is_war_participant = {
+								who = prev
+								side = root
+							}
+						}
+						has_overlord = root.from
+					}
+					if = {
+						# intentionally does NOT check civic validity
+						limit = { root.from = { is_organic_zealots = yes } }
+						re_enable_tech_ascension_special_projects_if_force_disabled = yes
+					}
+					set_subject_of = { who = none }
+					every_system_within_border = {
+						limit = { root.from = { has_claim = prev } }
+						remove_claims = { who = root.from }
+					}
+				}
 			}
 		}
 	}
@@ -69,9 +98,9 @@ wg_independence = {
 		}
 	}
 
-	ai_weight = {
-		weight = 100
-	}
+	ai_weight = { weight = 100 }
+
+	should_ignore_federations = yes
 }
 
 wg_allegiance = {
@@ -89,9 +118,7 @@ wg_allegiance = {
 
 	cede_claims = occupied_only
 
-	potential = {
-		always = yes
-	}
+	potential = { always = yes }
 	possible = {
 		NOT = {
 			from = {
@@ -151,7 +178,5 @@ wg_allegiance = {
 		}
 	}
 
-	ai_weight = {
-		weight = 15
-	}
+	ai_weight = { weight = 15 }
 }
