@@ -78,12 +78,7 @@ purge_displacement = {
 		exists = from
 		if = {
 			limit = { from = { is_machine_empire = yes } }
-			from = {
-				NOR = {
-					has_valid_civic = civic_hive_devouring_swarm
-					has_valid_civic = civic_machine_terminator
-				}
-			}
+			from = { NOT = { has_valid_civic = civic_machine_terminator } }
 			is_robotic = no
 			NAND = {
 				from = { has_civic = civic_machine_assimilator }
