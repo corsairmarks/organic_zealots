@@ -26,8 +26,8 @@ citizenship_assimilation = {
 						root = { is_same_species = prev }
 					}
 					OR = {
-						has_active_tradition = tr_genetics_creation # hive assimilation
-						has_active_tradition = tr_cybernetics_transubstantiation_synthesis # cybernetic assimilation (hive)
+						has_tradition = tr_genetics_creation # hive assimilation
+						has_tradition = tr_cybernetics_transubstantiation_synthesis # cybernetic assimilation (hive)
 					}
 				}
 				AND = {
@@ -38,9 +38,9 @@ citizenship_assimilation = {
 					}
 					OR = {
 						has_country_flag = synth_assimilation # synthetic assimilation (regular)
-						has_active_tradition = tr_cybernetics_transubstantiation_synthesis # cybernetic assimilation (regular)
-						has_active_tradition = tr_psionics_psionic_assimilation # psionic assimilation
-						has_active_tradition = tr_genetics_creation # hive deassimilation
+						has_tradition = tr_cybernetics_transubstantiation_synthesis # cybernetic assimilation (regular)
+						has_tradition = tr_psionics_psionic_assimilation # psionic assimilation
+						has_tradition = tr_genetics_creation # hive deassimilation
 						# machine deassimilation
 						AND = {
 							has_deassimilate_machines_active = yes
@@ -74,9 +74,9 @@ citizenship_assimilation = {
 				fail_text = lonely_hive_mind_pops_kill_themselves_citizenship_assimilation
 				from = {
 					OR = {
-						has_active_tradition = tr_genetics_creation
-						has_active_tradition = tr_cybernetics_transubstantiation_synthesis
-						has_active_tradition = tr_cybernetics_assimilator_inevitable_assimilation
+						has_tradition = tr_genetics_creation
+						has_tradition = tr_cybernetics_transubstantiation_synthesis
+						has_tradition = tr_cybernetics_assimilator_inevitable_assimilation
 					}
 				}
 			}
@@ -139,7 +139,7 @@ citizenship_assimilation = {
 			limit = { from = { is_hive_empire = yes } }
 			# hive assimilation
 			if = {
-				limit = { from = { has_active_tradition = tr_genetics_creation } }
+				limit = { from = { has_tradition = tr_genetics_creation } }
 				custom_tooltip = {
 					fail_text = HIVE_SPECIES_CANT_BE_HIVE_FAIL
 					is_robotic = no
@@ -148,7 +148,7 @@ citizenship_assimilation = {
 			}
 			# cybernetic assimilation (hive)
 			else_if = {
-				limit = { from = { has_active_tradition = tr_cybernetics_transubstantiation_synthesis } }
+				limit = { from = { has_tradition = tr_cybernetics_transubstantiation_synthesis } }
 				custom_tooltip = {
 					fail_text = CYBORG_SPECIES_CANT_BE_CYBORG_FAIL
 					OR = {
@@ -255,7 +255,7 @@ citizenship_assimilation = {
 			}
 			# cybernetic assimilation (regular)
 			else_if = {
-				limit = { from = { has_active_tradition = tr_cybernetics_transubstantiation_synthesis } }
+				limit = { from = { has_tradition = tr_cybernetics_transubstantiation_synthesis } }
 				custom_tooltip = {
 					fail_text = CYBORG_SPECIES_MUST_BE_ORGANIC
 					is_robotic = no
@@ -285,7 +285,7 @@ citizenship_assimilation = {
 			}
 			# psionic assimilation
 			else_if = {
-				limit = { from = { has_active_tradition = tr_psionics_psionic_assimilation } }
+				limit = { from = { has_tradition = tr_psionics_psionic_assimilation } }
 				custom_tooltip = {
 					fail_text = TRANSCENDING_SPECIES_MUST_BE_ORGANIC
 					is_robotic_species = no
@@ -301,7 +301,7 @@ citizenship_assimilation = {
 			}
 			# hive deassimilation
 			else_if = {
-				limit = { from = { has_active_tradition = tr_genetics_creation } }
+				limit = { from = { has_tradition = tr_genetics_creation } }
 				custom_tooltip = {
 					fail_text = CAN_ONLY_ASSIMILATE_HIVES
 					has_trait = trait_hive_mind
@@ -339,11 +339,11 @@ citizenship_assimilation = {
 						is_valid_organic_zealots = yes
 						NOR = {
 							AND = {
-								has_active_tradition = tr_psionics_psionic_assimilation
+								has_tradition = tr_psionics_psionic_assimilation
 								prev = { is_robotic = no }
 							}
 							AND = {
-								has_active_tradition = tr_genetics_creation
+								has_tradition = tr_genetics_creation
 								prev = { has_trait = trait_hive_mind }
 							}
 							AND = {
