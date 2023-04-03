@@ -74,6 +74,7 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
 * 1.3.3 Ensure that Organic Zealots have can declare Total War on normal End Threat targets (Awakened Empires, other homicidal empires)
 * 2.0.0 Update for Stellaris version 3.7 "Canis Minor"
     * Integrate underlying game changes
+    * Allow homicidal empires to assimilate their main species (Organic Zealots can gene-deassimilate or psionic assimilate any qualifying species)
     * Civic: Organic Zealots is now more rare
 
 ## Source Code
