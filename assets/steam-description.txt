@@ -46,7 +46,7 @@ This mod is intentionally not included in my modpack [url=https://steamcommunity
 	[*]Please report which ones in the Steam comments, my Discord channel, or GitHub
 	[*]This is usually because the game uses the [b]is_homicidal[/b] trigger to exclude those types of empires, but only offers options for the built-in homicidal civics rather than a catch-all choice - I can fix it by overriding the relevant event to add an appropriate option
 	[/list]
-[*]* Organic Zealots cannot interact with enclaves or the caravaneers - Paradox blanket-bans any homicidal empires from communicating with them, and this mod does not alter those restrictions
+[*]Organic Zealots cannot interact with enclaves or the caravaneers - Paradox blanket-bans any homicidal empires from communicating with them, and this mod does not alter those restrictions
 [/list]
 [h3]Error Logs[/h3]
 So, so many game object overwrites will leave warnings in the error.log file.  These overwrites are to enforce the homicidal nature of Organic Zealots and having other empires react accordingly.  Here is a short list of what is affected: some ascension perks, many diplomatic actions, some game rules, many policies, a few crucial built-in scripted triggers, the assimilation citizenship type, several purge types, some AI-related technologies, the traditions which enable the cybernetic and synthetic special projects, and most built-in events dealing with AI or robots/machines.
