@@ -180,7 +180,6 @@ citizenship_assimilation = {
 					from = {
 						NAND = {
 							is_subject = yes
-							exists = overlord
 							overlord = { is_valid_organic_zealots = yes }
 						}
 					}
@@ -224,7 +223,6 @@ citizenship_assimilation = {
 					from = {
 						NAND = {
 							is_subject = yes
-							exists = overlord
 							overlord = { is_valid_organic_zealots = yes }
 						}
 					}
@@ -247,7 +245,6 @@ citizenship_assimilation = {
 					from = {
 						NAND = {
 							is_subject = yes
-							exists = overlord
 							overlord = { is_valid_organic_zealots = yes }
 						}
 					}
@@ -277,7 +274,6 @@ citizenship_assimilation = {
 					from = {
 						NAND = {
 							is_subject = yes
-							exists = overlord
 							overlord = { is_valid_organic_zealots = yes }
 						}
 					}

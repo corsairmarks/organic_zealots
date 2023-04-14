@@ -206,7 +206,6 @@ can_assemble_cyborg_pop = {
 			fail_text = civic_tooltip_overlord_not_organic_zealots_fail
 			NAND = {
 				is_subject = yes
-				exists = overlord
 				overlord = { is_valid_organic_zealots = yes }
 			}
 		}
@@ -245,7 +244,6 @@ can_assemble_robot = {
 			fail_text = civic_tooltip_overlord_not_organic_zealots_fail
 			NAND = {
 				is_subject = yes
-				exists = overlord
 				overlord = { is_valid_organic_zealots = yes }
 			}
 		}
@@ -280,7 +278,6 @@ can_add_cybernetic_traits = {
 			fail_text = civic_tooltip_overlord_not_organic_zealots_fail
 			NAND = {
 				is_subject = yes
-				exists = overlord
 				overlord = { is_valid_organic_zealots = yes }
 			}
 		}

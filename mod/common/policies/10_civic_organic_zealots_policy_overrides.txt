@@ -827,7 +827,6 @@ artificial_intelligence_policy = {
 						fail_text = civic_tooltip_overlord_not_organic_zealots_fail
 						AND = {
 							is_subject = yes
-							exists = overlord
 							overlord = { is_valid_organic_zealots = yes }
 						}
 					}
@@ -863,7 +862,6 @@ artificial_intelligence_policy = {
 					is_valid_organic_zealots = yes
 					AND = {
 						is_subject = yes
-						exists = overlord
 						overlord = { is_valid_organic_zealots = yes }
 					}
 				}
@@ -903,7 +901,6 @@ artificial_intelligence_policy = {
 					fail_text = civic_tooltip_overlord_not_organic_zealots_fail
 					NAND = {
 						is_subject = yes
-						exists = overlord
 						overlord = { is_valid_organic_zealots = yes }
 					}
 				}
@@ -947,7 +944,6 @@ artificial_intelligence_policy = {
 					is_valid_organic_zealots = yes
 					AND = {
 						is_subject = yes
-						exists = overlord
 						overlord = { is_valid_organic_zealots = yes }
 					}
 				}
@@ -975,7 +971,6 @@ artificial_intelligence_policy = {
 					fail_text = civic_tooltip_overlord_not_organic_zealots_fail
 					NAND = {
 						is_subject = yes
-						exists = overlord
 						overlord = { is_valid_organic_zealots = yes }
 					}
 				}
@@ -1011,7 +1006,6 @@ artificial_intelligence_policy = {
 					is_valid_organic_zealots = yes
 					AND = {
 						is_subject = yes
-						exists = overlord
 						overlord = { is_valid_organic_zealots = yes }
 					}
 				}
@@ -1044,7 +1038,6 @@ robot_pop_policy = {
 					custom_tooltip = {
 						text = civic_tooltip_overlord_not_organic_zealots
 						is_subject = yes
-						exists = overlord
 						overlord = { is_valid_organic_zealots = yes }
 					}
 				}
@@ -1115,7 +1108,6 @@ robot_pop_policy = {
 					fail_text = "civic_tooltip_overlord_not_organic_zealots_fail"
 					NAND = {
 						is_subject = yes
-						exists = overlord
 						overlord = { is_valid_organic_zealots = yes }
 					}
 				}

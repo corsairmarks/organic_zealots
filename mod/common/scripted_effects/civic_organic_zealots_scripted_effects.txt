@@ -246,7 +246,6 @@ force_policy_liberation_effect = {
 				is_in_federation_with = root
 				AND = {
 					is_subject = yes
-					exists = overlord
 					overlord = { is_same_value = root }
 					any_war = {
 						is_war_participant = {

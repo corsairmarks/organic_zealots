@@ -206,7 +206,6 @@ can_species_be_assembled = {
 						is_valid_organic_zealots = yes
 						AND = {
 							is_subject = yes
-							exists = overlord
 							overlord = { is_valid_organic_zealots = yes }
 						}
 					}
@@ -228,7 +227,6 @@ can_species_be_assembled = {
 							is_valid_organic_zealots = yes
 							AND = {
 								is_subject = yes
-								exists = overlord
 								overlord = { is_valid_organic_zealots = yes }
 							}
 						}
