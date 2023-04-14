@@ -505,7 +505,6 @@ action_support_independence = {
 			NOT = {
 				from = {
 					is_subject = yes
-					exists = overlord
 					overlord = { is_same_value = root }
 				}
 			}
@@ -1038,7 +1037,7 @@ action_ask_to_become_subjugated = {
 	}
 }
 
-# Modified: released subjects from organic zealots have their cybernetics/synthetics projects re-enabled
+# Modified: fires a custom on_action on_becoming_independent
 # Release a subject of any type. Hurts relations and sets a 10 year truce.
 action_release_subject = {
 	icon = "GFX_diplomacy_status_has_vassal"
@@ -1049,16 +1048,19 @@ action_release_subject = {
 	action_type = positive
 	on_accept = {
 		hidden_effect = {
-			if = {
-				# intentionally does NOT check civic validity
-				limit = { is_organic_zealots = yes }
-				from = { re_enable_tech_ascension_special_projects_if_force_disabled = yes }
+			from = {
+				fire_on_action = {
+					on_action = on_becoming_independent
+					scopes = {
+						from = root
+					}
+				}
 			}
 		}
 	}
 }
 
-# Modified: released subjects from organic zealots have their cybernetics/synthetics projects re-enabled
+# Modified: fires a custom on_action on_becoming_independent
 # Ask to be released as subject of any type (overlord must accept). Hurts relations and sets a 10 year truce.
 action_ask_to_be_released_subject = {
 	icon = "GFX_diplomacy_status_has_vassal"
@@ -1069,10 +1071,11 @@ action_ask_to_be_released_subject = {
 	action_type = neutral
 	on_accept = {
 		hidden_effect = {
-			if = {
-				# intentionally does NOT check civic validity
-				limit = { from = { is_organic_zealots = yes } }
-				re_enable_tech_ascension_special_projects_if_force_disabled = yes
+			fire_on_action = {
+				on_action = on_becoming_independent
+				scopes = {
+					from = from
+				}
 			}
 		}
 	}

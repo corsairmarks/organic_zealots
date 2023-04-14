@@ -83,6 +83,8 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
+		exists = from
+		from = { is_valid_organic_zealots = yes }
 		OR = {
 			AND = {
 				has_tradition = tr_cybernetics_adopt
@@ -93,8 +95,6 @@ country_event = {
 				is_robot_empire = no
 			}
 		}
-		exists = from
-		from = { is_valid_organic_zealots = yes }
 	}
 	immediate = {
 		force_disable_tech_ascension_special_projects = yes
@@ -109,12 +109,12 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
+		exists = from
+		from = { is_valid_organic_zealots = yes }
 		OR = {
 			has_active_tradition = tr_cybernetics_transubstantiation_synthesis
 			is_robot_empire = yes
 		}
-		exists = from
-		from = { is_valid_organic_zealots = yes }
 	}
 	immediate = {
 		deactivate_ongoing_tech_assimilation = yes
@@ -129,9 +129,9 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		is_valid_target_to_outlaw_cybernetics_or_robot_pops_or_ai = yes
 		exists = from
 		from = { is_valid_organic_zealots = yes }
+		is_valid_target_to_outlaw_cybernetics_or_robot_pops_or_ai = yes
 	}
 	immediate = {
 		set_policies_robot_pops_and_ai_to_outlawed = yes
@@ -151,7 +151,6 @@ country_event = {
 		}
 		NAND = {
 			is_subject = yes
-			exists = overlord
 			# intentionally does NOT check civic validity
 			overlord = { is_organic_zealots = yes }
 		}
@@ -287,6 +286,28 @@ country_event = {
 	}
 	immediate = {
 		from = { add_leader_trait_mentat = yes }
+	}
+}
+
+# triggered by on_becoming_independent
+# root = country, former subject
+# from = country, former overlord
+country_event = {
+	id = civic_organic_zealots.14
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_country_flag = flesh_is_weak_project_aborted_by_organic_zealots
+			has_country_flag = synthetic_evolution_project_aborted_by_organic_zealots
+		}
+		OR = {
+			NOT = { exists = from }
+			from = { is_valid_organic_zealots = yes }
+		}
+	}
+	immediate = {
+		re_enable_tech_ascension_special_projects_if_force_disabled = yes
 	}
 }
 

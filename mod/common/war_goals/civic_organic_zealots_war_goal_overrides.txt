@@ -1,14 +1,11 @@
-# Modified: Attempt to re-enable tech ascension special projects for empires who previously
-# had a project forcibly disabled and just gained independence from Organic Zealots
+# Modified: fires a custom on_action on_becoming_independent
 wg_independence = {
 	casus_belli = cb_subject
 
 	hide_if_no_cb = yes
 	set_defender_wargoal = wg_assert_overlordship
 
-	potential = {
-		always = yes
-	}
+	potential = { always = yes }
 	possible = {
 		hidden_trigger = { exists = from }
 		custom_tooltip = {
@@ -37,9 +34,6 @@ wg_independence = {
 	on_status_quo = {
 		custom_tooltip = wg_independence_status_quo
 		hidden_effect = {
-			set_subject_of = { who = none }
-		}
-		hidden_effect = {
 			fromfrom = {
 				every_war_participant = {
 					limit = {
@@ -51,12 +45,13 @@ wg_independence = {
 						}
 						has_overlord = root.from
 					}
-					if = {
-						# intentionally does NOT check civic validity
-						limit = { root.from = { is_organic_zealots = yes } }
-						re_enable_tech_ascension_special_projects_if_force_disabled = yes
-					}
 					set_subject_of = { who = none }
+					fire_on_action = {
+						on_action = on_becoming_independent
+						scopes = {
+							from = root.from
+						}
+					}
 				}
 			}
 		}
@@ -76,12 +71,13 @@ wg_independence = {
 						}
 						has_overlord = root.from
 					}
-					if = {
-						# intentionally does NOT check civic validity
-						limit = { root.from = { is_organic_zealots = yes } }
-						re_enable_tech_ascension_special_projects_if_force_disabled = yes
-					}
 					set_subject_of = { who = none }
+					fire_on_action = {
+						on_action = on_becoming_independent
+						scopes = {
+							from = root.from
+						}
+					}
 					every_system_within_border = {
 						limit = { root.from = { has_claim = prev } }
 						remove_claims = { who = root.from }
@@ -101,82 +97,4 @@ wg_independence = {
 	ai_weight = { weight = 100 }
 
 	should_ignore_federations = yes
-}
-
-wg_allegiance = {
-	casus_belli = cb_allegiance
-
-	hide_if_no_cb = yes
-	secret_fealties_join_attacker = yes
-	set_defender_wargoal = wg_defend_allegiance
-
-	allowed_peace_offers = {
-		status_quo
-		surrender
-		demand_surrender
-	}
-
-	cede_claims = occupied_only
-
-	potential = { always = yes }
-	possible = {
-		NOT = {
-			from = {
-				is_at_war_with = root
-				any_subject = { has_secret_fealty_with = root }
-			}
-		}
-	}
-
-	on_status_quo = {
-		from = {
-			every_subject = {
-				limit = { has_secret_fealty_with = root }
-				add_modifier = {
-					modifier = failed_betrayal_status_quo
-					years = 5
-				}
-			}
-		}
-	}
-
-	on_accept = {
-		from = {
-			every_subject = {
-				limit = { has_secret_fealty_with = root }
-				# remove the effects for being a subject of Organic Zealots, if the previous overlord was (and the new overlord is not)
-				if = {
-					limit = {
-						is_subject = yes
-						exists = overlord
-						# intentionally does NOT check civic validity
-						overlord = { is_organic_zealots = yes }
-						root = { is_organic_zealots = no }
-					}
-					re_enable_tech_ascension_special_projects_if_force_disabled = yes
-				}
-				# apply the effects for being a subject of Organic Zealots (and the previous overlord was not)
-				if = {
-					limit = {
-						is_subject = yes
-						exists = overlord
-						# intentionally does NOT check civic validity
-						overlord = { is_organic_zealots = no }
-						root = { is_organic_zealots = yes }
-					}
-					set_policies_robot_pops_and_ai_to_outlawed = yes
-					force_disable_tech_ascension_special_projects = yes
-					deactivate_ongoing_tech_assimilation = yes
-				}
-				set_subject_of = { who = root }
-				add_modifier = {
-					modifier = pledged_allegiance
-					years = 10
-				}
-				set_country_flag = meet_the_new_boss_achievement
-			}
-		}
-	}
-
-	ai_weight = { weight = 15 }
 }
