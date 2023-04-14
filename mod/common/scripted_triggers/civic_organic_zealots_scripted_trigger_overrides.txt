@@ -193,23 +193,7 @@ is_merc_enclave_founding_allowed = {
 # this = pop
 can_assemble_cyborg_pop = {
 	hidden_trigger  ={ exists = owner }
-	owner = {
-		custom_tooltip = {
-			fail_text = lost_robot_policy_war_fail
-			NOT = { has_country_flag = lost_robot_policy_war }
-		}
-		custom_tooltip = {
-			fail_text = civic_tooltip_not_organic_zealots_fail
-			is_valid_organic_zealots = no
-		}
-		custom_tooltip = {
-			fail_text = civic_tooltip_overlord_not_organic_zealots_fail
-			NAND = {
-				is_subject = yes
-				overlord = { is_valid_organic_zealots = yes }
-			}
-		}
-	}
+	owner = { is_not_restricted_by_organic_zealots = yes }
 	hidden_trigger = { exists = planet }
 	planet = {
 		OR = {
@@ -231,23 +215,7 @@ can_assemble_cyborg_pop = {
 # this = pop
 can_assemble_robot = {
 	hidden_trigger = { exists = owner }
-	owner = {
-		custom_tooltip = {
-			fail_text = lost_robot_policy_war_fail
-			NOT = { has_country_flag = lost_robot_policy_war }
-		}
-		custom_tooltip = {
-			fail_text = civic_tooltip_not_organic_zealots_fail
-			is_valid_organic_zealots = no
-		}
-		custom_tooltip = {
-			fail_text = civic_tooltip_overlord_not_organic_zealots_fail
-			NAND = {
-				is_subject = yes
-				overlord = { is_valid_organic_zealots = yes }
-			}
-		}
-	}
+	owner = { is_not_restricted_by_organic_zealots = yes }
 	hidden_trigger = { exists = planet }
 	planet = {
 		OR = {
@@ -266,21 +234,7 @@ can_assemble_robot = {
 can_add_cybernetic_traits = {
 	hidden_trigger = { exists = from }
 	from = {
-		custom_tooltip = {
-			fail_text = lost_robot_policy_war_fail
-			NOT = { has_country_flag = lost_robot_policy_war }
-		}
-		custom_tooltip = {
-			fail_text = civic_tooltip_not_organic_zealots_fail
-			is_valid_organic_zealots = no
-		}
-		custom_tooltip = {
-			fail_text = civic_tooltip_overlord_not_organic_zealots_fail
-			NAND = {
-				is_subject = yes
-				overlord = { is_valid_organic_zealots = yes }
-			}
-		}
+		is_not_restricted_by_organic_zealots = yes
 		OR = {
 			has_tradition = tr_cybernetics_integrated_anatomy
 			has_tradition = tr_cybernetics_assimilator_integrated_anatomy

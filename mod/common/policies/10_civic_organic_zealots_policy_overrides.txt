@@ -820,11 +820,11 @@ artificial_intelligence_policy = {
 						has_country_flag = lost_robot_policy_war
 					}
 					custom_tooltip = {
-						fail_text = civic_tooltip_not_organic_zealots_fail
+						fail_text = civic_tooltip_not_organic_zealots
 						is_valid_organic_zealots = yes
 					}
 					custom_tooltip = {
-						fail_text = civic_tooltip_overlord_not_organic_zealots_fail
+						fail_text = civic_tooltip_overlord_not_organic_zealots
 						AND = {
 							is_subject = yes
 							overlord = { is_valid_organic_zealots = yes }
@@ -889,21 +889,7 @@ artificial_intelligence_policy = {
 		valid = {
 			if = {
 				limit = { is_robot_empire = no }
-				custom_tooltip = {
-					fail_text = lost_robot_policy_war_fail
-					NOT = { has_country_flag = lost_robot_policy_war }
-				}
-				custom_tooltip = {
-					fail_text = civic_tooltip_not_organic_zealots_fail
-					is_valid_organic_zealots = no
-				}
-				custom_tooltip = {
-					fail_text = civic_tooltip_overlord_not_organic_zealots_fail
-					NAND = {
-						is_subject = yes
-						overlord = { is_valid_organic_zealots = yes }
-					}
-				}
+				is_not_restricted_by_organic_zealots = yes
 			}
 			custom_tooltip = {
 				fail_text = is_a_synthetic_empire_fail
@@ -959,21 +945,7 @@ artificial_intelligence_policy = {
 					fail_text = empire_is_spiritualist
 					is_spiritualist = no
 				}
-				custom_tooltip = {
-					fail_text = lost_robot_policy_war_fail
-					NOT = { has_country_flag = lost_robot_policy_war }
-				}
-				custom_tooltip = {
-					fail_text = civic_tooltip_not_organic_zealots_fail
-					is_valid_organic_zealots = no
-				}
-				custom_tooltip = {
-					fail_text = civic_tooltip_overlord_not_organic_zealots_fail
-					NAND = {
-						is_subject = yes
-						overlord = { is_valid_organic_zealots = yes }
-					}
-				}
+				is_not_restricted_by_organic_zealots = yes
 				NOT = { has_policy_flag = robots_outlawed }
 			}
 		}
@@ -1096,21 +1068,7 @@ robot_pop_policy = {
 		valid = {
 			if = {
 				limit = { is_robot_empire = no }
-				custom_tooltip = {
-					fail_text = "lost_robot_policy_war_fail"
-					NOT = { has_country_flag = lost_robot_policy_war }
-				}
-				custom_tooltip = {
-					fail_text = "civic_tooltip_not_organic_zealots_fail"
-					is_valid_organic_zealots = no
-				}
-				custom_tooltip = {
-					fail_text = "civic_tooltip_overlord_not_organic_zealots_fail"
-					NAND = {
-						is_subject = yes
-						overlord = { is_valid_organic_zealots = yes }
-					}
-				}
+				is_not_restricted_by_organic_zealots = yes
 			}
 		}
 		policy_flags = { robots_allowed }
