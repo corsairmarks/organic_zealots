@@ -33,7 +33,7 @@ ap_the_flesh_is_weak = {
 			fail_text = "requires_free_tradition_tree"
 			num_tradition_categories < 7
 		}
-		is_not_restricted_by_organic_zealots = yes
+		is_not_restricted_by_organic_zealots_fail = yes
 	}
 	potential = {
 		has_utopia = yes
@@ -79,7 +79,7 @@ ap_organo_machine_interfacing = {
 			fail_text = "requires_free_tradition_tree"
 			num_tradition_categories < 7
 		}
-		is_not_restricted_by_organic_zealots = yes
+		is_not_restricted_by_organic_zealots_fail = yes
 	}
 	potential = {
 		has_utopia = yes
@@ -159,7 +159,7 @@ ap_synthetic_evolution = {
 			fail_text = "requires_free_tradition_tree"
 			num_tradition_categories < 7
 		}
-		is_not_restricted_by_organic_zealots = yes
+		is_not_restricted_by_organic_zealots_fail = yes
 	}
 
 	potential = {

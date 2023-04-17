@@ -889,7 +889,7 @@ artificial_intelligence_policy = {
 		valid = {
 			if = {
 				limit = { is_robot_empire = no }
-				is_not_restricted_by_organic_zealots = yes
+				is_not_restricted_by_organic_zealots_fail = yes
 			}
 			custom_tooltip = {
 				fail_text = is_a_synthetic_empire_fail
@@ -945,7 +945,7 @@ artificial_intelligence_policy = {
 					fail_text = empire_is_spiritualist
 					is_spiritualist = no
 				}
-				is_not_restricted_by_organic_zealots = yes
+				is_not_restricted_by_organic_zealots_fail = yes
 				NOT = { has_policy_flag = robots_outlawed }
 			}
 		}
@@ -1004,7 +1004,7 @@ robot_pop_policy = {
 						has_country_flag = lost_robot_policy_war
 					}
 					custom_tooltip = {
-						text = civic_tooltip_not_organic_zealots_fail
+						text = civic_tooltip_not_organic_zealots
 						is_valid_organic_zealots = yes
 					}
 					custom_tooltip = {
@@ -1068,7 +1068,7 @@ robot_pop_policy = {
 		valid = {
 			if = {
 				limit = { is_robot_empire = no }
-				is_not_restricted_by_organic_zealots = yes
+				is_not_restricted_by_organic_zealots_fail = yes
 			}
 		}
 		policy_flags = { robots_allowed }

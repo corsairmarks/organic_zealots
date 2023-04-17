@@ -170,7 +170,7 @@ citizenship_assimilation = {
 						}
 					}
 				}
-				is_not_restricted_by_organic_zealots_from = yes
+				is_not_restricted_by_organic_zealots_fail_from = yes
 			}
 		}
 		else_if = {
@@ -197,13 +197,13 @@ citizenship_assimilation = {
 					fail_text = AI_IS_ALLOWED
 					from = { NOT = { has_policy_flag = ai_outlawed } }
 				}
-				is_not_restricted_by_organic_zealots_from = yes
+				is_not_restricted_by_organic_zealots_fail_from = yes
 			}
 			# synthetic assimilation (regular)
 			else_if = {
 				limit = { from = { has_country_flag = synth_assimilation } }
 				# no default allow conditions for synthetics, hive exclusion handled above
-				is_not_restricted_by_organic_zealots_from = yes
+				is_not_restricted_by_organic_zealots_fail_from = yes
 			}
 			# cybernetic assimilation (regular)
 			else_if = {
@@ -216,7 +216,7 @@ citizenship_assimilation = {
 						has_trait = trait_hive_mind
 					}
 				}
-				is_not_restricted_by_organic_zealots_from = yes
+				is_not_restricted_by_organic_zealots_fail_from = yes
 			}
 			# psionic assimilation
 			else_if = {

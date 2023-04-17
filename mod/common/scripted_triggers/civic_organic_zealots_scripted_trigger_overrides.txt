@@ -193,7 +193,7 @@ is_merc_enclave_founding_allowed = {
 # this = pop
 can_assemble_cyborg_pop = {
 	hidden_trigger  ={ exists = owner }
-	owner = { is_not_restricted_by_organic_zealots = yes }
+	owner = { is_not_restricted_by_organic_zealots_fail = yes }
 	hidden_trigger = { exists = planet }
 	planet = {
 		OR = {
@@ -215,7 +215,7 @@ can_assemble_cyborg_pop = {
 # this = pop
 can_assemble_robot = {
 	hidden_trigger = { exists = owner }
-	owner = { is_not_restricted_by_organic_zealots = yes }
+	owner = { is_not_restricted_by_organic_zealots_fail = yes }
 	hidden_trigger = { exists = planet }
 	planet = {
 		OR = {
@@ -234,7 +234,7 @@ can_assemble_robot = {
 can_add_cybernetic_traits = {
 	hidden_trigger = { exists = from }
 	from = {
-		is_not_restricted_by_organic_zealots = yes
+		is_not_restricted_by_organic_zealots_fail = yes
 		OR = {
 			has_tradition = tr_cybernetics_integrated_anatomy
 			has_tradition = tr_cybernetics_assimilator_integrated_anatomy

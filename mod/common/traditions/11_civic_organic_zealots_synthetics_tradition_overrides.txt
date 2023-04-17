@@ -13,7 +13,7 @@ tr_synthetics_synthetic_age = {
 		else = {
 			has_technology = tech_synthetic_leaders
 		}
-		is_not_restricted_by_organic_zealots = yes
+		is_not_restricted_by_organic_zealots_fail = yes
 	}
 	# Unlocks Synthetic Assimilation.
 	on_enabled = {

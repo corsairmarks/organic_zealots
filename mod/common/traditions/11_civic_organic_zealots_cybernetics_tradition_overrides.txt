@@ -7,7 +7,7 @@ tr_cybernetics_adopt = {
 		else = {
 			has_ascension_perk = ap_organo_machine_interfacing
 		}
-		is_not_restricted_by_organic_zealots = yes
+		is_not_restricted_by_organic_zealots_fail = yes
 	}
 	custom_tooltip = tr_cybernetics_adopt_desc
 	on_enabled = {
