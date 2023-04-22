@@ -77,6 +77,7 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
     * Allow homicidal empires to assimilate their main species (Organic Zealots can gene-deassimilate or psionic assimilate any qualifying species)
     * Civic: Organic Zealots is now more rare
 * 2.1.0 Code refactoring for better reuse - no functionality changes
+* 2.2.0 Rename and add more validation triggers (similar to additions in 2.1.0)
 
 ## Source Code
 
