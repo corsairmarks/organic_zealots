@@ -3,12 +3,9 @@ set_policies_robot_pops_and_ai_to_outlawed = {
 	optimize_memory
 	if = {
 		limit = {
-			NOT = { has_policy_flag = ai_outlawed }
+			is_gestalt = no
 			can_set_ai_policy = yes
-			can_set_policy = {
-				policy = artificial_intelligence_policy
-				option = ai_outlawed
-			}
+			NOT = { has_policy_flag = ai_outlawed }
 		}
 		set_policy = {
 			policy = artificial_intelligence_policy
@@ -18,12 +15,8 @@ set_policies_robot_pops_and_ai_to_outlawed = {
 	}
 	if = {
 		limit = {
+			is_gestalt = no
 			NOT = { has_policy_flag = robots_outlawed }
-			is_gestalt = no # matches the potential block for robot_pop_policy
-			can_set_policy = {
-				policy = robot_pop_policy
-				option = robot_pops_outlawed
-			}
 		}
 		set_policy = {
 			policy = robot_pop_policy

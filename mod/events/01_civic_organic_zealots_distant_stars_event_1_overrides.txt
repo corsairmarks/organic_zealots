@@ -377,7 +377,10 @@ country_event = {
 			is_machine_empire = no
 			OR = {
 				has_civic = civic_organic_zealots
-				NOT = { has_policy_flag = ai_full_rights }
+				AND = {
+					can_set_ai_policy = yes
+					NOT = { has_policy_flag = ai_full_rights }
+				}
 			}
 		}
 		tooltip = {

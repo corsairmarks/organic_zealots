@@ -79,11 +79,10 @@ ship_event = {
 			hidden:owner = {
 				is_organic_zealots = no
 				is_spiritualist = no
-				NOT = { has_policy_flag = ai_outlawed }
 				has_technology = tech_synthetic_workers
 			}
 		}
-		allow = { owner = { NOT = { has_policy_flag = ai_outlawed } }}
+		allow = { owner = { NOT = { has_policy_flag = ai_outlawed } } }
 		owner = {
 			capital_scope = {
 				enable_special_project = {

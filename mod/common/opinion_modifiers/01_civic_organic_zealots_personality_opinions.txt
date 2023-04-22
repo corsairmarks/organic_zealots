@@ -57,6 +57,7 @@ opinion_organic_zealots_vs_ai_outlawed = {
 	trigger = {
 		is_valid_organic_zealots = yes
 		from = {
+			is_gestalt = no
 			can_set_ai_policy = yes
 			has_policy_flag = ai_outlawed
 		}
@@ -69,7 +70,11 @@ opinion_organic_zealots_vs_ai_outlawed = {
 opinion_organic_zealots_vs_ai_servitude_or_ai_full_rights = {
 	trigger = {
 		is_valid_organic_zealots = yes
-		from = { can_set_ai_policy = yes }
+		from = {
+			is_gestalt = no
+			can_set_ai_policy = yes
+			NOT = { has_policy_flag = ai_outlawed }
+		}
 	}
 	opinion = {
 		base = 0
