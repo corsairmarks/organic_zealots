@@ -1,4 +1,8 @@
 name="Civic: Organic Zealots"
+# Forgotten Histoy is not required, but it should alway load first
+dependencies={
+	"Forgotten History"
+}
 tags={
 	"Diplomacy"
 	"Gameplay"

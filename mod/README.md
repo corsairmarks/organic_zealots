@@ -78,7 +78,7 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
     * Civic: Organic Zealots is now more rare
 * 2.1.0 Code refactoring for better reuse - no functionality changes
 * 2.2.0 Code refactoring
-    * Remove overridden origins from [Forgotten History](https://steamcommunity.com/sharedfiles/filedetails/?id=2916982793) in favor of a script_value compatibility file
+    * Remove overridden origins from Forgotten History in favor of a script_value compatibility file
     * Rename and add more validation triggers (similar to additions in 2.1.0)
 
 ## Source Code
