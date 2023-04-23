@@ -1,7 +1,14 @@
 name="Civic: Organic Zealots"
-# Forgotten History is not required, but it should alway load first
+# These mods are not required, but should always load before this mod:
+# * Assimilate All the Pops!
+# * Deassimilate Machines
+# * Forgotten History
+# * Retain Leaders from Integrated Subjects & Pre-FTL Civilizations
 dependencies={
+	"Assimilate All the Pops!"
+	"Deassimilate Machines"
 	"Forgotten History"
+	"Retain Leaders from Integrated Subjects & Pre-FTL Civilizations"
 }
 tags={
 	"Diplomacy"
