@@ -1,4 +1,4 @@
-# use this version inside of AND blocks where from = country
+# duplicated logic from is_not_restricted_by_organic_zealots_fail_from
 custom_tooltip = {
 	fail_text = "lost_robot_policy_war_fail"
 	from = { NOT = { has_country_flag = lost_robot_policy_war } }
