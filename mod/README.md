@@ -80,6 +80,7 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
 * 2.2.0 Code refactoring
     * Remove overridden origins from Forgotten History in favor of a script_value compatibility file
     * Rename and add more validation triggers (similar to additions in 2.1.0)
+* 2.2.1 Performance improvements for assimilation - only process species which have at least one Pop
 
 ## Source Code
 

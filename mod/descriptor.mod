@@ -14,7 +14,7 @@ tags={
 	"Diplomacy"
 	"Gameplay"
 }
-version="2.2.0"
+version="2.2.1"
 picture="thumbnail.png"
 supported_version="3.7.*"
 remote_file_id="2920668465"
