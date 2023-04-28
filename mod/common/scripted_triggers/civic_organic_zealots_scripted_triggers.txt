@@ -260,6 +260,7 @@ diplomacy_recipient_is_not_homicidal_gestalt = {
 # prev = country (assimilator)
 coz_is_undergoing_assimilation_uncyborg_species = {
 	optimize_memory
+	count_species_pop = { count > 0 }
 	has_living_standard = {
 		type = living_standard_deassimilation_cyborg
 		country = prev
