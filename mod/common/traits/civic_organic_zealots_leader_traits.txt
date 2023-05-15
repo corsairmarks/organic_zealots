@@ -8,12 +8,12 @@ leader_trait_scientist_mentat = {
 		ships_upkeep_mult = -0.5
 	}
 	leader_potential_add = {
+		NOT = { has_trait = leader_trait_cyborg }
 		exists = species
 		species = { NOT = { has_trait = trait_cybernetic } }
 	}
-	leader_trait = { scientist }
 	leader_class = { scientist }
-	opposites = { leader_trait_scientist_cyborg }
+	opposites = { leader_trait_cyborg }
 	initial = no
 	randomized = no
 	prerequisites = { tech_mentat_computation }
@@ -44,9 +44,8 @@ leader_trait_governor_mentat = {
 		exists = species
 		species = { NOT = { has_trait = trait_cybernetic } }
 	}
-	leader_trait = { governor }
 	leader_class = { governor }
-	opposites = { leader_trait_governor_cyborg }
+	opposites = { leader_trait_cyborg }
 	initial = no
 	randomized = no
 	prerequisites = { tech_mentat_computation }
@@ -69,10 +68,11 @@ leader_trait_ruler_mentat = {
 		exists = species
 		species = { NOT = { has_trait = trait_cybernetic } }
 	}
-	leader_trait = { ruler }
 	leader_class = { ruler }
-	opposites = { leader_trait_ruler_cyborg }
+	opposites = { leader_trait_cyborg }
 	initial = no
 	randomized = no
 	prerequisites = { tech_mentat_computation }
 }
+
+# TODO: make for every class

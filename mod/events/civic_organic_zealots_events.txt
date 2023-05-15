@@ -258,7 +258,6 @@ country_event = {
 	}
 	immediate = {
 		from = {
-			add_random_leader_trait = yes # added first to avoid re-adding the same undesirable trait
 			if = {
 				limit = { has_trait = leader_trait_custom_AI_assistant }
 				remove_trait = leader_trait_custom_AI_assistant
@@ -268,24 +267,6 @@ country_event = {
 				remove_trait = leader_trait_sapient_AI_assistant
 			}
 		}
-	}
-}
-
-# demoted rulers that have the mentat ruler trait gain the corresponding class trait
-# triggered by on_ruler_back_to_pre_ruler_class
-# root = country
-# from = leader (demoted, with new class)
-country_event = {
-	id = civic_organic_zealots.13
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = {
-		has_technology = tech_mentat_computation
-		exists = from
-		from = { has_ruler_trait = leader_trait_ruler_mentat }
-	}
-	immediate = {
-		from = { add_leader_trait_mentat = yes }
 	}
 }
 
@@ -477,7 +458,7 @@ country_event = {
 					}
 					else = {
 						if = {
-							limit = { leader_class = ruler }
+							limit = { is_ruler = yes }
 							if = {
 								limit = {
 									has_galactic_emperor = yes

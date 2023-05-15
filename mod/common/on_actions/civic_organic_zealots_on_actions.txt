@@ -32,15 +32,6 @@ on_leader_spawned = {
 	}
 }
 
-# fired when the ruler is ousted and goes back to their pre-ruler class
-# this = country
-# from = leader, demoted and already has the new class
-on_ruler_back_to_pre_ruler_class = {
-	events = {
-		civic_organic_zealots.13
-	}
-}
-
 # fired when a country has increased the level of a tech, use last_increased_tech trigger to check tech and level
 # this = country
 on_tech_increased = {

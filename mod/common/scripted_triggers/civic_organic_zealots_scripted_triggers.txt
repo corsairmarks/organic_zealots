@@ -24,7 +24,6 @@ has_mentat_trait = {
 		has_trait = leader_trait_governor_mentat
 		has_trait = leader_trait_scientist_mentat
 		has_trait = leader_trait_ruler_mentat
-		has_ruler_trait = leader_trait_ruler_mentat
 	}
 }
 

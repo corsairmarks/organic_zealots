@@ -9,6 +9,7 @@ tr_cybernetics_adopt = {
 		}
 		is_not_restricted_by_organic_zealots_fail = yes
 	}
+	unlocks_agenda = agenda_cybernetic_advantage
 	custom_tooltip = tr_cybernetics_adopt_desc
 	on_enabled = {
 		hidden_effect = {

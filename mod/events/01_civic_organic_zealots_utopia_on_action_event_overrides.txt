@@ -190,74 +190,17 @@ country_event = {
 		every_owned_leader = {
 			limit = {
 				is_robotic_species = yes
-				NOR = {
-					has_trait = leader_trait_admiral_synthetic
-					has_trait = leader_trait_general_synthetic
-					has_trait = leader_trait_governor_synthetic
-					has_trait = leader_trait_scientist_synthetic
-					has_trait = leader_trait_ruler_synthetic
-				}
+				NOT = { has_trait = leader_trait_synthetic }
 			}
-			switch = {
-				trigger = leader_class
-				admiral = {
-					add_trait = leader_trait_admiral_synthetic
-					add_ruler_trait = leader_trait_ruler_synthetic
-				}
-				general = {
-					add_trait = leader_trait_general_synthetic
-					add_ruler_trait = leader_trait_ruler_synthetic
-				}
-				governor = {
-					add_trait = leader_trait_governor_synthetic
-					add_ruler_trait = leader_trait_ruler_synthetic
-				}
-				scientist = {
-					add_trait = leader_trait_scientist_synthetic
-					add_ruler_trait = leader_trait_ruler_synthetic
-				}
-				ruler = {
-					add_trait = leader_trait_ruler_synthetic
-					add_ruler_trait = leader_trait_ruler_synthetic
-				}
-			}
+			add_trait_no_notify = leader_trait_synthetic
 		}
 		every_pool_leader = {
 			limit = {
 				is_robotic_species = yes
-				NOR = {
-					has_trait = leader_trait_admiral_synthetic
-					has_trait = leader_trait_general_synthetic
-					has_trait = leader_trait_governor_synthetic
-					has_trait = leader_trait_scientist_synthetic
-					has_trait = leader_trait_ruler_synthetic
-				}
+				NOT = { has_trait = leader_trait_synthetic }
 			}
-			switch = {
-				trigger = leader_class
-				admiral = {
-					add_trait = leader_trait_admiral_synthetic
-					add_ruler_trait = leader_trait_ruler_synthetic
-				}
-				general = {
-					add_trait = leader_trait_general_synthetic
-					add_ruler_trait = leader_trait_ruler_synthetic
-				}
-				governor = {
-					add_trait = leader_trait_governor_synthetic
-					add_ruler_trait = leader_trait_ruler_synthetic
-				}
-				scientist = {
-					add_trait = leader_trait_scientist_synthetic
-					add_ruler_trait = leader_trait_ruler_synthetic
-				}
-				ruler = {
-					add_trait = leader_trait_ruler_synthetic
-					add_ruler_trait = leader_trait_ruler_synthetic
-				}
-			}
+			add_trait_no_notify = leader_trait_synthetic
 		}
-
 		observer_event = {
 			id = observer.4
 		}
