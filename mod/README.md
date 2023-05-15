@@ -22,7 +22,7 @@ Due to a significant number of overrides to implement the new, homicidal Organic
 
 What this means to you as a player is that you should carefully vet other complex mods to see whether they will work alongside this one. You may wish to use a mod conflict solver such as [Irony Mod Manager](https://bcssov.github.io/IronyModManager/) to detect and potentially resolve conflicts between this mod and others.
 
-Built for Stellaris version 3.7 "Canis Minor."  Not compatible with achievements.
+Built for Stellaris version 3.8 "Gemini."  Not compatible with achievements.
 
 ### When to Install
 
@@ -81,6 +81,9 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
     * Remove overridden origins from Forgotten History in favor of a script_value compatibility file
     * Rename and add more validation triggers (similar to additions in 2.1.0)
 * 2.2.1 Performance improvements for assimilation - only process species which have at least one Pop
+* 3.0.0 Update for Stellaris version 3.8 "Gemini"
+    * Integrate underlying game changes
+    * Mentat leader trait now has a variation for every leader class
 
 ## Source Code
 
