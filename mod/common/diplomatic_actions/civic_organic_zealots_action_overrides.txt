@@ -548,11 +548,11 @@ action_form_migration_pact = {
 		diplomacy_is_not_homicidal_non_gestalt = yes
 		custom_tooltip = {
 			fail_text = "requires_actor_not_gestalt_consciousness"
-			NOT = { has_ethic = ethic_gestalt_consciousness	}
+			is_gestalt = no
 		}
 		custom_tooltip = {
 			fail_text = "requires_recipient_not_gestalt_consciousness"
-			from = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+			from = { is_gestalt = no }
 		}
 		diplomacy_is_not_inward_perfection = yes
 		if = {

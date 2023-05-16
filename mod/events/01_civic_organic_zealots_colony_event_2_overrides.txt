@@ -77,7 +77,7 @@ planet_event = {
 		name = "colony.1501.a"
 	}
 	option = {
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		name = "colony.1501.a.organic_zealots"
 	}
 	after = {
@@ -137,7 +137,7 @@ planet_event = {
 		custom_tooltip = "colony.1502.a.tooltip"
 	}
 	option = {
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		name = "colony.1502.a.organic_zealots"
 		custom_tooltip = "colony.1502.a.tooltip"
 	}
@@ -188,7 +188,7 @@ planet_event = {
 		name = "colony.1503.a"
 	}
 	option = {
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		name = "colony.1503.a.organic_zealots"
 	}
 	after = {
@@ -231,7 +231,7 @@ planet_event = {
 		name = "colony.1504.a"
 	}
 	option = {
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		name = "colony.1504.a.organic_zealots"
 	}
 	after = {
@@ -325,7 +325,7 @@ planet_event = {
 		name = "colony.1506.a"
 	}
 	option = {
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		name = "colony.1506.a.organic_zealots"
 	}
 	after = {
@@ -489,7 +489,7 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		name = "colony.1510.c.organic_zealots"
 		owner = {
 			add_monthly_resource_mult = {

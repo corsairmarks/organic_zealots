@@ -31,7 +31,7 @@ ship_event = {
 	}
 	option = {
 		name = "ancrel.2050.a.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	after = { from = { create_archaeological_site = planetary_mechanocalibrator } }
 }
@@ -196,7 +196,7 @@ country_event = {
 	}
 	option = {
 		name = "ancrel.2058.b.organic_zealots"
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		hidden_effect = {
 			country_event = {
 				id = ancrel.2064
@@ -226,7 +226,7 @@ country_event = {
 	}
 	option = {
 		name = "ancrel.2064.a.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	after = {
 		add_resource = { influence = 100 }
@@ -271,7 +271,7 @@ fleet_event = {
 	}
 	option = {
 		name = DISTURBING
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 }
 
@@ -329,7 +329,7 @@ fleet_event = {
 	}
 	option = {
 		name = CLEANSE_FROM_ORBIT
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -339,200 +339,6 @@ fleet_event = {
 			}
 		}
 		from = { add_deposit = d_bomb_crater }
-	}
-}
-
-# Oracle Diplo: Initial
-# Modified:
-# * subsequent diplo events fire immediately rather than in 1 day
-# * use oracle leader and planet for diplo picture data
-# * revise trigger usage
-country_event = {
-	id = ancrel.4036
-	title = "ancrel.4036.name"
-	diplomatic_title = BLANK_STRING
-	desc = "ancrel.4036.desc"
-	show_sound = event_administrative_work
-	location = from.from
-	diplomatic = yes
-	is_triggered_only = yes
-	picture_event_data = {
-		portrait = event_target:the_oracle
-		graphical_culture = this
-		planet_background = event_target:oracle_digsite_planet
-		city_level = event_target:oracle_digsite_planet
-		room = ship_room
-	}
-	option = {
-		name = "ancrel.4036.a"
-		hidden_effect = {
-			country_event = {
-				id = ancrel.4037
-			}
-		}
-	}
-	option = {
-		name = "ancrel.4036.b"
-		response_text = "ancrel.4036.b.response"
-		is_dialog_only = yes
-	}
-	option = {
-		name = "ancrel.4036.d"
-		custom_tooltip = "ancrel.4036.d.tooltip"
-		trigger = {
-			is_machine_empire = no
-			is_hive_empire = no
-		}
-		activate_saved_leader = { key = the_oracle }
-	}
-	option = {
-		name = "ancrel.4038.e"
-		add_modifier = { modifier = oracle_administration }
-		hidden_effect = { remove_saved_leader = the_oracle }
-	}
-	option = {
-		name = "ancrel.4036.e"
-		custom_tooltip = "ancrel.4036.e.tooltip"
-		trigger = { has_authority = auth_machine_intelligence }
-		set_country_flag = oracle_completed
-		hidden_effect = { remove_saved_leader = the_oracle }
-	}
-	option = {
-		name = "ancrel.4036.c"
-		tooltip = {
-			add_resource = {
-				alloys = 1000
-				engineering_research = 3500
-				influence = 250
-			}
-		}
-		hidden_effect = {
-			country_event = {
-				id = ancrel.4038
-			}
-		}
-	}
-}
-
-# Oracle Diplo: "What Happened?"
-# Modified:
-# * use oracle leader and planet for diplo picture data
-# * revise trigger usage
-country_event = {
-	id = ancrel.4037
-	title = "ancrel.4037.name"
-	diplomatic_title = BLANK_STRING
-	desc = "ancrel.4037.desc"
-	show_sound = event_administrative_work
-	location = from.from.from
-	diplomatic = yes
-	is_triggered_only = yes
-	picture_event_data = {
-		portrait = event_target:the_oracle
-		graphical_culture = this
-		planet_background = event_target:oracle_digsite_planet
-		city_level = event_target:oracle_digsite_planet
-		room = ship_room
-	}
-	option = {
-		name = "ancrel.4037.a"
-		response_text = "ancrel.4037.a.response"
-		is_dialog_only = yes
-	}
-	option = {
-		name = "ancrel.4037.b"
-		response_text = "ancrel.4037.b.response"
-		is_dialog_only = yes
-	}
-	option = {
-		name = "ancrel.4037.c"
-		response_text = "ancrel.4037.c.response"
-		is_dialog_only = yes
-	}
-	option = {
-		name = "ancrel.4037.d"
-		hidden_effect = {
-			country_event = {
-				id = ancrel.4036
-			}
-		}
-	}
-}
-
-# Oracle Diplo: "Is that a fancy processor?"
-# Modified:
-# * use oracle leader and planet for diplo picture data
-# * revise trigger usage
-# * condense options using alternate text
-country_event = {
-	id = ancrel.4038
-	title = "ancrel.4038.name"
-	diplomatic_title = BLANK_STRING
-	desc = "ancrel.4038.desc"
-	show_sound = event_administrative_work
-	location = fromfromfrom
-	diplomatic = yes
-	is_triggered_only = yes
-	picture_event_data = {
-		portrait = event_target:the_oracle
-		graphical_culture = this
-		planet_background = event_target:oracle_digsite_planet
-		city_level = event_target:oracle_digsite_planet
-		room = ship_room
-	}
-	option = {
-		trigger = {
-			is_machine_empire = no
-			is_hive_empire = no
-		}
-		name = "ancrel.4038.a"
-		activate_saved_leader = { key = the_oracle }
-	}
-	option = {
-		trigger = {
-			is_machine_empire = no
-			is_hive_empire = no
-		}
-		name = "ancrel.4038.b"
-		add_resource = {
-			alloys = 1000
-			engineering_research = 3500
-			influence = 250
-		}
-		hidden_effect = { remove_saved_leader = the_oracle }
-	}
-	option = {
-		trigger = { has_authority = auth_machine_intelligence }
-		name = "ancrel.4038.c"
-		add_resource = {
-			alloys = 1000
-			engineering_research = 3500
-			influence = 250
-		}
-		hidden_effect = { remove_saved_leader = the_oracle }
-	}
-	option = {
-		trigger = { has_authority = auth_hive_mind }
-		name = "ancrel.4038.d"
-		add_resource = {
-			alloys = 1000
-			engineering_research = 3500
-			influence = 250
-		}
-		hidden_effect = { remove_saved_leader = the_oracle }
-	}
-	option = {
-		name = "ancrel.4038.e"
-		add_modifier = { modifier = oracle_administration }
-		hidden_effect = { remove_saved_leader = the_oracle }
-	}
-	
-	option = {
-		trigger = { has_authority = auth_machine_intelligence }
-		name = "ancrel.4036.e"
-		custom_tooltip = "ancrel.4036.e.tooltip"
-		set_country_flag = oracle_completed
-		hidden_effect = { remove_saved_leader = the_oracle }
 	}
 }
 
@@ -611,10 +417,8 @@ ship_event = {
 			owner = {
 				is_organic_zealots = no
 				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-					has_ethic = ethic_militarist
-					has_ethic = ethic_fanatic_militarist
+					is_xenophobe = yes
+					is_militarist = yes
 				}
 			}
 		}
@@ -645,7 +449,7 @@ ship_event = {
 	}
 	option = {
 		name = CLEANSE_FROM_ORBIT
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -697,7 +501,7 @@ country_event = {
 	}
 	option = {
 		name = "ancrel.4064.a.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		enable_special_project = {
 			name = "SECRET_TOMB"
 			location = event_target:sentinels_planet
@@ -711,7 +515,7 @@ country_event = {
 	}
 	option = {
 		name = "ancrel.4057.a.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		add_resource = { influence = 150 }
 	}
 	after = { event_target:sentinels_planet = { add_deposit = d_sentinels_metal } }
@@ -812,7 +616,7 @@ country_event = {
 	}
 	option = {
 		name = "ancrel.4063.a.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 }
 
@@ -879,7 +683,7 @@ country_event = {
 	}
 	option = {
 		name = "ancrel.4064.a.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		enable_special_project = {
 			name = "SECRET_TOMB"
 			location = event_target:sentinels_planet
@@ -893,7 +697,7 @@ country_event = {
 	}
 	option = {
 		name = "ancrel.4064.b.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		add_resource = { influence = 150 }
 	}
 	after = { event_target:sentinels_planet = { add_deposit = d_sentinels_metal } }
@@ -942,7 +746,7 @@ planet_event = {
 	}
 	option = {
 		name = "ancrel.4075.a.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		enable_special_project = {
 			name = "SECRET_TOMB"
 			location = event_target:sentinels_planet
@@ -956,7 +760,7 @@ planet_event = {
 	}
 	option = {
 		name = "ancrel.4075.b.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		from = { add_resource = { influence = 150 } }
 	}
 	after = { event_target:sentinels_new_home = { create_pop = { species = event_target:losers } } }
@@ -1007,7 +811,7 @@ ship_event = {
 	}
 	option = {
 		name = CLEANSE_FROM_ORBIT
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity

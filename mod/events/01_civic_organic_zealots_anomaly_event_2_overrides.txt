@@ -40,7 +40,7 @@ ship_event = {
 	}
 	option = {
 		name = MAKE_IT_SO
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -85,7 +85,7 @@ ship_event = {
 	}
 	option = {
 		name = EXCELLENT
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -124,7 +124,7 @@ ship_event = {
 		name = UNDERSTOOD
 		leader = {
 			add_experience = 100
-			add_trait = leader_trait_expertise_industry
+			add_trait_no_notify = leader_trait_expertise_industry
 		}
 		hidden_effect = { fromfrom = { add_deposit = d_ancient_mining_site } }
 	}
@@ -157,7 +157,7 @@ ship_event = {
 	}
 	option = {
 		name = "anomaly.3080.b.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity

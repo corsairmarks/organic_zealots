@@ -30,7 +30,7 @@ first_contact_event = {
 		name = "first_contact_critters.40.A"
 	}
 	option = {
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		name = "first_contact_critters.40.A.organic_zealots"
 	}
 }
@@ -102,7 +102,7 @@ first_contact_event = {
 		name = UNDERSTOOD
 	}
 	option = {
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		name = DISTURBING
 	}
 }

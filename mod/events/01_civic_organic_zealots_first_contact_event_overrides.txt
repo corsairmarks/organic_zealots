@@ -249,10 +249,7 @@ first_contact_event = {
 	option = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
-				}
+				is_spiritualist = yes
 				is_valid_organic_zealots = no
 			}
 		}
@@ -267,7 +264,7 @@ first_contact_event = {
 		name = "first_contact.104.B3"
 	}
 	option = {
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		name = "first_contact.104.B4"
 	}
 	option = {
@@ -275,7 +272,7 @@ first_contact_event = {
 		trigger = {
 			owner = {
 				OR = {
-					has_authority = auth_machine_intelligence
+					is_machine_empire = yes
 					has_country_flag = met_machine_empire
 				}
 			}

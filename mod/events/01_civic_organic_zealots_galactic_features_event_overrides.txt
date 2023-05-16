@@ -30,19 +30,19 @@ country_event = {
 	}
 	option = {
 		name = "galactic_features.351.a.organic_zealots"
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		response_text = "galactic_features.351.a.response"
 		is_dialog_only = yes
 	}
 	option = {
 		name = "galactic_features.351.b.organic_zealots"
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		response_text = "galactic_features.351.b.response"
 		is_dialog_only = yes
 	}
 	option = {
 		name = "galactic_features.351.c.organic_zealots"
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		response_text = "galactic_features.351.c.response"
 	}
 }

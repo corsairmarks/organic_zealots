@@ -91,7 +91,7 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "syndaw.1025.a.organic_zealots"
 		ai_chance = {
 			base = 1
@@ -217,7 +217,7 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			has_civic = civic_organic_zealots
+			is_organic_zealots = yes
 			NOT = { is_at_war_with = event_target:current_uprising_originator }
 		}
 		name = "syndaw.1025.b.organic_zealots"
@@ -326,7 +326,7 @@ country_event = {
 	trigger = { has_synthethic_dawn = yes }
 	immediate = {
 		if = {
-			limit = { has_civic = civic_organic_zealots }
+			limit = { is_organic_zealots = yes }
 			home_planet.solar_system = { save_event_target_as = home_system }
 		}
 	}
@@ -336,7 +336,7 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			has_civic = civic_organic_zealots
+			is_organic_zealots = yes
 			home_planet.solar_system = {
 				count_system_planet = {
 					count <= 1
@@ -348,7 +348,7 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			has_civic = civic_organic_zealots
+			is_organic_zealots = yes
 			home_planet.solar_system = {
 				count_system_planet = {
 					count > 1
@@ -393,7 +393,7 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			has_civic = civic_organic_zealots
+			is_organic_zealots = yes
 			is_war_participant = {
 				war = fromfromfrom
 				side = defenders

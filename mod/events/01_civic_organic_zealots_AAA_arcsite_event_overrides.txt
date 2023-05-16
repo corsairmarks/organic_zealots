@@ -37,7 +37,7 @@ fleet_event = {
 	}
 	option = { # dismantle the robots (organic zealots)
 		name = "AAA_arcsite.34.a.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = alloys

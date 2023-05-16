@@ -124,7 +124,7 @@ ship_event = {
 	option = {
 		name = "anomaly.6786.b.organic_zealots"
 		custom_tooltip = "anomaly.6786.b.organic_zealots.tooltip"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -186,10 +186,8 @@ ship_event = {
 			owner = {
 				OR = {
 					has_valid_civic = civic_agrarian_idyll
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
+					is_spiritualist = yes
+					is_xenophobe = yes
 				}
 				is_organic_zealots = no
 			}
@@ -198,7 +196,7 @@ ship_event = {
 		from = { set_deposit = d_society_4 }
 	}
 	option = {
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		name = CLEANSE_FROM_ORBIT
 		owner = {
 			add_monthly_resource_mult = {

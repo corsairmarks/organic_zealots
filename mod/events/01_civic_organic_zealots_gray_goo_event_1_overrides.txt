@@ -97,14 +97,14 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			has_civic = civic_organic_zealots
+			is_organic_zealots = yes
 			hidden_trigger = { NOT = { has_country_flag = gray_goo_instigator } }
 		}
 		name = "graygoo.12.d.organic_zealots"
 	}
 	option = {
 		trigger = {
-			has_civic = civic_organic_zealots
+			is_organic_zealots = yes
 			hidden_trigger = { has_country_flag = gray_goo_instigator }
 		}
 		name = "graygoo.12.d.organic_zealots.instigator"
@@ -129,7 +129,7 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			has_civic = civic_organic_zealots
+			is_organic_zealots = yes
 			hidden_trigger = { NOT = { has_country_flag = gray_goo_instigator } }
 		}
 		name = "graygoo.15.a.organic_zealots"
@@ -137,7 +137,7 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			has_civic = civic_organic_zealots
+			is_organic_zealots = yes
 			hidden_trigger = { has_country_flag = gray_goo_instigator }
 		}
 		name = "graygoo.15.a.organic_zealots.instigator"
@@ -163,7 +163,7 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			has_civic = civic_organic_zealots
+			is_organic_zealots = yes
 			hidden_trigger = { NOT = { has_country_flag = gray_goo_instigator } }
 		}
 		name = "graygoo.16.a.organic_zealots"
@@ -171,7 +171,7 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			has_civic = civic_organic_zealots
+			is_organic_zealots = yes
 			hidden_trigger = { has_country_flag = gray_goo_instigator }
 		}
 		name = "graygoo.16.a.organic_zealots.instigator"
@@ -201,7 +201,7 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "graygoo.403.a.organic_zealots"
 		hidden_effect = {
 			country_event = {

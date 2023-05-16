@@ -65,7 +65,7 @@ ship_event = {
 		}
 	}
 	option = {
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		name = CLEANSE_FROM_ORBIT
 		owner = {
 			add_monthly_resource_mult = {
@@ -178,9 +178,8 @@ planet_event = {
 		trigger = {
 			owner = {
 				OR = {
-					has_civic = civic_organic_zealots
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
+					is_organic_zealots = yes
+					is_xenophobe = yes
 				}
 			}
 		}
@@ -215,9 +214,8 @@ planet_event = {
 		trigger = {
 			owner = {
 				OR = {
-					has_civic = civic_organic_zealots
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
+					is_organic_zealots = yes
+					is_xenophobe = yes
 				}
 			}
 		}

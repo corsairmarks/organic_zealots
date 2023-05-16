@@ -14,7 +14,7 @@ country_event = {
 		name = "crisis.2402.a"
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "crisis.2402.a.organic_zealots"
 	}
 }
@@ -60,7 +60,7 @@ country_event = {
 		is_dialog_only = yes
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "crisis.2403.a.organic_zealots"
 		response_text = "crisis.2403.a.response"
 		is_dialog_only = yes
@@ -72,7 +72,7 @@ country_event = {
 		is_dialog_only = yes
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "crisis.2403.b.organic_zealots"
 		response_text = "crisis.2403.b.response"
 		is_dialog_only = yes
@@ -96,7 +96,7 @@ country_event = {
 		is_dialog_only = yes
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "crisis.2403.g"
 		response_text = "crisis.2403.f.response" # intentionally reused f, it applies here
 		is_dialog_only = yes
@@ -133,7 +133,7 @@ country_event = {
 	option = {
 		trigger = {
 			NOT = { is_same_value = event_target:killer }
-			has_civic = civic_organic_zealots
+			is_organic_zealots = yes
 		}
 		name = EXCELLENT
 	}
@@ -159,7 +159,7 @@ country_event = {
 		name = "crisis.2408.a"
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "crisis.2408.a.organic_zealots"
 	}
 }
@@ -250,7 +250,7 @@ country_event = {
 		name = "crisis.2473.b"
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "crisis.2473.b.organic_zealots"
 	}
 }
@@ -279,7 +279,7 @@ country_event = {
 		add_relic = r_contingency_core
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = EXCELLENT
 		add_monthly_resource_mult = {
 			resource = unity
@@ -308,7 +308,7 @@ country_event = {
 		text = "crisis.2481.desc"
 	}
 	desc = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		text = "crisis.2481.desc.organic_zealots"
 	}
 	picture = GFX_evt_satellite_in_orbit
@@ -320,7 +320,7 @@ country_event = {
 		add_relic = r_contingency_core
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = EXCELLENT
 		capital_scope = { add_deposit = d_contingency_core_sundered }
 		add_monthly_resource_mult = {

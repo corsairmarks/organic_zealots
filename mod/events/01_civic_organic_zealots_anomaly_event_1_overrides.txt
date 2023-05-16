@@ -62,7 +62,7 @@ ship_event = {
 	}
 	option = {
 		name = CLEANSE_FROM_ORBIT
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -99,8 +99,7 @@ ship_event = {
 			owner = {
 				is_organic_zealots = no
 				OR = {
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
+					is_spiritualist = yes
 					has_policy_flag = ai_outlawed
 					NOT = { has_technology = tech_synthetic_workers }
 				}

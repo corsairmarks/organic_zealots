@@ -169,7 +169,7 @@ ship_event = {
 	}
 	option = {
 		name = DISCONCERTING
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	after = {
 		event_target:wenkwort_rellrait = {
@@ -206,7 +206,7 @@ planet_event = {
 		response_text = "federations3.121.a.response"
 	}
 	option = { # What?! Who..? (organic zealots)
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		name = "federations3.121.a.organic_zealots"
 		is_dialog_only = yes # Prevents the event window from closing, but fires the response text below
 		response_text = "federations3.121.a.response"
@@ -221,7 +221,7 @@ planet_event = {
 		}
 	}
 	option = { # Refusal (organic zealots)
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		name = "federations3.121.b.organic_zealots"
 		hidden_effect = {
 			planet_event = {
@@ -264,7 +264,7 @@ planet_event = {
 		name = GOODBYE
 	}
 	option = {
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		name = END_TRANSMISSION
 	}
 	after = {

@@ -462,7 +462,7 @@ country_event = {
 	option = {
 		name = "fallen_empires_tasks.2.b.organic_zealots"
 		trigger = {
-			has_civic = civic_organic_zealots
+			is_organic_zealots = yes
 			hidden_trigger = { event_target:FallenEmpireTaskOrigin = { is_fallen_empire_machine = yes } }
 		}
 		ai_chance = {

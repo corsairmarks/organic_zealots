@@ -82,7 +82,7 @@ country_event = {
 	}
 	option = {
 		name = "galcom.16.c.organic_zealots"
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 	}
 	option = { # fallback for other, unknown homicidals
 		name = DISGUSTING
@@ -93,7 +93,7 @@ country_event = {
 					has_civic = civic_fanatic_purifiers
 					has_civic = civic_machine_terminator
 					has_civic = civic_hive_devouring_swarm
-					has_civic = civic_organic_zealots
+					is_organic_zealots = yes
 				}
 			}
 		}

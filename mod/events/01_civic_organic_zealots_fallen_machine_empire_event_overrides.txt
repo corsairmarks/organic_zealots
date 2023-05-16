@@ -38,7 +38,7 @@ country_event = {
 		name = "fallen_machine_empire.2.b"
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "fallen_machine_empire.2.c.organic_zealots"
 	}
 }
@@ -112,10 +112,7 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-			}
+			is_xenophobe = yes
 			is_organic_zealots = no
 		}
 		name = "fallen_machine_empire.11.b"
@@ -131,7 +128,7 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "fallen_machine_empire.11.b.organic_zealots"
 		custom_tooltip = "fallen_machine_empire_unhappy_tooltip"
 		ai_chance = { factor = 10 }
@@ -202,7 +199,7 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		allow = { event_target:FallenEmpireTaskTarget = { is_synthetic_empire = yes } }
 		name = "fallen_machine_empire.41.a.organic_zealots"
 		ai_chance = { factor = 90 }
@@ -236,7 +233,7 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "fallen_machine_empire.41.b.organic_zealots"
 		custom_tooltip = "fallen_machine_empire_unhappy_tooltip"
 		ai_chance = { factor = 10 }
@@ -296,7 +293,7 @@ country_event = {
 		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "fallen_machine_empire.42.a.organic_zealots"
 		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
 	}
@@ -358,7 +355,7 @@ country_event = {
 		custom_tooltip = "fallen_machine_empire_unhappy_task_tooltip"
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "fallen_machine_empire.43.a.organic_zealots"
 		custom_tooltip = "fallen_machine_empire_unhappy_task_tooltip"
 	}
@@ -430,7 +427,7 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "fallen_machine_empire.51.b.organic_zealots"
 		custom_tooltip = "fallen_machine_empire_unhappy_tooltip"
 		ai_chance = { factor = 10 }
@@ -466,7 +463,7 @@ country_event = {
 		name = "fallen_machine_empire.61.a"
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "fallen_machine_empire.61.a.organic_zealots"
 	}
 	after = {
@@ -523,7 +520,7 @@ country_event = {
 		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "fallen_machine_empire.62.a.organic_zealots"
 		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
 	}
@@ -579,7 +576,7 @@ country_event = {
 		custom_tooltip = "fallen_machine_empire_angry_task_tooltip"
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "fallen_machine_empire.63.a.organic_zealots"
 		custom_tooltip = "fallen_machine_empire_angry_task_tooltip"
 	}
@@ -713,7 +710,7 @@ country_event = {
 		name = "fallen_machine_empire.71.a"
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "fallen_machine_empire.71.a.organic_zealots"
 	}
 	after = {
@@ -768,7 +765,7 @@ country_event = {
 		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
 	}
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "fallen_machine_empire.72.a.organic_zealots"
 		custom_tooltip = "fallen_machine_empire_happy_task_tooltip"
 	}
@@ -826,7 +823,7 @@ country_event = {
 	}
 	
 	option = {
-		trigger = { has_civic = civic_organic_zealots }
+		trigger = { is_organic_zealots = yes }
 		name = "fallen_machine_empire.73.a.organic_zealots"
 		custom_tooltip = "fallen_machine_empire_angry_task_tooltip"
 	}

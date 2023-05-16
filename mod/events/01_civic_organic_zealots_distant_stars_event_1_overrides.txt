@@ -30,7 +30,7 @@ ship_event = {
 		custom_tooltip = distar.25.b.tooltip
 	}
 	option = {
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 		name = CLEANSE_FROM_ORBIT
 		owner = {
 			add_monthly_resource_mult = {
@@ -161,7 +161,7 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = { owner = { has_authority = auth_machine_intelligence } }
+		trigger = { owner = { is_machine_empire = yes } }
 		name = "distar.26.mach"
 		custom_tooltip = "distar.26.a.tooltip"
 		hidden_effect = {
@@ -191,7 +191,7 @@ ship_event = {
 	}
 	option = {
 		name = "distar.40.a.organic_zealots"
-		trigger = { owner = { has_civic = civic_organic_zealots } }
+		trigger = { owner = { is_organic_zealots = yes } }
 	}
 	after = {
 		owner = {
@@ -259,7 +259,7 @@ ship_event = {
 		trigger = {
 			owner = {
 				OR = {
-					has_civic = civic_organic_zealots
+					is_organic_zealots = yes
 					has_policy_flag = ai_outlawed
 				}
 			}
@@ -376,7 +376,7 @@ country_event = {
 		trigger = {
 			is_machine_empire = no
 			OR = {
-				has_civic = civic_organic_zealots
+				is_organic_zealots = yes
 				AND = {
 					can_set_ai_policy = yes
 					NOT = { has_policy_flag = ai_full_rights }
@@ -398,7 +398,7 @@ country_event = {
 		}
 	}
 	option = { # Accept the leader (MI)
-		trigger = { has_authority = auth_machine_intelligence }
+		trigger = { is_machine_empire = yes }
 		name = "distar.246.machi"
 		custom_tooltip = "distar.246.a.tooltip"
 		activate_saved_leader = {
@@ -412,7 +412,7 @@ country_event = {
 		}
 	}
 	option = { # Repurpose the leader (MI)
-		trigger = { has_authority = auth_machine_intelligence }
+		trigger = { is_machine_empire = yes }
 		name = "distar.246.machi.b"
 		custom_tooltip = "distar.246.b.tooltip"
 		tooltip = {
