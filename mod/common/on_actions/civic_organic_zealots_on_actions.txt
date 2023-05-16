@@ -73,7 +73,8 @@ on_becoming_independent = {
 }
 
 # fired every 10 years
-on_decade_pulse = {
+# this = country
+on_decade_pulse_country = {
 	events = {
 		civic_organic_zealots.20
 	}
