@@ -309,7 +309,6 @@ country_event = {
 	is_triggered_only = yes
 	show_sound = event_administrative_work
 	location = fromfrom
-	is_triggered_only = yes
 	picture = GFX_leader_recruitment_bg_renowned
 	event_window_type = leader_recruit
 	picture_event_data = {
