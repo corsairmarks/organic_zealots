@@ -26,7 +26,7 @@ on_yearly_pulse_country = {
 # this = country
 # from = leader
 on_added_to_leader_pool = {
-	event = {
+	events = {
 		civic_organic_zealots.13
 	}
 }
