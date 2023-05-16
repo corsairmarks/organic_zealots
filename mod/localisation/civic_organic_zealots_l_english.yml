@@ -141,3 +141,6 @@
  CYBORG_SPECIES_CANT_BE_CYBORG_FAIL: "$TRIGGER_FAIL$$CYBORG_SPECIES_CANT_BE_CYBORG$"
  HIVE_SPECIES_CANT_BE_HIVE: "Only organic non-§Y$trait_hive_mind$§! species can be connected to our Hive Mind."
  HIVE_SPECIES_CANT_BE_HIVE_FAIL: "$TRIGGER_FAIL$$HIVE_SPECIES_CANT_BE_HIVE$"
+
+ # missing base-game localisation
+ effect_random_owned_pop_species: "$effect_random_owned_species$"
