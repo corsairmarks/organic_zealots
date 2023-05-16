@@ -1,0 +1,67 @@
+# this = leader
+defined_text = {
+	name = GetMentatTraitName
+	text = {
+		trigger = {
+			is_ruler = no
+			leader_class = governor
+		}
+		localization_key = leader_trait_governor_mentat
+	}
+	text = {
+		trigger = {
+			is_ruler = no
+			leader_class = scientist
+		}
+		localization_key = leader_trait_scientist_mentat
+	}
+	text = {
+		trigger = {
+			is_ruler = no
+			leader_class = admiral
+		}
+		localization_key = leader_trait_admiral_mentat
+	}
+	text = {
+		trigger = {
+			is_ruler = no
+			leader_class = general
+		}
+		localization_key = leader_trait_general_mentat
+	}
+	default = leader_trait_ruler_mentat
+}
+
+# this = leader
+defined_text = {
+	name = GetMentatTraitDesc
+	text = {
+		trigger = {
+			is_ruler = no
+			leader_class = governor
+		}
+		localization_key = leader_trait_governor_mentat_desc
+	}
+	text = {
+		trigger = {
+			is_ruler = no
+			leader_class = scientist
+		}
+		localization_key = leader_trait_scientist_mentat_desc
+	}
+	text = {
+		trigger = {
+			is_ruler = no
+			leader_class = admiral
+		}
+		localization_key = leader_trait_admiral_mentat_desc
+	}
+	text = {
+		trigger = {
+			is_ruler = no
+			leader_class = general
+		}
+		localization_key = leader_trait_general_mentat_desc
+	}
+	default = leader_trait_ruler_mentat_desc
+}
