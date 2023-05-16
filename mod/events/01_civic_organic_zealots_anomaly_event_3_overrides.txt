@@ -202,13 +202,21 @@ ship_event = {
 			hidden:owner = { is_organic_zealots = no }
 			leader = {
 				OR = {
-					# TODO: trait levels! maybe new survey traits?
+					has_trait = subclass_scientist_explorer
 					has_trait = leader_trait_inspired_surveyor
+					has_trait = leader_trait_surveyor
+					has_trait = leader_trait_robotist
+					has_trait = leader_trait_curator
 					has_trait = leader_trait_percussive_maintainer
 					has_trait = leader_trait_scholarium_explorer
 					has_trait = leader_trait_scholarium_observer
 					has_trait = leader_trait_roamer
+					has_trait = leader_trait_roamer_2
 					has_trait = leader_trait_carefree
+					has_trait = leader_trait_carefree_2
+					has_trait = leader_trait_meticulous
+					has_trait = leader_trait_meticulous_2
+					has_trait = leader_trait_sapient_AI_assistant # but not custom
 					has_trait = leader_trait_expertise_industry
 					species = { is_robotic = yes }
 					owner = {
