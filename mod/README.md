@@ -88,6 +88,7 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
     * Mentat leader trait now has a variation for every leader class
     * Add two councilor positions for Civic: Organic Zealots (one of them requires an advanced technology)
     * Ensure that other empires can't offer foul Thinking Machines as external leaders
+* 3.0.1 Bugfixes for 3.8 "Gemini" - minor script improvements
 
 ## Source Code
 
