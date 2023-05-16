@@ -1,0 +1,37 @@
+councilor_organic_zealots = {
+	leader_class = { governor }
+	is_leader_possible = {
+		leader_class = governor
+		is_robotic_species = no
+	}
+	civic = civic_organic_zealots
+	modifier = {
+		councilor_exp_gain = 0.01
+		diplo_action_acceptance_add = 2
+		country_subject_acceptance_add = 2
+		diplo_weight_mult = 0.01
+		diplomacy_upkeep_mult = -0.01
+	}
+}
+
+councilor_organic_zealots_2 = {
+	possible = { has_technology = tech_mentat_computation }
+	leader_class = { governor scientist admiral general }
+	is_leader_possible = {
+		has_trait = leader_trait_mentat
+		OR = {
+			leader_class = governor
+			leader_class = scientist
+			leader_class = admiral
+			leader_class = general
+		}
+		is_robotic_species = no
+	}
+	civic = civic_organic_zealots
+	modifier = {
+		species_leader_exp_gain = 0.01
+		all_technology_research_speed = 0.025
+		country_unity_produces_mult = 0.01
+		edicts_upkeep_mult = -0.01
+	}
+}
