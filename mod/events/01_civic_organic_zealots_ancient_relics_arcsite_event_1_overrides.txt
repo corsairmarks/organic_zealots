@@ -307,10 +307,6 @@ fleet_event = {
 		name = "ancrel.4035.a"
 		allow = { owner = { is_organic_zealots = no } }
 		owner = {
-			hidden_effect = {
-				create_oracle_species = yes
-				create_oracle_leader = yes
-			}
 			country_event = {
 				id = ancrel.4036
 			}
