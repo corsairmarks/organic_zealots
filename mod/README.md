@@ -86,6 +86,8 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
 * 3.0.0 Update for Stellaris version 3.8 "Gemini"
     * Integrate underlying game changes
     * Mentat leader trait now has a variation for every leader class
+    * Add two councilor positions for Civic: Organic Zealots (one of them requires an advanced technology)
+    * Ensure that other empires can't offer foul Thinking Machines as external leaders
 
 ## Source Code
 
