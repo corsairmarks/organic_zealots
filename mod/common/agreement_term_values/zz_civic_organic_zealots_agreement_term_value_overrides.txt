@@ -47,5 +47,30 @@ subject_can_do_diplomacy_but_not_vote = {
 				NOT = { target = { has_civic = civic_machine_terminator } }
 			}
 		}
+		### VEaR
+		custom_tooltip = {
+			fail_text = not_allowed_for_ver_organic
+			NOT = { agreement_preset = preset_ver_organic }
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_ver_parallel
+			NOT = { agreement_preset = preset_ver_parallel }
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_auto_state
+			NOT = { agreement_preset = preset_auto_state }
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_ver_satellite
+			NOT = { agreement_preset = preset_ver_satellite }
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_ver_condo
+			NOT = { agreement_preset = preset_ver_condo }
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_ver_puppet
+			NOT = { agreement_preset = preset_ver_puppet }
+		}
 	}
 }

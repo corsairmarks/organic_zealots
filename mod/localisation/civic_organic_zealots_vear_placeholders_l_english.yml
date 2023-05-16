@@ -1,0 +1,8 @@
+﻿# VEaR has all of its localisation in localisation/replace, so it will be guaranteed to overwrite this file
+l_english:
+ not_allowed_for_ver_organic: "organic"
+ not_allowed_for_ver_parallel: "parallel"
+ not_allowed_for_auto_state: "auto_state"
+ not_allowed_for_ver_satellite: "satellite"
+ not_allowed_for_ver_condo: "condo"
+ not_allowed_for_ver_puppet: "puppet"

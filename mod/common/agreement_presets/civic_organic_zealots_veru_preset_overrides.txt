@@ -1,0 +1,31 @@
+# Irony this is a placeholder file please ignore it
+
+preset_ver_organic = {
+	icon = "GFX_diplomacy_status_is_vassal"
+	potential = { always = no }
+}
+
+preset_ver_parallel = {
+	icon = "GFX_diplomacy_status_is_vassal"
+	potential = { always = no }
+}
+
+preset_auto_state = {
+	icon = "GFX_diplomacy_status_is_vassal"
+	potential = { always = no }
+}
+
+preset_ver_satellite = {
+	icon = "GFX_diplomacy_status_is_vassal"
+	potential = { always = no }
+}
+
+preset_ver_condo = {
+	icon = "GFX_diplomacy_status_is_vassal"
+	potential = { always = no }
+}
+
+preset_ver_puppet = {
+	icon = "GFX_diplomacy_status_is_vassal"
+	potential = { always = no }
+}

@@ -22,6 +22,8 @@ Due to a significant number of overrides to implement the new, homicidal Organic
 
 What this means to you as a player is that you should carefully vet other complex mods to see whether they will work alongside this one. You may wish to use a mod conflict solver such as [Irony Mod Manager](https://bcssov.github.io/IronyModManager/) to detect and potentially resolve conflicts between this mod and others.
 
+Built-in compatibility with [Vassals Expanded and Reworked - FunEFork](https://steamcommunity.com/workshop/filedetails/?id=2183551683).
+
 Built for Stellaris version 3.8 "Gemini."  Not compatible with achievements.
 
 ### When to Install
