@@ -22,6 +22,15 @@ on_yearly_pulse_country = {
 	}
 }
 
+# fired when leader is added to the leader pool, available for recruitment
+# this = country
+# from = leader
+on_added_to_leader_pool = {
+	event = {
+		civic_organic_zealots.13
+	}
+}
+
 # fired when a new leader is generated for an empire, to be available for recruitment
 # this = country
 # from = leader

@@ -258,13 +258,76 @@ country_event = {
 	}
 	immediate = {
 		from = {
-			if = {
-				limit = { has_trait = leader_trait_custom_AI_assistant }
-				remove_trait = leader_trait_custom_AI_assistant
+			while = {
+				limit = {
+					OR = {
+						has_trait = leader_trait_custom_AI_assistant
+						has_trait = leader_trait_sapient_AI_assistant
+					}
+				}
+				if = {
+					limit = { has_trait = leader_trait_custom_AI_assistant }
+					remove_trait = leader_trait_custom_AI_assistant
+				}
+				if = {
+					limit = { has_trait = leader_trait_sapient_AI_assistant }
+					remove_trait = leader_trait_sapient_AI_assistant
+				}
+				add_trait_no_notify = random_common
 			}
-			else_if = {
-				limit = { has_trait = leader_trait_sapient_AI_assistant }
-				remove_trait = leader_trait_sapient_AI_assistant
+		}
+	}
+}
+
+# external leaders for organic zealots need to be replaced by non-robotic ones
+# triggered by on_leader_spawned
+# root = country
+# from = leader (spawned)
+country_event = {
+	id = civic_organic_zealots.13
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_valid_organic_zealots = yes
+		exists = from
+		from = { is_robotic_species = yes }
+	}
+	immediate = {
+		species = { save_event_target_as = leader_prev_species }
+		if = {
+			limit = {
+				exists = creator
+				creator = { any_owned_pop_species = { is_robotic = no } }
+			}
+			creator = {
+				random_owned_pop_species = {
+					limit = { is_robotic = no }
+					save_event_target_as = leader_new_species
+				}
+			}
+		}
+		else = {
+			random_owned_pop_species = {
+				limit = { is_robotic = no }
+				save_event_target_as = leader_new_species
+			}
+		}
+		remove_all_traits = yes
+		add_trait_no_notify = random_common
+		country_event = {
+			id = civic_organic_zealots.12
+			scopes = {
+				from = from
+			}
+		}
+		from = {
+			change_species = event_target:leader_new_species
+			set_name = random
+			fire_on_action = {
+				on_action = on_leader_species_changed
+				scopes = {
+					from = event_target:leader_prev_species
+				}
 			}
 		}
 	}
