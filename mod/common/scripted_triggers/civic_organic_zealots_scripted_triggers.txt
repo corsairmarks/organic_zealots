@@ -20,11 +20,8 @@ is_valid_target_to_outlaw_cybernetics_or_robot_pops_or_ai = {
 
 # this = leader
 has_mentat_trait = {
-	OR = {
-		has_trait = leader_trait_governor_mentat
-		has_trait = leader_trait_scientist_mentat
-		has_trait = leader_trait_ruler_mentat
-	}
+	optimize_memory
+	has_trait = leader_trait_mentat
 }
 
 # this = country, actor
