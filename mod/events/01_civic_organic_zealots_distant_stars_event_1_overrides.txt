@@ -254,6 +254,7 @@ ship_event = {
 			}
 		}
 		name = "distar.155.b"
+		custom_tooltip = "distar.155.machine.tt"
 	}
 	option = {
 		trigger = {
@@ -292,6 +293,7 @@ ship_event = {
 	option = {
 		trigger = { owner = { is_machine_empire = yes } }
 		name = "distar.155.machi_2"
+		custom_tooltip = "distar.155.machine.tt"
 	}
 }
 
@@ -304,30 +306,43 @@ country_event = {
 	title = "distar.246.name"
 	desc = "distar.246.desc"
 	location = event_target:droppod_tar
-	diplomatic = yes
 	is_triggered_only = yes
+	show_sound = event_administrative_work
+	location = fromfrom
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	event_window_type = leader_recruit
 	picture_event_data = {
 		portrait = event_target:caretaker_leader_tar
 		room = ethic_spaceship_room
 	}
 	option = { # Accept the leader
-		name = "distar.246.a"
+		tag = hire_leader
+		name = {
+			trigger = { is_machine_empire = no }
+			text = "distar.246.a"
+		}
+		name = {
+			trigger = { is_machine_empire = yes }
+			text = "distar.246.machi"
+		}
 		trigger = {
-			is_machine_empire = no
 			is_organic_zealots = no
 			NOR = {
 				has_policy_flag = ai_outlawed
 				has_civic = civic_fanatic_purifiers
+				has_civic = civic_hive_devouring_swarm
 			}
 		}
-		custom_tooltip = "distar.246.a.tooltip"
-		activate_saved_leader = {
-			add_to_owned = yes
-			key = caretaker_leader
-		}
 		hidden_effect = {
-			country_event = {
-				id = distar.249
+			hire_event_leader_effect = { LEADER = caretaker_leader_tar }
+			event_target:droppod_tar = { destroy_ambient_object = this }
+		}
+		if = {
+			limit = { is_gestalt = yes }
+			random_owned_leader = {
+				limit = { is_councilor_type = councilor_gestalt_governor }
+				add_trait = leader_trait_govenor_caretaker_node
 			}
 		}
 	}
@@ -338,6 +353,7 @@ country_event = {
 			is_organic_zealots = no
 			NOT = { has_policy_flag = ai_outlawed }
 		}
+		tag = dismiss_leader
 		custom_tooltip = "distar.246.b.tooltip"
 		tooltip = {
 			add_monthly_resource_mult = {
@@ -352,37 +368,17 @@ country_event = {
 				id = distar.247
 			}
 		}
-		default_hide_option = yes
-	}
-	option = { # Ignore the leader
-		name = "distar.246.c"
-		trigger = {
-			is_machine_empire = no
-			is_organic_zealots = no
-			has_policy_flag = ai_outlawed
-		}
-		tooltip = {
-			add_monthly_resource_mult = {
-				resource = unity
-				value = @tier1unityreward
-				min = @tier1unitymin
-				max = @tier1unitymax
-			}
-		}
-		default_hide_option = yes
 	}
 	option = { # Destroy the leader
-		name = "distar.246.d"
+		name = "distar.246.d.destroy"
+		custom_tooltip = "distar.246.d"
 		trigger = {
-			is_machine_empire = no
 			OR = {
+				has_policy_flag = ai_outlawed
 				is_organic_zealots = yes
-				AND = {
-					can_set_ai_policy = yes
-					NOT = { has_policy_flag = ai_full_rights }
-				}
 			}
 		}
+		tag = dismiss_leader
 		tooltip = {
 			add_monthly_resource_mult = {
 				resource = influence
@@ -397,22 +393,9 @@ country_event = {
 			}
 		}
 	}
-	option = { # Accept the leader (MI)
-		trigger = { is_machine_empire = yes }
-		name = "distar.246.machi"
-		custom_tooltip = "distar.246.a.tooltip"
-		activate_saved_leader = {
-			add_to_owned = yes
-			key = caretaker_leader
-		}
-		hidden_effect = {
-			event_target:droppod_tar = {
-				destroy_ambient_object = this
-			}
-		}
-	}
 	option = { # Repurpose the leader (MI)
 		trigger = { is_machine_empire = yes }
+		tag = dismiss_leader
 		name = "distar.246.machi.b"
 		custom_tooltip = "distar.246.b.tooltip"
 		tooltip = {
@@ -429,5 +412,15 @@ country_event = {
 				id = distar.248
 			}
 		}
+	}
+	option = {
+		name = "distar.246.f"
+		response_text = "distar.246.f.response"
+		is_dialog_only = yes
+	}
+	option = {
+		name = "distar.247.e"
+		response_text = "distar.247.e.response"
+		is_dialog_only = yes
 	}
 }

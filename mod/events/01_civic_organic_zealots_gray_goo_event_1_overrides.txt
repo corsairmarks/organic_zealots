@@ -188,7 +188,7 @@ country_event = {
 	diplomatic = yes
 	picture_event_data = {
 		portrait = root.species
-		room = "ethic_spaceship_room"
+		room = root
 	}
 	is_triggered_only = yes
 	option = {

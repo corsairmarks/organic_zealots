@@ -41,7 +41,10 @@ country_event = {
 				}
 			}
 			owner = {
-				set_timed_country_flag = { flag = resolution_breached_synthetic_evolution days = 3600 }
+				set_timed_country_flag = {
+					flag = resolution_breached_synthetic_evolution
+					days = 3600
+				}
 			}
 		}
 
@@ -140,6 +143,10 @@ country_event = {
 		}
 		every_owned_leader = {
 			limit = {
+				NOR = {
+					has_leader_flag = renowned_leader
+					has_leader_flag = legendary_leader
+				}
 				species = {
 					is_robotic = no
 					is_livestock = no
@@ -156,6 +163,10 @@ country_event = {
 		}
 		every_pool_leader = {
 			limit = {
+				NOR = {
+					has_leader_flag = renowned_leader
+					has_leader_flag = legendary_leader
+				}
 				species = {
 					is_robotic = no
 					is_livestock = no
@@ -172,6 +183,10 @@ country_event = {
 		}
 		every_envoy = {
 			limit = {
+				NOR = {
+					has_leader_flag = renowned_leader
+					has_leader_flag = legendary_leader
+				}
 				species = {
 					is_robotic = no
 					is_livestock = no
@@ -190,16 +205,42 @@ country_event = {
 		every_owned_leader = {
 			limit = {
 				is_robotic_species = yes
-				NOT = { has_trait = leader_trait_synthetic }
+				NOT = {
+					has_trait = leader_trait_synthetic
+					has_leader_flag = renowned_leader
+					has_leader_flag = legendary_leader
+				}
 			}
 			add_trait_no_notify = leader_trait_synthetic
 		}
 		every_pool_leader = {
 			limit = {
 				is_robotic_species = yes
-				NOT = { has_trait = leader_trait_synthetic }
+				NOT = {
+					has_trait = leader_trait_synthetic
+					has_leader_flag = renowned_leader
+					has_leader_flag = legendary_leader
+				}
 			}
 			add_trait_no_notify = leader_trait_synthetic
+		}
+		create_message = {
+			type = MESSAGE_ALL_GAINED_TRAIT
+			localization = MESSAGE_ALL_GAINED_TRAIT_DESC
+			days = @toast_message_days
+			variable = {
+				type = key
+				value = leader_trait_synthetic
+				localization = TRAIT
+			}
+			variable = {
+				key = TRAIT_KEY
+				value = leader_trait_synthetic
+			}
+			variable = {
+				key = "border"
+				value = "GFX_invisible"
+			}
 		}
 		observer_event = {
 			id = observer.4
@@ -259,7 +300,7 @@ country_event = {
 				}
 			}
 		}
-		root = { set_country_flag = synth_assimilation }
+		set_country_flag = synth_assimilation
 		if = {
 			limit = {
 				any_planet_within_border = {
