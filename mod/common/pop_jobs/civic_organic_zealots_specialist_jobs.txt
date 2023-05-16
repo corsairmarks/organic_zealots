@@ -28,6 +28,18 @@ cloning_technician = {
 		}
 	}
 
+	triggered_planet_modifier = {
+		potential = { planet = { has_planet_flag = has_private_clinics } }
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+
+	triggered_planet_modifier = {
+		potential = { planet = { has_planet_flag = has_private_clinics } }
+		trade_value_add = 2
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+	}
+
 	resources = {
 		category = planet_doctors
 		upkeep = {
@@ -39,7 +51,7 @@ cloning_technician = {
 				planet = {
 					exists = assembling_species
 					assembling_species = {
-						is_robotic_species = no
+						is_robotic = no
 						is_lithoid = no
 					}
 				}
@@ -54,7 +66,7 @@ cloning_technician = {
 				planet = {
 					exists = assembling_species
 					assembling_species = {
-						is_robotic_species = no
+						is_robotic = no
 						is_lithoid = no
 					}
 				}

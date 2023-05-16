@@ -334,6 +334,10 @@ diplomatic_stance = {
 				has_valid_civic = civic_free_traders
 			}
 			modifier = {
+				factor = 10
+				should_ai_focus_on_trade = yes
+			}
+			modifier = {
 				factor = 0.65
 				OR = {
 					has_valid_civic = civic_private_prospectors
@@ -610,7 +614,11 @@ war_philosophy = {
 		}
 		valid = {
 			is_pacifist = no
-			NOT = { has_valid_civic = "civic_inwards_perfection" }
+			NOR = {
+				has_valid_civic = "civic_inwards_perfection"
+				has_valid_civic = "civic_crusader_spirit"
+				has_valid_civic = "civic_crusader_spirit_corporate"
+			}
 		}
 		AI_weight = {
 			modifier = {
@@ -699,7 +707,11 @@ war_philosophy = {
 		policy_flags = { no_wars }
 		valid = {
 			is_homicidal = no
-			NOT = { has_ethic = "ethic_fanatic_militarist" }
+			NOR = {
+				has_ethic = "ethic_fanatic_militarist"
+				has_valid_civic = "civic_crusader_spirit"
+				has_valid_civic = "civic_crusader_spirit_corporate"
+			}
 		}
 		AI_weight = {
 			modifier = {
@@ -1061,6 +1073,10 @@ robot_pop_policy = {
 					has_ai_personality_behaviour = robot_liberator
 				}
 			}
+			modifier = {
+				factor = 10
+				has_ethic = "ethic_fanatic_spiritualist"
+			}
 		}
 	}
 	option = {
@@ -1082,6 +1098,7 @@ robot_pop_policy = {
 						has_country_flag = lost_robot_policy_war
 						is_robot_empire = no
 					}
+					has_ethic = "ethic_fanatic_spiritualist"
 				}
 			}
 		}

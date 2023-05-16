@@ -91,7 +91,6 @@ allows_purge = {
 		is_gestalt = yes
 		is_homicidal = yes
 		has_policy_flag = purge_allowed
-		has_policy_flag = purge_displacement_only
 	}
 }
 
