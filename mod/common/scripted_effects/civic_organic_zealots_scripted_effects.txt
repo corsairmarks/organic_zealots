@@ -219,8 +219,53 @@ force_policy_outlaw_robots_and_ai_effect = {
 force_policy_outlaw_robots_and_ai_ruler_abdicates_effect = {
 	optimize_memory
 	if = {
-		limit = { exists = ruler }
-		ruler = { kill_leader = { show_notification = yes } }
+		limit = {
+			is_ai = yes
+			OR = {
+				has_origin = origin_legendary_leader
+				has_origin = origin_legendary_leader_imperial
+				has_origin = origin_legendary_leader_dictatorial
+			}
+		}
+		random_owned_leader = {
+			limit = { is_ruler = yes }
+			kill_leader = { show_notification = yes }
+		}
+		set_origin = origin_legendary_leader_death
+	}
+	if = {
+		limit = { is_gestalt = no }
+		# instead of killing the old ruler, the built-in Impose Ideology wargoal removes the leader from power but keeps them as an owned leader,
+		# then a new leader (installed by the "liberating" country) is created to immediately take their place (no elections)
+		create_leader = {
+			class = random_ruler
+			species = owner_species
+			effect = {
+				# reuse the existing logic that weights the class of a new heir
+				leader_event = {
+					id = action.504
+				}
+				# you don't get to keep the imperial trait if you aren't imperial
+				if = {
+					limit = {
+						has_trait = trait_imperial_heir
+						owner = { NOT = { has_authority = auth_imperial } }
+					}
+					remove_trait = trait_imperial_heir 
+				}
+				randomize_background_ethic_from_victor = yes
+				save_event_target_as = puppet_ruler
+			}
+		}
+		assign_leader = event_target:puppet_ruler
+		# heir takes over for imperial, if there is one (puppet_ruler still needed to force the old ruler out of office)
+		if = {
+			limit = {
+				has_authority = auth_imperial
+				exists = heir
+			}
+			event_target:puppet_ruler = { kill_leader = { show_notification = no } }
+		}
 	}
 }
 
@@ -484,6 +529,103 @@ try_swap_species_traits_cyborg_to_organic = {
 			effect = {
 				save_event_target_as = uncyborg_species
 			}
+		}
+	}
+}
+
+# randomize the leader's background ethic, weighted based on the ethos of the war victor
+# this = leader
+# root = country, war victor
+randomize_background_ethic_from_victor = {
+	optimize_memory
+	random_list = {
+		1 = {
+			modifier = {
+				factor = 2
+				root = { has_ethic = ethic_fanatic_militarist }
+			}
+			modifier = {
+				factor = 0
+				root = { is_militarist = no }
+			}
+			change_background_ethic = ethic_militarist
+		}
+		1 = {
+			modifier = {
+				factor = 2
+				root = { has_ethic = ethic_fanatic_xenophobe }
+			}
+			modifier = {
+				factor = 0
+				root = { is_xenophobe = no }
+			}
+			change_background_ethic = ethic_xenophobe
+		}
+		1 = {
+			modifier = {
+				factor = 2
+				root = { has_ethic = ethic_fanatic_egalitarian }
+			}
+			modifier = {
+				factor = 0
+				root = { is_egalitarian = no }
+			}
+			change_background_ethic = ethic_egalitarian
+		}
+		1 = {
+			modifier = {
+				factor = 2
+				root = { has_ethic = ethic_fanatic_materialist }
+			}
+			modifier = {
+				factor = 0
+				root = { is_materialist = no }
+			}
+			change_background_ethic = ethic_materialist
+		}
+		1 = {
+			modifier = {
+				factor = 2
+				root = { has_ethic = ethic_fanatic_pacifist }
+			}
+			modifier = {
+				factor = 0
+				root = { is_pacifist = no }
+			}
+			change_background_ethic = ethic_pacifist
+		}
+		1 = {
+			modifier = {
+				factor = 2
+				root = { has_ethic = ethic_fanatic_xenophile }
+			}
+			modifier = {
+				factor = 0
+				root = { is_xenophile = no }
+			}
+			change_background_ethic = ethic_xenophile
+		}
+		1 = {
+			modifier = {
+				factor = 2
+				root = { has_ethic = ethic_fanatic_authoritarian }
+			}
+			modifier = {
+				factor = 0
+				root = { is_authoritarian = no }
+			}
+			change_background_ethic = ethic_authoritarian
+		}
+		1 = {
+			modifier = {
+				factor = 2
+				root = { has_ethic = ethic_fanatic_spiritualist }
+			}
+			modifier = {
+				factor = 0
+				root = { is_spiritualist = no }
+			}
+			change_background_ethic = ethic_spiritualist
 		}
 	}
 }
