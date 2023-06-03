@@ -89,6 +89,11 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
     * Add two councilor positions for Civic: Organic Zealots (one of them requires an advanced technology)
     * Ensure that other empires can't offer foul Thinking Machines as external leaders
 * 3.0.1 Bugfixes for 3.8 "Gemini" - minor script improvements
+* 3.1.0 Update for Stellaris version 3.8.3 "Gemini"
+    * Deposed leaders from an Impose Policy war are no longer unceremoniously killed - instead, they are replaced as ruler but remain an owned leader
+    * Improve how opinion modifiers (and the Recently Liberated modifier) are assigned after an Impose Policy war ends in status quo or victory for the side using the war goal
+    * Anti-Thinking Machine Jihad is hidden as a war goal against Driven Assimilators and Determined Exterminators - the built-in End Threat war goal is available instead (for compatibility reasons)
+    * Ensure armies from the Sentinels dig site spawn on the surface of their planet
 
 ## Source Code
 
