@@ -566,6 +566,7 @@ planet_event = {
 					name = "NAME_Sentinels"
 					owner = event_target:sentinels
 					type = "sentinel_army"
+					land_army = yes
 				}
 			}
 		}
