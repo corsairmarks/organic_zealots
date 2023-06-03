@@ -1,0 +1,3 @@
+recently_liberated_outlaw_robots_and_ai = {
+	pop_ethic_materialist_attraction_mult = -0.75
+}

@@ -184,22 +184,15 @@ deactivate_ongoing_tech_assimilation = {
 	}
 }
 
-# this = country (loser)
-# root = country (winner)
+# this = country, liberated
+# root = country, liberator
 force_policy_outlaw_robots_and_ai_effect = {
 	optimize_memory
-	add_modifier = {
-		modifier = recently_liberated
-		years = @lost_robot_policy_war_flag_duration_years
-	}
-	add_opinion_modifier = {
-		modifier = opinion_liberated_us
-		who = root
-	}
-	root = {
-		add_opinion_modifier = {
-			modifier = opinion_we_liberated
-			who = prev
+	if = {
+		limit = { is_gestalt = no }
+		add_modifier = {
+			modifier = recently_liberated_outlaw_robots_and_ai
+			years = @lost_robot_policy_war_flag_duration_years
 		}
 	}
 	set_timed_country_flag = {
@@ -215,8 +208,8 @@ force_policy_outlaw_robots_and_ai_effect = {
 	deactivate_ongoing_tech_assimilation = yes
 }
 
-# this = country (loser)
-force_policy_outlaw_robots_and_ai_ruler_abdicates_effect = {
+# this = country, liberated loser
+force_policy_ruler_abdicates_effect = {
 	optimize_memory
 	if = {
 		limit = {
@@ -269,33 +262,92 @@ force_policy_outlaw_robots_and_ai_ruler_abdicates_effect = {
 	}
 }
 
-# this = country (loser)
-# root = counter (winner)
+# this = country, liberated/subject of liberated
+# root = counter, liberator
 force_policy_liberation_effect = {
 	optimize_memory
-	every_country = {
-		limit = {
-			OR = {
-				is_in_federation_with = root
-				AND = {
-					is_subject = yes
-					overlord = { is_same_value = root }
-					any_war = {
-						is_war_participant = {
-							who = prev
-							side = root
-						}
-					}
-				}
-			}
+	if = {
+		limit = { has_rival = root }
+		end_rivalry = root
+	}
+	add_opinion_modifier = {
+		modifier = opinion_liberated_us
+		who = root
+	}
+	root = {
+		if = {
+			limit = { has_rival = prev }
+			end_rivalry = prev
 		}
 		add_opinion_modifier = {
 			modifier = opinion_we_liberated
 			who = prev
 		}
-		prev = {
+		force_policy_liberator_effect = { IS_VICTORY = $IS_VICTORY$ }
+	}
+}
+
+# sorry this is a relative-scoped nightmare
+# this effect helps all the liberator's subjects/federation allies know they liberated the target country/one of the target's subjects
+# (and the target/subject to know by whom they were liberated) - effectively an m:n join
+# this = country, liberator
+# prev = country, liberated/subject of liberated
+force_policy_liberator_effect = {
+	optimize_memory
+	if = {
+		limit = { is_overlord = yes }
+		every_subject = {
+			limit = {
+				is_robot_empire = no
+				any_war = {
+					is_war_participant = {
+						who = prev
+						side = prevprev
+					}
+				}
+			}
+			prevprev = {
+				if = {
+					limit = { has_rival = prev }
+					end_rivalry = prev
+				}
+				add_opinion_modifier = {
+					modifier = opinion_liberated_us
+					who = prev
+				}
+			}
+			if = {
+				limit = { has_rival = prevprev }
+				end_rivalry = prevprev
+			}
 			add_opinion_modifier = {
-				modifier = opinion_liberated_us
+				modifier = opinion_we_liberated
+				who = prevprev
+			}
+		}
+	}
+	if = {
+		limit = { has_federation = yes }
+		every_federation_ally = {
+			limit = {
+				is_robot_empire = no
+				any_war = {
+					is_war_participant = {
+						who = prev
+						side = prevprev
+					}
+				}
+			}
+			prevprev = {
+				[[IS_VICTORY] end_rivalry = prev ]
+				add_opinion_modifier = {
+					modifier = opinion_liberated_us
+					who = prev
+				}
+			}
+			[[IS_VICTORY] end_rivalry = prevprev ]
+			add_opinion_modifier = {
+				modifier = opinion_we_liberated
 				who = prevprev
 			}
 		}
@@ -318,9 +370,9 @@ add_leader_trait_mentat = {
 	}
 }
 
-# this = species (target)
-# prev = species (current)
-# prevprev = country (assimilator)
+# this = species, target
+# prev = species, current
+# prevprev = country, assimilator
 coz_set_assimilation_flags = {
 	optimize_memory
 	set_timed_species_flag = {
@@ -339,7 +391,7 @@ coz_set_assimilation_flags = {
 
 # set up a species for cybernetic deassimilation, saved as event_target:prepared_species
 # this = species
-# prev = country (assimilator)
+# prev = country, assimilator
 coz_prepare_uncyborg_species = {
 	optimize_memory
 	save_event_target_as = uncyborg_species
@@ -359,8 +411,8 @@ coz_prepare_uncyborg_species = {
 	}
 }
 
-# species = the (original) species to inspect for traits to convert to non-cybernetic traits to event_target:uncyborg_species
-# event_target:uncyborg_species = used as the base species to be modified, will be overwritten with the new species if one or more traits are added
+# this = species, the (original) species to inspect for traits to convert to non-cybernetic traits to event_target:uncyborg_species
+# event_target:uncyborg_species = species, used as the base species to be modified, will be overwritten with the new species if one or more traits are added
 try_swap_species_traits_cyborg_to_organic = {
 	optimize_memory
 	if = {
@@ -535,7 +587,7 @@ try_swap_species_traits_cyborg_to_organic = {
 
 # randomize the leader's background ethic, weighted based on the ethos of the war victor
 # this = leader
-# root = country, war victor
+# root = country, victor
 randomize_background_ethic_from_victor = {
 	optimize_memory
 	random_list = {

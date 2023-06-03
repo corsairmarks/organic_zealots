@@ -64,6 +64,7 @@
  wg_force_policy_outlaw_robots_and_ai_accept: "§Y[From.GetName]§! is forced to adopt the §Y$robots_outlawed_name$§! and §Y$ai_outlawed_name$§! policies as well as to cease $living_standard_cyborg_assimilation$ assimilation for 20 years."
  wg_force_policy_outlaw_robots_and_ai_accept_2: "$wg_force_ideology_accept_2$"
  wg_force_policy_outlaw_robots_and_ai_accept_subject: "\n$wg_force_policy_outlaw_robots_and_ai_accept$\n$wg_force_policy_outlaw_robots_and_ai_accept_2$\n"
+ recently_liberated_outlaw_robots_and_ai: "$recently_liberated$ ($war_goal_wg_force_policy_outlaw_robots_and_ai$)"
 
  living_standard_deassimilation_cyborg: "Expurgatory Transfiguration"
  living_standard_deassimilation_cyborg_tooltip: "This species is being returned to its purely organic roots."
