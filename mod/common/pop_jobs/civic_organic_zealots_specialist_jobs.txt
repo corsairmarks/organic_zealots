@@ -29,13 +29,19 @@ cloning_technician = {
 	}
 
 	triggered_planet_modifier = {
-		potential = { planet = { has_planet_flag = has_private_clinics } }
+		potential = {
+			exists = planet
+			planet = { has_planet_flag = has_private_clinics }
+		}
 		planet_amenities_add = 1
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
 
 	triggered_planet_modifier = {
-		potential = { planet = { has_planet_flag = has_private_clinics } }
+		potential = {
+			exists = planet
+			planet = { has_planet_flag = has_private_clinics }
+		}
 		trade_value_add = 2
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
 	}
@@ -99,5 +105,15 @@ cloning_technician = {
 
 	weight = {
 		weight = 500
+		modifier = {
+			factor = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
+			exists = planet
+			planet = { has_planet_flag = has_private_clinics }
+		}
+		modifier = {
+			factor = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_trade_mult|
+			exists = planet
+			planet = { has_planet_flag = has_private_clinics }
+		}
 	}
 }
