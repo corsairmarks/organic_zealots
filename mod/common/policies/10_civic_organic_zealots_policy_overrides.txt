@@ -2,9 +2,8 @@
 diplomatic_stance = {
 	potential = {
 		OR = {
-			is_country_type = default
-			is_fallen_empire = yes
-			is_country_type = primitive
+			is_default_or_fallen = yes
+			is_primitive = yes
 			is_country_type = awakened_marauders
 		}
 	}
@@ -511,7 +510,7 @@ diplomatic_stance = {
 		name = "diplo_stance_ignorant"
 		icon = "GFX_diplomatic_stance_isolationist"
 		potential = {
-			is_country_type = primitive
+			is_primitive = yes
 			current_awareness_level < medium
 			exists = capital_scope
 			capital_scope = { NOT = { has_modifier = culture_shock_diplomacy } }
@@ -597,12 +596,7 @@ diplomatic_stance = {
 
 # Modified: Organic Zealots can't have the Liberation Wars or No Wars policies (via trigger)
 war_philosophy = {
-	potential = {
-		OR = {
-			is_country_type = default
-			is_fallen_empire = yes
-		}
-	}
+	potential = { is_default_or_fallen = yes }
 	allow = { is_at_war = no } # Not allowed to change policies in this group while at war
 	option = {
 		name = "unrestricted_wars"

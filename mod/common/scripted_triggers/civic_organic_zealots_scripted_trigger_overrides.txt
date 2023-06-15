@@ -25,10 +25,7 @@ has_total_war_cb = {
 	OR = {
 		# attacker checks
 		AND = {
-			OR = {
-				is_country_type = default
-				is_fallen_empire = yes
-			}
+			is_default_or_fallen = yes
 			OR = {
 				is_country_type = awakened_fallen_empire
 				has_valid_civic = civic_hive_devouring_swarm

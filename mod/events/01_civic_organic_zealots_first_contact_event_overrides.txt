@@ -95,7 +95,7 @@ first_contact_event = {
 		OR = {
 			NOT = { exists = owner }
 			NOT = { exists = contact_country }
-			contact_country = { is_country_type = primitive }
+			contact_country = { is_primitive = yes }
 			owner = { has_communications = root.contact_country }
 		}
 	}

@@ -31,10 +31,7 @@ can_add_claim = {
 		fail_text = CANNOT_ADD_CLAIM_NOT_VALID_EMPIRE
 		NAND = {
 			exists = owner
-			owner = {
-				NOT = { is_country_type = default }
-				is_fallen_empire = no
-			}
+			owner = { is_default_or_fallen = no }
 		}
 	}
 	custom_tooltip = {
@@ -124,16 +121,9 @@ can_add_claim = {
 can_get_claim_from_lost_system = {
 	custom_tooltip = {
 		fail_text = CANNOT_ADD_CLAIM_NOT_VALID_EMPIRE
-		OR = {
-			is_country_type = default
-			is_fallen_empire = yes
-		}
-		root = {
-			OR = {
-				is_country_type = default
-				is_fallen_empire = yes
-			}
-		}
+
+		is_default_or_fallen = yes
+		root = { is_default_or_fallen = yes }
 	}
 	custom_tooltip = {
 		fail_text = CANNOT_ADD_CLAIM_DEVOURING_SWARM
