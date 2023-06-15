@@ -94,6 +94,7 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
     * Improve how opinion modifiers (and the Recently Liberated modifier) are assigned after an Impose Policy war ends in status quo or victory for the side using the war goal
     * Anti-Thinking Machine Jihad is hidden as a war goal against Driven Assimilators and Determined Exterminators - the built-in End Threat war goal is available instead (for compatibility reasons)
     * Ensure armies from the Sentinels dig site spawn on the surface of their planet
+* 3.1.1 Update for Stellaris version 3.8.4 "Gemini" - integrate underlying game changes
 
 ## Source Code
 
