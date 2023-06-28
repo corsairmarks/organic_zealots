@@ -1,0 +1,215 @@
+namespace = preftl
+
+# Modified:
+# * use triggers
+# * explicitly use the pre-FTL's ruler portrait
+# * driven exterminators have regular options for robotic empires
+# * devouring swarms and fanatic purifiers have normal options for their same species
+# * organic zealots have regular options for non-robotic empires
+country_event = {
+	id = preftl.180
+	title = preftl.180.name
+	location = from.capital_scope.solar_system
+	desc = {
+		trigger = { from = { NOT = { has_country_flag = knew_of_aliens } } }
+		text = preftl.180.desc.noawarness
+	}
+	desc = {
+		trigger = { from = { has_country_flag = knew_of_aliens } }
+		text = preftl.180.desc.awarness
+	}
+	desc = {
+		exclusive_trigger = {
+			from = {
+				NOT = { has_country_flag = knew_of_aliens }
+				capital_scope = {
+					OR = {
+						has_planet_flag = broken_shackles_homeworld@root
+						has_planet_flag = broken_shackles_abductees_world@root
+					}
+				}
+			}
+		}
+		text = preftl.180.desc.bshomeworld.noawarness
+	}
+	desc = {
+		exclusive_trigger = {
+			from = {
+				has_country_flag = knew_of_aliens
+				capital_scope = {
+					OR = {
+						has_planet_flag = broken_shackles_homeworld@root
+						has_planet_flag = broken_shackles_abductees_world@root
+					}
+				}
+			}
+		}
+		text = preftl.180.desc.bshomeworld.awarness
+	}
+	diplomatic = yes
+	is_triggered_only = yes
+	picture_event_data = {
+		portrait = from.ruler
+		planet_background = from
+		graphical_culture = from
+		city_level = from
+		room = from.ruler
+	}
+	immediate = {
+		establish_communications_no_message = from
+		establish_contact = {
+			who = from
+			location = FROM.capital_scope.solar_system
+		}
+	}
+	option = { # Cede
+		name = preftl.180.a
+		trigger = {
+			hidden_trigger = {
+				OR = {
+					is_homicidal = no
+					AND = {
+						OR = {
+							has_valid_civic = civic_devouring_swarm
+							has_valid_civic = civic_fanatic_purifiers
+						}
+						from.owner_species = { is_same_species = root.owner_species }
+					}
+					AND = {
+						has_valid_civic = civic_machine_terminator
+						from = { is_robot_empire = yes }
+					}
+					AND = {
+						is_valid_organic_zealots = yes
+						from = { is_robot_empire = no }
+					}
+				}
+			}
+		}
+		if = {
+			limit = { is_xenophobe = yes }
+			add_resource = { influence = -200 }
+		}
+		custom_tooltip = preftl.180.a.tooltip
+		root = {
+			set_truce = {
+				target = from
+				type = guarantee
+			}
+		}
+		hidden_effect = {
+			from = {
+				set_truce = {
+					target = root
+					type = guarantee
+				}
+				achieve_ftl_effect = {
+					PRE_FTL = root.from
+					OWNER = root
+				}
+				capital_scope.solar_system.starbase = {
+					set_owner = root.from
+				}
+				add_opinion_modifier = {
+					modifier = opinion_ceded_starbase
+					who = root
+				}
+			}
+		}
+	}
+	option = { # Don't cede
+		name = preftl.180.b
+		trigger = {
+			hidden_trigger = {
+				OR = {
+					is_homicidal = no
+					AND = {
+						OR = {
+							has_valid_civic = civic_devouring_swarm
+							has_valid_civic = civic_fanatic_purifiers
+						}
+						from.owner_species = { is_same_species = root.owner_species }
+					}
+					AND = {
+						has_valid_civic = civic_machine_terminator
+						from = { is_robot_empire = yes }
+					}
+					AND = {
+						is_valid_organic_zealots = yes
+						from = { is_robot_empire = no }
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					is_xenophile = yes
+					AND = {
+						is_valid_organic_zealots = yes
+						from = { is_materialist = yes }
+					}
+				}
+			}
+			add_resource = { influence = -200 }
+		}
+		custom_tooltip = preftl.180.b.tooltip
+		if = {
+			limit = {
+				from = { is_hive_empire = yes }
+				is_hive_empire = no
+			}
+			custom_tooltip = preftl.180.b.tt.nothive
+		}
+		if = {
+			limit = {
+				from = { is_hive_empire = no }
+				AND = {
+					is_gestalt = yes
+					NOR = {
+						has_valid_civic = civic_machine_servitor
+						has_valid_civic = civic_machine_assimilator
+					}
+				}
+			}
+			custom_tooltip = preftl.180.b.tt.notregular
+		}
+		hidden_effect = {
+			from = {
+				achieve_ftl_effect = {
+					PRE_FTL = root.from
+					OWNER = root
+				}
+				add_opinion_modifier = {
+					modifier = opinion_not_ceded_starbase
+					who = root
+				}
+			}
+			from.capital_scope = {
+				remove_modifier = prosp_uni_mod
+				remove_modifier = prosp_uni_mod_gestalt
+			}
+		}
+	}
+	option = {
+		name = EXTERMINATE
+		trigger = {
+			has_valid_civic = civic_machine_terminator
+			hidden_trigger = { from = { is_robot_empire = no } }
+		}
+	}
+	option = {
+		name = TASTY
+		trigger = {
+			has_valid_civic = civic_hive_devouring_swarm
+			hidden_trigger = { from.owner_species = { NOT = { is_same_species = root.owner_species } } }
+		}
+	}
+	option = {
+		name = SCUM
+		trigger = {
+			has_valid_civic = civic_fanatic_purifiers
+			hidden_trigger = { from.owner_species = { NOT = { is_same_species = root.owner_species } } }
+		}
+	}
+}
