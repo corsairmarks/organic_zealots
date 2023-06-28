@@ -70,7 +70,7 @@ country_event = {
 					is_homicidal = no
 					AND = {
 						OR = {
-							has_valid_civic = civic_devouring_swarm
+							has_valid_civic = civic_hive_devouring_swarm
 							has_valid_civic = civic_fanatic_purifiers
 						}
 						from.owner_species = { is_same_species = root.owner_species }
@@ -125,7 +125,7 @@ country_event = {
 					is_homicidal = no
 					AND = {
 						OR = {
-							has_valid_civic = civic_devouring_swarm
+							has_valid_civic = civic_hive_devouring_swarm
 							has_valid_civic = civic_fanatic_purifiers
 						}
 						from.owner_species = { is_same_species = root.owner_species }
@@ -164,12 +164,10 @@ country_event = {
 		if = {
 			limit = {
 				from = { is_hive_empire = no }
-				AND = {
-					is_gestalt = yes
-					NOR = {
-						has_valid_civic = civic_machine_servitor
-						has_valid_civic = civic_machine_assimilator
-					}
+				is_gestalt = yes
+				NOR = {
+					has_valid_civic = civic_machine_servitor
+					has_valid_civic = civic_machine_assimilator
 				}
 			}
 			custom_tooltip = preftl.180.b.tt.notregular
