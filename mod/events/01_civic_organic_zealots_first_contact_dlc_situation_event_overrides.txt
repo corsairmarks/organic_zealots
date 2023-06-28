@@ -88,6 +88,21 @@ country_event = {
 				}
 			}
 		}
+		allow = {
+			OR = {
+				AND = {
+					is_xenophobe = no
+					OR = {
+						is_valid_organic_zealots = no
+						from = { is_materialist = no }
+					}
+				}
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 200
+				}
+			}
+		}
 		if = {
 			limit = {
 				OR = {
@@ -101,18 +116,18 @@ country_event = {
 			add_resource = { influence = -200 }
 		}
 		custom_tooltip = preftl.180.a.tooltip
+		root = {
+			set_truce = {
+				target = from
+				type = guarantee
+			}
+		}
 		if = {
 			limit = {
 				is_valid_organic_zealots = yes
 				from = { is_materialist = yes }
 			}
 			custom_tooltip = preftl.180.a.tooltip.organic_zealots
-		}
-		root = {
-			set_truce = {
-				target = from
-				type = guarantee
-			}
 		}
 		hidden_effect = {
 			from = {
@@ -155,6 +170,15 @@ country_event = {
 						is_valid_organic_zealots = yes
 						from = { is_robot_empire = no }
 					}
+				}
+			}
+		}
+		allow = {
+			OR = {
+				is_xenophile = no
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 200
 				}
 			}
 		}
