@@ -87,7 +87,15 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { is_xenophobe = yes }
+			limit = {
+				OR = {
+					is_xenophobe = yes
+					AND = {
+						is_valid_organic_zealots = yes
+						from = { is_materialist = yes }
+					}
+				}
+			}
 			add_resource = { influence = -200 }
 		}
 		custom_tooltip = preftl.180.a.tooltip
@@ -142,15 +150,7 @@ country_event = {
 			}
 		}
 		if = {
-			limit = {
-				OR = {
-					is_xenophile = yes
-					AND = {
-						is_valid_organic_zealots = yes
-						from = { is_materialist = yes }
-					}
-				}
-			}
+			limit = { is_xenophile = yes }
 			add_resource = { influence = -200 }
 		}
 		custom_tooltip = preftl.180.b.tooltip
