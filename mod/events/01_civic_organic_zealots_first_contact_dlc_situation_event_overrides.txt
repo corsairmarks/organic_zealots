@@ -6,6 +6,8 @@ namespace = preftl
 # * driven exterminators have regular options for robotic empires
 # * devouring swarms and fanatic purifiers have normal options for their same species
 # * organic zealots have regular options for non-robotic empires
+# * don't show hive warning for empires that can assimilate them (Engineered Genesis, Inevitable Assimilation)
+# * don't show individual warning for empires that can assimilate them (Engineered Genesis)
 country_event = {
 	id = preftl.180
 	title = preftl.180.name
@@ -99,6 +101,13 @@ country_event = {
 			add_resource = { influence = -200 }
 		}
 		custom_tooltip = preftl.180.a.tooltip
+		if = {
+			limit = {
+				is_valid_organic_zealots = yes
+				from = { is_materialist = yes }
+			}
+			custom_tooltip = preftl.180.a.tooltip.organic_zealots
+		}
 		root = {
 			set_truce = {
 				target = from
@@ -158,6 +167,10 @@ country_event = {
 			limit = {
 				from = { is_hive_empire = yes }
 				is_hive_empire = no
+				NOR = {
+					has_tradition = tr_genetics_creation
+					has_tradition = tr_cybernetics_assimilator_inevitable_assimilation
+				}
 			}
 			custom_tooltip = preftl.180.b.tt.nothive
 		}
@@ -168,6 +181,7 @@ country_event = {
 				NOR = {
 					has_valid_civic = civic_machine_servitor
 					has_valid_civic = civic_machine_assimilator
+					has_tradition = tr_genetics_creation
 				}
 			}
 			custom_tooltip = preftl.180.b.tt.notregular
