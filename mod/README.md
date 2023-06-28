@@ -96,6 +96,7 @@ So, so many game object overwrites will leave warnings in the error.log file.  T
     * Ensure armies from the Sentinels dig site spawn on the surface of their planet
 * 3.1.1 Update for Stellaris version 3.8.4 "Gemini" - integrate underlying game changes
 * 3.1.2 Make code more flexible, where possible, with fallen empire and primitive country types
+* 3.2.0 Empires with Civic: Organic Zealots (and other homicidal civics) can "keep" pre-FTL planets that matured in one of their systems, as long as the pre-FTL empire meets their "don't genocide" loophole - same species, robotic/not robotic as applicable
 
 ## Source Code
 
